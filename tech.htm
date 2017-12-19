@@ -1,0 +1,82 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="robots" content="noindex,nofollow">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>信頼できない筋の情報</title>
+<script src="/ga.js"></script>
+
+</head>
+
+<body bgcolor="#E0E7F0" text="#1F180F" link="#6666FF"
+vlink="#FF6666">
+
+<h1 align="center">信頼できない筋の情報</h1>
+
+<p align="center"><a href="tech0203.htm">[先月の情報]</a></p>
+
+<h2>2002年</h2>
+
+<h3>4月6日</h3>
+
+<p>　JPEG2000のマルチレゾリューションはアニメ絵では使えない。<br>
+　下に並べた2つの画像は、一方は元画像を縮小後JPEGで圧縮したもの（13,309バイト）。もう一方は元画像をそのままJPEG2000で圧縮した後、先頭の13,307バイトをデコードしてマルチレゾリューションで縮小したものである。<br>
+<img src="nikki_image/20020406_jpg.jpg" width="190" height="314"><img src="nikki_image/20020406_j2k.png"><br>
+　右の画像の、顔のあたりをよくご覧いただきたい。妙なムラが生じている。これがマルチレゾリューションの特性らしい。</p>
+
+<h3>4月2日</h3>
+
+<p>　JPEG2000の利用可能性を調べた。<br>
+　使うのはJJ2000。デコーダをjarに固めると148,000bytesになる。ゲーム開始時に必要なイメージファイルはJPEGで200KB程度なので、ロード時間の短縮には役立たない。実際には100KB以上も足が出る。イニシャルロード量にして50%の増大だから、よほどのメリットが必要になる。<br>
+　どこでそのメリットが出るかといえば、逐次ロードによって、である。想定しうる最大の画面解像度で十分なクオリティを出すには、イメージ1枚当たり50KBを要する。50KBのイメージファイルを10KBまでロードして、残りはゲーム開始後に引っ張ってくる、という戦略である。<br>
+　高解像度の画像を高圧縮（0.2bpp以下）して展開してみると、激しくモスキートノイズが乗っている。同じデータ量なら、低解像度・低圧縮のほうがいい結果が得られる。モスキートノイズとアニメ絵の相性の悪さは、ただごとではない。ぼかしをかけるくらいの機能があってもよさそうだが、見当たらない。<br>
+　-Wlevオプションでウェーブレット分解の分解レベルを上げてやると、微妙にマシになるが、大した差はない。</p>
+
+<p>　JPEG2000を使わなくても、逐次ロードの目的は達成できる。イニシャルロード用の小さなファイルと、遅延ロード用の大きなファイルを用意しておけばいい。二つのファイルサイズはそれぞれ10KBと50KB、管理の手間を別にすれば、転送量が2割増えるにすぎない。<br>
+　以上の状況から検討したところ、本作戦においてJPEG2000を用いるメリットはない、との結論に達した。</p>
+
+<p>　JJ2000を使って、MSのjview（Version 5.00.3805）とSun
+JDK1.4のjava（build 1.4.0-b92, mixed mode）の速度を比較した。とあるイメージファイルの圧縮に要した時間を以下に示す。</p>
+
+<p>MS:<br>
+real 0m3.585s<br>
+user 0m0.010s<br>
+sys 0m0.030s</p>
+
+<p>Sun:<br>
+real 0m4.276s<br>
+user 0m0.020s<br>
+sys 0m0.020s</p>
+
+<p>　VMの起動時間はといえば、</p>
+
+<p>MS<br>
+real 0m0.220s<br>
+user 0m0.030s<br>
+sys 0m0.010s</p>
+
+<p>Sun:<br>
+real 0m0.401s<br>
+user 0m0.010s<br>
+sys 0m0.030s</p>
+
+<p>　MS jview完全勝利。</p>
+
+<h3>4月1日</h3>
+
+<p>　昨日のアプレットをSun JDK1.4のプラグインで見たら、ろくに動作していなかった。appletviewerでは動いていたというのに。これがあの世に名高いWrite
+Once, Debug Anywhereの威力か。<br>
+　調べてみると、プラグインでは、CanvasにおけるMouseEventのMOUSE_ENTEREDおよびMOUSE_EXITEDをprocessMouseEventに回していない。Componentではちゃんと回しているので、どこかで勝手に消されているのだ。なんて完璧なB・U・G…</p>
+
+<p>　それはともかく<a href="tech020401.htm">軽量コンポーネント＋ダブルバッファリング版</a>。今度はSun
+JDK1.4のプラグインでも動作を確認してある。<br>
+　これくらいの速度が出て、フリッカーもなければ、本作戦には十分と思われる。</p>
+
+<p>　</p>
+
+<p align="center"><a href="menu.html">[メニューに戻る]</a>
+</p>
+</body>
+</html>

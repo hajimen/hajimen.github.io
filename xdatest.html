@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis" />
+<title>無題ドキュメント</title>
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+<p>XDAのテスト</p>
+<script language="javascript" type="text/javascript">
+function docw() {
+	rh_insertScript('http://kaoriha.org/remotetest.js');
+}
+function rh_insertScript(src) {
+	var attrs = new Object();
+	attrs["src"] = src;
+	attrs["charset"] = "utf-8";
+	attrs["type"] = "text/javascript";
+	attrs["language"] = "javascript";
+	if (window.rh_dom_around) {
+		function getQuoted(str) {
+			return '"' + str + '"';
+		}
+	
+		var attributeStr = "";
+		function addAttribute(param, value) {
+			if(value || typeof(value) == "number") {
+				attributeStr += " " + param + "=" + getQuoted(value);
+			}
+		}
+		for (var i in attrs) {
+			addAttribute(i, attrs[i]);
+		}
+	
+		document.write("<scr" + "ipt " + attributeStr + ">" 
+					   + '<p>&nbsp;</p>'
+					   + "</scr" + "ipt>");
+	} else {
+		var s = document.createElement("script");
+		for (var i in attrs) {
+			s.setAttribute(i, attrs[i]);
+		}
+		document.body.appendChild(s);
+	}
+}
+function sendRPCDone() {
+	alert('remoteproc called');
+}
+rh_dom_around = false;
+</script>
+<form>
+  <input type="button" value="document.write"  onclick="docw()"/>
+</form>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: JavaScript版Referer Hound</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000176.html" title="ロバート・キヨサキ『金持ち父さん貧乏父さん』" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000178.html" title="対テロ翼賛体制" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000176.html">&laquo; ロバート・キヨサキ『金持ち父さん貧乏父さん』</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000178.html">対テロ翼賛体制 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2005&#24180;08&#26376;06&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">JavaScript版Referer Hound</h3>
+
+<p>　<a href="http://www.refererhound.jp/">作った。</a>このところ日記の更新が少なかったのは、これにかまけていたせいだ。 
+</p>
+<p>　<a href="http://figaro.loversoul.jp/refererhound.jsp">Referer Houndの原理については、すでにさんざん解説したので繰り返さない。</a>外部ドメインのサーバと通信する手法も、Google 
+  AdSenseでおなじみである。</p>
+<p>　ただし、iframe要素ではなく、内容自体を挿入するのは珍しい。</p>
+<p>　これはReferer Houndの設計・実装上の重要なポイントではないし、手間もかかっていない（1日で動くようになり、3日で完成した）が、応用がきくので、興味のある向きも多いかと思う。解説しよう。</p>
+<p>　基本は、<a href="http://ma.la/mirrorman/wiki.cgi/%e3%82%b9%e3%82%af%e3%83%aa%e3%83%97%e3%83%88%e3%81%ae%e3%82%a4%e3%83%b3%e3%83%9d%e3%83%bc%e3%83%88">こちら</a>に書いてあるとおりだ。JavaScript中で、document.writeやDOMでscript要素を書き込むと、それが実行される。そのscript要素のsrc属性は、外部ドメインでもいい。そしてもちろん、src属性のなかに、クエリ文字列を入れることができる。</p>
+<p>　HTMLの中に静的に書き込んであるJavaScriptを、Aとする。Aが実行されたときに動的に読み込まれ実行されるJavaScriptを、Bとする。もちろんBはさらに別のJavaScriptを動的に読み込んで実行できるわけだが、Referer 
+  Houndはそこまではしていないので、AとBだけで話を進めよう。</p>
+<p>　BはJavaScriptだが、サーバで動的に生成される。Referer Houndでは、XMLをXSLTにかけてJavaScriptに変換している。このJavaScriptを実行すると元のXMLが生成されるというわけだ。こう書くとまるで魔法だが、たいしたことはない。参考までに、Referer 
+  Houndで使われているXSLTを載せておく。これはスキーマにかかわらず使えるはずである。 </p>
+  <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+	&lt;xsl:output method="text" version="1.0" encoding="UTF-8"/&gt;
+	&lt;xsl:template match="/"&gt;
+{
+	var domDocument = Sarissa.getDomDocument();
+
+	function dctn(text) {
+		return domDocument.createTextNode(text);
+	};
+	function dce(en) {
+		return domDocument.createElement(en);
+	};
+	var ce = dce('root');
+	var e;
+		&lt;xsl:apply-templates/&gt;
+	sendRPCDone(ce.firstChild);
+}
+	&lt;/xsl:template&gt;
+	&lt;xsl:template match="text()"&gt;
+	ce.appendChild(dctn("&lt;xsl:value-of select="."/&gt;"));
+	&lt;/xsl:template&gt;
+	&lt;xsl:template match="@*"&gt;
+	ce.setAttribute("&lt;xsl:value-of select="name()"/&gt;", "&lt;xsl:value-of select="."/&gt;");
+	&lt;/xsl:template&gt;
+	&lt;xsl:template match="*"&gt;
+	e = dce("&lt;xsl:value-of select="name()"/&gt;");
+	ce.appendChild(e);
+	ce = e;
+		&lt;xsl:apply-templates select="@*"/&gt;
+		&lt;xsl:apply-templates/&gt;
+	ce = ce.parentNode;
+	&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+<p>　<a href="http://sarissa.sourceforge.net/doc/">なおSarissaとは、JavaScriptのDOM実装である。</a>AはBを読み込む前にSarissaを読み込んでいる。また、このXSLTに食わせる前に、要素内容と属性内容に含まれるダブルクォーテーションとバックスラッシュをエスケープ処理しなければならない。</p>
+<p>　Aはキャッシュが利くので、動的に生成されない部分はできるだけAに詰め込みたい。だからBは実行後、生成されたXMLを引数にして、Aで定義された関数を呼び出す。上のXSLTでは、sendRPCDoneがそれである。この関数が、渡されたXMLをHTMLに変換して書き込む。</p>
+<p>　以上が、原理のすべてである。</p>
+<p>　この手法にこれといった名前はまだないようなので、私がつける。「Cross Domain Ajax」、略して「XDA」だ。</p>
+<p>　なお、JavaScriptの常として、原理の単純さからは想像もつかないような地獄めぐりをさせられる。プロジェクトの要にAjaxやXDAを置くのは大博打だ、と忠告しておく。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000177.html&amp;text=JavaScript%E7%89%88Referer%20Hound&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000177.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=JavaScript%E7%89%88Referer%20Hound
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000177.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2005&#24180;08&#26376;06&#26085; 08:28
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>こんにちは、RefererHoundを使わせてもらってるものです。<br />
+バグかどうかわからないのですが、<br />
+RefererHoundでうまくいっていない所があったのでここに書かさせてもらいます。<br />
+(RefererHoundのページに報告フォームが見当たらなかったので)</p>
+
+<p>どうも、RefererHoundを設置しているページが、<br />
+%などが含まれたURLEncodeされているURLであった場合、<br />
+Refererのリストが表示されていない気がするのです。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;yuanying&#64;fraction&#46;jp">Yuanying</a> at 2005&#24180;08&#26376;09&#26085; 17:24</span>
+</div>
+<div class="comments-body">
+<p>通知ありがとうございます。<br />
+そのとおりでした。現在では修正されていると思います。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hajime&#64;kaoriha&#46;org">中里一</a> at 2005&#24180;08&#26376;09&#26085; 19:32</span>
+</div>
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

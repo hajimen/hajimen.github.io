@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+               "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無題ドキュメント</title>
+<link href="../css/kaoriha.css" rel="stylesheet" type="text/css" />
+<script src="/ga.js"></script>
+
+</head>
+<body>
+<h1 class="centering">「ブラザーのプリンタ？」彼女は気の毒そうにつぶやいた。</h1>
+<p>　「HL-1670Nね。ああそう」</p>
+<p>　どうやら私はなにかを間違えてしまったらしい。足の裏がむずむずした。</p>
+<p>　ブラザーのプリンタのどこがいけないのかと、私は尋ねた。6万円で買えるし、PostScript互換だし、両面印刷だし、トナーも安い。欠点といえば、トナーを置いている店が少ないことくらいだ。</p>
+<p>　「Ghostscriptをインストールしなさい」</p>
+<p>　まるで聖書に書いてあることみたいに、私はそのとおりにした。</p>
+<p>　「写真屋で、そのへんのものをグレースケールでスキャンしなさい。写真かなにかを」</p>
+<p>　私はそのとおりにした。私は、今野緒雪『マリア様がみてる』（集英社、1998年）の表紙をスキャンした。</p>
+<p>　それにしても、「写真屋」だったとは。「フォト<em>ショ</em>」でなかったことを喜ぶべきなのか、「写真屋」がどの程度ましなのかを検討すべきなのか、私にはわからなかった。</p>
+<p>　「PostScriptのヤバい奴その1。ハーフトーンスクリーン情報」</p>
+<p>　彼女はPhotoshopを操作して、見たこともないダイアログを出した。ハーフトーンスクリーン？</p>
+<p>　「出力時に網点を作る命令。イラ<em>レ</em>で配置したEPSに、これが設定されてるとヤバい。その中だけ網点の状態が変わる」</p>
+<p>　彼女はマウスを何度か叩き、数字を打ち込んだ。</p>
+<p>　「まずPostScriptをファイルに吐かせる」</p>
+<p>　彼女はtest.psをC:\に作った。</p>
+<p>　「これをGhostscriptに食わせて、TIFFを吐かせる」</p>
+<p>　今度は彼女はCygwinではなく、「ファイル名を指定して実行」からcmdを起動した。</p>
+<p><code>C:\gs\gs7.04\bin\gswin32c -q -dNOPAUSE -dBATCH -sDEVICE=tiffg3 -sOutputFile=test.tiff 
+  test.ps</code></p>
+<p>　「すると、こんなのができる。これがハーフトーンスクリーンの効果」</p>
+<p>　彼女はtest.tiffをPhotoshopで開いてみせた。画像全体に、荒い網点が広がっていた。</p>
+<p>　「同じファイルを、lprでプリンタに食わせる」</p>
+<p>　HL-1670Nは小さな唸りをあげてウォームアップし、出力を吐いた。</p>
+<p>　「すると、見てのとおり」</p>
+<p>　網点はどこにもなかった。</p>
+<p>　「これじゃあ、EPSにハーフトーンスクリーン情報が設定されててもわからない」</p>
+<p>　私は言葉がなかった。</p>
+<p>　「逃げる手はある。Ghostscriptでラスタライズしてからプリンタに渡せばいい」</p>
+<p><code>C:\gs\gs7.04\bin\gswin32c -q -r1200 -dNOPAUSE -dBATCH -sDEVICE=mswinpr2 
+  test.ps</code></p>
+<p>　「ただし、じかに刷ると遅いし、バグがある。出力をDistillerで受けていったんPDFにするほうがいい。DistillerのジョブオプションはPrintにしてる？」</p>
+<p>　それくらいなら私だってやっている。</p>
+<p>　「この方法は、ハーフトーンスクリーン情報をチェックするだけなら十分使える。でも本物のPostScriptプリンタのかわりにはならない。字が太るし、Ghostscriptのバグで字がズレる。それに、なんて言っても、印刷すると遅い」</p>
+<p>　唯一の慰めは、私にはHL-1670N以外のものを買うような予算はなかったということだ。</p>
+<p>&nbsp;</p>
+<p class="centering"><a href="dtp.htm">[戻る]</a></p>
+</body>
+</html>

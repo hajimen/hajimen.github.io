@@ -1,0 +1,494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: このコールバック地獄からの卒業</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000740.html" title="いいところもある" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000742.html" title="iOSのプッシュ通知まわりの驚くべきクソさ加減" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000740.html">&laquo; いいところもある</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000742.html">iOSのプッシュ通知まわりの驚くべきクソさ加減 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2011&#24180;12&#26376;13&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">このコールバック地獄からの卒業</h3>
+
+<p>　JavaScriptの名前システムに日々キレている読者諸氏よこんにちは。もし私がタイムマシンで1994年に戻って「オサマ・ビン・ラディンを暗殺するか、それともネットスケープ社を爆破するか、どちらかを選べ」と迫られたら間違いなく後者を選ぶ。迫られなくても選ぶ。<br />
+　Tiny BASIC以来最悪と名高い（高めるのは私）JavaScriptの名前システムで誰もがまず困るのは、コールバック・スパゲィだ。それがどんなものか知らない幸運なかたは<a href="http://www.slideshare.net/koichik/node1">こちら</a>を参照。よい名前システムは七難隠すで、多少のコールバック・スパゲィごときはどうにでもなる。よほどの場合でなければ同期オブジェクトを持ち出してもいい。が、JavaScriptにはどちらもない。<br />
+　そこで、世の中ではすでに山のように<a href="https://github.com/joyent/node/wiki/modules#wiki-async-flow">コールバック・スパゲィ対策が打ち出されている</a>が、デファクトスタンダードはない。<br />
+　私もひとつ対策を打ち出した。最初は、あまりの黒魔術ぶりに我ながら恐れをなして公表を控えようと思っていたが、世の中にすでにこんなにたくさん対策があるなら私がひとつくらい増やしたところでどうということもあるまい、と思い直し、ここに公表する。<br />
+　例1:</p>
+
+<a name="more"></a>
+<pre>
+<code>
+var sq = new Sequence([
+	function () {
+		alert('run 1');
+		this.a = 1;
+		setTimeout(this.$next, 1);
+		return true;
+	},
+	function () {
+		alert('run 2 this.a:' + this.a);
+		this.$next('OK');
+		return true;
+	},
+	function (arg) {
+		alert('run 3 arg:' + arg);
+	},
+	function () {
+		alert('never');
+	}
+]);
+
+sq.Start();
+</code>
+</pre>
+<p>　例1でのルールは簡単、<br />
+・関数オブジェクトを実行したい順番にArrayに並べる<br />
+・関数オブジェクト内からは、自分の次の関数オブジェクトがthis.$nextで見える<br />
+・this.$nextはsetTimeoutに渡されても$next内でthisを復元する<br />
+・次の関数オブジェクトを実行する処理を行ったときはtrueを返す<br />
+　とりあえず誰でもこれくらいはやるだろう。黒魔術はここから始まる。<br />
+　例2:</p>
+<pre>
+<code>
+var sq = new Sequence([
+	function () {
+		alert('run 1');
+		setTimeout(this.$1, 1);
+		return true;
+	},
+	[
+		function () {
+			alert('run 2');
+		}
+	],
+	function () {
+		alert('run 3');
+	}
+]);
+
+sq.Start();
+</code>
+</pre>
+<p>　というわけで、<br />
+・関数オブジェクトを並べるArrayは入れ子にできる<br />
+・入れ子内の関数オブジェクトは、Arrayの前の関数オブジェクトからthis.$1、$2、...$nで見える<br />
+・入れ子内の関数オブジェクトでtrueを返さないと、外の次の関数オブジェクトに戻る<br />
+　ちなみに、<br />
+・入れ子内の関数オブジェクトからは外の次の関数オブジェクトがthis.$parentで見える。<br />
+　入れ子ができるので、こういうこともできる。例3:</p>
+<pre>
+<code>
+var inner =	[
+ 	function () {
+ 		alert('run 2 this.a:' + this.a);
+ 		setTimeout(this.$next, 1);
+ 		return true;
+ 	},
+ 	function () {
+ 		alert('run 3');
+ 		this.$parent("OK");
+ 		return true;
+ 	}
+ ];
+
+ var sq = new Sequence([
+ 	function () {
+ 		alert('run 1');
+ 		this.a = 1;
+ 		setTimeout(this.$1, 1);
+ 		return true;
+ 	},
+ 	inner,
+ 	function (arg) {
+ 		alert('run 4 arg:' + arg);
+ 		var that = this;
+ 		setTimeout(function() {
+ 			that.$1();
+ 		}, 1);
+ 		return true;
+ 	},
+ 	inner,
+ 	function (arg) {
+ 		alert('run 5 arg:' + arg);
+ 	}
+ ]);
+</code>
+</pre>
+<p>　だいぶ黒くなってきた。<br />
+　タイムアウトとエラー処理と終了処理もあるんだぜ。</p>
+<pre>
+<code>
+var sq = new Sequence([
+	function () {
+		alert('run 1');
+		setTimeout(this.$next, 1);
+		return true;
+	},
+	function () {
+		alert('run 2');
+	}
+], function() {
+	alert('onexit');
+}, function() {
+	alert('onerror');
+}, 1000, function() {
+	alert('ontimeout');
+});
+</code>
+</pre>
+<p>　ちなみにエラー処理はthis.$onErrorで見える。<br />
+　さて警告は十分したと思うので、実際に動くコードを以下に載せて終わる。</p>
+<pre>
+<code>
+function Sequence(funcArray, onExit, onError, timeout, onTimeout) {
+	this.fa = funcArray;
+	this.onExit = onExit;
+	this.onError = onError;
+	this.timeout = timeout;
+	this.onTimeout = onTimeout;
+	this.contextSet = {};
+	this.contextSetIndexCounter = 0;
+}
+Sequence.prototype._caller = function(f, context, args, loc) {
+	if (context.$_isTimeouted || context.$_isExited) {
+		return;
+	}
+	var lf = f;
+	var lloc = loc;
+	while (true) {
+		this._prepareCall(lf, context, this.fa, null, lloc, 0, []);
+		context.$self = this._generateFunc(lf, context, lloc);
+		context.$_lastPassedTime = new Date().getTime();
+		if (lf.apply(context, args)) {
+			return;
+		} else if (context.$_parent) {
+			lf = context.$_parent;
+			lloc = context.$_parentLoc;
+		} else {
+			break;
+		}
+	}
+	if (context.$onExit) {
+		context.$onExit();
+	}
+};
+Sequence.prototype._generateFunc = function(f, context,  loc) {
+	var that = this;
+	return function() {
+			that._caller(f, context, arguments, loc);
+	};
+};
+Sequence.prototype._prepareCall = function(f, context, cfa, pf, loc, depth, ploc) {
+	for (var i = loc[depth]; i < cfa.length; i ++) {
+		var a = cfa[i];
+		if (a === f) {
+			delete context.$next;
+			var c = 1;
+			while (context['$' + c]) {
+				delete context['$' + c];
+				c++;
+			}
+			if (pf) {
+				context.$_parent = pf;
+				context.$_parentLoc = ploc;
+				context.$parent =  this._generateFunc(pf, context, ploc);
+			} else {
+				delete context.$_parent;
+				delete context.$parent;
+			}
+			for (var ii = i + 1; ii < cfa.length; ii ++) {
+				var nf = cfa[ii];
+				if (typeof(nf) == 'function') {
+					var nloc = loc.concat();
+					nloc[depth] = ii;
+					context.$next =  this._generateFunc(nf, context, nloc);
+					break;
+				}
+			}
+			if (i  + 1 < cfa.length) {
+				var n = cfa[i + 1];
+				if (typeof(n) != 'function') {
+					var c = 1;
+					for (var ii = 0; ii < n.length; ii ++) {
+						if (typeof(n[ii]) != 'function') {
+							continue;
+						}
+						var cf = n[ii];
+						var cfloc = loc.concat([ii]);
+						cfloc[depth] = i + 1;
+						context['$' + c] = this._generateFunc(cf, context, cfloc);
+						c ++;
+					}
+				}
+			}
+			return true;
+		}
+		if (typeof(a) != 'function') {
+			var lpf = pf;
+			var lploc = ploc;
+			if (i  + 1 < cfa.length) {
+				lpf = cfa[i + 1];
+				lploc = loc.slice(0, depth).concat([i + 1]);
+			}
+			if (this._prepareCall(f, context, a, lpf, loc, depth + 1, lploc)) {
+				return true;
+			}
+		}
+	}
+};
+Sequence.prototype.Start = function(context) {
+	var that = this;
+	if (!context) {
+		context = {};
+	}
+	context.$_isExited = false;
+	context.$_lastPassedTime = null;
+	context.$_isTimeouted = false;
+	context.$IsTimeouted = function(now) {
+		if (context.$_isTimeouted || context.$_isExited) {
+			return true;
+		}
+		if (that.timeout) {
+			if (that.timeout + context.$_lastPassedTime < now) {
+				context.$onTimeout();
+				if (context.$onExit) {
+					context.$onExit();
+				}
+				context.$_isTimeouted = true;
+				return true;
+			}
+		}
+		return false;
+	};
+	context.$onExit = function() {
+		delete context.$onExit;
+		if (that.onExit) {
+			that.onExit.apply(context, arguments);
+		}
+		context.$_isExited = true;
+		delete that.contextSet[context.$_index];
+	};
+	context.$onError = function() {
+		if (that.onError) {
+			that.onError.apply(context, arguments);
+		}
+		context.$onExit();
+	};
+	context.$onTimeout = function() {
+		if (that.onTimeout) {
+			that.onTimeout.apply(context, arguments);
+		}
+		context.$onExit();
+	};
+	var f = this.fa[0];
+	context.$_index = this.contextSetIndexCounter;
+	this.contextSetIndexCounter ++;
+	this.contextSet[context.$_index] = context;
+	this._caller(f, context, [], [0]);
+};
+
+var inner =	[
+	function () {
+		alert('run 2');
+		alert(this.a);
+		setTimeout(this.$next, 1);
+		return true;
+	},
+	function () {
+		alert('run 3');
+		var that = this;
+		setTimeout(function() {
+			that.$parent("OK");
+		}, 1);
+		return true;
+	}
+];
+
+var sq = new Sequence([
+	function () {
+		alert('run 1');
+		this.a = 1;
+		setTimeout(this.$1, 1);
+		return true;
+	},
+	inner,
+	function (arg) {
+		alert('run 4 arg:' + arg);
+		var that = this;
+		setTimeout(function() {
+			that.$1();
+		}, 1);
+		return true;
+	},
+	inner,
+	function (arg) {
+		alert('run 5 arg:' + arg);
+		this.$onError();
+		return true;
+	}
+], function() {
+	alert('onexit');
+}, function() {
+	alert('onerror');
+}, 10000, function() {
+	alert('ontimeout');
+});
+
+function Tick() {
+	var now = new Date().getTime();
+	for (var i in sq.contextSet) {
+		var ci = sq.contextSet[i];
+		if (ci.$IsTimeouted(now)) {
+			alert("timeouted");
+		}
+	}
+}
+setInterval(Tick, 500);
+
+sq.Start();
+</code>
+</pre>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000741.html&amp;text=%E3%81%93%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E5%9C%B0%E7%8D%84%E3%81%8B%E3%82%89%E3%81%AE%E5%8D%92%E6%A5%AD&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000741.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E3%81%93%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E5%9C%B0%E7%8D%84%E3%81%8B%E3%82%89%E3%81%AE%E5%8D%92%E6%A5%AD
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000741.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2011&#24180;12&#26376;13&#26085; 14:24
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

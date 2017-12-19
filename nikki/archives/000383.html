@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 1492:73</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000382.html" title="クラスタにおける空間的局所性" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000384.html" title="負荷分散からシェアードナッシングへ" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000382.html">&laquo; クラスタにおける空間的局所性</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000384.html">負荷分散からシェアードナッシングへ &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;10&#26376;18&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">1492:73</h3>
+
+<p>　「倫理的に問題のあるフィクション」などというものはありうるか。<br />
+　ある、と考える。具体的には、望月三起也『ワイルド7』が、私の知るかぎり史上最悪だ。国家が、法の外にある暴力機関を正義のために用い、しかもそれが賛美されている。この最悪ぶりに比べれば、『Gunslinger Girl』などまるでお嬢様のハイキングだ。<br />
+　（ちなみに、成沢検事をかばう話などを読むかぎりでは、作者の正義観そのものが壊れているのではないかと思われる）<br />
+　きっと、子供のときにプーチン大統領が見て感動し、KGB入りを目指すきっかけになったというTVドラマも、似たようなものだったのだろう。<br />
+　そして私の知るかぎり、史上もっとも面白いまんがも『ワイルド7』なのだ。</p>
+
+<a name="more"></a>
+<p>　<br />
+　　　　　　　　　　　　　　　　　　　　　　　　＊<br />
+　<br />
+　統計の数字だけで言えば、西千葉の一部地域は、世界でもっともテロ事件の多い地域になっていた。<br />
+　世界の他のテロ多発地域に比べて統計の網羅性が非常に高いので、単純な比較はできない。それでも過去との比較はできる。現在の統計値は、それまでの最悪の時期に比べて、2倍以上も悪い値を示していた。<br />
+　その一方、日本の政界では、改憲失敗の余波も収まり、新たな改憲案の取りまとめへと動きはじめていた。<br />
+　日本の警察は相変わらず、再分離運動と国王財団を潰すことに熱心だった。財団理事のひとりが千葉外に出たとき、冤罪で逮捕され、そのまま3ヶ月以上も勾留されるという事件も起こった。護衛官訴訟の判決が出れば、ただちに千葉国王と財団幹部は逮捕されるだろう、という憶測がほとんど常識として語られた。<br />
+　<br />
+　日本の情報工作もあり、千葉国王にとってよい話はほとんど出てこなかった。なかには、『護衛官も千葉国王に見切りをつけた』という報道もあった。ただし、この話にはほとんど誰も取り合わなかった。右足の甲から先を失ってもなお陛下にお仕えする美園の姿にくらべれば、まったく信憑性のない噂だった。<br />
+　けれど私はこの噂に注目した。<br />
+　その噂は、かつて緋沙子のことを最初にゴシップとして報じた週刊誌から出てきていた。調べてみると、記者の署名も同じだった。<br />
+　<br />
+　　　　　　　　　　　　　　　　　　　　　　　　＊<br />
+　<br />
+　由美が空港まで迎えにきてくれた。<br />
+　「あんたのおかげで原稿が一日早く上がっちまったよ」<br />
+　「伸ばさないんだ。さすが」<br />
+　「締切前に運転なんかできないね」<br />
+　「そりゃそうだ。ありがと」<br />
+　「あー。立ち話もなんだわ。とっとといくべ」<br />
+　由美は頭をかきながら歩きはじめた。<br />
+　モスクワで暮らしていたあいだも、何度か千葉に里帰りした。そのたびに由美に空港まで迎えにきてもらっていた。由美は、まんが家という仕事柄、海外の話を聞きたがった。まんが家くずれの私の話は、それなりに役に立ったのではないかと思う。<br />
+　窓の外を見る。もう日は沈んでいるようだけれど、まだ明るい。時計を見て、ちょっと驚き、ここは千葉なのだと実感する。まだ7時半だ。夏のモスクワは夜の9時でもこれより明るい。<br />
+　いまごろ美園はどうしているだろう。公邸に戻る途中か、官舎でくつろいでいるか、それとも警護の真っ最中か。<br />
+　そのとき携帯電話ショップが目に入った。<br />
+　「ちょっと待って。携帯買ってくる」<br />
+　「あんたこっちの携帯も持ってなかった？」<br />
+　「SIMだけね」<br />
+　これまで里帰りしたときには、古い端末を人から借りて済ませていた。<br />
+　携帯を買ってから、空港の駐車場にゆき、由美の車に乗る。買ったばかりの携帯で、電話をかける。<br />
+　昔、名刺に書き加えて渡された番号。美園はまだこの番号を使っているだろうか。<br />
+<a href="http://kaoriha.org/nikki/archives/000388.html#more">Continue</a></p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000383.html&amp;text=1492%3A73&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000383.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=1492%3A73
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000383.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;10&#26376;18&#26085; 22:22
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

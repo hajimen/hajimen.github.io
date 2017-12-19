@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: C. Bauer、G. King『Hibernate イン アクション』</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000234.html" title="Java地獄案内" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000236.html" title="世代" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000234.html">&laquo; Java地獄案内</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000236.html">世代 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;01&#26376;12&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">C. Bauer、G. King『Hibernate イン アクション』</h3>
+
+<p>　1年ほど前にJavaのORM（O/R マッピング）を調べた。そのときから、一番人気はHibernateだった。が、私は大いに気に入らなかった。<br />
+　気に入らない点はいくつもあったが、なんといっても、「POJO」というバズワードだ。このバズワードは、臭う。かつて「has-a」だの「is-a」だのをこねくりまわしていた連中の匂いがする。<br />
+　POJO党はコンテナ問題を持ち出すのが好きだ。いわく、コンテナ内でしか動作しないコードは、単体テストに時間がかかるのでよくない。だが、コンテナに依存しないこととPOJOであることは、まったくの別問題だ。コンテナの起動は時間がかかるので、コンテナへの依存性は最小限にしたいのは事実だ。しかし、永続化クラスに親クラスがないのが利点とは思えない。<br />
+　（Cayenneの永続化クラスはCayenneDataObjectを継承しているが、コンテナのようなものは必要としない。引数のないコンストラクタでnewすることもできる）<br />
+　POJO党は継承（特に多重継承）を嫌い、リフレクションを好む。私にいわせれば、リフレクションはsynchronizedやvolatileと同じくらい危険だ。世界のどこかには必要だが、可能な限り遠ざけておくべきものだ。<br />
+　（CayenneはJavaのコードをツールで自動生成することでリフレクションを避けている）<br />
+　『Hibernate イン アクション』を読んで、私はさらに論拠を得た。<br />
+　筆者は、ORMのR（RDB）の部分を優先すべきだという。それと同時に、永続化クラス間に継承関係をつけられることを強調する。矛盾だ。よほど特定のRDBMSが好きなプログラマでもないかぎり、RDBのテーブル設計に継承などという概念は持ち込まない。<br />
+　Hibernateの面倒くささは、この矛盾に端を発している。まるで、O側とR側にそれぞれ別のプログラマがいて、どちらも自分の設計を譲らない、という状態を想定しているかのようだ。<br />
+　こんな状態を想定すること自体が間違っている。O側が譲るべきだ。さもなければOODBMSを採用すべきだ。データ構造とロジックでは、データ構造が上だ。<br />
+　Javaは、委員会が設計した言語としては、史上初めての成功を収めつつある。委員会の呪いは、どこへ行ってしまったのだろう？――おそらくは、EJBへ。EJBにかけられた呪いときたら、並の委員会20個からそれぞれ代表を送って「委員会についての委員会」を作ったかと思われるほどだ。<br />
+　EJB 3.0の永続化はHibernate風になるらしい。おそらく、今から3年後には、Hibernate風の永続化への呪いが世に満ちるだろう。<a href="http://www.7andy.jp/books/detail?accd=31640590">7andy</a></p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000235.html&amp;text=C.%20Bauer%E3%80%81G.%20King%E3%80%8EHibernate%20%E3%82%A4%E3%83%B3%20%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%80%8F&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000235.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=C.%20Bauer%E3%80%81G.%20King%E3%80%8EHibernate%20%E3%82%A4%E3%83%B3%20%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%80%8F
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000235.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;01&#26376;12&#26085; 03:50
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: プログラミング出門</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000305.html" title="1492:45" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000307.html" title="人体実験：少コミを読む（第1回）" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000305.html">&laquo; 1492:45</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000307.html">人体実験：少コミを読む（第1回） &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;06&#26376;04&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">プログラミング出門</h3>
+
+<p>　年をとるのは嫌なものだ。「どうすればプログラミングできるようになるんですか？」と聞かれるようになる。<br />
+　愚問だと思うが、聞かれるものはどうしようもない。ここに答を書いておく。</p>
+
+<a name="more"></a>
+<p>　<br />
+1. この業界の語彙と概念を覚える<br />
+　どんな業界でもそうだと思うが、大きな疑問を持つことは禁じられている。<br />
+　<b>「どうして携帯電話のメールのパケ代は着信側が払うの？」</b><br />
+　ああ、サリー、そいつは訊いちゃいけないことなんだよ。なぜかっていうと、NTTドコモの野郎は、日本中のマスコミっていうマスコミに大量の広告を出して、広告料でマスコミを口封じしてるんだ。<br />
+　サラ金の奴らも同じことをやってるんだ。アイフルが業務停止命令を受けるまで、アイフルを告発する報道なんてなかっただろう？<br />
+　そうなんだ、サリー。広告をガンガン出してる奴らは、後ろ暗いことをしても平気だから、平気で後ろ暗いことをする。奴らには気をつけろ。サラ金とは関わるな。携帯電話は持つな。そうすれば、お前みたいな質問をしなくてもすむし、そうすれば、くだらない嘘を信じたりすることもないんだ。<br />
+　まだお前の質問に答えてなかったね、サリー。教えてあげよう。<br />
+　それは、NTTドコモがあくどい金儲けをしたからなんだ。もう少し細かくいうと、NTTドコモがiモードを開発したときに、開発責任者がそうしようと決めたんだ。奴がどれだけデタラメをやったか、俺はちゃんと知ってるよ。<br />
+　他の奴らに同じことを訊いたら、それらしい答をもらえるかもしれない。「技術的」な奴をね。でもそれは全部嘘だ。NTTドコモに踊らされてるか、そうでなきゃ、物事を「技術的」に見るのが好きなだけだ。<br />
+　iモードの開発責任者は罰されなかった。それどころかNTTドコモはiモードで大儲けした。それを見て、他の携帯キャリアも、同じことをした。<br />
+　悪は滅びる、だなんてことは俺には言えないよ。サラリーマンなんてものがこの世に出てくる前から、サラ金みたいな奴らはいたんだ。<br />
+　サリー、広告をガンガン出してる奴らには気をつけろ。嘘を信じなくていいように。<br />
+　<b>「昔と今を比べたら、3D CGはすごくリアルになったのに、どうして音声合成はへっぽこなままなの？」</b><br />
+　SFXには金がかかるけど、声はどんな声でも金がかからないからさ。<br />
+　そりゃ、「技術的」な話はいくらでもできる。そういう話のなかには、本当の話もある。だがね、その技術を支えてるのは、金なんだよ。大昔のハリウッド・スターの声を再現するために1千万ドル出す奴がうようよいたら、いまごろエロゲー声優なんてもんはいなくなって、声モデラーなんて商売が流行ってるかもしれないな。<br />
+　さあ、サリー、そういう本質的な質問はこれくらいにして、勉強するんだ。そうすれば、もうちょっとくだらない質問ができるようになるぞ。「どうしてJava言語にはレキシカルクロージャがないの？」とかな。それは、<a href="http://article.gmane.org/gmane.comp.lang.lightweight/2274">「ヒープメモリをアロケートするときには必ずnewキーワードを使うこと」っていうルールを決めたからなんだ。</a>たぶん、Guy Steele Jr.も、スタックたんが好きだったんだろうな。でもスタックたんの時代はもうとっくに終わってる。Parrot VMもLua 5.0もスタックレスさ。<br />
+　お前もこういうオタクっぽい格好いい話がしたいだろう？　さあ、勉強するんだ。<br />
+　<br />
+2. 問題を、新しく学んだ語彙と概念で理解するようにする<br />
+　道具箱に金槌しか入っていないと、どんなものでも釘に見えるようになる。釘に見えないものは、そもそも認識できなくなる。<br />
+　財産を金しか持っていないと、どんなものでも金で買えると思えるようになる。金で買えないものは、そもそも認識できなくなる。<br />
+　これは人間の本性で、克服できるものではない。存在は意識を規定する。<br />
+　だから、釘を打つように、金で買うように、プログラミングするのだ。そういう状態になれば、「プログラミングで解決するべき問題が見つからない」などということはなくなる。<br />
+　<br />
+3. 1と2をひたすら続ける<br />
+　この業界の一番いいところは、飽きがこないという点だ。新しい語彙と概念が、それこそ雨のように降ってきて、歴史の排水溝に流れ込み、忘却の海へと降りてゆく。<br />
+　いい雨が降らないと思ったら、忘却の海に遊びにゆくといい。なかには復活するものもある。たとえば、スタックたんが余命いくばくもないので、<a href="http://madeira.cc.hokudai.ac.jp/RD/yamamoto/Essay/11.html">コルーチン</a>はきっともうすぐ復活する。<br />
+　<br />
+4. 生命、宇宙、そして万物についての（究極の疑問の）答え<br />
+　このエントリをここまで読んで、それでもなお「どうすればプログラミングできるようになるんですか？」と訊くのなら、仕方ない、はっきり申し上げよう。<br />
+　私も知らない。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000306.html&amp;text=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E5%87%BA%E9%96%80&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000306.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E5%87%BA%E9%96%80
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000306.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;06&#26376;04&#26085; 06:03
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

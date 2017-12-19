@@ -1,0 +1,73 @@
+.footnote {
+
+	font-size: 10px;
+
+	line-height: 150%;
+
+
+
+}
+
+p {
+	line-height: 150%;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+	font-size: 15px;
+
+
+
+
+
+
+}
+
+h1 {
+
+	font-size: 30px;
+
+}
+
+h3 {
+
+	font-size: 18px;
+
+
+
+
+
+
+
+
+
+}
+
+.alphabet {
+
+	font-family: "Verdana", "Arial", "sans-serif";
+
+}
+
+li {
+
+	line-height: 150%;
+
+}
+
+h2 {
+
+	font-size: 24px;
+
+	font-family: "ÇlÇr Çoñæí©", "ç◊ñæí©ëÃ";
+
+
+
+}
+strong {
+	font-size: 36px;
+	line-height: 48px;
+
+}
+ul {
+	padding-top: 0px;
+	margin-top: 0px;
+}

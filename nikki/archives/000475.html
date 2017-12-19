@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 右クリック</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000474.html" title="今日の地獄めぐり" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000476.html" title="少コミを読む（第28回・2007年第16号）" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000474.html">&laquo; 今日の地獄めぐり</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000476.html">少コミを読む（第28回・2007年第16号） &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2007&#24180;07&#26376;22&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">右クリック</h3>
+
+<p>　私は今、生まれて初めて、MacはWindowsを打ち負かすかもしれない、と思いはじめている。<br />
+　<br />
+<a href="http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=1529091&SiteID=1">http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=1529091&SiteID=1</a><br />
+If we add "right mouse events" in some future version it would probably be in the form of a "Context Menu" event only. Something that would fire however a context menu is opened.<br />
+　<br />
+<a href="http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=1096108&SiteID=1">http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=1096108&SiteID=1</a><br />
+Right now we do not have plans to expose right mouse button events. <br />
+　<br />
+<a href="http://silverlight.net/forums/t/431.aspx">http://silverlight.net/forums/t/431.aspx</a><br />
+I don't think there's going to be a "onRightMouseDown, 'move, 'enter, 'leave and 'up" set of events.<br />
+　<br />
+　Silverlight開発者のあいだで、これほど当惑の声が上がっているにもかかわらず、SilverlightのプログラムマネージャMark Rideoutは、頑として方針を変えようとしない。Silverlightは右クリックに対応しない――Flashと同程度にしか――という方針を変えようとしない。<br />
+　Mark Rideoutはあれこれ説明しているが、実際の理由は2つしかありえない。<br />
+1. Flashがそうしているから。<br />
+2. Macが1ボタンだから。<br />
+　AdobeとAppleに盲従するこの卑屈さは、市場の支配者にはふさわしくない。いや、支配者どころか、商売にふさわしくない。なぜ自分の強みを生かそうとしないのか？　Windowsのマウスの右ボタンはいつから盲腸に変わってしまったのか？<br />
+　Steve Jobsは絶対にこんな過ちを犯さないだろう。マウスのボタンが1個しかないこと（明らかに欠点）を、逆に強みにしてしまうべきだとJobsは知っている。また、そのために何をすべきかを知っている。Mark Rideoutはその逆だ。マウスのボタンが2個あること（明らかに長所）を弱みだと思い込み、不適切な前例を用いてその思い込みを補強している。<br />
+　Microsoftはその精神において壊れつつあるのかもしれないと、私は今、思い始めている。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000475.html&amp;text=%E5%8F%B3%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000475.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E5%8F%B3%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000475.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2007&#24180;07&#26376;22&#26085; 05:05
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

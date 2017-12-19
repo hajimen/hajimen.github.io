@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 公営ギャンブルは持続可能か</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000761.html" title="僕はSQLができない" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000763.html" title="政治としてのテスト・バグ・仕様" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000761.html">&laquo; 僕はSQLができない</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000763.html">政治としてのテスト・バグ・仕様 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2012&#24180;05&#26376;09&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">公営ギャンブルは持続可能か</h3>
+
+<p>　私の実家の近くには競輪場がある。控えめに言っても小汚い、有り体に言えば大汚い老人が電車に乗ってきて、競輪場の最寄り駅で降りる光景をよく見かけた。私の子供時代にはまだ競輪場は人の集まるところで、「こんなにカモを集めたらさぞ儲かるだろうな。いつか競輪を開催して儲けたい」と子供心に思っていた。<br />
+　子供心に――まったく子供らしい話だ。現在の競輪はといえば、マイナス成長を続けて20年、開催自治体の多くを赤字で苦しめている。この世に永遠のものはない。幼い私にはそんな簡単なこともわからなかった。</p>
+
+<a name="more"></a>
+<p>　<br />
+　幼い私には難しすぎた事実は、ほかにもいくつかある。<br />
+　ひとつは、あの大汚い老人たちは、カモであると同時に恐ろしく賢い、ということだ。<br />
+　金を損しに集まる人々が恐ろしく賢い、などということがどうしてありうるのか。「賢い」を「高性能」と言い換えれば、わかりやすいかもしれない。あの大汚い老人たちは、高性能な競輪予想マシーンだ。<br />
+　「あんなジジイたちの予想が大したものであるわけがない」とお考えだろうか。では競輪を今から勉強して、大汚い老人たちを出し抜いて稼げばいい。「控除率が高すぎる」？　三連単の選択肢は十分に広い。見下せるほど無能な相手なら、25%のハンデくらいは覆せるはずだ。<br />
+　……などと私がいくら書きつらねても、「ではあのジジイたちをカモってやるか」と決心して競輪の勉強を始める人間は、おそらくこの地上に一人もいない。また逆に、「あんなジジイたちの予想が大したものであるわけがない」という信念を捨てる人も、やはりおそらく一人もいない。どんなに間抜けな人も、こういうことに関しては恐ろしく賢い。あの大汚い老人たちも同じように賢いわけだ。<br />
+　金を損しに集まる人々でありながら、恐ろしく賢い。<br />
+　そういう人々のことを、無能だと決め付けながら、実は恐ろしく賢いと認めている。<br />
+　どちらの事実も、幼い私には難しすぎた。<br />
+　<br />
+　あの高性能な競輪予想マシーンを相手に回せば、競輪予想の初心者や中級者はただひたすらカモにされる。それがわかっているから、「あのジジイたちをカモってやるか」と決心して競輪の勉強を始める人間は稀だ。<br />
+　ではその老人たちは、かつて競輪を始めたときには、高性能な競輪予想マシーンを相手に怯むことなく蛮勇を奮い起こして競輪場に飛び込んだのかといえば、おそらくそうではない。<br />
+　競輪の客が高性能な競輪予想マシーンばかりではなく、初心者・中級者がうようよしていた時代――競輪の勃興期に競輪を始めた人々がほとんどなのではないか。競輪場に初心者・中級者がうようよしているのを見て、「こいつらならカモにできる」と判断して自分もその初心者の一人になった人々の数十年後が、あの老人たちなのではないか。<br />
+　つまり、初心者・中級者の割合が多いほど、新規参入者が増えるのではないか。初心者・中級者の割合がゼロに近づくと、新規参入者もゼロに近づくのではないか。<br />
+　<br />
+　ほとんどの競輪場は、競輪というものが誕生してからほんの数年のうちに建てられている。これは「初心者・中級者の割合が多いほど、新規参入者が増える」という仮説と整合する。客の全員が初心者のとき、新規参入者は一番多くなる。その増加の勢いを見れば、いくつ競輪場があっても足りないと思えただろう。<br />
+　<br />
+　「初心者・中級者の割合が多いほど、新規参入者が増える」という仮説がもし正しいとすると、客の能力が問われるギャンブルほど持続可能性が低い。<br />
+　客の能力が一切問われない公営のギャンブルは、宝くじしかない。<a href="http://research.goo.ne.jp/database/data/000601/">この記事</a>の、公営競技と宝くじの売上額グラフを比較してみると、どちらのほうが持続可能性が高そうか、一目瞭然だ。<br />
+　現在のカジノの主なゲームはどれも、能力のたぐいを働かせる余地がない。これは偶然や運営の都合ではなく、公営ギャンブルよりもはるかに長い歴史から生み出された知恵かもしれない。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000762.html&amp;text=%E5%85%AC%E5%96%B6%E3%82%AE%E3%83%A3%E3%83%B3%E3%83%96%E3%83%AB%E3%81%AF%E6%8C%81%E7%B6%9A%E5%8F%AF%E8%83%BD%E3%81%8B&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000762.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E5%85%AC%E5%96%B6%E3%82%AE%E3%83%A3%E3%83%B3%E3%83%96%E3%83%AB%E3%81%AF%E6%8C%81%E7%B6%9A%E5%8F%AF%E8%83%BD%E3%81%8B
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000762.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2012&#24180;05&#26376;09&#26085; 00:59
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

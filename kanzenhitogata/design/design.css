@@ -1,0 +1,336 @@
+@charset "utf-8";
+body {
+	padding: 0px;
+	margin:0px;
+	font-family: 'メイリオ';
+	background-color: rgb(250, 250, 250);
+}
+a img {
+    border-style:none;
+}
+p, h1 {
+	margin: 0px;
+	padding: 0px;
+	line-height: 1.4em;
+}
+.now_loading {
+	display: none;
+	text-align: center;
+}
+.left_top {
+	width: 9em;
+	float: left;
+	position: relative;
+	left: 0em;
+	padding-bottom: 1em;
+}
+.out_square {
+	width: 2em;
+	background-color: rgb(224, 231, 240);
+}
+#outer_frame, .now_loading {
+	background-color: rgb(224, 231, 240);
+}
+#outer_frame, #text_frame, #status, #full_box, #nav, .now_loading, .now_loading img {
+	margin-left: auto;
+	margin-right: auto;
+}
+#status {
+	text-align: right;
+	height: 5.6em;
+}
+.display_nav_left {
+	display: none;
+}
+.display_nav_top {
+	display: block;
+}
+.display_nav_top_inline {
+	display: inline;
+}
+.display_nav_top_inline_left {
+    background-color: transparent;
+    position: absolute;
+    right: 5em;
+    width: 2em;
+}
+.display_nav_top_inline_right {
+    background-color: transparent;
+    position: absolute;
+    overflow: hidden;
+    height: 1.3em;
+    left: 3em;
+    width: 6em;
+}
+#inner_nav {
+	margin-left: 9em;
+	width: 10em;
+}
+ul {
+	margin-left: 0px;
+	padding-left: 0px;
+	list-style : none ;
+}
+li {
+	padding-left: 18px;
+	background: transparent url('list_marker.png') no-repeat left 0.1em;
+}
+.self_li {
+	background: transparent url('list_marker_current.png') no-repeat left 0.1em;
+}
+#content .separation {
+	border-top: dotted 1px rgb(128, 51, 0);
+	
+}
+#content :first-child {
+	border-top: none;
+}
+.in_nav {
+	background-color: rgb(250, 250, 250);
+}
+.in_nav p {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1em;
+	background-color: rgb(224, 231, 240);
+}
+#nav {
+	position: relative;
+}
+div.indent {
+	margin: 0.5em 0.5em 0.5em 0.5em;
+	background-color: rgb(240, 240, 240);
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+div.indent p {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+.blank_line {
+	color: transparent;
+}
+@media screen and (min-width: 14em) and (max-width: 15.99em) {
+	#text_frame, #status, .now_loading img {
+		width: 13em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+	}
+	#outer_frame, #nav, .now_loading {
+		width: 13.6em;
+		margin-top: 0.2em;
+		margin-bottom: 0.2em;
+	}
+    .display_nav_top_inline_left {
+        right: 4em;
+    }
+    .display_nav_top_inline_right {
+        left: 2em;
+        width: 5em;
+    }
+}
+@media screen and (min-width: 16em) and (max-width: 17.99em) {
+	#text_frame, #status, .now_loading img {
+		width: 15em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+	}
+	#outer_frame, #nav, .now_loading {
+		width: 15.6em;
+		margin-top: 0.2em;
+		margin-bottom: 0.2em;
+	}
+    .display_nav_top_inline_left {
+        right: 4em;
+    }
+    .display_nav_top_inline_right {
+        left: 2em;
+    }
+}
+@media screen and (min-width: 18em) and (max-width: 19.99em) {
+	#text_frame, #status, .now_loading img {
+		width: 17em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+	}
+	#outer_frame, #nav, .now_loading {
+		width: 17.6em;
+		margin-top: 0.2em;
+		margin-bottom: 0.2em;
+	}
+}
+@media screen and (max-width: 19.99em) {
+	.left_top {
+		float: none;
+	}
+	#inner_nav {
+		margin-left: 0em;
+		width: auto;
+	}
+}
+@media screen and (min-width: 20em) and (max-width: 22.99em) {
+	#text_frame, #status, .now_loading img {
+		width: 19em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+	}
+	#outer_frame, #nav, .now_loading {
+		width: 19.6em;
+		margin-top: 0.2em;
+		margin-bottom: 0.2em;
+	}
+}
+@media screen and (min-width: 23em) and (max-width: 24.99em) {
+	#text_frame, #status, .now_loading img {
+		width: 21em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+	}
+	#outer_frame, #nav, .now_loading {
+		width: 21.6em;
+		margin-top: 0.2em;
+		margin-bottom: 0.2em;
+	}
+}
+@media screen and (min-width: 25em) and (max-width: 29.99em) {
+	#text_frame, #status, .now_loading img {
+		width: 23em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+	}
+	#outer_frame, #nav, .now_loading {
+		width: 23.6em;
+		margin-top: 0.2em;
+		margin-bottom: 0.2em;
+	}
+}
+@media screen and (max-width: 29.99em) {
+	.in_nav {
+		margin-left: -0.5em;
+		margin-right: -0.5em;
+	}
+}
+@media screen and (min-width: 30em) and (max-width: 41.99em) {
+	p, h1 {
+		line-height: 1.55em;
+	}
+	.in_nav p {
+		line-height: 2em;
+	}
+	.in_nav {
+		margin-left: -0.8em;
+		margin-right: -0.8em;
+	}
+}
+@media screen and (min-width: 30em) and (max-width: 33.99em) {
+	#text_frame, #status, .now_loading img {
+		width: 27em;
+		margin-top: 0.6em;
+		margin-bottom: 0.6em;
+	}
+	#outer_frame, #nav, .now_loading {
+		width: 28em;
+		margin-top: 0.4em;
+		margin-bottom: 0.4em;
+	}
+}
+@media screen and (min-width: 34em) and (max-width: 37.99em) {
+	#text_frame, #status, .now_loading img {
+		width: 31em;
+		margin-top: 0.6em;
+		margin-bottom: 0.6em;
+	}
+	#outer_frame, #nav, .now_loading {
+		width: 32em;
+		margin-top: 0.4em;
+		margin-bottom: 0.4em;
+	}
+}
+@media screen and (min-width: 38em) and (max-width: 41.99em) {
+	#text_frame, #status, .now_loading img {
+		width: 35em;
+		margin-top: 1.2em;
+		margin-bottom: 1.2em;
+	}
+	#outer_frame, #nav, .now_loading {
+		width: 36.6em;
+		margin-top: 0.7em;
+		margin-bottom: 0.7em;
+	}
+}
+@media screen and (min-width: 42em) {
+	p, h1 {
+		line-height: 1.7em;
+	}
+	.in_nav p {
+		line-height: 3em;
+	}
+	.in_nav {
+		margin-left: -0.9em;
+		margin-right: -0.9em;
+	}
+}
+@media screen and (min-width: 42em) and (max-width: 55.99em) {
+	#text_frame, #status, .now_loading img {
+		width: 39em;
+		margin-top: 1.2em;
+		margin-bottom: 1.2em;
+	}
+	#outer_frame, #nav, .now_loading {
+		width: 40.6em;
+		margin-top: 0.7em;
+		margin-bottom: 0.7em;
+	}
+}
+@media screen and (min-width: 56em) {
+	.now_loading img {
+		width: 49em;
+		margin-top: 1.2em;
+		margin-bottom: 1.2em;
+	}
+	.now_loading {
+		width: 50.6em;
+		margin-top: 0.7em;
+		margin-bottom: 0.7em;
+	}
+	#nav {
+		position: fixed;
+		width: 9em;
+		margin-left: 1.2em;
+	}
+	.left_top {
+		left: 0px;
+	}
+	#inner_nav {
+		margin-left: 0;
+		clear: both;
+	}
+	.display_nav_left {
+		display: block;
+	}
+	.display_nav_top {
+		display: none;
+	}
+	.display_nav_top_inline {
+		display: none;
+	}
+	#text_frame, #status, img.now_loading {
+		width: 39em;
+		margin-top: 1.2em;
+		margin-bottom: 1.2em;
+	}
+	#outer_frame {
+		width: 40.6em;
+		margin-bottom: 0.7em;
+	}
+	#main {
+		margin-left: 12em;
+		position: absolute;
+		top: 0px;
+	}
+	#full_box {
+		margin-top: 0.7em;
+		width: 54em;
+	}
+}

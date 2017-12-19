@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: EJB (JBoss)でスレッド</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000268.html" title="日に30時間のハッキング" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000270.html" title="1492:32" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000268.html">&laquo; 日に30時間のハッキング</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000270.html">1492:32 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;03&#26376;26&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">EJB (JBoss)でスレッド</h3>
+
+<p>　EJBの最悪さを知らない人々は幸福である。幸福な人々には大変恐縮だが、暗澹たる事実のひとつをお知らせしよう。<br />
+  　 EJBコンテナ内では、普通の方法でスレッドを作ってはいけない。<br />
+  　 今度はEJB 3.0だそうだが、そもそも最初から作り直せと言いたい。MSの.NETがよくできている（後発だから当然だが）のを見るにつけ、「貧乏人はJavaをやれ」と言われている気分だ。<br />
+  　 普通の方法でスレッドを作ってはいけないが、普通でない方法ならある。JCA 1.5で導入された javax.resource.spi.work.WorkManager
+  を使う方法だ。具体的にどんなコードになるのか、ちょっと調べれば出てくるだろう――しかしこの期待はあっさりと裏切られた。<br />
+  　 <a href="http://www-06.ibm.com/jp/developerworks/java/050610/j_j-jca2.html">この記事</a>が典型例だ。WorkManagerインスタンスをJNDIで取ってくる、と書いてあるだけで、具体的にどこでどうやってインスタンスを生成し、JNDIにバインドするのかは書いていない。この問題について書いた記事は、どこをどう探しても、出てこない。そして、WorkManagerについて書いてある記事は、ひとつの例外もなく、どこか知らないところで生成・バインドされたインスタンスを取ってきているのだ。これらの記事を書いた連中は、実際に動くコードを自分の手元に持っていたのだろうか。どれかがオリジナルで、ほかの記事はオリジナルをコピペしたのではないだろうか。<br />
+  　 私が書くのは記事ではなくソフトウェアなので、実際に動くコードが必要だ。JNDIで取ってくるのは正しい方法なのかもしれないが、私は違う方法をとった。<br />
+　 以下に実際のコードを示す。まず、Runnable相当のクラスから。</p>
+<blockquote><pre>import javax.resource.spi.work.Work;
+
+public class MyWork implements Work {
+    public void release() {
+        System.out.println("MyWork#release");
+    }
+
+    public void run() {
+        System.out.println("MyWork#run");
+    }
+}</pre></blockquote>
+<p>　そしてEJB。</p>
+<blockquote><pre>import java.util.Set;
+import javax.ejb.EJBException;
+import javax.ejb.SessionBean;
+import javax.management.Exception;
+import javax.management.MBeanServer;
+import javax.management.MBeanServerFactory;
+import javax.management.ObjectInstance;
+import javax.management.ObjectName;
+import javax.resource.spi.work.WorkManager;
+
+/**
+ * @ejb.bean
+ *     name="My"
+ *     type="Stateless"
+ *     view-type="remote"
+ *     transaction-type="Bean"
+ * @ejb.transaction type="Required"
+ */
+public abstract class MyBean implements SessionBean {
+    /**
+     * 
+     * @ejb.interface-method view-type="remote"
+     * @throws EJBException
+     */
+    public void calltest() throws EJBException {
+        try {
+            ObjectName name = new ObjectName("jboss.jca:service=WorkManager");
+            ObjectInstance wmo = mbserver.getObjectInstance(name);
+            WorkManager wm = (WorkManager) mbserver.invoke(wmo.getObjectName(), "getInstance",
+                    new Object[] {}, new String[] {});
+            wm.scheduleWork(new MyWork());
+            System.out.println("MyWork scheduled");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</pre></blockquote>
+<p>　これが私の結論だ。<br />
+　 ちなみに私はEJBのトランザクション管理をまったく使っていないので、ここからトランザクション管理をしようとすると、なにが起こるかわからない。あしからず。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000269.html&amp;text=EJB%20%28JBoss%29%E3%81%A7%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000269.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=EJB%20%28JBoss%29%E3%81%A7%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000269.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;03&#26376;26&#26085; 02:04
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

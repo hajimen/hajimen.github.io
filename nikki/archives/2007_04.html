@@ -1,0 +1,609 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>中里一日記: 2007&#24180;04&#26376; Archives</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/2007_03.html" title="2007&#24180;03&#26376;" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/2007_05.html" title="2007&#24180;05&#26376;" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/2007_03.html">&laquo; 2007&#24180;03&#26376;</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/2007_05.html">2007&#24180;05&#26376; &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+
+<h2 class="date">2007&#24180;04&#26376;29&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000454"></a>
+<h3 class="title">Javaのバッドノウハウ：リソースバンドル</h3>
+
+　リソースバンドルを、<br/>
+・最小限のコード量で<br/>
+・できるだけバグを出さないように<br/>
+・できるだけ早期にバグが検出できるように<br/>
+　扱う方法について。<br/>
+
+　とりあえず、デフォルトのロケールだけを扱ってみる。<br/>
+　まず以下のようなクラスを用意する。
+<pre>class Messages {
+    private static final ResourceBundle RB = ResourceBundle.getBundle("msg");
+
+    enum Giko {
+        FOO, QUX;
+        
+        private final String val = RB.getString(name());
+        
+        @Override
+        public String toString() {
+            return val;
+        };
+    }
+}</pre>
+　これに対応するプロパティファイル（msg.properties）は以下のとおり。<br/>
+<pre>FOO = bar
+QUX = baz</pre>
+　リソースバンドルを使うクラスは以下のとおり。<br/>
+<pre>import static org.kaoriha.example.Messages.Giko.*;
+
+public class Giko {
+    public static void main(String[] args) {
+        System.out.println("FOO:" + FOO.toString());
+        System.out.println("QUX:" + QUX.toString());
+    }
+}</pre>
+　enum Gikoは一つと限る必要はない。enum Monaやenum Kumaという具合に複数使うことで、一種の名前空間として利用できる。<br/>
+　複数のロケールを扱う場合には、ThreadLocalで適当にやる。<br/>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000454.html">01:00</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=454" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;28&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000453"></a>
+<h3 class="title">コンパイル時 vs. 実行時</h3>
+
+　要旨：<br/>
+１．手続き的なコード、宣言的な記述<br/>
+　手続き型言語のコードでGUIフォームを表現すると、ウィジェット生成などの実行順序がコードに表れる。これは不要なものであり、邪魔だ。<br/>
+　GUIフォームは、手続き型言語のコードの外で、実行順序という概念のない宣言的な記述で表現されるべきだ。実例としては、XAMLがある。<br/>
+<br/>
+２．コンパイル時、実行時<br/>
+　プログラミング言語のコード（Java、C#の）はコンパイル時に検査される。<br/>
+　コンパイル時の検査に、コード外の記述を含めたい場合がある。ASP.NETやXAMLではそれができる。<br/>
+　ASP.NETやXAMLでは、コード外記述のスキーマやコンパイル時検査の範囲が、仕様として与えられている。<br/>
+　コード外記述のスキーマやコンパイル時検査の範囲を、簡単に自作できるようにすると、いいDSL (Domain Specific Language) 環境になりそうだ。<br/>
+<br/>
+３．宣言的記述のスキーマ<br/>
+　手続き的なものをコード外に記述する必要はあまりないので、コード外記述は宣言的になる。<br/>
+　コンパイル時検査の範囲、構造体、プリミティブ型（int、double、String）、型付きコレクション（List、Bag、Set、Map）を表現できるようなスキーマ言語が必要だ。<br/>
+<br/>
+４．コンパイル時検査の未来<br/>
+　IDEでのコード補完によるミススペル回避だけなら、宣言されたトークンとマッチするだけで、だいたい用が足りる。コンパイル時検査の未来は暗いかもしれない。
+
+　Java SE 6が前提なら、Swingのフォームを作るにはNetBeansがお勧めだ。GUIエディタでウィジェットを並べて、生成されたコードをJava SE 6用に直す。これなら、かなり手のこんだフォームも楽勝で作れる。<br/>
+　このコードは、ウィジェットを手続き的に生成したり加えたりして、求める配置を描き出す。サンプルコードはこんな具合だ。<br/>
+<pre>layout.setHorizontalGroup(layout.createParallelGroup(
+        GroupLayout.Alignment.LEADING).addGroup(
+        GroupLayout.Alignment.TRAILING,
+        layout.createSequentialGroup().addContainerGap(91,
+                Short.MAX_VALUE).addComponent(newButton)
+                .addContainerGap()).addComponent(jScrollPane,
+        GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE));
+layout.setVerticalGroup(layout.createParallelGroup(
+        GroupLayout.Alignment.LEADING)
+        .addGroup(
+                GroupLayout.Alignment.TRAILING,
+                layout.createSequentialGroup().addComponent(
+                        jScrollPane, GroupLayout.DEFAULT_SIZE, 200,
+                        Short.MAX_VALUE).addPreferredGap(
+                        LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newButton).addContainerGap()));</pre>
+　ここでは何か間違ったことが起きている。<br/>
+　ウィジェットを画面に並べるときには、実行順序などという概念はそもそも存在してほしくない。紙に文字を印刷するとき、「左上の文字は右下の文字より先に印刷すべし」などと考えるだろうか。出来上がった印刷物にそんな指定は反映されない。結果と無関係なものを考えるはずもない。考えるはずのないことを指定させられる状況は、何か間違っている。<br/>
+　上のサンプルコードには、実行順序が存在しており、しかも重要だ。たとえばlayout.createSequentialGroupは、その戻り値へのaddContainerGapよりも先に実行されるし、そうでなければならない。こんな実行順序は、実装の都合だけで存在するものであり、ユーザの目からは隠すべき詳細だ。NetBeansでは実際、GUIエディタでこのコードを隠蔽している。だがJava SE 6だけで動かしたい場合、隠蔽は崩さざるをえず、実行順序がコード上に丸出しになる。<br/>
+　Windows Presentation FoundationのXAMLは、この問題への解答になっている。NetBeansは単体で2つの仕事（実行順序の隠蔽、GUIエディタ）をこなしているが、XAMLは実行順序の隠蔽をコンパイラに任せ、GUIエディタは宣言的記述を生成する。<br/>
+　XAML方式で問題は解決したかに思われる。だが、これは十分に一般的な解決とはいえない。私は今日、そのことに気づいた。<br/>
+　きっかけはプロパティファイルだ。<br/>
+　もしプロパティファイルのキーをスペルミスしたら、実行時にエラーになるまで、わからない（だからクラスロード時にエラーが出るようにするのだが、このへんのバッドノウハウは後日）。IDEのコード補完も働かない。猛烈にいらだたしい。プロパティファイルを規定しているのはJava言語なのだから、キーはコンパイル時に定数として書けるようにしてほしい。Messages.propertiesがありその中にBAR=fooがあれば、Messagesクラスが生成されBARというfinal Stringフィールドがある、という具合にだ。この機能を仮に「クラス化プロパティ」と呼ぶ。<br/>
+　（BARの値はMessagesクラスのインスタンス生成時に決定される。なぜクラスロード時でないかといえば、リソースバンドルに対応するためだ）<br/>
+　XAMLとクラス化プロパティ、どちらも、コンパイル時に利用できる宣言的記述だ。ただし相違点は多い。<br/>
+　表現力：XAMLはGUIフォームのような複雑な構造を表現する。クラス化プロパティが表現するのはfinal String型の変数の集合にすぎない<br/>
+　記述内容をバインドするタイミング：XAMLは記述内容全体がMSILへとコンパイルされる。つまり、XAMLはコンパイル時にすべてがバインドされる。クラス化プロパティでは、キー（BAR）はコンパイル時に決定されるが、その値（foo）はインスタンス生成時までバインドされない<br/>
+　まとめると、表現力ではXAMLが優れており、バインドを遅らせることではクラス化プロパティが優れている。<br/>
+　なぜXAMLはコンパイル時にバインドしてしまう設計になっているのか。<br/>
+理由その１．GUIフォームを表現するという用途では、バインドを遅らせる必要はあまりない<br/>
+理由その２．バインドを遅らせる部分を任意に指定できるようにするのが面倒くさい。記述内容全体をコンパイルしてしまう（XAML方式：コンパイル時）か、コンパイルには一切関与させない（通常のプロパティファイル方式：実行時）か、どちらかにするほうが簡単だ<br/>
+<br/>
+　……ここで力尽きた。各自要旨から適宜補完されたい。
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000453.html">01:15</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=453" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;23&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000452"></a>
+<h3 class="title">少コミを読む（第22回・2007年第10号）</h3>
+
+<p>　少コミは2012年にも存続しているだろうか。<br />
+　このレビューを開始したときには、考えるまでもなく、存続しているだろうと思っていた。しかし今では、かなり怪しいと思える。たとえ存続していても、BLに鞍替えしていそうだ。<br />
+　少コミの誌面から漂ってくるこの閉塞感、未来のない感じは、一体なんなのだろう。<br />
+　現象としては、彼氏役の傾向が閉塞している。『快感・フレーズ』時代から大して変わっていない。恋愛や性の観念はずいぶん変化したのだから、彼氏役も変化すべきなのに、していない。時代遅れの観念を生きる遅れた人々（いわゆる田舎者）のための雑誌になってしまっている。少コミの彼氏役の傾向をがらっと変えてしまうような、強力で新鮮な彼氏役が必要だ。<br />
+　では第10号のレビューにいこう。</p>
+
+<p>　<br />
+・咲坂芽亜『姫系・ドール』 新連載第1回、ただし以前の連載の続き<br />
+　あらすじ：実技の成績が悪く退学処分寸前の主人公。そのため勉強の面倒をみる彼氏役。勉強の最中も、主人公は彼氏役のことが気になる。<br />
+　勢いはいいが、味わいに欠ける。人物造形が薄い。<br />
+　連載回数が多くなると、人物造形の薄さが響いてくる。少コミには、そのへんの作り込みが弱い作家が多い気がする。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・車谷晴子『極上男子と暮らしてます。』連載第7回<br />
+　あらすじ：美形三人組に迫られる主人公。やきもきする彼氏役。<br />
+　登場人物が誰も彼も、よくまあここまでと感心するほど、中身が乏しく、影が薄い。<br />
+　よい役者は、ほんのちょっとした仕草にも、演技の宇宙を垣間見せる。よいまんがなら、細部まで雄弁に語る。この作者が描くものには、それがない。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.568318104&type=10&subid="></script>水波風南『狂想ヘヴン』</a>連載第13回<br />
+　あらすじ：学校で肝だめし。乃亜の悪だくみを危うく回避。<br />
+　ちまちました学園モノをやっている。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+・悠妃りゅう『バタフライ・キス』連載第2回<br />
+　あらすじ：彼氏役に助けられながら、容姿のコンプレックスを克服して美しくなろうとする主人公。彼氏役が告白。<br />
+　展開がぎこちない。<br />
+　旋回軸が弱い。コンプレックス克服と恋を連動させているが、どちらが軸でどちらがドアなのか、はっきりしない。恋が軸になって、コンプレックス克服のためにじたばたするのが王道だが、物語のきっかけがコンプレックス克服なので、王道から外れてしまった。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.529855798&type=10&subid="></script>池山田剛『うわさの翠くん!!』</a>連載第17回<br />
+　あらすじ：サッカー部の日常。当て馬（<b>カズマ</b>）が、主人公（<b>翠</b>）の笑顔を守りたいと決心する。<br />
+　カズマのアピールタイム。<br />
+　いま唐突に気がついたが、私は天真爛漫な主人公が嫌いだ。ドラマがない。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.520459951&type=10&subid="></script>青木琴美『僕の初恋をキミに捧ぐ』</a>連載第40回<br />
+　あらすじ：<b>逞</b>の病気をアピール。<b>頼</b>が妹を寮内に連れ込んでいたのが見つかる。<br />
+　前半で、逞がセックスのことを考えているのを読んで、素直に思う――少女まんがの男はさすがに優等生だ。逞は少コミのなかでは比較的出来の悪い、親しみのわくタイプの彼氏役だが、それでもこの優等生ぶりである。人間は理想を抱く生物なのだ。<br />
+　話の展開としては、つないでネタを振っただけで、見るべき点はない。次回は頼がメインか。<br />
+　採点：★★★☆☆<br />
+　<br />
+・みつき海湖『とろけるようなキスを奏でて』連載第2回<br />
+　あらすじ：メジャーデビューした彼氏役（<b>ガク</b>）は、主人公（<b>音織</b>）との仲を終わったことにして突き放す。ガクに追いすがるため歌手になろうとする音織。それを聞いたガクは、音織をいきなりライブのステージに上げる。<br />
+　まんが的な迫力とスピード感のある展開で読ませる。次回どう終わらせるのか見当もつかない。もしかして3回では終わらないのか。<br />
+　採点：★★★★☆<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.529855796&type=10&subid="></script>織田綺『LOVEY DOVEY』</a>連載第19回<br />
+　あらすじ：理事長の陰謀を粉砕。<br />
+　前回は面白かったが、今回は普通にオチをつけただけだった。<br />
+　採点：★★★☆☆<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.529855797&type=10&subid="></script>新條まゆ『愛を歌うより俺に溺れろ！』</a>連載第28回、次回最終回<br />
+　あらすじ：<b>秋羅</b>が<b>水樹</b>のお見合いを粉砕。ブラウエローゼンのライブで、秋羅が自分の性別を明かす。<br />
+　適当に終わりそうだ。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・藍川さき『キミ☆コイ』読み切り<br />
+　あらすじ：よくわからない。<br />
+　「主人公は、小学生のとき男に告白して振られた過去がある。その相手の彼氏役に再会。今度は結ばれる」と書けば一応あらすじだが、実際には、まったく話が成り立っていない。旋回軸がない。話がその周囲を旋回するような不変の要素、軸がない。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+・白石ユキ『究極彼氏にヤミツキ彼女』読み切り<br />
+　あらすじ：かつては不良で、喧嘩で鳴らしていた主人公。上品な男を好きになったので、過去を隠して接近し、今ではつきあっている。デートの際に過去がばれたが、彼氏役は実は暴力団組長の息子だった。<br />
+　ファンタジーなホストを出すのも問題だが、ファンタジーな暴力団はさらに問題がある。ファンタジーなホストのファンタジーっぷりを面白く描くのは簡単だし実際ときどき見かけるが、ファンタジーな暴力団のファンタジーっぷりを描く少女まんがは、あまり想像がつかない。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.529855785&type=10&subid="></script>くまがい杏子『はつめいプリンセス』</a>最終回<br />
+　あらすじ：主人公（<b>しずか</b>）と彼氏役（<b>はじめ</b>）が結婚。TV局が視聴率欲しさに初夜を覗こうとする。さらに作者が作品内に登場して、初夜を読者に見せろと迫る。はじめが両者を追い出して終わり。<br />
+　前回の普通の面白さとはうってかわって、異様な最終回だ。<br />
+　未来がどうしてあんな不幸なことになっていたのか、その謎解きを鮮やかに決めて、「やっぱり未来は幸せでした」で終わるのかと思っていた。これなら普通に気持ちのいい終わりかたになっただろう。<br />
+　が、そんな謎解きはせず、「初夜を読者に見せろ」などという異様なネタを持ってきて終わらせている。もしかして少コミ作家はそんなにも「エロを描け」と圧力を受けるのだろうか、と勘繰りたくなる。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+<a href="http://kaoriha.org/nikki/archives/000456.html">第23回につづく</a></p>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000452.html">20:39</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=452" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;21&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000451"></a>
+<h3 class="title">高田里惠子『グロテスクな教養』（ちくま新書）</h3>
+
+<p>　本書はいわゆる「教養論」の展覧会である。<br />
+　個人的な体験からひとつ。私が中学校に入ったとき、最初の数学の授業で、こんなことがあった。<br />
+　教師が黒板にコンパスで円弧をいくつか描き、「この円弧の中心を作図できる人、黒板でやってみて」と問い掛けた。私は内心、笑いが止まらなかった。この問題は、何ヶ月か前、自分で思いついて自分で解いたことがあったのだ。解くまでに要した時間は測らなかったが、十秒やそこらではなかった。つまり私は入学早々、ハッタリをかます機会に恵まれた――と確信した。愚かにも。<br />
+　出題の瞬間、いま解けるのはクラスで私ひとりだと確信して立ち上がったとき、まったく同時に、ほかに二人が立ち上がっていた。あのときの驚きは忘れがたい。<br />
+　さて読者諸氏はこのエピソードを、身近な体験だと思われただろうか。あるいは、雲の上の出来事と思われただろうか。本書は、このエピソードを身近に感じる読者だけを想定して書かれた、なんとも嫌な本である。<br />
+　ただ嫌なだけでも、それはそれで面白いが、それだけではない。本書233ページから。<br />
+　「自分自身で自分自身を作りあげる、と教養を定義したように、教養は、自分自身をどう見るか、他者にどう見られたいか、他者をどう見るか、ということに結びついている。そこから生まれうる、間違った自己理解と他者理解の錯綜した滑稽さは、わたしにとって、考察対象というよりも、毎日の生活のなかで直面している問題なのだ」<br />
+　ついでに、私の教養論を。教養論らしく、読者諸氏にご忠告申し上げることにしよう。<br />
+　本書にもあるとおり、教養は「コミュニケーション能力」とやらにその座を奪われた観がある。どちらも枠組みが曖昧であり、そのため評価も曖昧だ。評価が曖昧なものに振り回されるのは時間の無駄だ。もてあそんで暇を潰すにはいいが、真に受けると馬鹿をみる。<br />
+　なに、「その曖昧さに耐えられないからダメなんだ」？　もてあそぶだけで真に受けないことが、耐えるということだ。<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.451126995&type=10&subid="></script>7andy</a></p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000451.html">18:03</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=451" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;19&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000450"></a>
+<h3 class="title">穂村弘『にょっ記』（文芸春秋）</h3>
+
+<p>　私は物語が苦手だ。<br />
+　厚顔無恥あるところには常に物語がある。たとえば、セールストーク。「うちの製品でこんなに幸せに」を物語にして聞かせる。<br />
+　というわけで、『にょっ記』だ。これは、物語が削り落としてしまうものを集めて、エッセイにしている。<br />
+　内容はない。だがそれがいい。内容のために本を読む連中は呪われるべし。本から得るものは、内容ではなく、愛であるべきだ。<br />
+　ところで、この本を読んだら、津原やすみ『あたしのエイリアン』シリーズを思い出した。<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.567387905&type=10&subid="></script>7andy</a></p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000450.html">22:13</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=450" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;16&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000449"></a>
+<h3 class="title">「僕の考えた女の子」を想定してしまう人々</h3>
+
+<p>　参考：<a href="http://asia.google.com/search?hl=ja&q=%22%E5%83%95%E3%81%AE%E8%80%83%E3%81%88%E3%81%9F%E8%B6%85%E4%BA%BA%22&lr=">僕の考えた超人</a><br />
+　「僕の考えた女の子」を想定してしまう人々がいる――と書いただけですでに出オチだが強引に続けてみる。<br />
+　このフレーズで重要なのは、「僕」のところだ。「俺」でも「私」でもない「僕」である。「自分のことを僕と言っていいのは大山のぶ代のドラえもんだけだ」という天下の大暴言に深く共感する私にいわせれば、「僕」という一人称には深い意味がこもっている。</p>
+
+<p>　「俺の考えた女の子」の「俺」は、タフな感じがする。「お前はバカか」とあきれてみせれば、「俺の考えた女の子」はあっさりと修正されるだろう。いや、修正させる必要もない。放っておいて、事実とぶつからせてやればいい。「俺」はそういう荒っぽい扱われ方を必要とする。<br />
+　「私の考えた女の子」の「私」には、オープンな姿勢を感じる。「それはちがう」と指摘すれば、それがもっともらしい指摘なら――この「もっともらしさ」には権力的な欺瞞が潜んでいるわけだが、それはさておき――、「私の考えた女の子」は修正されるだろう。もし納得のいく修正がされなければ、その「私」は敵になる。敵に回すだけの内実を、「私」は備えている。<br />
+　さて「僕」である。<br />
+　「僕の考えた女の子」は修正不可能だ。「僕」はナイーブだ。荒っぽく扱えないし、反論を受け止めるオープンさもない。また、敵に回すだけの内実もない。そして、ここが重要なところだから強調するが、<strong>そういう「僕」的なナイーブで修正不可能なものを想定することが間違いだ</strong>。人をナイーブだと想定すれば、実際に人はナイーブになる。人が自分であれ他者であれ、そうなる。<br />
+　「僕の考えた女の子」を想定してしまう方々に申し上げる。<br />
+　「女の子」像に気を取られてはいけない。問題は「僕」のほうだ。これを「俺」に入れ替えれば、「俺の考えた女の子」は問題にならない。それができなければせめて、敵に回すだけの内実を備えた「私」を想定し、仮想敵としよう。<br />
+　友でなければせめて敵になりたいと願う私の一人称は「私」である。</p>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000449.html">17:21</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=449" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;11&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000448"></a>
+<h3 class="title">扇智史『塔の町、あたしたちの街』（ファミ通文庫）</h3>
+
+<p>　設定からいえば、百合が前面に出てきてもいいはずなのに、萌える行動があまりにも少ない。あと、オーラバスター系の超能力（他の超能力の中和・無効化）はもう見たくない。<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.565511315&type=10&subid="></script>7andy</a></p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000448.html">23:54</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=448" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;08&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000447"></a>
+<h3 class="title">記憶の彼方</h3>
+
+<p>　Googleによって人類は多くのうろ覚えを克服した。しかし限界もある。<br />
+　私は「パックマン・マヌーバー」という言葉をうろ覚えしていた。たしか、ゲームの『パックマン』の大流行を記録した記事で読んだ。「どこがパックマンなのかさっぱりわからないが、とにかく流行り物にあやかってパックマンと名前がついた」例として、パックマン・マヌーバーが挙げられていた。<br />
+　さてパックマン・マヌーバーとはなんなのか。記憶にない。その記事には書いていなかったような気がする。Googleで調べてみたところ、英語でのヒットは<a href="http://markbyron.typepad.com/main/2007/02/evening_musings_3.html">たった1件</a>。敵対的買収を仕掛けられた会社が、防御のために、仕掛けてきた会社を逆に敵対的買収することを言うらしい。<br />
+　もしこの1件がなければ、私の記憶を確かめるすべはなかったし、「パックマン・マヌーバー」の意味を知ることもできなかった。それもおそらく一生。<br />
+　これは、人の記憶がはかないのか、それとも世界がはかないのか。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000447.html">22:06</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=447" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;06&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000446"></a>
+<h3 class="title">少コミを読む（第21回・2007年第9号）</h3>
+
+<p>　ふろくについて。<br />
+　今回は占い機能つき定規だった。ちょうどこういう定規を持っていなかったので、長いこと使いそうな気がする。<br />
+　では第9号のレビューにいこう。</p>
+
+<p>　<br />
+・悠妃りゅう『バタフライ・キス』新連載第1回<br />
+　あらすじ：長身などのコンプレックスを抱える主人公（<b>悠梨</b>）が、カリスマカメラマンと美容師のコンビに出会い、キレイに変身。<br />
+　展開がどうにもぎこちない。カリスマ××（美容師、デザイナー等）は最近の流行りらしいが、3回連載では構成上難しい気がする。もしやるなら、第1回の終わりに次回へのヒキとして主人公と出会わせるのがベストと思うが、その第1回を構成するのが技術的に難しい（なにしろそのカリスマ××が彼氏役だ）。かといって第1回の前半に出会わせようとすると、焦点がぼやけてしまう。今回がそのパターンだ。<br />
+　焦点がぼやけてしまうとはどういうことか、もう少し詳しく解説しよう。<br />
+　カリスマ××の有能さは、話の面白さとは関係がない。カリスマ××がくれるものはタナボタでしかない。「不幸な主人公がタナボタで幸せになりました、めでたしめでたし」などという話が面白いわけがない。どんなにおいしいタナボタであろうと関係ない。面白いのは、タナボタのあとだ。たとえば『ドラえもん』で、のび太が道具をもらうのはタナボタであり、面白いのはそのあとだ。<br />
+　面白いのはタナボタのあと、と考えてみると、今回の構成上の問題が見えてくる。「不幸な主人公」と「おいしいタナボタ」で23ページ（扉絵を除く）を消費しており、肝心の「タナボタのあと」は8ページしかない。3回連載全体を通してみれば正しい配分になるのだろうが、1回分で区切って読めばバランスが悪い。このため焦点がぼやけてしまい、話の面白さが見えてこない。<br />
+　やはり3回連載は無意味に構成が難しい。2回連載が基本にならないものか。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.529855798&type=10&subid="></script>池山田剛『うわさの翠くん!!』</a>連載第16回<br />
+　あらすじ：主人公（<b>翠</b>）への告白を取り消す彼氏役（<b>司</b>）。そのわけありげな様子を見た主人公は、司の事情を思って胸を痛める。<br />
+　翠をいったん泣かせるような展開を予想していたが、かなり甘く味付けしてきた。<br />
+　それにしても前回、司の後輩を登場させたのは、一体なんだったのだろう。泣いている翠を救う使者として使うと予想していたが。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.520459951&type=10&subid="></script>青木琴美『僕の初恋をキミに捧ぐ』</a>連載第39回<br />
+　あらすじ：<b>逞</b>の夜這いが挫折。攻守入れ替わって、<b>繭</b>が逞を誘う。<br />
+　最後のセリフ、「セックスして」と「抱いて」の二択だが、作者がどれくらい考えたか知りたいところだ。考えすぎてトーンを貼る時間が足りなくなったのかもしれないと思うと、後半の白い画面も味わい深い（嘘）。<br />
+　流れとしては前者が正解だ。硬い言葉で会話の流れを一気に切り替えることで、インパクトを出している。が、その流れの構成自体に、なにかしら味わいが欠ける。とはいえこれは作者の個性としか言いようがないところなので致し方ないか。<br />
+　採点：★★★☆☆<br />
+　<br />
+・みつき海湖『とろけるようなキスを奏でて』新連載第1回<br />
+　あらすじ：有力インディーズバンドのボーカル（<b>ガク</b>）とつきあっていた主人公（<b>音織</b>）。ある日突然、バンドメンバー全員が音織の前から姿を消した。それから三ヵ月後、バンドがメジャーデビューした。<br />
+　絵は少々辛いが、構成は確かだ。ただし、第3回（最終回）まで持たせるのが難しそうな構成でもある。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.529855785&type=10&subid="></script>くまがい杏子『はつめいプリンセス』</a>連載第16回、次回最終回<br />
+　あらすじ：主人公（<b>しずか</b>）がタイムマシンを発明。彼氏役（<b>はじめ</b>）とともに10年後の世界に行って、自分たちの様子を見ると、二人は別れて久しい状態だった。<br />
+　次回最終回にふさわしいアイディアを出してきた。綺麗に終わりそうでなによりだ。<br />
+　採点：★★★★☆<br />
+　<br />
+・水波風南『狂想ヘヴン』連載第12回<br />
+　あらすじ：風邪で棄権した主人公（<b>水結</b>）の替え玉とばかりに勝手に<b>乃亜</b>が出場、失格ながら好記録を出す。その反響で水泳部に活気が戻る。<br />
+　みんな仲良しになってしまって、ちまちました話になってしまった。まさかこのまま最終回まで仲良し学園ものをやるのだろうか。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+・車谷晴子『極上男子と暮らしてます。』連載第6回<br />
+　あらすじ：子供を預かっててんやわんや。<br />
+　話は定番で手堅い。しかし画面構成に知恵がなく、魅力がない。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.529855796&type=10&subid="></script>織田綺『LOVEY DOVEY』</a>連載第18回<br />
+　あらすじ：彼氏役（<b>芯</b>）の義兄である理事長がやってきて、「いい男キング決定戦」を開催する。これは芯と主人公（<b>彩華</b>）を引き裂くための罠だった。<br />
+　はじけている。なにか変なものでも食べたのだろうか。はじけたノリが悪ノリになることなく、きちんと話を作っている。画面構成の流れもいい。<br />
+　採点：★★★★★<br />
+　<br />
+・<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.529855797&type=10&subid="></script>新條まゆ『愛を歌うより俺に溺れろ！』</a>連載第27回<br />
+　あらすじ：<b>水樹</b>がお見合いをさせられる。相手は<b>蘭</b>だった。<br />
+　ようやくグダグダが終わった。最終回の準備だろうか。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・伊吹楓『君にささやく恋のワナ』読み切り<br />
+　あらすじ：よくわからない。<br />
+　「よくわからない」と書いたが、因果関係は把握できる。しかし、ネックレスの件と声の件が、相互に無関係に並存していて、話としてすっきりしない。旋回軸がないのだ。<br />
+　全体的に雰囲気が好きになれない。前世の相性が悪いのか。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+・大谷華代『ゲキテキ恋愛勝負』読み切り<br />
+　あらすじ：彼氏役を口説くために、さまざまな役を演じてみる主人公。オチは「そのままの君が好き」。<br />
+　あらゆる面で絵が荒い。画面構成、描線、背景をほとんど描かない、などなど。人物にも特段の魅力があるわけではなく、平凡かそれ以下だ。<br />
+　採点：☆☆☆☆☆<br />
+　<br />
+・千葉コズエ『あまい＊すっぱい＊ほろにがい』最終回<br />
+　あらすじ：女たらしの主人公（男）が初めての恋をする。<br />
+　……<b>夏映</b>の病気の件はどこへ？<br />
+　あと、これは作者にはなんの落ち度もないが、何気にトラウマを刺激されたので0点にしてみた。あしからず。<br />
+　採点：☆☆☆☆☆<br />
+　<br />
+<a href="http://kaoriha.org/nikki/archives/000452.html">第22回につづく</a></p>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000446.html">02:35</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=446" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;05&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000445"></a>
+<h3 class="title">最後の革命</h3>
+
+<p>　<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.561484570&type=10&subid="></script>ザミャーチン『われら』</a>のさわりには、こんな問答がある（うろ覚え）。<br />
+　「あなたは数学者でしょう。教えて。最後の数はいくつ？」<br />
+　「最後の数？」<br />
+　「じゃあ、最大の数」<br />
+　「最大の数なんてないよ。数は無限なんだ」<br />
+　「それと同じ。最後の革命なんてない」<br />
+　ウクライナのオレンジ革命も、最後の革命ではなかった。<br />
+　<a href="http://headlines.yahoo.co.jp/hl?a=20070404-00000183-jij-int">繰上げ総選挙を視野＝11日からゼネストも－ウクライナ首相</a></p>
+
+<p>　<br />
+　このままヤヌコビッチの勝利に終わり、ロシアに依存した経済発展が続いたとしたら、オレンジ革命は無駄だったということになるのだろうか。<br />
+　そうではない。革命は、ゴールへと向かう過程ではない。それは人間の生の発露だ。<br />
+　生の発露とはどういうことか？　猛烈に語弊のある、誤解を招きやすい、不適切な表現を、あえてしてみよう。<br />
+　人間は、肉体的な生の発露を望むとき、スポーツをする。それと同じように、社会的な生の発露を望むとき、革命をする。スポーツをするとき人は、自分の肉体が単なる糞袋ではないことを実感する。革命をするとき人は、自分が社会にとって単なる歯車ではないことを実感する。<br />
+　スポーツがただそれだけで喜ばしいように、革命はただそれだけで喜ばしい。<br />
+　<br />
+　つい先日、「藤本ひとみの最高傑作はなにか」という会話をした。<br />
+　私は、<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.561484579&type=10&subid="></script>『聖戦ヴァンデ』</a>を挙げた。フランス革命におけるヴァンデの反乱を、主に反革命側から描いた作品である。<br />
+　この作品の面白いところは、反革命それ自体をひとつの革命として描いていることだ。こういうシチュエーションを扱った作品はたいてい、反革命を革命に従属させ、革命批判のための道具にしてしまう。反革命をまるで革命に対する脊髄反射であるかのように描いてしまう。この『聖戦ヴァンデ』はそうではない。反革命もまた革命であり、生の発露であることを描いている。その結末の痛ましさを見つめると同時に、革命が喜ばしいものであることを、しっかりと掴んでいる。<br />
+　<br />
+　ジョージ・オーウェルの批判によれば、H. G. ウェルズは理性を崇拝して情熱を憎悪した。その態度を、オーウェルはこんな風にたとえている（うろ覚え）<br />
+　『小さな子供が他愛ないことで駆けずりまわっているのを見ると、彼（ウェルズ）はイライラする。どうしてそんな他愛ないことに夢中になるのか、どうしてもっと行儀よく静かにしていられないのか、というわけだ。子供たちの身体のなかには熱い血がめぐっていて、じっとしてはいられないのだが、彼は自分自身のそういう頃を忘れてしまったのだ』<br />
+　藤本ひとみは、私の知る最良の藤本ひとみは、この熱い血を描く作家だ。その藤本ひとみが、「敗北した反革命」という絶好の題材を採って生まれた傑作が、『聖戦ヴァンデ』だ。全人類に読ませたい。</p>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000445.html">01:40</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=445" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;02&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000444"></a>
+<h3 class="title">TVドラマ『麗わしき鬼』第1回</h3>
+
+<p>　百合の昼ドラとして話題の物件、『麗わしき鬼』第1回を見た。<br />
+　OPの出来がいい。OPだけ見て、中身は妄想したほうが面白いかもしれない。<br />
+　話は1972年から始まった。女の赤ん坊が登場。これが主役カップルの片方か？　母は二流ホステス、父は酒とDVにはまっている。主役カップルのもう片方はどうやら開業医の家の娘になる模様（まだ妊娠してもいないが）。<br />
+　濃いキャラが続々登場の模様なので、もしかすると百合は餌かもしれない。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000444.html">23:03</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=444" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2007&#24180;04&#26376;01&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000443"></a>
+<h3 class="title">私の正体</h3>
+
+<p>　「少コミを読む」はさすがにやりすぎたらしい。どう考えても、私の正体が見破れるはずがないのに、現実は厳しかった。<br />
+　先日、編集部の（機密事項につき5文字削除）から電話がかかってきて（機密事項につき以下削除）<br />
+　<br />
+　（このエントリは4月1日に書かれました）</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000443.html">10:59</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=443" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

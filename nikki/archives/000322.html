@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 本物</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000321.html" title="今後のOSに望むこと" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000323.html" title="1492:50" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000321.html">&laquo; 今後のOSに望むこと</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000323.html">1492:50 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;06&#26376;25&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">本物</h3>
+
+<p>　Windows専用の言語処理系のひとつに、HSPというものがある。</p>
+
+<a name="more"></a>
+<p>　HSPの機能のいくつかは、月の裏側から集めてきたらしい。不要とわかって捨てられたものを、わざわざ復活させている。たとえばC言語風のマクロだ。私見では、#defineと#ifdefは手動メモリ管理に次ぐ害悪だ。<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.492871657&type=10&subid="></script>Stroustrup『C++の設計と進化』</a>540ページより引用する：</p>
+<blockquote>
+  <p>マクロの定義は、環境の中や、コンパイラのディレクティブ、ヘッダファイルなど、いろんなところに潜んでいる。マクロによる置換はスコープという境界ルールを無視し、それどころか、勝手にブレースや引用符を挿入してプログラムのスコープ構造を変えてしまうこともある。（中略）その機能はあまりにも構造性を欠き侵略的なので、プログラマやメンテナ、コードを移植する人、ツールの作者などにとってつねに頭痛の種だった。</p>
+</blockquote>
+<p>　しかしHSPは当たった。同種のWindows専用の言語処理系のなかで、一番の大当たりになった。<br />
+　なぜ当たったのか？　私はこういう世界とはまったく縁がないので、説得力のある意見をとりあえず信じることにする。私の知るかぎり、もっとも説得力のある説明は、以下のとおりだ。<br />
+  　「インストーラ抜きの配布物がEXEファイル1個になる。それが本物っぽくて、いい」<br />
+  　VBの配布物はEXEファイル1個にはできない。ランタイムが必要だ。Perlは、PARを使えばEXEファイル1個にすることはできるが、PARを使うにはかなりの知識が要る。その点、最初の最初から「本物っぽい」配布物が得られるHSPは、人をひきつけたのだ――配布物がEXEファイル1個になるのが「本物っぽい」と感じるような初心者を。<br />
+　初心者がなにを「本物っぽい」と感じるかは、なかなかわからない。彼らは<a href="http://www.radiumsoftware.com/0604.html#060418">カーゴ・カルト</a>の世界にいる。<br />
+<br />
+　初心者でなくなるのは簡単だ。慣れればいい。だが慣れるだけではカーゴ・カルトからは抜け出せない。信仰しているカーゴ・カルトが、「ベスト・プラクティス」という名前になるだけだ。<br />
+　<a href="http://www.genpaku.org/realprogrammerj.html">『本物のプログラマはPascalを使わない』</a>というあのエッセイは、そこの機微をよく捉えている。このエッセイによれば、本物のプログラマはFORTRANを使うのだという――FORTRANは当時のカーゴ・カルトだったのだろう。EXEファイル1個の配布物が「本物」であることと、FORTRANが「本物」であることのあいだには、大した違いはない。<br />
+　さて、今日の本題に入ろう。ネイティブ・コンパイラ（ネイティブに実行可能なバイナリ・ファイルを生成するコンパイラ）を信仰するカーゴ・カルトについて。<br />
+<br />
+　基本を確認しよう。<br />
+　C言語のコンパイラはC言語で書ける。C言語で書かれたCコンパイラは、自分自身をコンパイルできる。<br />
+　問題は、最初の実行だ。世界で初めてC言語の処理系を書いたのなら、ご愁傷様だ――手作業でなんとかするしかない。だが、ほかにC言語の処理系がすでに存在していて使えるなら、手作業は必要ない。<br />
+　さて応用である。<br />
+　JITコンパイル型のJava VMは、自分自身を実行できる。<br />
+　事の本質はCコンパイラとなにも変わらない。「最初の実行」という問題が、VMを起動するたびに起こるだけだ。なんらかの方法で起動しさえすれば、あとはVMが自分自身を実行する。起動方法としては、インタプリタ型のJava
+VM（速度は非常に遅くていい）などが考えられる。そしてその起動用VMも、FORTHインタプリタのような極小のVM上で動かすことができる。最小限のFORTHインタプリタは非常に簡単に書けるので、アセンブラさえいらないくらいだ。<br />
+　高度な動的最適化は、理論上も現実にも、コンパイル時最適化をしのぐ。ある程度以上のメモリのある環境なら、ネイティブに実行可能なバイナリは、BIOSとブートローダとカーネルのごく一部にしか必要でない。ネイティブ・コンパイラはほとんど不要だ。<br />
+　（ただし、ネイティブでないコンパイラは相変わらず必要だ。コンパイル時の型チェックはプログラマを助け、冗長性の低いバイトコードは実行効率を高める）<br />
+<br />
+　EXEファイル1個の配布物。FORTRAN。ネイティブ・コンパイラ。<br />
+　どれも、ある条件のもとでは、ベストな選択だ。だが、その条件を判断する知識が抜け落ちたとき、その選択はカーゴ・カルトになる。<br />
+　このようなカーゴ・カルトを見分けるキーワードが、「本物」だ。<br />
+　なにかを選ぶとき、それが「本物」だからという理由で選んではいないか。なにかが確かだと思うとき、その根拠がどこかで「本物」につながってはいないか。<br />
+　選ばれて「本物」になる。確かだと思われて「本物」になる。だが、その逆は、カーゴ・カルトだ。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000322.html&amp;text=%E6%9C%AC%E7%89%A9&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000322.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E6%9C%AC%E7%89%A9
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000322.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;06&#26376;25&#26085; 23:46
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>>JITコンパイル型のJava VMは、自分自身を実行できる。</p>
+
+<p> これ、何かおかしいと思うのですが。<br />
+「Java で書かれ(てバイトコードになっ)た Java VM は～」<br />
+の間違いではないでしょうか?<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;anonymous&#64;example&#46;com">匿名希望</a> at 2006&#24180;07&#26376;01&#26085; 14:18</span>
+</div>
+<div class="comments-body">
+<p>　Java VMが解釈するのはJavaの<br />
+バイトコードなので、自分自身を実行する<br />
+Java VMは当然Javaのバイトコードで<br />
+書かれています。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hajime&#64;kaoriha&#46;org">hajime</a> at 2006&#24180;07&#26376;01&#26085; 16:02</span>
+</div>
+<div class="comments-body">
+<p>「JIT コンパイル型の Java VM は、全て、自分自身を実行できる」<br />
+と読んでしまったので、間違いだと思ってしまったようです。<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;anonymous&#64;example&#46;com">匿名希望</a> at 2006&#24180;07&#26376;01&#26085; 23:18</span>
+</div>
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: ピタゴラ装置ができるまで</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000763.html" title="政治としてのテスト・バグ・仕様" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000765.html" title="ケン・ハーパー『父さんのからだを返して』（早川書房）" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000763.html">&laquo; 政治としてのテスト・バグ・仕様</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000765.html">ケン・ハーパー『父さんのからだを返して』（早川書房） &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2012&#24180;05&#26376;17&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">ピタゴラ装置ができるまで</h3>
+
+<p>　最近Gitを多少理解した。<br />
+　Gitを理解することは、ソフトウェアの設計について深く考えさせられる体験である。おそらく、SCMになんの関心もない人にとっても、Gitを理解することは有益だ。理解した結果ではなく、理解する過程が有益となる。<br />
+　Gitを理解した結果は、Gitを理解する過程に比べると、些細なものだ。tarballとパッチによるワークフローの、賢く素早いが面倒な自動化――「そうそう、コンピュータってこういうものなんだよ」と改めて思い出させてくれる。賢く素早いが、面倒。<br />
+　インターネットが普及し始めてから20年以上が過ぎた。コンピュータによる自動化が容易な分野は、掘り尽くされつつある。今後新しく登場する種類のソフトウェアの多くは、Gitと似た問題を抱えるだろう。<br />
+　Gitを理解するうえでの困難について書き留めておく。</p>
+
+<a name="more"></a>
+<p>　<br />
+・用語の混乱と不統一<br />
+　まず、名詞のcommitと動詞のcommitがある。<br />
+　名詞のcommitとはなにか。tarballに属性がついたものだ。この属性を使って、Gitはすべての操作を自動化する。動詞のcommitは、名詞のcommitを作成する操作だ。<br />
+　次に、index。あまりにも一般的な名前のためか、「ステージングエリア」という言い換えがよくなされる。<br />
+　そしてcheckout。ソースコードを持ってくる操作のように見える名前だが、同時にブランチも操作する。そして、ソースコードを持ってこずにbranchだけを新規作成するときにも、checkoutが使われる。<br />
+　どれも「あるある」的な混乱と不統一だが、多くの場合、Gitほどの困難を生み出さずに済んでいる。なぜGitではまずいのかというと、<br />
+　<br />
+・核となる概念が消去されている<br />
+　Gitの核は実は簡単で、tarballとパッチ、それだけだ。tarballはソースコードを固めたもの、パッチはソースコード間の差分を集めたもの。なにも難しいことはない。<br />
+　が、Gitは賢い自動化のために、パッチを直接の操作対象として扱わせない。そのため、名詞のcommit、履歴（≒名詞のcommit間の家系）、branchなどの概念を同時に理解する必要が生じる。<br />
+　<br />
+　自動化は大なり小なりピタゴラ装置だが、tarballとパッチを自動化するだけで、これほどのピタゴラ装置が生み出される。ソフトウェアの設計について考えるうえで、Gitのケーススタディには大きな意義があるだろう。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000764.html&amp;text=%E3%83%94%E3%82%BF%E3%82%B4%E3%83%A9%E8%A3%85%E7%BD%AE%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%BE%E3%81%A7&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000764.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E3%83%94%E3%82%BF%E3%82%B4%E3%83%A9%E8%A3%85%E7%BD%AE%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%BE%E3%81%A7
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000764.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2012&#24180;05&#26376;17&#26085; 13:27
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

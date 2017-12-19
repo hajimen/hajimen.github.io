@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: Coders at Work まとめ おまけ</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000750.html" title="Coders at Work まとめ Part 3" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000752.html" title="インタプリタがコンパイラになる話" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000750.html">&laquo; Coders at Work まとめ Part 3</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000752.html">インタプリタがコンパイラになる話 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2012&#24180;01&#26376;19&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Coders at Work まとめ おまけ</h3>
+
+<p>　<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4274068471/hound-22/ref=nosim">『Coders at Work』</a></span>まとめ <a href="http://kaoriha.org/nikki/archives/000750.html">Part 3</a>の続き。<br />
+　おまけと言いつつ、今度こそ本当にまとめる。と言いつつ感想を書く。<br />
+　<br />
+・C++は明らかにダメ<br />
+・デザインパターンには問題がある<br />
+・メモリ共有型のマルチスレッドは明らかにダメ<br />
+・トランザクショナルメモリは今ホットだが疑問。ちなみにMicrosoft Researchの研究者は<a href="http://www.infoq.com/jp/news/2010/06/STM-Dropped">ダメと結論づけた</a><br />
+・何層ものレイヤを重ねることには不安がある。その上さらにレイヤがブラックボックスなのは明らかにダメ<br />
+・プログラミング言語が格納域を扱うことには問題がある<br />
+・Prologはもっと注目されるべき<br />
+・純粋関数型言語は注目はされているが、うまくいってはいない<br />
+・ソフトウェアの再利用はうまくいっていない<br />
+・コンピュータにはこの数十年間、見るべき進歩がない</p>
+
+<a name="more"></a>
+<p>　<br />
+　私見：<br />
+　先日、<a href="http://ja.wikipedia.org/wiki/2-3_%E3%83%95%E3%82%A3%E3%83%B3%E3%82%AC%E3%83%BC%E3%83%84%E3%83%AA%E3%83%BC">fingertree</a>というデータ構造を知った。私の感想――「これは早すぎる最適化だ」。<br />
+　Fran Allenいわく、「ある計算には良いことが別の計算にはよくないということも出てくるでしょう。ある整理方法が、マトリックスのようなシンプルなものでさえ、違ったやり方でアクセスした場合にはまずいものになり得ます。だからアクセスの順序と場所の組み合わせによるのです」。<br />
+　どんなデータ構造が最適かは、実行してみるまでわからない。もちろん理論上は、実行前に予測することも不可能ではない。が、そういう予測はほぼ常に、惨憺たる結果に終わる。たとえコードを書いた瞬間には予測が当たっていても、そのうち外れる。プログラムは変化してゆくものであり、「アクセスの順序と場所の組み合わせ」も変化してゆくからだ。<br />
+　何種類かのデータ構造をあらかじめ用意しておき、実行時にVMがプロファイリングにもとづいて最適なデータ構造を選択する？　それが未来だとは思えないし、現状から移行するほどの価値があるとも思えない。<br />
+　ではどうすればいいのか。<br />
+　最適なデータ構造を選択するプログラムではなく、作り出すプログラムを作り出すべきだ。<br />
+　それも、たとえばJavaのjava.util.Mapがインターフェイスでjava.util.HashMapが実装、といったレベルの抽象化では足りない。そもそもmutableなデータ構造は格納域を扱っている。immutableなら格納域の問題はないが、それが実際に機能しうる解決策なのかどうかわからない。少なくとも私は、「クリス・オカサキの本、"Purely Functional Data Structures"」を見て首をかしげた。<br />
+　もしかすると、「データ構造」という概念そのものに問題があるのではないか。配列――たぶん最初のデータ構造――が現れたときから、私たちはずっと道を誤っているのではないか。<br />
+　おそらく、まだ誰の夢想にも現れていないアイディア、「一夜にして様相を変えるようなもの」が必要とされている。私の生きているうちにそのアイディアが現れるかどうかわからないが、それは必ずある、と私の勘が告げている。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000751.html&amp;text=Coders%20at%20Work%20%E3%81%BE%E3%81%A8%E3%82%81%20%E3%81%8A%E3%81%BE%E3%81%91&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000751.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=Coders%20at%20Work%20%E3%81%BE%E3%81%A8%E3%82%81%20%E3%81%8A%E3%81%BE%E3%81%91
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000751.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2012&#24180;01&#26376;19&#26085; 19:35
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="751" />
+<input type="hidden" name="spammer" value="goaway" />
+
+<!--div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;"-->
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+<!--/div-->
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

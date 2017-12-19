@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: Mobile SafariのJavascriptで約物のアキ調整</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000736.html" title="杉田かおる『杉田』（小学館）" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000738.html" title="ヤクザと業者とCGM" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000736.html">&laquo; 杉田かおる『杉田』（小学館）</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000738.html">ヤクザと業者とCGM &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2011&#24180;09&#26376;29&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Mobile SafariのJavascriptで約物のアキ調整</h3>
+
+<p>　商業出版物でも組版ルールがデタラメな末法の世の今日このごろ、組版ハッカーの皆様はいかがお過ごしですか。私は某文庫が縦組みなのに句読点をぶら下げないことに憤っています。おそらくInDesignのデフォルトが縦組みでもJIS X 4051なのが悪い。<br />
+　今回のお題は、Mobile SafariのJavascriptで約物のアキ調整。受けのカッコに句読点が続くときにはベタ組、起こしのカッコが続くときには二分アキ、どちらも約物なのにこれはいかに、という問題を解く。<br />
+　あらゆる文化と同じく、アキ調整のルールも多分にアドホックなものだが、アドホックなものをすべてカバーしようとすると面倒なので、ほとんどのケースをカバーする簡単なルールを作れないものかと考えた。</p>
+
+<a name="more"></a>
+<p>　いきなりだが結論。<br />
+　<br />
+1. 約物のグリフは全角とする<br />
+2. 文字にはデフォルトのアキが前後に設定されている、と考える<br />
+　受けのカッコなら後ろに二分アキ、中黒なら前後にそれぞれ四分アキがデフォルトで設定されている、と考える。漢字ひらがなカタカナでは、前後ともデフォルトのアキ量はゼロだと考える。<br />
+　<br />
+3. 文字には「吸着性」のものとそうでないものの2種類がある、と考える<br />
+　約物はたいてい吸着性であり、漢字ひらがなカタカナはすべて吸着性ではない。<br />
+　吸着性ではあるが約物かどうか定かでない文字として、全角空白がある。約物ではあるが吸着性でない文字として、繰返し記号がある。<br />
+　吸着性でない文字はすべて前後ともデフォルトのアキ量がゼロである。逆は真ではなく、前後ともデフォルトのアキ量がゼロだが吸着性の文字として、全角ダッシュがある。<br />
+　<br />
+4. 前後の文字が両方とも吸着性であれば、その文字間のアキは、前後の文字のデフォルトのアキ量のうち小さいほうだけを残し、大きいほうは捨てる<br />
+　受けのカッコに句読点が続くときを考えよう。受けのカッコはデフォルトでは後ろに二分アキで、句読点の前にはデフォルトのアキはない。0.5と0で、小さい方は0、つまり受けのカッコに句読点が続くときはベタ組となる。<br />
+　受けのカッコに起こしのカッコが続くときはどうか。起こしのカッコは前に二分アキだから、0.5と0.5で、今度は二分アキとなる。<br />
+　<br />
+5. 行頭・行末にアキがきたときには、そのアキは捨てる<br />
+　つまり行頭は常にベタ組する。<br />
+　<br />
+　以上。<br />
+　キーになるのは文字の「吸着性」という概念である。この概念を導入することで、ほとんどの場合を十分美しくカバーできる。<br />
+　<br />
+　実装はどうなるのか。<br />
+　グリフからデフォルトのアキを削るのは簡単で、span要素でCSSのmarginをつければいい。<br />
+　行頭のアキを捨てるため、半角空白をアキに使う。アキ量の調整としてspan要素でCSSのletter-spacingをつける。<br />
+　ただし、常にアキを半角空白にしていると、行頭・行末の禁則が崩れるので、禁則が絡む場合は文字のmarginだけで調整する。<br />
+　行末が揃わないのはWebkitなのでどうしようもない。CSS3のtext-justifyの実装待ち。<br />
+　あと、画面が小さいので節約のため句読点をぶら下げにした。<br />
+　<a href="/dtp/tsume/">ほぼiPhoneとAndroid専用</a></p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000737.html&amp;text=Mobile%20Safari%E3%81%AEJavascript%E3%81%A7%E7%B4%84%E7%89%A9%E3%81%AE%E3%82%A2%E3%82%AD%E8%AA%BF%E6%95%B4&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000737.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=Mobile%20Safari%E3%81%AEJavascript%E3%81%A7%E7%B4%84%E7%89%A9%E3%81%AE%E3%82%A2%E3%82%AD%E8%AA%BF%E6%95%B4
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000737.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2011&#24180;09&#26376;29&#26085; 15:21
+
+<br /></span>
+
+</div>
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

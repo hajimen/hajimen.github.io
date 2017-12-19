@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>中里一日記: 2004&#24180;05&#26376; Archives</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/2004_04.html" title="2004&#24180;04&#26376;" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/2004_06.html" title="2004&#24180;06&#26376;" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/2004_04.html">&laquo; 2004&#24180;04&#26376;</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/2004_06.html">2004&#24180;06&#26376; &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+
+<h2 class="date">2004&#24180;05&#26376;17&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000051"></a>
+<h3 class="title">戦時下</h3>
+
+<p><a href="http://www.tokyo-np.co.jp/00/tokuho/20040514/mng_____tokuho__000.shtml">http://www.tokyo-np.co.jp/00/tokuho/20040514/mng_____tokuho__000.shtml</a><br />
+　そろそろ日本を脱出しなければ、と思い始めたのは何年前だったか。<br />
+　ちなみに私がいままで長期滞在した国（アフガニスタン、イラク）は、私の滞在時にはどれも親米的だったが、どれも後で対米戦争をやっている。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000051.html">01:01</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=51" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2004&#24180;05&#26376;15&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000050"></a>
+<h3 class="title">文字コードの判別</h3>
+
+<p>　私はWindowsが好きだ。<br />
+　特にIE6がいい。私は今日、IE6がどんなによくできているかを思い知った。<br />
+　webページの文字コードを判別する手がかり（というあたりが諸悪の根源なのだが）はいくつあるか。私の知るかぎりでは3つ、<br />
+1. レスポンスヘッダ<br />
+2. meta要素<br />
+3. テキスト<br />
+　そしてXHTMLなら、これに加えて、<br />
+4. XML宣言のencoding<br />
+となる。が、XHTMLのencodingを間違えるような間抜けは無視できるので、XHTMLなら文字コード判別の必要はない。<br />
+　この世でもっとも正しい方法は、レスポンスヘッダである。が、レスポンスヘッダ中にcharsetが表示されていると信じるのは、サンタクロースの存在を信じるよりもはるかに難しい。<br />
+　meta要素はサンタクロースよりも信じられる。少なくとも日本語のページでは、かなりの割合でmeta要素の存在が期待できる。<br />
+　最終決裁者が、テキストだ。meta要素やレスポンスヘッダがなにを書いていようと、テキストが文字化けしていればそれは文字化けである。なにしろ世の中には、HTMLをメモ帳で手書きするよう指導する呪われた入門サイトがあるので（彼らに三度アナテマ）、呪われた人々が「charset=x-euc-jp」とmeta要素に書き込みつつUTF-8で保存しているかもしれない。こういう呪われたHTMLは表示できないようにすべきだったが、もし人々がそれほどまでに正しかったなら、人間は天使と区別がつかないだろう。<br />
+　このような状況のもとで、webページの文字コードを判別する仕組みをサーブレットに組み込むには、どうすればいいか。まず大まかな流れを考えよう。<br />
+　正しい人は、正しい方法を尊重する。レスポンスヘッダにもしcharsetが設定されていれば、これがmeta要素やテキストに優先されるべきだ。もしなければ、次にmeta要素が来る。そして最後の手段が、テキストデータからの推測だ。<br />
+　では早速そのようなアルゴリズムを実装しよう――などと思った人はプログラマではない。プログラミングとは、不労それ自体によって生産する技芸である。<br />
+　レスポンスヘッダのcharsetを最小限のコードで取得できるのは、おそらく、<a href="http://jakarta.apache.org/commons/httpclient/">Jakarta Commons HTTPClient</a>である。これをちょっといじり、レスポンスヘッダのcharsetのあるなしを取得できるようにする。<br />
+　レスポンスヘッダにcharsetがなければmeta要素を当たる。これをもっとも簡単確実にやってくれるのはおそらく、<a href="http://www.apache.org/~andyc/neko/doc/html/">NekoHTML</a>だ。ここでもまた、meta要素にcharsetのあるなしを取得できるようにいじる必要がある。<br />
+　自動判別は、私の知る限り、<a href="http://www.i18nfaq.com/chardet.html">jchardet</a>のほかに選択肢がない。StringのコンストラクタのJISAutoDetectは、UTF-8やMS932でこける。<br />
+　さて諸君、ここで残念な知らせがある。<br />
+　これだけやってもまだ、これほどやってもまだ、満足のいく判別にはたどりつけない。たとえば、上の仕組みを素のままでhttp://www.yahoo.co.jpに適用すると、GB2312と判別される。どうやらEUC-JPはその仕組み上、自動判別を間違えやすいらしい。一応の救済策はあり、jchardetに日本語判別を指定すると、正しく判別される。が、日本語判別を指定した状態では、他の文字コードをまったく判別できなくなる。<br />
+　もしサーバ上にIE6さえあれば、こんな苦労はすべてなくなるのだ。この世のサーバがすべてWindowsになる日も、そう遠くないだろう。</p>
+
+<p>　前言撤回。<br />
+　中身を開けてみたら、NekoHTMLよりも<a href="http://sourceforge.net/projects/htmlparser">HTMLParser</a>のほうがいい。これだとHTTPClientがいらないので、話がずっと簡単になる。<br />
+　また、http://www.yahoo.co.jpのレスポンスヘッダにはcharsetが設定されていた。なぜ設定されていないと思ったのか、いまではよくわからない。</p>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000050.html">07:24</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=50" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2004&#24180;05&#26376;12&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000049"></a>
+<h3 class="title">Winny</h3>
+
+<p>　二十世紀初頭のモスクワでは、反政府活動で逮捕された学生を非難するような人は少なく、同情と共感をもって迎えられたという。戦後の日本で、チャタレイ事件や「悪徳の栄え」事件の被告人がけっして孤独でなかったのと同じく、彼らは孤独ではなかった。<br />
+　賢明なる読者諸氏には、司法判断に注目しているような、ずれた人はいないと信じたい（国益のために「電気は物だ」と言い切り、さらにはそれに合わせて法律のほうを変えてしまうお国柄である）。47氏をどう迎えるか――これは、ただそれだけの問題だ。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000049.html">05:24</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=49" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2004&#24180;05&#26376;08&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000048"></a>
+<h3 class="title">決戦の場所</h3>
+
+<p>　ベトナム戦争はテト攻勢が転回点になった。<br />
+　といっても、ベトナムの戦場では、注目すべきことはなにも起こらなかった。例によって北は甚大な被害を出し、南の戦線は小揺るぎもしなかった。決戦は、アメリカのＴＶと視聴者のうえで起こり、そこでアメリカは最終的に敗北した。<br />
+　現在では、「メディア上での決戦」という概念はありふれたものになった。もちろん現在でもメディアは重要な戦場である。ボスニア紛争では、クロアチアがメディア工作で先手を取り、そのまま終始優位に戦いを進めた。<br />
+　そして今、新たな決戦場が発見された。捕虜収容所だ。<br />
+　日本のメディアではまったく報道されないが、<a href="http://www.thememoryhole.org/war/iraqis_tortured/">この写真</a>をご覧になれば、アメリカの敗北がはっきり読み取れることと思う。<br />
+　写真にあるような虐待は重大な罪だが、罪だけならまだ決定的ではない。決定的なのは、この写真に写っているアメリカ人たちが、間抜けで、想像力に乏しく、頼りない人々に見える、ということだ。征服者にとってこれは最悪のイメージである。残虐な征服者からは逃げ出したくなるが、頼りない征服者には逆らいたくなる。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000048.html">04:11</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=48" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2004&#24180;05&#26376;03&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000047"></a>
+<h3 class="title">皆川ゆか「真・運命のタロット8　《吊るされた男》、そして…」</h3>
+
+<p>　ティーンズハートを置いている本屋がめっきり少なくなった。廃刊間際の学研レモン文庫といった趣だ。発行点数はまだそこまでひどくはないが、隔月刊である。詳しくは<a href="http://www1.odn.ne.jp/yuzawa/new/teensheart.html">こちら</a>をご覧いただきたい。賞の募集ページ（巻末）にも投げやり感が漂う。「原稿がよければ随時」というのは、定期的に賞を出せるほどの原稿が集まらない、という意味としか取れない。<br />
+　原稿が集まらないのが先か、それとも、本屋でのプレゼンスが低下したのが先か。花井愛子と折原みとの全盛期からすでに、新人作家の登場しない・長続きしないレーベルだったので、原稿が集まらないのが先だと思える。<br />
+　それはともかく内容について。<br />
+　文章を書くときにはいつも、「描写」というモデルのよしあしを考える。「個性」「事実」といった固有の実体がまず存在し、その実体に対応して任意の「描写」がある――というモデルは、文章としてどうなのか。どうなのか、といつも考えつつ、結局いつも結論を出せずにいる。<br />
+　この本を読みながら考え、今度もまた結論が出ない。<br />
+　文章技術としては、実体―描写モデルはクソだ。上手な文章は、「なにを書くか」と「どう書くか」を区別できない。理想的には、上手な文章とは、「ここで作者が表現しているのは～」などという議論が成り立たないものだ。聖書がそうであるように、文章そのものが固有の実体として扱われる（聖書が上手な文章かどうかはともかく）。<br />
+　皆川ゆかは、逆をいく。描写される実体があるかのように書く。<br />
+　当然の結果として、文章がしばしばわかりにくい。実体―描写モデルは、いわば絵を立体に起こすようなもので、ものによっては、「この顔の一体どこが観鈴ちん？」ということになる。複数の主観からの描写がある部分、それも同時進行する部分など最悪だ。<br />
+　が、実体―描写モデルには、小さからぬメリットがある。<br />
+　文章が長くなると、「実体」なるものを想定するほうが、わかりやすくなるのだ。文章を、文章それ自体よりはるかに単純な「実体」へと非可逆圧縮してしまうわけだ。本作『運命のタロット』のような大長編では、このような非可逆圧縮は避けがたい。<br />
+　実体―描写モデルは大長編専用、で終わるなら話が早いが、それで終わらないからこそ考える値打ちがある。<br />
+　実体―描写モデルが適切な範囲には、上限があるのではないか。その上限とは、「実体」の複雑性によって決定されるのではないか。本作『運命のタロット』は、その上限を超えてはいないか。<br />
+　ようやく本題である――<br />
+　実体の複雑性に対応しようとして、実体を不可逆圧縮した「根源」なるものを想定し、根源―実体―描写の三段構えのモデルをとったとき、そこにはなにかひどく不吉なものが現れはしないか。<br />
+　言い換えれば、一段階の不可逆圧縮と、多段階の不可逆圧縮のあいだには、きわめて重大な落差があるのではないか。<br />
+　もしあるとしたら、それは何か。<br />
+　答はまだ出ていない。そして、もしかすると、この答そのものが、忌まわしい多段階の不可逆圧縮であるかもしれない。<br />
+　…………というような議論を超能力バトルで展開する話、それが<a href="http://product.esbooks.co.jp/product/keyword/keyword?accd=31364253">『運命のタロット』</a>です（大嘘）。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000047.html">08:50</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=47" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2004&#24180;05&#26376;01&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000046"></a>
+<h3 class="title">Webアプリ</h3>
+
+<p>　Webアプリに初挑戦している。<br />
+　とりあえず、Webアプリでなにかしようとすると、必ずデータベース（PostgreSQL、MySQL）が必要になることに気づいた。なにしろ同期処理があるので、永続性の必要なデータはみなデータベース行きになる。このごろ本屋にSQLの本が多いと思ったら、どうやらみなWebアプリを書いているらしい。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000046.html">06:13</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=46" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

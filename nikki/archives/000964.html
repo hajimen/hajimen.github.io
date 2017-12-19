@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 3Dプリンタはある種の電子機器をソフトウェアのようにする</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000963.html" title="今日の俺Twitter" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000965.html" title="今日の俺Twitter" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000963.html">&laquo; 今日の俺Twitter</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000965.html">今日の俺Twitter &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2014&#24180;02&#26376;01&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">3Dプリンタはある種の電子機器をソフトウェアのようにする</h3>
+
+<p>　「周囲が暗くなると電源がオンになる」という装置がある。夜になったら明かりがつく、という仕掛けだ。この仕掛けを内蔵した照明器具やテーブルタップが売られている。<br />
+　ある日私は、「周囲が<b>明るく</b>なると電源がオンになる」という機能のあるテーブルタップを探した。しかし、なかった。「見つからなかった」という表現では弱い、と感じるほど探したが、なかった。</p>
+
+<a name="more"></a>
+<p>　<br />
+　「人感センサー」という装置がある。人体の発する赤外線などを感知するもので、トイレの照明によく使われている。人がいないときには消灯するので節電になる。照明のほかにも、デジタルサイネージを制御する、防犯カメラの録画をオンオフする等々、用途は広い。<br />
+　先日私は、インターフェイスがWi-Fiの人感センサーを探した。ACアダプタのような形状で、コンセントに挿して使い、人体を感知するとWi-Fiで通知するという、電子工作レベルの単純な代物を想定していた。しかし、なかった。<br />
+　人感センサーを組み込んだ照明やデジタルサイネージや防犯カメラ、つまり単体で完結した製品なら、過当競争なくらいに数多く売られている。しかし、単体では完結しない「周辺機器」的な製品でWi-Fiとなると、コンシューマ向けの完成品としては存在しない。<br />
+　<br />
+　経済学のゲーム理論がもたらす、もっとも重要な知見といえば、海の家問題だろう。<br />
+　長さ数百メートルの海水浴場が舞台である。全長にわたってまんべんなく人が来るものとする。ここに、2つの業者がひとつずつ海の家を開くとする。2つの業者のサービスはほぼ同じで、顧客はたとえ優劣を感じても、そのために一歩でも遠いほうを選ぶことはない、とする。海の家のキャパシティは十分に大きく、満員や行列になることはない、とする。さて、この2軒の海の家を、どう配置するのが最善か？<br />
+　売上の合計（と顧客サービス）を最大化するのなら、真ん中で「領土」を分割して、それぞれの領土の中央に海の家を設ける、というのが答えになる。2つの業者のあいだで談合がまとまれば、現実にもこうなるだろう。しかし自由競争のもとでは、どうなるか？　答えは、「海水浴場の真ん中に、海の家が2つ並ぶ」である。どちらの業者にとっても、それが最善の答えなのだ。<br />
+　<br />
+　海の家問題が成り立つためには、たくさんの必要条件がある。<br />
+　ソフトウェアの世界には物理的な距離がない。かつて、ドメイン名の値段が高騰したとき、ドメイン名市場のプレイヤーはそれを「不動産」だと思い込んでいた。かつて、リンデンラボという企業が、「Second Lifeには不動産市場がある」という幻想を売り込んで、少数の人々がしばらくのあいだプレイヤーになった。あれから人類は少しは賢くなり、今ではビットコインのプレイヤーが「有限性」を価値として売り込んでいる。<br />
+　ドメイン名やSecond Lifeの顛末が示すとおり、ソフトウェアの世界には物理的な距離がない。より正確に言えば、物理的な距離を作り出そうとする試みは、ドメイン名バブルやSecond Lifeの不動産幻想と同程度の広がりしか持ち得ない。物理的な距離に縛られた世界を望むのは、それで利益を得る人々――幻の不動産で地主ビジネスがしたい人々だけで、それ以外の人々は逃げ出すからだ。これはおそらく、MySpaceのように天下を取ったSNSが衰退する理由でもある。<br />
+　<br />
+　電子機器の世界にも、単純な物理的距離は存在しない。だが、海の家問題は成り立っているように見える。「周囲が<b>明るく</b>なると電源がオンになる」テーブルタップや、Wi-Fiの人感センサーは、いわば海水浴場の隅だ。<br />
+　物理的距離にあたる役割を果たしているのは、実は「筐体の金型」である。<br />
+　製品の価格に比べれば、上記のような電子機器に使う電子部品は十分に安い。プリント基板と実装のイニシャルコストも十分に安い。SoC万能の今、設計のコストも十分に安い。筐体以外のイニシャルコストは総額で30万円もしない。1000台も売れば黒字になる。だがそれをさせないのは、筐体の金型だ。100万円以下で筐体を設計して金型を起こすのは難しい。<br />
+　<br />
+　私はほんの数日前まで、3Dプリンタのことを心底あなどっていた。私の身の回りには、3Dプリンタで出力できるような代物はほとんど見当たらない、と。<br />
+　だが、筐体の金型のことに気づいて、私は考えを変えた。3Dプリンタには、ある種の電子機器を、ソフトウェアのようにする力がある。もしかすると、この海水浴場には、隅というものがなくなるかもしれない。<br />
+　ある種の電子機器がソフトウェアのようになると、いったいどんな世界がやってくるのか。私にはまだ想像がつかない。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000964.html&amp;text=3D%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%81%AF%E3%81%82%E3%82%8B%E7%A8%AE%E3%81%AE%E9%9B%BB%E5%AD%90%E6%A9%9F%E5%99%A8%E3%82%92%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8B&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000964.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=3D%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BF%E3%81%AF%E3%81%82%E3%82%8B%E7%A8%AE%E3%81%AE%E9%9B%BB%E5%AD%90%E6%A9%9F%E5%99%A8%E3%82%92%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8B
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000964.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2014&#24180;02&#26376;01&#26085; 15:15
+
+<br /></span>
+
+</div>
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

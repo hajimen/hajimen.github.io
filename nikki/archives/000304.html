@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: エロゲーとCMS</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000303.html" title="1492:44" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000305.html" title="1492:45" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000303.html">&laquo; 1492:44</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000305.html">1492:45 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;06&#26376;01&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">エロゲーとCMS</h3>
+
+<p>　<a href="http://homepage3.nifty.com/walkinglint/cms/IsCMSUsable.html">エンタープライズCMSは黒歴史になったらしい。</a><br />
+　だが、CMSは甦る。CMSの現在の実装がどんなに腐っていようと、その概念自体は、人類の夢を表現しているからだ。<br />
+　Webバブルは甦った。DHTMLはAjaxへ、コミュニティはSNSへ、プッシュはRSS配信へとそれぞれ名前を変えたが、その中身はまぎれもなく、Webバブルの夢だ。<a href="http://www.usability.gr.jp/alertbox/9709a.html">「ウェブをテレビのようにする」</a>という夢もやはり甦り、<a href="http://internet.watch.impress.co.jp/cda/news/2006/05/26/12101.html">その地歩を固めつつある</a>。最後にして最大の夢、小額決済も、近いうちに敗北から立ち上がるだろう。今度もまた敗れるかもしれないが、彼らは何度でも立ち上がる。何兆円の損害を積み上げても、彼らを止めることはできない。何度でも呼び名を変えては投資家をあざむき、金をドブに流し込み続けるだろう。それが人類の夢だからだ。経済活動が経済合理性を作り出すのであって、経済活動が経済合理的に行われるのではない。<br />
+　さて、エロゲーである。<br />
+　いま私の手元には、某エロゲーの開発用データがある。ファイル数は11,776個、サイズは0.98GB。これが小さすぎて参考にならないと思えるのだとしたら、たぶんあなたはコンシューマ機用ゲームの開発者なのだろう。<br />
+　この経験を元に、エンタープライズCMSのあるべきユーザモデル（そのシステムの動作についてユーザが抱く世界観）と実装について私見を述べる。</p>
+
+<a name="more"></a>
+<p>　<br />
+　まず、ユーザモデルから。<br />
+　<br />
+　コンテンツの基本的な単位はファイルであるべきだ。<br />
+　ワークフロー情報（バグ追跡やバージョン管理）は別として、コンテンツ自体はファイルを基本的な単位とすべきだ。<br />
+　一般人の知能からいって、ファイルがこれほど理解されていること自体が奇跡だ。ユーザがMITかベル研でないかぎり、ファイル以外の単位が理解されると考えることはできない。<br />
+　ファイルが基本的な単位なので、CVSやSubversionのように、リポジトリを使うことになる。<br />
+　<br />
+　作業用コンテンツ（ファイル）は、CVSやSubversionのように、ローカルディスク上にコピーすべきだ。<br />
+　これは実装の詳細ではなく、ユーザモデルだ。ユーザモデル上、ローカルディスクとネットワークストレージは別物だ。（認証がなく、非共有の、ユーザが一人しかいないネットワークストレージなら、速度しだいではローカルディスクとみなせるかもしれない）<br />
+　「ファイル本体はサーバ上にあって、リッチクライアントで編集する」というのは妄想だ。メールの読み書きくらいは素人でもする仕事だが、プロがコンテンツを作るのは、まったく別のことだ。雑誌の付録を組み立てるようなつもりでは、自動車のエンジンを組み立てることはできない。<br />
+　<br />
+　変更のコミットは、ファイルの保存とは別動作であるべきだ。<br />
+　理由は2つある。1. コミット時にコメントを書くことで、その更新の意図を記録できる。2. やりかけの状態をコミットして、リポジトリやワークフロー情報を汚すことがない。<br />
+　<br />
+　ファイル名の変更管理はCMSの核心である。<br />
+　人間は不適切なファイル名をつける。どんなに完璧な命名規則を作り、どんなに賢いファイル名監視システムを配備したところで、無駄だ。不適切なファイル名は必ず発生する。不適切なファイル名が発生したら、対応策は2つしかない。ファイル名を適切なものに変更するか、あるいは変更せず放置するか、だ。<br />
+　変更する場合には、変更前と変更後のファイルが内容的に同一のものであることをユーザに知らせる必要がある。それも、変更時に通知して終わりではない。変更情報が必要になった瞬間に通知が目に入る必要がある。また、ファイル名が変更されたときには、ワークフロー情報もそれを同一のものとして追跡する必要がある。<br />
+　CMSが、独立した部品の寄せ集めではなく、システムとして統合されたものである必然性は、ここにある。<br />
+　<br />
+　リポジトリ内のファイルには必ずワークフロー情報が付随するが、逆は真ではない。つまり、まだ存在しないファイルについてのワークフロー情報は存在しうる。<br />
+　たとえば、リポジトリにアクセスしない作業者のために、発注・納品・リテイクというワークフローに対応する必要がある。納品まではファイルは存在しないが、ワークフロー情報は存在する。また、納品後のファイルから納品前のワークフロー情報をたどれる必要がある。<br />
+　<br />
+　こういうユーザモデルをどのように実装すればいいか。<br />
+　<br />
+　手始めに、作業用コンテンツ（ファイル）のための専用ファイルシステムが必要だ。<br />
+　これは第一に、ファイル名の変更管理のためだ。ファイル名の変更を超えてワークフロー情報を追跡するには、ファイルシステムと関わることになる。TortoiseSVNはWindowsシェルのプラグインという形でこれをやっているが、動作の重さなどで、あまりいい印象がない（今はよくなっているかもしれない）。<br />
+　また、専用ファイルシステムを使うことで、リポジトリからの差分取得の方法を細かくコントロールできる。たとえば、差分取得をバックグラウンドで動かしたり、ファイルが開かれるときまで遅延させたりすることができる。<br />
+　<br />
+　コミットや差分取得のUIは、TortoiseSVNのようにWindowsシェルのプラグインとしてもいいが、それだけですべての作業をやるのは損だ。専用のアプリケーションのほうが使いやすい。ファイルを読み書きするときはExplorerなどで普通に開き、ワークフロー情報を見たり更新をコミットしたりするには専用アプリケーションを使う。<br />
+　<br />
+　ワークフロー情報は、うっかりすると、途方もなく複雑な代物になる。ばっさりと単純にしなければならない。一例として以下のルールを示す。<br />
+・ワークフロー情報は、掲示板のスレッドのように、コメントの連続という形をとる（ワークフロー・スレッド）。それ以外の形式のワークフロー情報は存在しない。<br />
+・ワークフロー・スレッドのコメントには、ファイルを添付することができる。この添付ファイルは変更できない。<br />
+・1個のリポジトリ内ファイルには、必ず1個のワークフロー・スレッドが対応する。<br />
+　<br />
+　さてここまで、CMSというと必ず出てくるようなことを、ほぼすべて省略してきた。検索・作業のアサイン・審査と承認・Webテンプレート・ストリーミング・Web掲示板などなどだ。<br />
+　こうしたことはすべて、まったく重要でない。<br />
+　これらの機能は、ユーザモデルを構築しない。ユーザモデルの上にどう載せるかが問題になるだけで、ユーザモデルを別物に変えるよう迫ることはない。たとえばWebテンプレートは、ファイルとファイルの関係として扱える（それ以外の設計はすべて呪われている）。作業のアサインはワークフロー情報中にWiki的な記号で書ける。承認は電子署名だ。検索はインデックスを、Web掲示板はRDBを扱う必要があるが、いずれにせよ正規化されている。正規化されているというのは、ファイル名に悩まないということだ。名前に悩まないような問題は、大した問題ではない。<br />
+　そうそう、いうまでもないが、Webサーバを中心にしたCMSはすべてクソだ。あれらはWebテンプレートとWeb掲示板からスタートしている。機能は提供するが、管理とは無縁だ。「箱から出してすぐ使える」的な擁護も的外れだ。ここまで縷々書いてきたようなリポジトリ型CMSでも、「箱から出してすぐ使える」初期状態で配布することは簡単だ。しかもテンプレートなどがローカルファイルとして編集できる。「PHPで書いてあるからホスティングサービスで使いやすい」？　では、CVSやSubversionは、どうしてもC言語で書かなければならないのか？　専用ファイルシステムが必要なのはクライアント側だけだ。サーバサイドはどんな言語でもいい。<br />
+　<br />
+　以上、CMS業界の常識からはかけ離れた話をしてみた。<br />
+　だが、CMS業界の常識よりは私のほうが、未来に近い。CMS業者は何万行もの糞の山を抱えており、しかもそれを売らなければならない。私はいまのところ一行も持っておらず、おそらくこれからも持たないだろう。<br />
+　私は挑戦者を待っている。<br />
+　<br />
+参考：<br />
+<a href="http://www.designit.jp/archives/2006/04/cms_watch_20.html">巨大な格差「ザ・グレート・デバイド」／データベースは20世紀の代物</a><br />
+<a href="http://www.designit.jp/archives/2006/03/cms.html">CMSはジャングル状態にある</a></p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000304.html&amp;text=%E3%82%A8%E3%83%AD%E3%82%B2%E3%83%BC%E3%81%A8CMS&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000304.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E3%82%A8%E3%83%AD%E3%82%B2%E3%83%BC%E3%81%A8CMS
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000304.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;06&#26376;01&#26085; 06:12
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

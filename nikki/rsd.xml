@@ -1,0 +1,12 @@
+<?xml version="1.0"?> 
+<rsd version="1.0" xmlns="http://archipelago.phrasewise.com/rsd">
+  <service>
+    <engineName>Movable Type 2.661</engineName> 
+    <engineLink>http://www.movabletype.org/</engineLink>
+    <homePageLink>http://kaoriha.org/nikki/</homePageLink>
+    <apis>
+      <api name="MetaWeblog" preferred="true" apiLink="http://kaoriha.org/cgi-bin/mt/mt-xmlrpc.cgi" blogID="1" />
+      <api name="Blogger" preferred="false" apiLink="http://kaoriha.org/cgi-bin/mt/mt-xmlrpc.cgi" blogID="1" />
+    </apis>
+  </service>
+</rsd>

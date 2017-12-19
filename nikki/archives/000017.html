@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: GNU宣言</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000016.html" title="本物のプログラマはインストーラを書いている" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000018.html" title="ぶつかった" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000016.html">&laquo; 本物のプログラマはインストーラを書いている</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000018.html">ぶつかった &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2004&#24180;02&#26376;16&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">GNU宣言</h3>
+
+<p>　初めて<a href="http://www.gnu.org/japan/manifesto-1993j-plain.html">GNU宣言</a>を読んだのは、いつのことだったか。「これはソースコードからビルドする世界の話だ」というのが、当時の感想だった。もちろん人は普通、ソースコードからビルドなどしない。面倒だからだ。とはいえ、そういう世界では筋の通った話だとも思った。</p>
+<p>　いま、Stallmanの<a href="http://product.esbooks.co.jp/product/keyword/keyword?accd=31127201">「フリーソフトウェアと自由な社会」</a>を読んでいる。再びGNU宣言を読んでみて、致命的な問題にひとつ気づいた。</p>
+<blockquote>
+<p>　プログラムの使用を制限してプログラムのユーザからお金をとることは、その制限のせいで、使用できるプログラムの種類や方法が減ってしまうので、破壊的行為となる。これは、人類がプログラムから得られる富の量を減らしてしまう。故意に制限すると決定したときには、意図的な破壊という有害な結果をもたらすだろう。</p>
+</blockquote>
+<p>　この主張は誤っている。プログラムの使用を制限しないことによって、人類がプログラムから得られる富の量を減らしてしまう場合がある。例を示そう。TeXとviだ。</p>
+<p>　もしTeXとviが有料だったら――いまごろはもう、電算写植やTECOと同じく、歴史のくずかごに送り込まれていたはずだ。では、そのようなパラレルワールドに暮らす人類は、この世界の人類よりも、プログラムから得られる富の量が少ないといえるだろうか。断じて、ノーだ。</p>
+<p>　ロールズ流の社会契約論的アプローチを思い出していただきたい。それは、こういう思考実験だ。人間心理、社会、科学などの一般的知識については神のごとく完璧な知識を備えているが、自分自身のことはなにも知らない、という人間がいるとする。こういう人間が、自分の暮らす社会をゼロから再設計したら、どんな社会ができるか？　もちろん私の知識は不完全だし、自分自身のことを忘れることもできないので、この実験を完全なかたちでは行えない。それでも、少なくとも、3つのことを断言できる。その社会は、QWERTYキーボードのない、TeXのない、viのないものになるはずだ。</p>
+<p>　Stallmanの、いったいなにが間違っていたのか？　第一に、進歩を無視している。</p>
+<p>　ハードウェアだけでなく、ソフトウェアの思想も進歩する。1990年代以降に、TeXの構想を人に見せたら、嘲笑されるか無視されるか、どちらかだ。viは80年代にすでに論外だった。これは、HTTPのステートレス性やUNIXのroot特権のような、設計上のバランスにかかわる相対的な問題ではない。グローバル変数しかない高級言語が間違っているように、絶対的に間違っているのだ。</p>
+<p>　第二に、過去との競争を無視している。</p>
+<p>　パッケージソフトを売る会社にとって、違法コピーより恐ろしいのは、「ソフトは摩滅しない」という事実だ。売上を維持するには、過去の自社製品をガラクタに仕立て上げる必要がある。パッケージソフトにとって、独占はたいした意味を持たないのだ（だからMSは、WindowsやOfficeをプリインストールで売ることに懸命である）。期限付きライセンスはまだ救われるが、ダウンサイジング以降、こういう楽園はますます希少になりつつある。</p>
+<p>　フリーソフトウェアでは、過去との競争が起こらない。新製品の宣伝に洗脳されることのないユーザは、「奥が深い症候群」に陥り、バッドノウハウを不要にするかわりにバッドノウハウを蓄積してゆく。</p>
+<p>　以上、フリーソフトウェアが人類の富を減らす場合があることを論じた。</p>
+<p>　これは、あくまで「場合がある」という話であり、フリーソフトウェア全体としてどんな得失があるかは、また別の話になる。たとえばライブラリでは、フリーソフトウェアはきわめて有益に思える。が、フリーソフトウェアのない世界と、フリーソフトウェアしかない世界と、どちらかを選べと言われれば、私は迷わず、フリーソフトウェアのない世界を選ぶ。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000017.html&amp;text=GNU%E5%AE%A3%E8%A8%80&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000017.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=GNU%E5%AE%A3%E8%A8%80
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000017.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2004&#24180;02&#26376;16&#26085; 00:54
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

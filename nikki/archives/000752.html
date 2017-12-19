@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: インタプリタがコンパイラになる話</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000751.html" title="Coders at Work まとめ おまけ" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000753.html" title="Array Considered Harmful あるいは、なぜC言語のポインタは難しいのか" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000751.html">&laquo; Coders at Work まとめ おまけ</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000753.html">Array Considered Harmful あるいは、なぜC言語のポインタは難しいのか &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2012&#24180;01&#26376;23&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">インタプリタがコンパイラになる話</h3>
+
+<p>　4半世紀前に「BASICコンパイラ」に憧れた皆様こんにちは。<br />
+　当時、インタプリタとコンパイラは格が違う存在だった。<br />
+・ホビイストはインタプリタ、プロはコンパイラ<br />
+・無料でパソコンについてくるのがインタプリタ、何万円も出して買うのがコンパイラ<br />
+・起動してすぐに使えるのがインタプリタ、段取りが多くて敷居が高いのがコンパイラ<br />
+　そしてなにより、<br />
+・遅いのがインタプリタ、速いのがコンパイラ<br />
+　パソコン雑誌の広告等で「コンパイラ」を見て憧れを募らせていた私は、Javaや.NETのJITコンパイラに騙されているような気が今でも少しする。インタプリタなのかコンパイラなのかどっちなんだ、と詰め寄りたくなる。<br />
+　もちろん、（昔の）インタプリタと（昔の）コンパイラのどちらと比較しても優れているのがJITコンパイラだということは知っている。それでも、あの絶対的な格の違い、越えられない壁はいったいどうなってしまったんだ、という気持ちにかられる。<br />
+　<br />
+　そして今度は、インタプリタがJITコンパイラになるという。<br />
+<a href="http://shomah4a.net/pypy-tutorial/">PyPy を使ってインタプリタを書く</a><br />
+　これを見て私の脳内には、BASICインタプリタに魔法をかけるとBASICコンパイラに変身する、という夢のような光景が展開された。ちなみにPythonではベンチマークが3倍速になるという。<br />
+　（といっても既存のコードがそのまま3倍速になるわけではない。多くのソフトウェアはI/Oのために内部表現と外部表現を変換するところがボトルネックになっており（JavaのJNIが遅いのはこれ。「速度が必要なところはCで書けば～」という議論が成り立たない最大の理由）、PyPyはその変換に余計な手間がかかるので、I/Oの多いソフトウェアではかえって遅くなる）</p>
+
+<a name="more"></a>
+<p>　<br />
+　格や夢のことはさておき現実問題としては、メリットは速度だけなので、実のところほとんどどうでもいい。が、「書きやすさ」や「開発のしやすさ」と違って速度は定量的に比較できるので、比較してみたくなる。こう書くとまるで経済学者と街灯の話だが、まさにそのものだ。<br />
+　「Pythonでは3倍速」といっても、比較対象は別に速度自慢でもないPythonにすぎない。相手がJava VMではどうか。では試してみるか、と思って、上にリンクした紹介を真に受けた私はJava VMのサブセット（マイクロベンチマークが取れる程度のもの）を書こうとして、クラスファイルのパーサを書いたところで心が折れた。<br />
+　<br />
+　PyPyでインタプリタを書くのに使う言語はRPythonといい、Pythonのサブセットということになっている。……と書くと、書きやすい言語のように聞こえるかもしれない。上の紹介でも「これらはそれほど難しくはありませんよね？」などと愛想のいいことが書いてある。<br />
+　真っ赤な嘘だ。<br />
+　RPythonは、<br />
+・型に厳密<br />
+　ひとつのリストや辞書には同じ型のオブジェクトしか入れられない。しかし型を宣言しないPythonでどうやって型に厳密にするのかというと、<br />
+・型を推論し、暗黙の型宣言をつける<br />
+　C#のvarのような型推論なら便利なものだが、暗黙の型宣言となるとあまり穏やかでない。とはいえ、これだけならまだ大した問題ではないが、<br />
+・ジェネリックプログラミングができない<br />
+　なにしろPythonは型の緩い言語なので、テンプレートも総称型もない。すべてのメソッドには唯一の暗黙の厳密な型宣言をつけられるように書かなければならず、そのため<strong>同じ中身のメソッドを引数の型ごとに書かなければならない</strong>。重要な組み込み関数でも、唯一の暗黙の型宣言がつけられないものは削られている。たとえばmap()は削られている。<br />
+　ここまでならまだ乗り越えられない壁でもない。が、この上さらに、<br />
+・Hello, worldのコンパイルに60秒かかる<br />
+　「コンパイルしない方法もあってそれだともっと早くできる」という情報もあるが、型チェックが手薄なのかどうかで役に立たなかった。<br />
+　<br />
+　疑問――なぜPyPyの作者はRPythonなどという世にも使いにくい言語を作る必要があったのか？<br />
+　魔法の都合上、型に厳密な言語が必要なのはわかる。が、それならML系の言語ではなぜいけなかったのか。まるで見当がつかない。<br />
+　もし、最初から型に厳密な言語として設計された既存の言語でインタプリタを書けるようになったら、JITコンパイラの恩恵も世に広まるだろう。それまでは無理だ。<br />
+　<br />
+　一応そのパーサを載せておく。RPythonの恐怖をまだ知らない向きは、私の遺志を継いで、Java VM（のベンチマーク用サブセット）に挑戦されたい。<br />
+<script type="text/javascript" src="http://www.smipple.net/embed/mWUbfH07Qt75J1YT"></script></p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000752.html&amp;text=%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF%E3%81%8C%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9%E3%81%AB%E3%81%AA%E3%82%8B%E8%A9%B1&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000752.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF%E3%81%8C%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9%E3%81%AB%E3%81%AA%E3%82%8B%E8%A9%B1
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000752.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2012&#24180;01&#26376;23&#26085; 23:28
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

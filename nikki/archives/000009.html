@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 一次構造・2</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000008.html" title="携帯電話対応" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000010.html" title="三国ハヂメ「百合姫」" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000008.html">&laquo; 携帯電話対応</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000010.html">三国ハヂメ「百合姫」 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2004&#24180;02&#26376;10&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">一次構造・2</h3>
+
+<p>　先月24日の続き。</p>
+<p>　HTMLのアンカーへのリンクのように、シーケンス中の任意の地点へと飛び込むとき、その地点の状態を構成するにはどうすればいいか。</p>
+<p>　シーケンスを頭からレンダリングしてゆく（ただし時間変化はすべて「飛ぶ」で）、というのが答のひとつだった。もうひとつは、「すべてのオブジェクトの取りうる状態が一意に定まるまで、シーケンスを逆方向に解釈していく」である。</p>
+<p>　シーケンスを逆方向に解釈する――手続き的プログラミングの常識では離れ業というほかないが、HTMLの「親要素へと次々にトラバースしてゆくだけで、その要素のレンダリングに必要な情報がすべて揃う」という性質を思い出そう。一次構造は階層構造ではないため手順は複雑になるが、本質的には同じことだ。</p>
+<p>　まず、メッセージによって生じる状態変化を定義する式について思い出そう。この式のことを、以下ではアクション式と呼ぶ。アクション式は、十分短い時間で計算可能である。また、アクション式はオブジェクト（自他問わず）を参照することができるが、シーケンス中でアクション式の定義が変化することはないので（宣言的！）、シーケンス中のどの地点でも、すべての参照を数え上げることができる。参照先のオブジェクトの取りうる全状態も、シーケンスから独立に定義されている。</p>
+<p>　ということは――一次構造においては、アクション式の参照先が取りうる全状態を数え上げることができ、そのすべてについて、アクション式の値を対応させることができる。この対応づけを再帰的に繰り返すことで、シーケンス中の任意の地点におけるオブジェクトの状態を、一意に定めることができる。</p>
+<p>　このことを数学的に表現してみよう。</p>
+<p>　あるシーケンスに操作されるオブジェクト（総数n個）を <i>O<sub>1</sub>, O<sub>2</sub> ... O<sub>n</sub></i> 
+  と書き、また <i>O<sub>x</sub></i> の取りうる全状態の集合を <i>s</i>(<i>O<sub>x</sub> </i>) と書く。もし 
+  <i>O<sub>x</sub></i> が1個の真理値だけを含むなら、<i>s</i>(<i>O<sub>x</sub> </i>) ={<i>T</i>, 
+  <i>F</i> } である。<i>s</i>(<i>O<sub>1</sub> </i>) +<i>s</i>(<i>O<sub>2</sub> </i>) 
+  ...+<i>s</i>(<i>O<sub>n</sub> </i>) のことを、<i>U</i> と書く。メッセージは<i>M<sub>x</sub></i> 
+  と表す。</p>
+<p>　シーケンス中の任意の地点 <i>P</i> へと飛び込んだ後、シーケンスの逆方向解釈に着手する前のことを考える。このとき、<i>P</i> の状態はまだ制約されていないので、<i>U</i> 
+  であるといえる。</p>
+<p>　ここからまず、<i>P</i> のひとつ前のメッセージ<i>M<sub>P-1</sub></i> を解釈する。さきほど述べた対応づけというのは、<i>U</i> 
+  からの全射写像に等しい。この全射写像を、<i>m<sub>P-1</sub></i> (<i>U</i> )と表す。いまや<i>M<sub>P-1</sub></i> 
+  を解釈したことで、<i>P</i> の状態は制約を受け、<i>m<sub>P-1</sub></i> (<i>U</i> )となった。</p>
+<p>　メッセージの解釈を、<i>M<sub>P-2</sub></i> , <i>M<sub>P-3</sub></i> ... <i>M<sub>P-x</sub></i> 
+  と続けていくことにより、<i>P</i> の状態は、<i>m<sub>P-x</sub></i> ◦ <i>m<sub>P-x+1</sub></i> 
+  ... ◦ <i>m<sub>P-1</sub></i> (<i>U</i> )と制約を重ねていく。制約により<i>P</i> の状態が一意に定まれば、そこでメッセージの解釈を打ち切ることができる。</p>
+<p>　が、この理屈はこのままでは、うまくいかない。先頭までさかのぼらなければ<i>P</i> の状態が一意に定まらない、つまり逆方向に解釈する意味がないという状態が生じやすい。以下後日。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000009.html&amp;text=%E4%B8%80%E6%AC%A1%E6%A7%8B%E9%80%A0%E3%83%BB2&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000009.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E4%B8%80%E6%AC%A1%E6%A7%8B%E9%80%A0%E3%83%BB2
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000009.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2004&#24180;02&#26376;10&#26085; 02:33
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

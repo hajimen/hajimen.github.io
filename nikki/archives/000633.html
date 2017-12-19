@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: ネットワークミラーリングをWindowsにも</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000632.html" title="鉛の弾丸さえ足りていない" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000634.html" title="BLへの統制開始？" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000632.html">&laquo; 鉛の弾丸さえ足りていない</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000634.html">BLへの統制開始？ &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2009&#24180;06&#26376;29&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">ネットワークミラーリングをWindowsにも</h3>
+
+<p>　要約：<br />
+　Linuxの<a href="http://www.drbd.jp/">DRBD</a>のようなネットワークミラーリングをWindows上で実現し、ノートPCのクローンマシンを常時維持しておけば、ノートPCを失った際のダメージが軽減される。<br />
+　クローンマシンは、オリジナルマシンと同じ機種のノートPCである。クローンマシンはUSBメモリからクローン用の組み込みソフトを起動する。USBメモリを抜いて再起動するだけで、クローンマシンはオリジナルマシンになりかわることができる。</p>
+
+<a name="more"></a>
+<p>　<br />
+　そもそもの始まりは、ゴールデンウィーク直前に、我が家に入っているKDDIの光ファイバーが鳥害で断線したことだった。ちなみにこの光ファイバーは、数年前にも同じ理由で断線している。こうして私はフレッツ光に乗り換えた。KDDIに三度アナテマ。<br />
+　時期が悪かったのか、復旧はゴールデンウィーク後になるとの見通しだった。私はいつも自宅ですべての作業をしているが、回線が切れているのではどうしようもなく、某仕事先にノートPCを持っていくことになった。<br />
+　さて、マーフィーの法則――失敗する可能性のあるものは必ず失敗する。この失敗とは本物の失敗であり、いつ失敗するかは指定できない。「ここで失敗してください」とか「ここでは失敗しないでください」と注文をつけても無駄だ。本当にこんな間抜けな注文をつける馬鹿がこの世には実在するから恐ろしい。「気をつけていれば大丈夫」だの「目を離さなければ大丈夫」だのがそれだ。まともな人間だと思われたければ、こういうことはけっして口にしてはいけない。<br />
+　マーフィーの法則に従い、私は移動中の電車の中で、ノートPCを紛失した。断線の二次災害である。<br />
+　仕事用のデータのほとんどはサーバ上にあったが、作業環境および一部のデータはこのノートPCにしかなかった。この二次災害の影響によりさらに三次災害が生じたが、災害のピタゴラ装置をお目にかけたいわけではないので、それはさておき。<br />
+　私は後知恵で考えた――ノートPCの喪失にどのように備えるべきだったか？<br />
+　「HDDのバックアップ」という答えは不十分すぎる。バックアップでどれだけダメージを軽減できるかは、運に大きく左右される。バックアップを毎週土曜の夜に取っていたら、土曜の午後にノートPCの喪失が起こるかもしれない。さらに、ほとんどの場合、リストアはオリジナルを喪失してから初めて行う。オリジナルと同じ機種が用意できず、異なるハードウェア上にリストアしてみたら、<a href="http://support.microsoft.com/default.aspx?scid=kb;ja;JP314082">STOP 0x0000007B エラー</a>が出て口から泡を吹くことになる。<br />
+　運の要素を減らすには、ミラーリングが必要だ。<br />
+　ノートPCの喪失に備えるからには、ミラーリング先はPCの外に設けることになる。ここで問題になるのは、ノートPCだから、常時ミラーリング先とつながっているわけではない、という点だ。ミラーリング先と切り離されているあいだにHDDに書き込まれたデータをバッファしておく必要がある（このデータのことを以下ではコミットログ、コミットログのために確保されている記憶領域をコミットログ領域と呼ぶ）。コミットログ領域が満杯になった場合には、バッファリングをあきらめて、フルコピーをスケジュールする必要もある。これは特殊なミラーリングだ。<br />
+　幸い、この特殊なミラーリングをすでに実現しているソフトウェアがある。Linuxの<a href="http://www.drbd.jp/">DRBD</a>がそれだ。ミラーリング先がWindowsである必要はない（むしろライセンス料を避けたい）ので、DRBDのオリジナル側だけをWindows上に実装すれば、望みどおりのミラーリングが実現できる。<br />
+　これで運の要素は最小限に切り詰めたが、ミラーリング先となるPC、つまりサーバに類するマシンが必要になる、という問題が新たに発生する。そこで、ミラーリング先となるPCを、オリジナルと同じ機種のノートPCにすればいい。代替マシンの調達という問題も解決できる。<br />
+　クローンマシン（ミラーリング先となるPC）ではLinuxを動かす必要がある。しかしHDDはオリジナルとクローンで同一内容なのだから、HDDにはインストールしたくない。そこでクローンマシンは、USBメモリからブートする。<br />
+　オリジナルマシンでも、コミットログ領域はHDDからは取りたくない。これもUSBメモリ上に取ると都合がいい。<br />
+　オリジナルマシンとクローンマシン、どちらにもUSBメモリを刺すことになる。では、この2つのUSBメモリをペアとして作れば、設定の手間が省ける。このUSBメモリペアを売れば、商売として成り立つだろう。つまり、こういう製品は存在しうる。<br />
+　<br />
+　細かな点について。<br />
+　クローンマシンは常時起動している必要はない。Wake On LANというものがある。<br />
+　USBメモリはHDDより遅く、USBメモリにコミットログを書き込む以上はどうしてもパフォーマンスを損なう場合がある。ただし同期的に書き込む必要はないし、コミットログは常にシーケンシャルなので、大きなシーケンシャルライトだけが問題となる。<br />
+　フルコピーの際にもオリジナルマシンを止める必要はない。XP以降では<a href="http://support.microsoft.com/kb/889247/en-us">ボリューム シャドウ コピー サービス</a>が使える。<br />
+　DRBDはパフォーマンスや現実性のサンプルであり、必ずしも実際にDRBDを使う必要はない。<br />
+　<br />
+　設計について。<br />
+　オリジナル側は2つのコンポーネントからなる。<br />
+・ストレージクラスのフィルタドライバ<br />
+・サービス（Windowsのデーモン）<br />
+　フィルタドライバはHDDへの書き込みを監視して、主記憶上にコミットログを書き込む。サービスは、<br />
+・コミットログの転送（主記憶またはUSBメモリから、クローンマシンまたはUSBメモリへ）<br />
+・コミットログ領域の残量を監視し、不足時にはフルコピーへと方針を転換する<br />
+・クローンマシンの制御（Wake On LANで起こす、ハードウェア障害の報告を受け取る等）<br />
+・フルコピー<br />
+　などを行う。<br />
+　技術的に面倒な点は、おそらく3つある。<br />
+・DRBDの把握。特に、パフォーマンスを出すための工夫<br />
+・カーネルモードドライバを書く<br />
+・ボリューム シャドウ コピー サービス関係。特に、フルコピー開始とコミットログのあいだで整合性を取ること<br />
+　このアイディアを思いついた瞬間は、「コンセプト実証だけなら1ヶ月でやれる」と思い上がったが、よくよく検討してみると、ボリューム シャドウ コピー サービス関係がきな臭い。触る人の少ないところはヤバいと相場が決まっている。というわけで現在の見通しは、コンセプト実証に1年、ドッグフードまで2年。ぬーん。誰かかわりに作ってください。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000633.html&amp;text=%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%9F%E3%83%A9%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E3%82%92Windows%E3%81%AB%E3%82%82&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000633.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%9F%E3%83%A9%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E3%82%92Windows%E3%81%AB%E3%82%82
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000633.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2009&#24180;06&#26376;29&#26085; 19:50
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

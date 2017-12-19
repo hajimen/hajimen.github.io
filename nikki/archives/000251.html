@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: F#で.NET Remoting</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000250.html" title="1492:24" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000252.html" title="1492:25" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000250.html">&laquo; 1492:24</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000252.html">1492:25 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;02&#26376;11&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">F#で.NET Remoting</h3>
+
+<p><p>　F#で.NET Remotingしてみる。</p></p>
+
+<a name="more"></a>
+<p><p>　<a href="http://www.unisys.co.jp/club/net_view/20030303.html">この記事</a>のサンプルコードとほぼ同じことをしよう。まずはリモートオブジェクトのクラスを定義するソース（obj.fs）から。</p><br />
+<pre>module RemoteTest<br />
+<br />open System<br />
+<br />type MyRemoteObject =<br />    class<br />        inherit MarshalByRefObject<br />        val hole : unit<br />        new () = <br />        {<br />            inherit MarshalByRefObject(); <br />            hole = Console.WriteLine(&quot;Constructor called.&quot;) <br />        }<br />        override x.Finalize() = Console.WriteLine(&quot;Destructor called.&quot;)<br />        member x.sayHello s = &quot;Hello, &quot; ^ s ^ &quot;!&quot;<br />    end</pre><br />
+<p>　解説しよう。holeというunit型変数は、コンストラクタ中で手続きを実行するための非常手段だ。正しいやり方があるのかもしれないが、見つけられなかった。F#自体にはデストラクタの構文がないので、Finalize()をオーバーライドしている。正しく動くかどうかは自信がない。</p><br />
+<p>　リモートオブジェクトは.NETアセンブリとしてpublicなクラスでなければならない。F#が作る.NETアセンブリのクラスをpublicにするには、インターフェイスファイル（拡張子fsi）が要る。</p><br />
+<pre>module RemoteTest<br />
+<br />open System<br />
+<br />type MyRemoteObject =<br />    class<br />        inherit MarshalByRefObject<br />        new : unit-&gt;MyRemoteObject<br />        member sayHello : string -&gt; string<br />    end</pre><br />
+<p>　本当にこれでいいのか知らないが、とりあえず現在のコンパイラ（バージョン1.1.8.1）ではこれで動く。</p><br />
+<p>　Visual Studioでこれらのファイルをビルドする際には、Custom Buildを使う必要がある。引数指定のなかで、インターフェイスファイルを先に、ソースファイルを後に書く。-a<br />
+-g obj.fsi obj.fsという具合である。</p><br />
+<p>　続いてサーバを。</p><br />
+<pre>module ServerTest<br />
+<br />open System<br />open System.Threading<br />open System.Runtime.Remoting<br />open System.Runtime.Remoting.Channels<br />open System.Runtime.Remoting.Channels.Tcp<br />open Microsoft.FSharp.Idioms<br /><br />
+#r @&quot;obj.dll&quot;;;<br />open RemoteTest<br /><br />
+let remoteObjectType = (typeof() : typ&lt;MyRemoteObject&gt;).result<br /><br />
+let channel = new TcpChannel(16383)<br />do ChannelServices.RegisterChannel(channel, true)<br />do RemotingConfiguration.RegisterWellKnownServiceType(<br />    remoteObjectType, <br />    &quot;MyRemoteObject&quot;,<br />    WellKnownObjectMode.SingleCall)<br />let sync = new Object()<br />let _ = lock(sync) (<br />    fun () -&gt; Monitor.Wait(sync))</pre><br />
+<p>　remoteObjectTypeがわかりにくい。F#には組み込みのtypeofがないので、こういう妙なことになる。lockはbooleanを返すので_にletしている。</p><br />
+<p>　そしてクライアント。</p><br />
+<pre>module ClientTest<br />
+<br />open System<br />open System.Threading<br />open System.Runtime.Remoting<br />open System.Runtime.Remoting.Channels<br />open System.Runtime.Remoting.Channels.Tcp<br />open Microsoft.FSharp.Idioms<br />
+<br />#r @&quot;obj.dll&quot;;;<br />open RemoteTest<br /><br />
+let remoteObjectType = (typeof() : typ&lt;MyRemoteObject&gt;).result<br /><br />
+let channel = new TcpChannel()<br />do ChannelServices.RegisterChannel(channel, true)<br />let remote = Activator.GetObject(<br />    remoteObjectType,<br />    &quot;tcp://localhost:16383/MyRemoteObject&quot;)<br />let msg = match remote with<br />    | null -&gt; &quot;Remote object not found.&quot;<br />    | _ -&gt;<br />        let remoteAsSimpleType = remote :?&gt; MyRemoteObject<br />            in remoteAsSimpleType.sayHello &quot;World&quot;<br />do Console.WriteLine(msg)</pre><br />
+<p>　パターンマッチングで変数をletする。これがF#の醍醐味だ。</p></p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000251.html&amp;text=F%23%E3%81%A7.NET%20Remoting&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000251.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=F%23%E3%81%A7.NET%20Remoting
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000251.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;02&#26376;11&#26085; 04:18
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

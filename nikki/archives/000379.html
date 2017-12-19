@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 低レベル オープンソース ソフトウェア憲章</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000378.html" title="1492:71" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000380.html" title="1492:72" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000378.html">&laquo; 1492:71</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000380.html">1492:72 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;10&#26376;09&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">低レベル オープンソース ソフトウェア憲章</h3>
+
+<p><strong>概要</strong></p>
+<p>　非常にレベルの低いソースコードを、非常にレベルの低いドキュメントだけで公開しよう。</p>
+
+<a name="more"></a>
+<p><strong>緒言</strong></p>
+<p>　  現在では、高水準のオープンソース ソフトウェア（OSS）はありふれたものになりました。しっかりと練り上げられた設計、大量の高品質なドキュメント、膨大なユーザ数。私たちが日ごろ目にするOSSの大半は、非常に高水準のOSSです。</p>
+<p>　 その水準の高さを目の当たりにするにつけ、私はこう思います――「自分には高水準のOSSなんて作れない」。そこで私は高水準のOSSをあきらめ、低レベルのOSSに固有の価値を追求することにしました。</p>
+<p>　 プログラマの身の回りには、低レベルのソースコードがちらかっているはずです。コメントは皆無で関数名はでたらめ、入力データを決め打ちしていて一般的な利用は不可能、使い方など書きようもない――そんな書き捨てのコードがあるはずです。</p>
+<p>　 そのコード自体は、第三者にとっては、ほとんど価値はありません。書き捨てのコードを読んで理解して活用するよりは、ゼロから書いたほうが早いし楽しいものです。 </p>
+<p>　  しかし、そのコードが必要になった理由には、価値があります。書き捨てとはいえコードを書くからには、それなりの理由があるはずです。書かずにすませる方法を探した末に、書くしかないとの結論に至った、その過程に価値があります。</p>
+<p>　 設計にあたっては、それなりの検討を行ったはずです。その設計は実装によって検証されています。この情報にも価値があります。</p>
+<p>　  価値があります――が、どうせたいしたものではありません。非常にレベルの低いドキュメントで十分です。 </p>
+<p>　 では具体的にどんな感じで低レベルのOSSを公開するとよさそうか？　低レベルなので適当にやるのがいいでしょう。コツのようなものを私なりに考えてみて、その結果がこの文書です。</p>
+<p>　 ところで、この文書がなぜ憲章なのかというと、<a href="http://www.7andy.jp/books/detail?accd=18929094">丹羽信夫『低レ研』（アスキー）</a>をもじっているからです。 </p>
+<p><strong>目標</strong></p>
+<p>　 低レベルのOSSは、だいたい以下のような数字を目標にします。</p>
+<ul>
+  <li> 100人の目に触れる。そのうち10人は知人で、90人はGoogleからやってくる。</li>
+  <li> 3人が概要を理解する。</li>
+  <li> 0.1人が試しに実行してみる。</li>
+  <li>0.01人がそのコードを自分の仕事に活用する。</li>
+</ul>
+<p><strong>ソースコード</strong></p>
+<p>　  とりあえず法的・商売的にヤバそうなものがないことを確認しましょう。</p>
+<p>　 やることは、それだけです。 </p>
+<p>　 GPLヘッダをわざわざつけたりしてはいけません（最初からついているならOK）。定数の直書きを直したりしてもいけません。やれば低レ憲違反です。 </p>
+<p>　 異なる環境でコンパイルが通るかどうかを確かめてはいけません。そのコードを実行する人はおそらくいません。 </p>
+<p><strong>バイナリ</strong></p>
+<p>　 なくてもいいでしょう。おそらく誰も実行しません。</p>
+<p><strong>ライセンス</strong></p>
+<p>　 気分や趣味で選びましょう。</p>
+<p><strong>パッケージング</strong></p>
+<p>　 圧縮ファイルに固めたりする必要はありません。そもそもリリースという行為自体が余計です。CVSリポジトリに突っ込むだけで十分です。ただしドキュメントだけは、Googleのクローラにかかるようにしておきましょう。</p>
+<p>　 試しに実行してみることができるように、テストデータを用意しておきましょう。 </p>
+<p><strong>ドキュメント</strong></p>
+<p>　  フォーマットはHTMLです。以下の点をいい加減に書きます。</p>
+<ul>
+  <li> このソフトウェアが低レ憲に則っていること</li>
+  <li>ソフトウェアの利用目的</li>
+  <li>言語と環境</li>
+  <li>このコードを書かずにはすませられなかった理由</li>
+  <li>どうしてこんな設計になったのか</li>
+  <li>ソースのありか</li>
+  <li>試しに実行してみる方法</li>
+</ul>
+<p>　以下の点を書かないでおくと、低レベルのアピールとして有効です。</p>
+<ul>
+  <li>作者の連絡先</li>
+  <li>ドキュメントの日付</li>
+</ul>
+<p>　 以下のことを書いてはいけません。書いたら低レ憲違反です。 </p>
+<ul>
+  <li> 英語ドキュメント</li>
+  <li> ステップ バイ ステップな操作方法</li>
+</ul>
+<p><strong>機能追加とバグフィックス</strong></p>
+<p>　作者自身に必要があるときにだけやります。</p>
+<p>　作者自身が使わない機能を追加してはいけません。作者の使い方とは関係のないバグを修正してはいけません。低レベルであることの価値を、あくまで追及するのです。</p>
+<p><strong>公開方法</strong></p>
+<p>　<a href="http://sourceforge.jp/">SourceForge.jp</a>がいいでしょう。</p>
+<p>　SourceForge.jpは、高水準なOSSのための機能を盛りだくさんにしていますが、惑わされてはいけません。あくまで低レ憲に則って行動しましょう。</p>
+<p>　ドキュメントはGoogleのクローラにかかるようにしておきます。SourceForge.jpにはWebホスティングサービスがあります。 </p>
+<p><strong>実例</strong></p>
+<p>　<a href="http://kiwa.sourceforge.jp/">こんな感じ</a>です。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000379.html&amp;text=%E4%BD%8E%E3%83%AC%E3%83%99%E3%83%AB%20%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%20%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E6%86%B2%E7%AB%A0&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000379.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E4%BD%8E%E3%83%AC%E3%83%99%E3%83%AB%20%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%20%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E6%86%B2%E7%AB%A0
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000379.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;10&#26376;09&#26085; 12:54
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

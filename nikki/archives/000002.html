@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: JIS X 4052</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000001.html" title="Movable Type日記" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000003.html" title="エース桃組2004年冬号" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000001.html">&laquo; Movable Type日記</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000003.html">エース桃組2004年冬号 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2004&#24180;02&#26376;03&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">JIS X 4052</h3>
+
+<p>　ひみつ作戦を遂行中。内容はひみつ。<br />
+　<a href="http://www.jisc.go.jp/app/pager?id=102077">JIS X 4052 日本語文書の組版指定交換形式</a>を読んだ。<br />
+　…………………読まなかったことにしよう。<br />
+　読まなかったことにする前に、いくつか問題点を。</p><h4>・HTML+CSSと類似関係にあるが派生関係にない</h4><p>　かなり広範にわたって、微妙あるいは大幅に違う。このため処理系のかなりの部分を新たに実装する必要がある。<br />
+　新たに実装するだけで済めばいいが、中途半端にリソースを再利用できるため、さらに深刻な問題を引き起こしかねない。たとえば、ルビを表現するためにXHTML 1.1 Ruby Annotationに似たものを定義しているが、X4052のそれにはrp要素がない。だが、もしrp要素があれば、XHTML 1.1とリソースを共有するうえで面倒がひとつ減る。このため、非公開の隠し機能として、rp要素のある処理系が作られる可能性が高い（X4052の処理系などというものが作られるとしたら、だが）。このrp要素の有無に似た問題が、規格中のいたるところに埋まっているのだ。<br />
+　とはいえ、まだ逃げ道がある。処理系にバリデーションを要求し、バリデーションを通らない文書をはじくように要求すれば、ほとんどの隠し機能はふさげる。だが、</p><h4>・XMLではない</h4><p>　X4052が定義しているのは、タグ付きテキストであって、XMLではない。こんなもののバリデータを作ろうと試み、さらにはバリデーションを通らないデータをはじくような勇者がもしいたら、HTMLは今よりもずっと幸せなものになっていたはずだ。<br />
+　とどめに、</p><h4>・ダサい</h4><p>　問題の解法としての一般性をまったく感じない。<br />
+　では、心おきなく、読まなかったことにしよう。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000002.html&amp;text=JIS%20X%204052&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000002.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=JIS%20X%204052
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000002.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2004&#24180;02&#26376;03&#26085; 23:50
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

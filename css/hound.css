@@ -1,0 +1,42 @@
+.refererhound p {
+}
+.refererhound .date {
+	 display: none;
+}
+.refererhound .doc {
+	margin-top: 0;
+	font-size: x-small;
+}
+.refererhound h3 {
+	font-size: x-small;
+	clear: right;
+}
+.refererhound .subtitle {
+	font-size: smaller;
+	font-weight: normal;
+}
+.refererhound .new {
+	font-size: smaller;
+	font-weight: normal;
+}
+.refererhound .over {
+	font-weight: bold;
+}
+.refererhound .url {
+	display: none;
+	margin-top: 0;
+	font-size: x-small;
+	color: #008000;
+}
+.refererhound .viewall {
+	text-align: right;
+}
+.refererhound .viewbutton {
+	text-align: right;
+}
+.refererhound .viewbutton input {
+}
+.refererhound .footnote {
+	clear: right;
+	text-align: right;
+}

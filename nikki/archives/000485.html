@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 巨大で身近なドラマ</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000484.html" title="少コミを読む（第30回・2007年第18号）" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000486.html" title="意味がわからない記事" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000484.html">&laquo; 少コミを読む（第30回・2007年第18号）</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000486.html">意味がわからない記事 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2007&#24180;08&#26376;30&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">巨大で身近なドラマ</h3>
+
+<p>　<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=130734.607819786&type=10&subid="></script>Raymond Chen『Windowsプログラミングの極意』（アスキー）</a>を読んだ。<br />
+　最初のWindows（バージョン1.0、1985年）は、ゲームボーイアドバンス並みのハードウェアで動いた。そのときにはすでにGlobalAllocがあり、GetWindowTextがあった。どちらもハードウェアに密着した仕様になっていた。この密着がのちにWindows 3.1の成功をもたらす。Windows 3.1は、当時のボリュームゾーンのPCから最高の実行速度を絞り出して、OS/2とMacを叩きのめした。<br />
+　Win64にもGlobalAllocとGetWindowTextがある。<br />
+　途方もないことが――途方もないことが起きたのだ。<br />
+　<br />
+　本書はそのドラマの端々をエピソード的に垣間見せてくれる。バイナリ互換性、ソースコード互換性、セキュリティ、ユーザビリティ、サードパーティの糞ドライバ。天文学のスケールと歴史学の身近さを兼ね備えたエピソードの数々に、ため息の連続だ。<br />
+　<br />
+　しかし391ページ、「UTF-8をANSIコードページとして設定できないのはなぜか」は納得できない。<br />
+　「UTF-8をANSIコードページに設定しても、MBCSのソフトウェアが即Unicode対応になるわけではない」という著者の説明は正しい。しかし別の利点、「MacOS XなどのUTF-8対応OSとのソースコードの共有」はどうなのか。Windows以外の環境では、wchar_tによるUnicode対応はとっくの昔に放棄された。<br />
+　UTF-8をANSIコードページに設定できないのは、.NET移行のための怠慢か、それともソースコードの共有に対して分断を図っているか、あるいはその両方としか考えられない。それを言おうとせず、「それほど利益があるわけではない」という説明だけで済ませる態度に、不信感を覚える。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000485.html&amp;text=%E5%B7%A8%E5%A4%A7%E3%81%A7%E8%BA%AB%E8%BF%91%E3%81%AA%E3%83%89%E3%83%A9%E3%83%9E&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000485.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E5%B7%A8%E5%A4%A7%E3%81%A7%E8%BA%AB%E8%BF%91%E3%81%AA%E3%83%89%E3%83%A9%E3%83%9E
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000485.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2007&#24180;08&#26376;30&#26085; 20:57
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>
