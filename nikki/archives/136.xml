@@ -1,4 +1,4 @@
-<rss version="0.91"><channel>
+﻿<rss version="0.91"><channel>
 <title>Referer Houndの設計と実装・その2</title>
 <link>http://kaoriha.org/nikki/archives/000146.html</link>
 <description>　Referer Houndの実装上、最大の難関はおそらく、リンク元のHTMLの処理である。 　まず、encodingを処理するのが難しい。このことは以前書いた。現在の実装では、 1. レスポンスヘッダのcharsetを見る 2. レスポンスヘッダにcharsetが指定されていない場合、日本語を前提としてテキストから推測する 3. パーサにcharsetを渡す 4. パーサがmeta要素のcharsetを見る 5. meta要素のcharsetが解釈不能である場合、渡されたcharsetを用いる 　という具合になっている。 　HTMLParserは粘りのきくパーサを目指しているらしく、実際かなりのものだが、meta要素のcharsetが解釈不能だと例外を投げる。IEのパーサの粘りは尋常ではなく、おかげで現実世界のHTMLにはすさまじいものがある。もしIEがFirefoxのように簡単に落ちてくれたなら、この世はもう少しよいところになるだろう。 　私はPerlやPHPのことはまるで知らないので、どんなHTMLパーサがあるかわからない。Referer Houndを実装するプラットフォームを選ぶときは、利用できるHTMLパーサの能力をまず確かめるべきである。この点で、IEが使えるASP.NETは有利だ。 　リンクを探すときに、JavaScriptによるリンクのことを忘れてはならない。現在の実装では、script要素内でURLらしき文字列リテラルを探して照合している。...</description>

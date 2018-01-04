@@ -1,57 +1,57 @@
-<html>
+﻿<html>
 
 <head>
 <meta http-equiv="Content-Type"
 content="text/html; charset=Shift_JIS">
 <meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
-<title>carol CVS Repository�̐ݒ�</title>
+<title>carol CVS Repositoryの設定</title>
 <script src="/ga.js"></script>
 
 </head>
 
 <body bgcolor="#E0E7F0" text="#1F180F" link="#6666FF"
 vlink="#FF6666">
-<h1>�ʂ��܂� CVS Repository�̐ݒ�</h1>
-<p>�@���̐����́A�ȉ��̏�������������Ă��邱�Ƃ�O��Ƃ��Ă��܂��B</p>
-<p>�Epublic key�����[���ő����āA�ݒ芮���������Ƃ�m�炳��Ă���</p>
-<p>�EEclipse���C���X�g�[���ς�</p>
-<h2>1. Eclipse��CVS���|�W�g���[�E�G�N�X�v���[���[���J��</h2>
-<p>�@�܂��u�悤�����v�^�u�����ƁA�ȉ��̉�ʂɂȂ�܂��B</p>
+<h1>ぬすまい CVS Repositoryの設定</h1>
+<p>　この説明は、以下の条件が満たされていることを前提としています。</p>
+<p>・public keyをメールで送って、設定完了したことを知らされている</p>
+<p>・Eclipseをインストール済み</p>
+<h2>1. EclipseのCVSリポジトリー・エクスプローラーを開く</h2>
+<p>　まず「ようこそ」タブを閉じると、以下の画面になります。</p>
 <p><img src="perspective.gif" width="1024" height="768"></p>
-<p>�@�}�Ɏ������{�^���������ƁACVS���|�W�g���[�E�G�N�X�v���[���[���I���ł���̂ŁA������J���܂��B</p>
+<p>　図に示したボタンを押すと、CVSリポジトリー・エクスプローラーが選択できるので、それを開きます。</p>
 <p><img src="repository.gif" width="1024" height="768"></p>
-<p>�@�J���ƁA��̂悤�ɂȂ�͂��ł��B</p>
-<h2>2. Ext�ڑ����\�b�h��extssh��ݒ�</h2>
-<p>�@���j���[�o�[����u�E�B���h�E(W)���ݒ�(P)�v��I�����A�ݒ�E�B���h�E���J���܂��B<br>
-  �@���̃y�C���Łu�`�[����CVS��Ext�ڑ����\�b�h�v���J���A�u�ڑ��ɕʂ̐ڑ����\�b�h�^���g�p�v��I���A�ڑ��^�C�v�Ɂuextssh�v��ݒ肵�܂��B</p>
-<p><img src="preference2.gif" width="672" height="537">�@</p>
-<p>�@�}�Ɏ�����Ă���Ƃ����extssh��ݒ肵�Ă��������B</p>
-<h2>3. �u�t�@�C���E�R���e���c�v���J���A�t�@�C���g���q��ǉ�����</h2>
+<p>　開くと、上のようになるはずです。</p>
+<h2>2. Ext接続メソッドにextsshを設定</h2>
+<p>　メニューバーから「ウィンドウ(W)→設定(P)」を選択し、設定ウィンドウを開きます。<br>
+  　左のペインで「チーム→CVS→Ext接続メソッド」を開き、「接続に別の接続メソッド型を使用」を選択、接続タイプに「extssh」を設定します。</p>
+<p><img src="preference2.gif" width="672" height="537">　</p>
+<p>　図に示されているとおりにextsshを設定してください。</p>
+<h2>3. 「ファイル・コンテンツ」を開き、ファイル拡張子を追加する</h2>
 <p><img src="preference3.gif" width="635" height="537"></p>
-<p>�@�utjs�v�uks�v�uinf�v��ǉ����A���e��ASCII�ɂ��Ă��������B</p>
-<p>�@�uogg�v��ǉ����A���e���o�C�i���[�ɂ��Ă��������B</p>
-<h2>4. �u�������郊�\�[�X�v���J���A�u��������p�^�[���v��Thumbs.db��ǉ�����</h2>
-<p>�@���|�W�g���ɓ��ꂽ���Ȃ��t�@�C�������ق��ɂ���ꍇ�ɂ́A�����Œǉ����܂��B</p>
-<h2>5. �u���[�N�x���`�v���J���A�u���[�N�X�y�[�X�������I�ɍX�V(R)�v��I������</h2>
+<p>　「tjs」「ks」「inf」を追加し、内容をASCIIにしてください。</p>
+<p>　「ogg」を追加し、内容をバイナリーにしてください。</p>
+<h2>4. 「無視するリソース」を開き、「無視するパターン」にThumbs.dbを追加する</h2>
+<p>　リポジトリに入れたくないファイル名がほかにある場合には、ここで追加します。</p>
+<h2>5. 「ワークベンチ」を開き、「ワークスペースを自動的に更新(R)」を選択する</h2>
 <p>&nbsp;</p>
-<h2>6. OK�������āu�ݒ�v����ACVS���|�W�g���[�E�G�N�X�v���[���[�ɖ߂�</h2>
+<h2>6. OKを押して「設定」を閉じ、CVSリポジトリー・エクスプローラーに戻る</h2>
 <p><img src="repository.gif" width="1024" height="768"></p>
-<h2>7. CVS���|�W�g���[�E�G�N�X�v���[���[���Ń}�E�X���E�N���b�N���A�u�V�K(N)�����|�W�g���[�E���P�[�V����(R)�v��I������</h2>
-<p>�@����������ł���΁A���̂悤�ȃE�B���h�E���J���܂��B����Ƀ��|�W�g���[�E���P�[�V������ݒ肵�܂��B</p>
+<h2>7. CVSリポジトリー・エクスプローラー内でマウスを右クリックし、「新規(N)→リポジトリー・ロケーション(R)」を選択する</h2>
+<p>　正しく操作できれば、下のようなウィンドウが開きます。これにリポジトリー・ロケーションを設定します。</p>
 <p><img src="location2.gif" width="438" height="534"></p>
-<p>�@�}�Ɏ�����Ă���悤�ɐݒ肵�܂��B�u���[�U���v�̂Ƃ���͊e���̃��[�U�������܂��B</p>
-<h2>8. CVS���|�W�g���[���J���A�uHermes�v���E�N���b�N���A�u�`�F�b�N�A�E�g(C)�v��I������</h2>
-<p>�@�������܂��ړ]���Ă��Ȃ��̂ŁA���ۂƐ}�ɂ͑����̍�������܂��B</p>
+<p>　図に示されているように設定します。「ユーザ名」のところは各自のユーザ名を入れます。</p>
+<h2>8. CVSリポジトリーを開き、「Hermes」を右クリックし、「チェックアウト(C)」を選択する</h2>
+<p>　実物がまだ移転していないので、実際と図には多少の差があります。</p>
 <p><img src="repository3.gif" width="1024" height="768"></p>
-<p> �@�T�[�o����S�t�@�C�����擾���܂��B���Ȃ莞�Ԃ�������܂��B</p>
-<h2>9. �u���\�[�X�v�p�[�X�y�N�e�B�u���J��</h2>
+<p> 　サーバから全ファイルを取得します。かなり時間がかかります。</p>
+<h2>9. 「リソース」パースペクティブを開く</h2>
 <p><img src="resource.gif" width="1024" height="768"></p>
-<p> �@�E��[�̃o�[�̃^�u�̒[�����Ƀh���b�O����ƁA�u���\�[�X�v�p�[�X�y�N�e�B�u�̃{�^�����o�Ă���̂ŁA����������܂��B</p>
-<h2>�I���</h2>
-<p> �@�uHermes�v�̃c���[���J���ƁA�t�@�C���������܂��B</p>
-<p>�@Eclipse�t�H���_����workspace�t�H���_���ɁAHermes�t�H���_���ł��Ă��܂��B���̒��Ƀt�@�C��������܂��B</p>
+<p> 　右上端のバーのタブの端を横にドラッグすると、「リソース」パースペクティブのボタンが出てくるので、これを押します。</p>
+<h2>終わり</h2>
+<p> 　「Hermes」のツリーを開くと、ファイルが見えます。</p>
+<p>　Eclipseフォルダ内のworkspaceフォルダ内に、Hermesフォルダができています。その中にファイルがあります。</p>
 <p>&nbsp;</p>
 
-<p align="center"><a href="first.html">[�ŏ��ɖ߂�]</a> </p>
+<p align="center"><a href="first.html">[最初に戻る]</a> </p>
 </body>
 </html>

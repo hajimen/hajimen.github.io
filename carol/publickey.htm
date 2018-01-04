@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 
 
 
@@ -10,7 +10,7 @@ content="text/html; charset=x-sjis">
 
 <meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
 
-<title>public key�̏���</title>
+<title>public keyの準備</title>
 
 <script src="/ga.js"></script>
 
@@ -24,29 +24,29 @@ vlink="#FF6666">
 
 
 
-<h1>public key�̏���</h1>
+<h1>public keyの準備</h1>
 
-<h2>1. Eclipse���N������</h2>
+<h2>1. Eclipseを起動する</h2>
 
-<p>�@eclipse�t�H���_���̃A�C�R��<img src="eclipse_icon.gif" width="59" height="56">�ŋN�����܂��B</p>
+<p>　eclipseフォルダ内のアイコン<img src="eclipse_icon.gif" width="59" height="56">で起動します。</p>
 
-<h2>2. ���j���[�o�[����u�E�B���h�E(W)���ݒ�(P)�v��I�����A�ݒ�E�B���h�E���J��</h2>
-<p>�@�����̃y�C�����A�u�`�[����CVS��SSH2 �ڑ����\�b�h�v�ƊJ���Ă䂫�A�ȉ��̃E�B���h�E���o���܂��B</p>
+<h2>2. メニューバーから「ウィンドウ(W)→設定(P)」を選択し、設定ウィンドウを開く</h2>
+<p>　左側のペインを、「チーム→CVS→SSH2 接続メソッド」と開いてゆき、以下のウィンドウを出します。</p>
 <p><img src="eclipse2.gif" width="672" height="537"></p>
-<p>�@3�Ԗڂ̑���́Acygwin���C���X�g�[�����Ă���l�Ƃ����łȂ��l�ƂňႢ�܂��B</p>
+<p>　3番目の操作は、cygwinをインストールしてある人とそうでない人とで違います。</p>
 
-<h2>3. cygwin����F�uSSH2 �z�[���v�ɁuC:\cygwin\home\<em>���[�U��</em>\.ssh�v��ݒ肷��</h2>
-<p>�@�u���[�U���v��Windows�̃��[�U���ł��B</p>
-<h2>3. cygwin�Ȃ��F�u���Ǘ��v�^�u���J���ADSA���𐶐�����</h2>
-<p>�@�܂��A�uDSA���̐����v���N���b�N���܂��B</p>
-<p> �@���ɁA�o�Ă����ussh-dss�`�v�ȉ��̕�������R�s�y���Ď��Ƀ��[���ő���܂��B���̕�����public key�ł��B</p>
-<p>�@���̂Ƃ��A���[���{������public key���������ނƁA���s������ɑ}�������Ȃǂ̕ύX�������Đ���������܂���Bpublic key���������񂾃e�L�X�g�t�@�C�������A�����Y�t���đ����Ă��������B</p>
-<p> �@�Ō�ɁA�u�閧���̕ۊǁv���N���b�N���A�u�p�X�t���[�Y�ی�Ȃ��ł��̔閧����ۊǂ��܂����H�v�Ɛu���ꂽ��OK�Ɠ����A�f�t�H���g�ŕ\�������t�H���_�ƃt�@�C�����ł��̂܂ܕۑ����܂��B</p>
+<h2>3. cygwinあり：「SSH2 ホーム」に「C:\cygwin\home\<em>ユーザ名</em>\.ssh」を設定する</h2>
+<p>　「ユーザ名」はWindowsのユーザ名です。</p>
+<h2>3. cygwinなし：「鍵管理」タブを開き、DSA鍵を生成する</h2>
+<p>　まず、「DSA鍵の生成」をクリックします。</p>
+<p> 　次に、出てきた「ssh-dss～」以下の文字列をコピペして私にメールで送ります。この文字列がpublic keyです。</p>
+<p>　このとき、メール本文中にpublic keyを書き込むと、改行が勝手に挿入されるなどの変更が入って正しく送れません。public keyを書き込んだテキストファイルを作り、それを添付して送ってください。</p>
+<p> 　最後に、「秘密鍵の保管」をクリックし、「パスフレーズ保護なしでこの秘密鍵を保管しますか？」と訊かれたらOKと答え、デフォルトで表示されるフォルダとファイル名でそのまま保存します。</p>
 <p><img src="eclipse3.gif" width="672" height="537"></p>
-<h2>4. ���[�U�������ɒm�点��icygwin�Ȃ��Ȃ�public key���j</h2>
-<p>�@���[����hajime@kaoriha.org�܂ő����Ă��������B</p>
-<p>�@������ݒ芮���̘A�����䂯�΁Apublic key�̏����͊����ł��B</p>
-<p align="center"><a href="first.html">[�ŏ��ɖ߂�]</a> </p>
+<h2>4. ユーザ名を私に知らせる（cygwinなしならpublic keyも）</h2>
+<p>　メールでhajime@kaoriha.orgまで送ってください。</p>
+<p>　私から設定完了の連絡がゆけば、public keyの準備は完了です。</p>
+<p align="center"><a href="first.html">[最初に戻る]</a> </p>
 
 </body>
 

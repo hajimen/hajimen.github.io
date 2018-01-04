@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
 var isTsumeEnabled = true;
 
 $(document).bind("contentupdated", function(e) {

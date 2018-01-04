@@ -1,4 +1,4 @@
-rh_houndScriptURL = "http://www.hound.jp/hound.js";
+﻿rh_houndScriptURL = "http://www.hound.jp/hound.js";
 rh_houndScriptOldURL = "http://www.refererhound.jp/hound.js";
 rh_houndURL = "http://www.hound.jp/server/hound";
 rh_houndManagementURL = "http://www.hound.jp/management/login.jsp";

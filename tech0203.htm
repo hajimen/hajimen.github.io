@@ -1,11 +1,11 @@
-<html>
+﻿<html>
 
 <head>
 <meta http-equiv="Content-Type"
 content="text/html; charset=x-sjis">
 <meta name="robots" content="noindex,nofollow">
 <meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
-<title>�M���ł��Ȃ��؂̏�� 2002�N3��</title>
+<title>信頼できない筋の情報 2002年3月</title>
 <script src="/ga.js"></script>
 
 </head>
@@ -13,18 +13,18 @@ content="text/html; charset=x-sjis">
 <body bgcolor="#E0E7F0" text="#1F180F" link="#6666FF"
 vlink="#FF6666">
 
-<h1 align="center">�M���ł��Ȃ��؂̏��</h1>
+<h1 align="center">信頼できない筋の情報</h1>
 
-<p align="center"><a href="tech0202.htm">[�挎�̏��]</a></p>
+<p align="center"><a href="tech0202.htm">[先月の情報]</a></p>
 
-<h2>2002�N</h2>
+<h2>2002年</h2>
 
-<h3>3��31��</h3>
+<h3>3月31日</h3>
 
-<p>�@m���B<br>
-�@z�I�[�_�[�̊Ǘ����@���킩���Ă����B<em>container</em>.add(<em>component</em>,
-..., 0)�Ƃ��ƑO�ɏo��B�Ȃ�<em>component</em>�͂��ł�<em>container</em>�ɓ����Ă�����̂ł��A��d�o�^�ɂȂ炸�ɂ����Ɠ����B<br>
-�@���������̕��@�ɂ͌��ׂ��������B</p>
+<p>　m作戦。<br>
+　zオーダーの管理方法がわかってきた。<em>container</em>.add(<em>component</em>,
+..., 0)とやると前に出る。なお<em>component</em>はすでに<em>container</em>に入っているものでも、二重登録にならずにちゃんと動く。<br>
+　しかしこの方法には欠陥があった。</p>
 <script language="JavaScript">
 <!--
 size = Math.min(document.body.clientHeight * 142,
@@ -38,73 +38,73 @@ document.write("</applet>");
 //-->
 </script>
 
-<p>�@���̃A�v���b�g�iIE��p�B�������炸�j�̍���ɂ���2���̃J�[�h�̂������ŁA�|�C���^�����E�ɓ������Ă݂Ăق����B��ʂ�������������͂����B<br>
-�@�����2�̌����ɂ��B�ЂƂ́A�R���|�[�l���g��add���Ȃ������ƂŁA�R���|�[�l���g�̂���G���A�������I�Ƀo�b�N�O���E���h�J���[�œh��Ԃ���邽�߂ł���B�܂��o�b�N�O���E���h�J���[�œh���A���ꂩ��}����`�悷��̂ŁA�������������Bupdate()���I�[�o�[���C�h���Ă����̓���͎~�߂��Ȃ��B<br>
-�@�����ЂƂ̌����́A�R���|�[�l���g��add���Ȃ����Ƃ��́AInvalidateRect�����̃��J�j�Y�����n���ŁA2��Indalidate���ꂽ�ꏊ�̗������܂ދ�`��Invalidate���Ă��܂����߂ł���B���̂��߁A�����̑傫�ȃJ�[�h�ƁA����̏����ȃJ�[�h�̂������̋�Ԃ���������ƂɂȂ�B<br>
-�@�ȏ�AJava��GUI���Ȃ�����قǏd�����A���̈�[���������ł����Ǝv���B<br>
-�@Windows��GUI�������̂́A�l�C�e�B�u���̂����΂���ł͂Ȃ��B�������������ȂƂ���ŁA���ɂ������܂����H�v���R�c�R�c�Əd�˂Ă��邩��ł�����BMS�́A���Ȃ��Ƃ��̂́A�ق�̂킸���̍������̂��߂ɂ����Ɨ܂Ɗ��ƃo�O��ɂ��܂Ȃ���Ђ������̂��B</p>
+<p>　このアプレット（IE専用。あしからず）の左上にある2枚のカードのあいだで、ポインタを左右に動かしてみてほしい。画面が激しくちらつくはずだ。<br>
+　これは2つの原因による。ひとつは、コンポーネントをaddしなおすことで、コンポーネントのあるエリアが強制的にバックグラウンドカラーで塗りつぶされるためである。まずバックグラウンドカラーで塗られ、それから図柄を描画するので、ちらつきが生じる。update()をオーバーライドしてもこの動作は止められない。<br>
+　もうひとつの原因は、コンポーネントをaddしなおすときの、InvalidateRect相当のメカニズムが馬鹿で、2つのIndalidateされた場所の両方を含む矩形をInvalidateしてしまうためである。このため、中央の大きなカードと、左上の小さなカードのあいだの空間がちらつくことになる。<br>
+　以上、JavaのGUIがなぜあれほど重いか、その一端をお見せできたと思う。<br>
+　WindowsのGUIが速いのは、ネイティブ環境のせいばかりではない。こういう小さなところで、実にせせこましい工夫をコツコツと重ねているからでもある。MSは、少なくとも昔は、ほんのわずかの高速化のためにも血と涙と汗とバグを惜しまない会社だったのだ。</p>
 
-<p>�@���Ȃ݂ɏ�̃A�v���b�g�����A�u���E�U�̃T�C�Y��ς��ă����[�h���Ă݂Ăق����B<br>
-�@�A�L�o�̃G���Q�[���̓X���f���ŁA���炵�����X�P�[�����O���ꂽ�摜�����邽�тɁA�E�F�[�u���b�g���k�̐��E���AJPEG2000�ƍق̓������A�𑜓x�t���[�̎������F�鎄�ł���B</p>
+<p>　ちなみに上のアプレットだが、ブラウザのサイズを変えてリロードしてみてほしい。<br>
+　アキバのエロゲー屋の店頭デモで、汚らしくリスケーリングされた画像を見るたびに、ウェーブレット圧縮の世界を、JPEG2000独裁の到来を、解像度フリーの実現を祈る私である。</p>
 
-<h3>3��30��</h3>
+<h3>3月30日</h3>
 
-<p>�@m���B<br>
-�E�J�[�h�Q�[���p�̃��C�A�E�g�}�l�[�W���ƃR���|�[�l���g�����A�������͂ǂ������璲�B����<br>
-�EdrawImage�̌��ȋ����i������Thread.yield()���Ă��A�C���[�W�̃��[�h���I���Ȃ��ꍇ������j����������</p>
+<p>　m作戦。<br>
+・カードゲーム用のレイアウトマネージャとコンポーネントを作る、もしくはどこかから調達する<br>
+・drawImageの嫌な挙動（いくらThread.yield()しても、イメージのロードが終わらない場合がある）を解決する</p>
 
-<p>�@����N���X�t�@�C����H�킹��ƁAKJC Suite��1.5B�̋t�A�Z���u����������Bjava.lang.ArrayIndexOutOfBoundsException�����疾�炩�ȃo�O���B<br>
-�@������KJC Suite��2.1A�ɂ����Ƃ���A�܂����������Ȃ��Ȃ����B���Ȃ݂�Sun
-JDK1.4�BGNU getOpt�̃o�O�炵���B</p>
+<p>　あるクラスファイルを食わせると、KJC Suiteの1.5Bの逆アセンブラが落ちる。java.lang.ArrayIndexOutOfBoundsExceptionだから明らかなバグだ。<br>
+　そこでKJC Suiteを2.1Aにしたところ、まったく動かなくなった。ちなみにSun
+JDK1.4。GNU getOptのバグらしい。</p>
 
-<h3>3��21��</h3>
+<h3>3月21日</h3>
 
-<p>�@�ԎD�̂��������Ɏ������l�J�[�h�Q�[���A�u���G���G�v��Java�ł���邱�ƂɂȂ����B�{����m���Ɩ�������B<br>
-�@���������ƈႤ������3�B<br>
-1. �J�[�h��C�x���g���̖���<br>
-�@���͂���������m��Ȃ��̂ŁA���̂̓��G���G�̂��̂ŋL�q����B<br>
-�@���̂̑���Ȃ������������ŕ���Ă����B<br>
-�E�J�[�h��z���Ă��炠����i���邢�͗����j�܂ł��u�Z�b�g�v�Ƃ���B<br>
-�E����Ǝ�������D��؂��ĐώD���߂���܂ł��u�^�[���v�Ƃ���B<br>
-2. ��<br>
-�@���������������ł��₷���炵���B<br>
-3. 1�_���ŏ����Ă�10�_���ŏ����Ă����p�͓���<br>
-�@���̈Ӗ��͏d���B<br>
-�@������������e�Ԃ��g���؂��Ă��āA����Ƀ��[�h����Ă���A�Ƃ����󋵂��l���Ă݂悤�B���Ƃ�1�G�̖��ł��A����ɖ������ꂽ�瑦������B�t�ɁA��1�Z�b�g��1�G�̖����ł��Ă��A������n���͂��Ȃ��B<br>
-�@���̏󋵂��A���̊֐�R<sub>��</sub>�ŕ\������B<br>
-�@������n�܂�Z�b�g�i�܂��J�[�h�͔z���Ă��Ȃ���ԁj�Őe�����v���C���[�����Ƃ��A�q�����v���C���[�����Ƃ���B���̎c��e�Ԑ���x�A���̎c��e�Ԑ���y�Ƃ���B���[���ɂ��x
-�� 6�Ay �� 6�ł���B���̖G���ƃ��̖G���̍���z�Ƃ���B�����Q�[���ɏ��m�����AR<sub>��</sub>(x,
-y, z)�Ƃ���B<br>
-�@x = y = 0�̓��[���゠�肦�Ȃ��Z�b�g�����A�b���ȒP�ɂ��邽�߂ɁAR<sub>��</sub>(0,
-0, z)���`����Bz �� 0�̂Ƃ�R<sub>��</sub> = 1�Az ��
-0�̂Ƃ�R<sub>��</sub> = 0�Ƃ���B<br>
-�@�֐�R<sub>��</sub>�̐����͂��낢�날�邪�A�ȒP�ɂ킩�邱�Ƃ������͖̂ʓ|�Ȃ̂ŏȗ�����B<br>
-�@R<sub>��</sub>�����܂��Ă����A�����ł����Ƃ��̑Ή�������ł���B����ɂ����点��댯��`���Ă����s��錾����̂͂Ȃ����H�@���̂ق����Q�[���ɏ��Ă�m�����オ�邩��ł���B<br>
-�@�����邩���s�������肷��Ƃ��́A�����̎�D�̖G����p�Ƃ���B���Ɏ����ɖ����ł���܂ł̂������ɑ���ɖ����ł���m����r<sub>h</sub>�A���̂Ƃ��̑���̎�D�̖G���̊��Ғl��E<sub>h</sub>�Ƃ���B���Ɏ����ɖ����ł����Ƃ��́A�����̎�D�̖G���̊��Ғl��E<sub>s</sub>�Ƃ���B���s�����Ƃ��̎����̏�����R<sub>c</sub>�A���������Ƃ��̂�R<sub>e</sub>�Ƃ���ƁA<br>
-�ER<sub>e</sub> = R<sub>��</sub>(x, y, z + p)<br>
-�ER<sub>c</sub> �� (1 - R<sub>��</sub>(y, x, - z + E<sub>h</sub>))
-�~ r<sub>h</sub> �{ R<sub>��</sub>(x, y, z + E<sub>s</sub>) �~
+<p>　花札のこいこいに似た同人カードゲーム、「モエモエ」のJava版を作ることになった。本作戦をm作戦と命名する。<br>
+　こいこいと違う部分は3つ。<br>
+1. カードやイベント等の名称<br>
+　私はこいこいを知らないので、名称はモエモエのもので記述する。<br>
+　名称の足りない部分をここで補っておく。<br>
+・カードを配ってからあがる（あるいは流れる）までを「セット」とする。<br>
+・相手と自分が手札を切って積札をめくるまでを「ターン」とする。<br>
+2. 役<br>
+　こいこいより役ができやすいらしい。<br>
+3. 1点差で勝っても10点差で勝っても効用は同じ<br>
+　この意味は重い。<br>
+　相手も自分も親番を使い切っていて、相手にリードされている、という状況を考えてみよう。たとえ1萌の役でも、相手に役を作られたら即死する。逆に、第1セットで1萌の役ができても、あがる馬鹿はいない。<br>
+　この状況を、次の関数R<sub>α</sub>で表現する。<br>
+　今から始まるセット（まだカードは配られていない状態）で親を持つプレイヤーをαとし、子を持つプレイヤーをβとする。αの残り親番数をx、βの残り親番数をyとする。ルールによりx
+≦ 6、y ≦ 6である。αの萌数とβの萌数の差をzとする。αがゲームに勝つ確率を、R<sub>α</sub>(x,
+y, z)とする。<br>
+　x = y = 0はルール上ありえないセットだが、話を簡単にするために、R<sub>α</sub>(0,
+0, z)を定義する。z ＞ 0のときR<sub>α</sub> = 1、z ＜
+0のときR<sub>α</sub> = 0とする。<br>
+　関数R<sub>α</sub>の性質はいろいろあるが、簡単にわかることを書くのは面倒なので省略する。<br>
+　R<sub>α</sub>が決まってこそ、役ができたときの対応を決定できる。相手にあがらせる危険を冒しても続行を宣言するのはなぜか？　そのほうがゲームに勝てる確率が上がるからである。<br>
+　あがるか続行かを決定するときの、自分の手札の萌数をpとする。次に自分に役ができるまでのあいだに相手に役ができる確率をr<sub>h</sub>、そのときの相手の手札の萌数の期待値をE<sub>h</sub>とする。次に自分に役ができたときの、自分の手札の萌数の期待値をE<sub>s</sub>とする。続行したときの自分の勝率をR<sub>c</sub>、あがったときのをR<sub>e</sub>とすると、<br>
+・R<sub>e</sub> = R<sub>α</sub>(x, y, z + p)<br>
+・R<sub>c</sub> ≒ (1 - R<sub>α</sub>(y, x, - z + E<sub>h</sub>))
+× r<sub>h</sub> ＋ R<sub>α</sub>(x, y, z + E<sub>s</sub>) ×
 (1 - r<sub>h</sub>)<br>
-�@�ƂȂ�BR<sub>c</sub> �� R<sub>e</sub>�̂Ƃ����s�ł���B<br>
-�@���̎��̉E�ӂ�R<sub>ca1</sub>�Ƃ���BR<sub>ca1</sub>��R<sub>c</sub>�̋ߎ��ɂȂ��Ă���B���ɑ��肩�����ɖ����ł����Ƃ��ɂ͕K��������A�Ɖ��肵�Ă���Ԃ�R<sub>c</sub>�ƈقȂ��Ă���B���ɖ����ł����Ƃ��ɂ����邩�ۂ��܂ōl����ƁA������v�Z���s�\�ɂȂ�̂ŁA���܂��܂ȏ����ɏꍇ�������čl����B���Ƃ��΁A1�G�̖��𖳎��ł�������ƁA�����łȂ�����������B<br>
-�@R<sub>c</sub>�̂��悢�ߎ������A���ׂĂ̗v�ł���B���������Ƃ����Q�[�����A���s�̐錾�u���������v�̖��ŌĂ΂�Ă���̂��ނׂȂ邩�Ȃ��B<br>
-�@�����ł���m��r��A�G���̊��ҒlE�ɂ��Ă̋c�_�͌���B</p>
+　となる。R<sub>c</sub> ＞ R<sub>e</sub>のとき続行である。<br>
+　下の式の右辺をR<sub>ca1</sub>とする。R<sub>ca1</sub>はR<sub>c</sub>の近似になっている。次に相手か自分に役ができたときには必ずあがる、と仮定しているぶんR<sub>c</sub>と異なっている。次に役ができたときにあがるか否かまで考えると、事実上計算が不可能になるので、さまざまな条件に場合分けして考える。たとえば、1萌の役を無視できる条件と、そうでない条件がある。<br>
+　R<sub>c</sub>のよりよい近似こそ、すべての要である。こいこいというゲームが、続行の宣言「こいこい」の名で呼ばれているのもむべなるかなだ。<br>
+　役ができる確率rや、萌数の期待値Eについての議論は後日。</p>
 
-<h3>3��10��</h3>
+<h3>3月10日</h3>
 
-<p>�@exe��DLL�����āA�����f��f�����B�N�����ɂ܂������Ӗ��s���̃����^�C���G���[���o���ė�����B<br>
-�@���_���炢���΁ASTL��map�������ł���BVC++6��STL�͎E�l�I�ɒn���I�Ȃ̂ŁA���������Ӗ��s���̎��Ԃ�������B<br>
-�@�Ƃ����킯��STLport�ɂ����BPlatform SDK���C���X�g�[�����Ă��鐳����MS�҂́A<a
-href="http://tazthecat.net/~isaac/msvcjournal.html">����</a>���Q�ƁB</p>
+<p>　exeをDLL化して、血反吐を吐いた。起動時にまったく意味不明のランタイムエラーを出して落ちる。<br>
+　結論からいえば、STLのmapが原因である。VC++6のSTLは殺人的に地獄的なので、こういう意味不明の事態が生じる。<br>
+　というわけでSTLportにした。Platform SDKをインストールしている正しいMS者は、<a
+href="http://tazthecat.net/~isaac/msvcjournal.html">ここ</a>を参照。</p>
 
-<h3>3��8��</h3>
+<h3>3月8日</h3>
 
-<p>�@PC�J�����A�A���d���^�b�v�AWake On Lan���g���āA���J�g���p�̉��u�f�o�b�O���𐮂����B<br>
-�@40km�̂��Ȃ��ɂ���@�B�������A������������I�@�A�j�L�A���ꂪADSL�̗͂Ȃ̂��I</p>
+<p>　PCカメラ、連動電源タップ、Wake On Lanを使って、メカトロ用の遠隔デバッグ環境を整えた。<br>
+　40kmのかなたにある機械が動く、動きが見える！　アニキ、これがADSLの力なのか！</p>
 
-<p>�@</p>
+<p>　</p>
 
-<p align="center"><a href="menu.html">[���j���[�ɖ߂�]</a>
+<p align="center"><a href="menu.html">[メニューに戻る]</a>
 </p>
 </body>
 </html>

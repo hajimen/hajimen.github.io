@@ -1,4 +1,4 @@
-function rh_ext_transform(re) {
+﻿function rh_ext_transform(re) {
 	if (re.tagName != "button") {
 		var domDocument;
 		if (window.ActiveXObject) {

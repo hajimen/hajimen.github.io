@@ -1,4 +1,4 @@
-<rss version="0.91"><channel>
+﻿<rss version="0.91"><channel>
 <title>Webアプリ</title>
 <link>http://kaoriha.org/nikki/archives/000046.html</link>
 <description>　Webアプリに初挑戦している。 　とりあえず、Webアプリでなにかしようとすると、必ずデータベース（PostgreSQL、MySQL）が必要になることに気づいた。なにしろ同期処理があるので、永続性の必要なデータはみなデータベース行きになる。このごろ本屋にSQLの本が多いと思ったら、どうやらみなWebアプリを書いているらしい。...</description>
