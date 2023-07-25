@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 玄箱HGでJava</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000330.html" title="1492:53" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000332.html" title="玄箱HGのJavaはどれだけ遅いか" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000330.html">&laquo; 1492:53</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000332.html">玄箱HGのJavaはどれだけ遅いか &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;07&#26376;13&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">玄箱HGでJava</h3>
+
+<p>　玄箱HGを手に入れた。<br />
+　現在入手できるなかではもっとも安いJ2SE 5.0実行環境になる、と期待してのことだったが、思った以上に遅い。CPUはPowerPC 603e/266MHz相当だというが、その速度はPPC版Mac mini 1.25GHzの12分の1程度だ。8分の1くらい出ないかと期待していたが、甘かった。<br />
+　IBMのJava VM（5.0 SR2、JITあり・なし）とGCJ 3.4で、SciMark 2.0aの結果を取った。以下に掲げる。</p>
+
+<a name="more"></a>
+<p>IBM Java VM（JITなし）</p>
+<blockquote>
+<p>SciMark 2.0a<br />
+  <br />
+  Composite Score: 1.3151828462508728<br />
+  FFT (1024): 0.7996995770633254<br />
+  SOR (100x100): 2.6374098663412457<br />
+  Monte Carlo : 0.3889376711514591<br />
+  Sparse matmult (N=1000, nz=5000): 1.360616525226941<br />
+  LU (100x100): 1.3892505914713928<br />
+  <br />
+  java.vendor: IBM Corporation<br />
+  java.version: 1.5.0<br />
+  os.arch: ppc<br />
+  os.name: Linux<br />
+  os.version: 2.4.17_mvl21</p>
+</blockquote>
+<p>IBM Java VM（JITあり）</p>
+<blockquote>
+<p>SciMark 2.0a<br />
+  <br />
+  Composite Score: 12.026484230508895<br />
+  FFT (1024): 0.27175496097207835<br />
+  SOR (100x100): 36.63969886413905<br />
+  Monte Carlo : 4.53070907072668<br />
+  Sparse matmult (N=1000, nz=5000): 9.550012112153572<br />
+  LU (100x100): 9.140246144553101<br />
+  <br />
+  java.vendor: IBM Corporation<br />
+  java.version: 1.5.0<br />
+  os.arch: ppc<br />
+  os.name: Linux<br />
+  os.version: 2.4.17_mvl21</p>
+</blockquote>
+<p>GCJ 3.4 AOTコンパイル</p>
+<blockquote>
+<p>SciMark 2.0a<br />
+  <br />
+  Composite Score: 17.39568070038595<br />
+  FFT (1024): 23.115996214632936<br />
+  SOR (100x100): 34.73743517016856<br />
+  Monte Carlo : 2.483306082859137<br />
+  Sparse matmult (N=1000, nz=5000): 7.795964701708599<br />
+  LU (100x100): 18.84570133256051<br />
+  <br />
+  java.vendor: Free Software Foundation, Inc.<br />
+  java.version: 3.4.4<br />
+  os.arch: ppc<br />
+  os.name: Linux<br />
+  os.version: 2.4.17_mvl21</p>
+</blockquote>
+<p>　このCPUで1万5千円は割高に感じる。Celeron 1.46GHzとメモリ256MBならケースも入れて3万円で揃ってしまう世の中なのだ。次はVIA Edenあたりを使ってほしい。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000331.html&amp;text=%E7%8E%84%E7%AE%B1HG%E3%81%A7Java&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000331.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E7%8E%84%E7%AE%B1HG%E3%81%A7Java
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000331.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;07&#26376;13&#26085; 00:31
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

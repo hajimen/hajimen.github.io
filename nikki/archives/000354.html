@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: XMLの「本当のメリット」ってなに？</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000353.html" title="1492:61" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000355.html" title="思春期男子は女子になにを求めているか" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000353.html">&laquo; 1492:61</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000355.html">思春期男子は女子になにを求めているか &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;08&#26376;20&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">XMLの「本当のメリット」ってなに？</h3>
+
+<p><a href="http://www.rubyist.net/~matz/20060814.html#p03">この記事は一応は「XMLのプロ」による記事なのだと思うのだが、それで改めてメリットを紹介するのに、この程度のメリットしか出てこないというのはどういうことなんだか。</a><br />
+　では私が答えよう。<br />
+　私は6つの言語（C++、Java、VBA、Python、JavaScript、C#）でXMLを触ったことがある。サンプル程度ならもっと増えるが、実用的なものを書いたのは上の6つだけだ。まともにプログラミングなどしたこともない糞コンサルの皆様は、今日のエントリをコピペしておくといいだろう。</p>
+
+<a name="more"></a>
+<p>　<br />
+　まずは弱点から。<br />
+<b>1. パースが遅い</b><br />
+　構造的な区切りを探すために1文字ずつ文字をチェックする必要があるので遅い。XMLを使うという観点からは、ここが一番のボトルネックになる。<br />
+<b>2. データの格納形式を規格の基盤にしている</b><br />
+　RDBMSが内部でどのようにデータを格納しているかは、RDBMSの実装の詳細であり、RDBMS開発者以外は知らなくていいようになっている。RDBMSを使うプログラマが知るべきことは、リレーショナルなデータ構造モデルであり、SQLというAPIである。<br />
+　しかしXMLは違う。XMLの規格は格納形式を基盤にしている。これはXMLという技術全体の大きな足かせになっている。たとえば、XMLのバイナリ表現にはいまだにこれといったデファクトスタンダードがない。データ構造モデルやAPIではなく格納形式を基盤にしているせいだ。<br />
+　<br />
+　XMLの利点は以下のとおり。<br />
+<b>1. 相互運用性</b><br />
+　これは具体的には以下の要素で構成されている。<br />
+<b>・標準化された堅牢なパーサがどんな環境にも存在する</b><br />
+　ふざけたパーサも稀に存在するが。たとえばPython。<br />
+<b>・標準化されたスキーマが存在し、バリデーションをかけることができる</b><br />
+　異常なデータと正常なデータをすっきりと切り分けることができる。なお言うまでもないが、相互運用性を求めるようなケースでは、「XMLフラグメント」のような糞データは論外だ。<br />
+<b>・エンコーディングの問題に悩むことが少ない</b><br />
+　日本人にとっては切実だ。<br />
+<b>・多くの人がXMLのことを多少なりとも知っている</b><br />
+　相互運用性にとって学習コストは無視できない。<br />
+<b>2. 可読性</b><br />
+　パースの実行速度、パーサの書きやすさ、規格のコンパクトさ、こういったものを完全に捨てて、可読性だけを高めている。<br />
+　実行速度については上で弱点として述べたが、あとの2つは弱点ではない。XMLパーサを自分で書くことはないし、XMLの規格を自分で書くこともない。<br />
+<b>3. 生態系の豊かさ</b><br />
+　XMLの生態系の全体を述べることは誰にもできないので、頂点だけをご紹介する。<a href="http://www.altova.com/products/xmlspy/xml_editor.html">XMLSpy</a>というXMLエディタだ。XMLSpyを知らない人は、XMLについてまだなにも知らない。<br />
+　<br />
+　逆にいえば、上のような利点を必要としないのなら、そもそもXMLの出番ではない。たとえば、RDBMSのデータの内部表現にXMLを使うような気違いはいないだろう。<br />
+　が、同じRDBMSのデータでも、テスト用データを格納するファイルとなると、XMLが適している。テスト用データを調べたり修正したりするときに、XMLの可読性やツールの存在が重要になる。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000354.html&amp;text=XML%E3%81%AE%E3%80%8C%E6%9C%AC%E5%BD%93%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%80%8D%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%EF%BC%9F&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000354.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=XML%E3%81%AE%E3%80%8C%E6%9C%AC%E5%BD%93%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%80%8D%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%EF%BC%9F
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000354.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;08&#26376;20&#26085; 22:55
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>こんちは。XMLの利点はとても参考になりますね。</p>
+
+<p>ところで、ちょっと気になったのは</p>
+
+<p>「RDBMSを使うプログラマが知るべきことは、リレーショナルなデータ構造モデルであり、SQLというAPIである。」</p>
+
+<p>とありますが、XMLを使うプログラマは、XMLツリー構造とSAXやDOMというAPIを知っていれば十分なのではないでしょうか。そうするとRDBMSと比べて劣っているわけでもないような。</p>
+
+<p>それともここの主眼は「XMLのバイナリ表現」を実現しづらいということでしょうか。</p>
+<span class="comments-post">Posted by: <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?__mode=red&amp;id=164">NI-Lab.</a> at 2006&#24180;08&#26376;22&#26085; 09:43</span>
+</div>
+<div class="comments-body">
+<p>DOMはXMLの格納形式を完全には抽象化できていません。<br />
+たとえばコメント内容では、先頭と末尾のハイフンは禁止されていますし、ハイフンを連続させることも禁止です。DOMはこういうデータをマーシャライズしたりはしてくれません。単に禁止されています。この制限は、XMLの規格、つまり格納形式の都合に由来するものです。<br />
+この例はあまりに重箱の隅と思えるかもしれませんが、私はこの問題で半日を潰しました。この例に行き当たる人は少数でしょうが、これに似た問題はおそらく無数にあるでしょう。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hajime&#64;kaoriha&#46;org">中里一</a> at 2006&#24180;08&#26376;22&#26085; 22:30</span>
+</div>
+<div class="comments-body">
+<p>コメント内容というと  ＜！－－ こういうの －－＞ですよね。</p>
+
+<p>コメントは XML の格納形式の問題とはちょっと違うかなと思います。<br />
+コメントって、XML文書が表現したいデータ自体ではなくて、人がXMLを直接に見るときのヒントみたいなものですよね？ 機械処理するときは無視するものだと思っているのですが。</p>
+
+<p>DOM API でコメントを読む必要ってあるんでしょうか？ っていうか DOM にコメントを処理する機能があるんですね……</p>
+<span class="comments-post">Posted by: <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?__mode=red&amp;id=168">NI-Lab.</a> at 2006&#24180;08&#26376;25&#26085; 08:12</span>
+</div>
+<div class="comments-body">
+<p>DOMは、抽象的なデータ構造を表現したものではなく、あくまでXMLありきのAPIです。<br />
+もしDOMが、データ構造とシリアライズを別の層に切り分けたAPIだったら、おそらくコメントに関する機能はシリアライズ層に置かれていたでしょう。<br />
+現実には、DOMはデータ構造とシリアライズを切り分けていません。そもそもXMLが、データ構造とシリアライズを切り分けることのできないような性質を備えています。<br />
+　<br />
+「コメント内容は無視で」という具合にいける場合のほうが圧倒的に多いのですが、必ずどこかの重箱の隅で、ひっかかるようにできています。XMLのバイナリ表現が挫折しているのは、それが理由です。<br />
+　<br />
+あと、コメント内容を読むときには、コメント内容の制約につまづくことはありません。エラーが出るのは、書くときです。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hajime&#64;kaoriha&#46;org">中里一</a> at 2006&#24180;08&#26376;26&#26085; 02:07</span>
+</div>
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

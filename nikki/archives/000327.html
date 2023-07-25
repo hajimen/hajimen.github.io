@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: キャッシュと更新</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000326.html" title="分散ファイルシステムとHDDのあいだに" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000328.html" title="1492:52" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000326.html">&laquo; 分散ファイルシステムとHDDのあいだに</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000328.html">1492:52 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;07&#26376;04&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">キャッシュと更新</h3>
+
+<p>　<a href="http://kaoriha.org/nikki/archives/000326.html">昨日</a>の続き。<br />
+　<a href="http://kaoriha.org/nikki/archives/000293.html">前にも書いた</a>とおり、削除は哲学的な問題だ。更新も、削除ほどではないが、かなり哲学的だ。<br />
+　研究レベルでは、「削除も更新もしない」というポリシーが大流行中らしい。すべて追記オンリーで済ませる。当然、HDDの記憶容量は消費する一方で、使い方によってはあっという間にゴミで埋まってしまうが、それは無視するのが研究レベルというものらしい。過去の状態がそのまま取り出せるので便利だが、ゴミで埋まるような使い方があることを考えると、MVCC的な方法のほうが汎用性がある。<br />
+　私としては、もうひとつ疑問がある。</p>
+
+<a name="more"></a>
+<p>　変化するデータを追記オンリーのストレージ上で表現しようとすると、なんらかの形で、アドレスの予約が必要になる。アドレスを予約できなければ、データが追記されたとき、そのデータのアドレスを知る方法がない。アドレスが予約されているということは、そのアドレスについて「まだデータが書き込まれていない」という状態が存在する。更新つまり状態の変更はないはずなのに、「まだデータが書き込まれていない」という状態の変更だけは許している。<br />
+　これは深刻な破れ目のように感じる。<br />
+　予約アドレスA1への追記が生じたときには、おそらく別の新しい予約アドレスA2が生成されるだろう。でなければデータの変化のたびに予約アドレスが減っていく。そしておそらくA1とA2は意味的に同じものだろう。だが、そうでないこともありうる。どこかで一度に100個の予約アドレスを確保して、それを99個まで使ってから、また100個の予約アドレスを確保する、というポリシーもありうるからだ。A1とA2が意味的に同じであると保証できないだけでなく、A2が常に生成されるともいえない。<br />
+　それがなにか問題なのか？　分散環境では問題になる。<br />
+　分散環境では可能なかぎりポーリングを減らす必要がある。予約アドレスが使われたときに、そのことを通知する仕組みが必要だ（予約アドレス追記通知）。この通知が、事実上、キャッシュ無効化通知と同じ役割を果たす。予約アドレス追記通知とキャッシュ無効化通知、どちらがより効率よく機能するか？　おそらく、キャッシュ無効化通知だ。<br />
+　なぜか。キャッシュ無効化通知なら、同じデータが複数回変更されたとき、それを1つのキャッシュ無効化通知として処理できる。それに対して予約アドレス追記は、常に異なるアドレスについて起こる。複数の追記を1つの通知として処理するには、その予約アドレスの意味を知っていなければならない。もちろん、キャッシュ無効化通知も、データの意味と切り離されたやりかた（ブロックデバイスのアドレスなど）でデータを指し示すなら同じことになる。<br />
+　だから分散永続化システムは、エントリを指し示すのにsemantic IDを使い、エントリへの操作として更新を提供する。<br />
+　更新は、「データの枠組みはそのままで内容を変化させた」という状態を作り出す。たとえばRDBMSのインデックスは、INSERTやDELETEやUPDATEのたびに更新される。これは意味的に更新であるだけではない。キャッシュ無効化通知の効率からも、この更新を、削除と作成で置き換えることはできない。<br />
+　性能と意味がくっついているときには、できるだけ切り離さないようにすべきだ。ネットワークはHDDより柔軟なところがあるのだから、どこで切るかをよく考え直す必要がある。<br />
+　<br />
+　昨日の修正。<br />
+　マルチキャストアドレスで定められる枠をもっと使うべきだ、との結論に達した。ネットワークのトラフィックに局所性を作る方法がないと辛い。<br />
+　分散永続化システムの上で動くもの（ファイルシステムやRDBMS）を、分散永続化システムとの関係において、「サービス」と呼ぶことにする。サービスは必ず1個のservice IDと1個のマルチキャストアドレスを持つ。無効化発行ノードの決定にservice IDを使う。システム上の全ノードのリストは用いず、かわりにサービス内の全ノードのリストを用いる。<br />
+　ガベージコレクションがあると楽だと気づいた。ただしマークアンドスイープをするのは、分散永続化システムではなく、サービスだ。エントリのメタデータに、service IDと、マークアンドスイープのマーク用の領域を設ける。<br />
+　<br />
+　昨日の補足。わからなかった人がいるようなので蛇足ながら。<br />
+　1つのエントリに対して取得要求が集中しても、簡単に負荷分散できる。<br />
+　ノードXに対してノードA、B、C、Dから同時に取得要求が来たとしよう。問題のエントリのバックアップノードはYとする。これらのノードを、UUID距離がもっとも近いもの同士が隣り合うように並べると、A・B・X・Y・C・Dとなるものとする。このときXは、Bの要求に応える。同時に、Aに対しては「Bに中継してもらえ」、Cに対しては「Yのバックアップをもらえ」、Dに対しては「Cに中継してもらえ」と返答する。<br />
+　ネットワークがGbEであれば、分散永続化システム自体はかなり高速に動く。総ノード数2でも、ローカルHDDと遜色ないスループットと遅延が期待できる。しかしだからといって全体性能が約束されるわけがない。鎖の強さはもっとも弱い環で決まる。たとえば、各ノード上で動く分散処理が、ローカルキャッシュにできるだけヒットするような局所性の高い処理になっているかどうか。局所性がゼロなら、すぐにネットワークが飽和してしまうし、遅延も短くできない。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000327.html&amp;text=%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%A8%E6%9B%B4%E6%96%B0&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000327.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%A8%E6%9B%B4%E6%96%B0
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000327.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;07&#26376;04&#26085; 03:53
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="327" />
+<input type="hidden" name="spammer" value="goaway" />
+
+<!--div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;"-->
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+<!--/div-->
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 玄箱HGのJavaはどれだけ遅いか</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000331.html" title="玄箱HGでJava" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000333.html" title="私の考えたメイド喫茶" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000331.html">&laquo; 玄箱HGでJava</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000333.html">私の考えたメイド喫茶 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;07&#26376;14&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">玄箱HGのJavaはどれだけ遅いか</h3>
+
+<p>　java.nioのソケット（非ブロック接続）のベンチマークをとってみた。<br />
+　Java VMはIBMのJ2SE 5.0 SR2。玄箱HGがHTTPサーバになり、十分に高速なマシンでApache Benchmarkを走らせて、転送速度をみた。<br />
+　9.6MB/s。<br />
+　絶望的な値だ。<br />
+　この測定のために即席のベンチマークソフトを作ったので、<a href="/soft/nbsbench-20060714.jar">ここ</a>に置いておく。java -cp nbsbench-20060714.jar org.kaoriha.nbsb.NonBlockingServerで起動する。ソースは<a href="/soft/nbsbench-20060714.zip">こちら</a>。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000332.html&amp;text=%E7%8E%84%E7%AE%B1HG%E3%81%AEJava%E3%81%AF%E3%81%A9%E3%82%8C%E3%81%A0%E3%81%91%E9%81%85%E3%81%84%E3%81%8B&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000332.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E7%8E%84%E7%AE%B1HG%E3%81%AEJava%E3%81%AF%E3%81%A9%E3%82%8C%E3%81%A0%E3%81%91%E9%81%85%E3%81%84%E3%81%8B
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000332.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;07&#26376;14&#26085; 03:37
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

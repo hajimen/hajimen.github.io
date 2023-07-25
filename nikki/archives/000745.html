@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: HTMLに「見た目ではなく意図を書く」という幻想</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000744.html" title="iOS / Android / Web対応のアプリ開発" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000746.html" title="正規表現マッチングはMap-Reduceできる" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000744.html">&laquo; iOS / Android / Web対応のアプリ開発</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000746.html">正規表現マッチングはMap-Reduceできる &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2011&#24180;12&#26376;27&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">HTMLに「見た目ではなく意図を書く」という幻想</h3>
+
+<p>　<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4274068471/hound-22/ref=nosim">『Coders at Work』</a></span>を立ち読みした。<br />
+　Brendan Eichが10日間でJavaScriptを設計実装させられたと知り、ますます1994年のNetscape社を爆破したくなった。Netscape社がうまくいっていないことは製品からも見て取れたが（マイナーバージョンが上がるたびに同じバグをエンバグ→修正→エンバグ→修正と繰り返した事件を覚えている）、ここまでひどかったとは想像できなかった。アメリカのドキュメンタリー屋には、Netscape社がどんなクソの山だったかを証言するドキュメンタリーを制作してほしい。<br />
+　私には想像もつかないレベルでプログラミングしているお歴々のありがたいお言葉を拝読しながら、私は疑問に思った。誰かのクソを食ってクソをひりだしてそれをまた別の誰かに食わせる、あの世界との接点がどこにもない、と。</p>
+
+<a name="more"></a>
+<p>　<br />
+　誰かのクソを食ってクソをひりだしてそれをまた別の誰かに食わせる――これが実態を誇大に汚らしく表現していると思うのなら、あなたは幸せか、あるいはなにもわかっていない。<a href="http://www.nikkei.com/news/headline/article/g=96958A9C93819499E0E0E2E1838DE0E0E3E0E0E2E3E3E2E2E2E2E2E2">「spモードシステムはIP網の中で動いており、パケットのIPアドレスとユーザーをひも付けるのは自然の発想だった」</a>なる発言を見て、「まるでそびえたつクソだ」と思わずにいるのは不可能だ。そしてプログラマの大半は、こういうクソを食ってクソをひりだす運命にある。<br />
+　『Coders at Work』に登場する、天上の星々のごとき人々は、この運命をまぬがれているらしく、こういう経験について多くを語っていないように見える（私が読まなかった部分にあるのかもしれないが）。この人々はみな口を揃えて、「計算機科学と実社会のプログラミングのあいだにギャップがある」と語るのだが、そのとき彼らの頭のなかにある「実社会のプログラミング」なるものは、誰かのクソを食ってクソをひりだしてそれをまた別の誰かに食わせる行為を含んでいるのだろうか。<br />
+　<br />
+　「計算機科学と実社会のプログラミングのあいだにギャップがある」と語る人々の目には、ある種のギャップが見えないらしい。たとえばHTMLの、「見た目ではなく意図を書く」という奴だ。h1要素は「大きな文字」ではなく見出しを示す、というあれだ。CSSクラスの名前はredよりもwarningがいい、というあれだ。<br />
+　誰かのクソを食ってクソをひりだしてそれをまた別の誰かに食わせる世界では、人は、Webページをデザインするときにはあくまで見た目をデザインするのであり、意図をデザインするのではない。人は見出しではなく「大きな文字」を望む。警告ではなく「赤」を望む。ほかの人が見ればそれは見出しや警告に見えるのだが、それはただの妄想、幻覚であり、デザインする本人はそんなものはちっとも望んでいない。見出しに見える部分を指して「これは見出しのつもりだね？」と訊けば「はい」と答えるだろうが、それは結果論にすぎない。デザインしている真っ最中の本人の頭の中にあるのは、あくまで見出しではなく「大きな文字」、警告ではなく「赤」だ。<br />
+　私自身にしても、この日記で同じようなことをやっている。HTMLで正しく空行を作るのは少々面倒（というか設計の想定外？）なので、長らく全角空白＋br要素ですませてきた。するとIE8からこれは空行を作らなくなり、IE9でも直る様子はなかったので、私はこの日記をIE7互換モードに設定した。私も意図ではなく見た目を書いてきたわけだ。<br />
+　「見た目ではなく意図を書く」なるやりかたは、「計算機科学と実社会のプログラミングのあいだにギャップがある」と語る人々のあいだではなんの問題もなく実行できるだろう。「実社会のプログラミング」の世界でもうまくいくだろう。しかし、誰かのクソを食ってクソをひりだしてそれをまた別の誰かに食わせる世界では、これはうまくいかない。<br />
+　<br />
+　Garbage in, garbage outならぬクソin, クソout、食物連鎖ならぬクソ連鎖の世界は、計算機科学の光明からあまりにも遠く、できることはなにもない――のだろうか。<br />
+　HTMLで見た目ではなく意図を書くべき理由は、つきつめれば、マルチユースと再利用にある。マルチユースとは要するにGoogleでうまくインデックスしてもらうことであり、再利用とは要するに将来ブラウザのレンダリングが変わってデザインが多少崩れても意味的には同じものとして読めること（私の空行作成法はこのテストに失敗した）、と言ってもいい。<br />
+　『Coders at Work』で誰だかが、「コードの再利用はうまく機能していない」と論じている。現在一般的なプログラミング環境が参照透明性を無視しているのが悪い、とその論者は言うのだが、まったく違うレベルで、私はその議論にうなずいた。そう、環境が悪い。必要なのは、「マルチユースや再利用を考慮して書け」というスローガンではなく、「見た目だけを書いたら半自動的にマルチユースや再利用に対応している」という環境だ。<br />
+　つまり、人に意図を書かせるのではなく、計算機が見た目から意図を読み取るべきだ。<br />
+　<br />
+　どんなソースに対しても100%計算機だけで完結する、というのは不可能だが、人間の読み取り作業――これは見出し、これは警告、と意図を識別してゆく作業――を支援することはできる。また、ソースの変更に半自動的に追随することもできる。1段落増えただけで意図の読み取り作業をゼロからやり直すには及ばない。<br />
+　「計算機が見た目から意図を読み取る」というやりかたは現在まだ主流ではない。もしかするとユートピア的に見えるかもしれない。しかし私の目には、「人間が見た目ではなく意図を書く」という幻想のほうがよほど砂上の楼閣であるように見える。それは、クソ連鎖の世界に見て見ぬふりをすることで成り立つ幸福の国だ。そんな幸福の国に暮らす計算機科学の光明がクソ連鎖の世界を救済する日がもしくるとしても、それは56億7千万年後のことだろう。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000745.html&amp;text=HTML%E3%81%AB%E3%80%8C%E8%A6%8B%E3%81%9F%E7%9B%AE%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E6%84%8F%E5%9B%B3%E3%82%92%E6%9B%B8%E3%81%8F%E3%80%8D%E3%81%A8%E3%81%84%E3%81%86%E5%B9%BB%E6%83%B3&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000745.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=HTML%E3%81%AB%E3%80%8C%E8%A6%8B%E3%81%9F%E7%9B%AE%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E6%84%8F%E5%9B%B3%E3%82%92%E6%9B%B8%E3%81%8F%E3%80%8D%E3%81%A8%E3%81%84%E3%81%86%E5%B9%BB%E6%83%B3
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000745.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2011&#24180;12&#26376;27&#26085; 02:13
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

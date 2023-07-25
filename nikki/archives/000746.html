@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 正規表現マッチングはMap-Reduceできる</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000745.html" title="HTMLに「見た目ではなく意図を書く」という幻想" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000747.html" title="時間" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000745.html">&laquo; HTMLに「見た目ではなく意図を書く」という幻想</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000747.html">時間 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2012&#24180;01&#26376;01&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">正規表現マッチングはMap-Reduceできる</h3>
+
+<p>　グレゴリオ暦で新年を祝われる皆様、あけましておめでとうございます。<br />
+　<br />
+　今日のお題は正規表現。ただしチューリング完全なPCREではなく、有限オートマトンにもとづく本来の正規表現である。<br />
+　一個の巨大な文字列に対する正規表現マッチングをMap-Reduceで分散計算することはできないと思い込んでいるマヌケな子はいねーがー？　できそうな気はするけれどアルゴリズムがわからないアホな子はいねーがー？　大丈夫、<a href="http://blog.sigfpe.com/2009/01/fast-incremental-regular-expression.html">このエッセイ</a>を読むまで私にもわからなかった。アホはあなただけではない。といってもなんの慰めにもならないが。<br />
+　（このエッセイは正規表現のインクリメンタルマッチングの計算量について論じているが、分散計算のほうが例として自然と思ったのでそうした）<br />
+　英語とHaskellができてモノイドとfingertreeが常識な人なら元のエッセイを読めばすべて一目瞭然だと思うが、私は英語以外まるでダメなので、理解するまでにすさまじく時間がかかった。日本語でこの問題を説明しているサイトはどうもないようなので、ここに書き留めておく。なお正規表現と有限オートマトンは常識とする。</p>
+
+<a name="more"></a>
+<p>　<br />
+　正規表現『.*(.*007.*).*.』に対応するステートマシン図は以下のとおり：<br />
+<img src="/nikki_image/20120101/regex_fsa.png" width="388" height="365" /><br />
+　正規表現マッチングをごく手続き的に平凡に考えるなら、初期ステートの0にセットしたステートマシンを文字列の上に走らせ（テープの上を走るチューリングマシンのイメージだ）、完走後のステートを調べて、もし5ならマッチ、ということになるだろう。<br />
+　このステートマシンは、自分自身のステート（0～5の6択）を文字ごとに逐次的に変更してゆくことで動作する。だから正規表現マッチングをMap-Reduceするにはどうすればいいかわからない、ということになる。<br />
+　『abc(007007)abc』という文字列を例に、逐次的な変更の様子を見てみると：</p>
+<pre>
+state  0   0   0   0   1   2   3   4   4   4   4   5   5   5   5
+string   a   b   c   (   0   0   7   0   0   7   )   a   b   c
+</pre>
+<p>　ステート0のステートマシンは走行開始直後にまず文字'a'を見て、自分自身のステートを0のままにする。'b'、'c'も同様にして通過し、文字'('を見てついに自分自身のステートを1に変更する。それに続く文字'0'を見てステートを2に――という具合だ。<br />
+　上の表を見てわかるとおり、同じ文字'0'に対して、ステートマシンはさまざまな反応をしている。最初の文字'0'を見たときには、自分自身のステートを2に変更している。2度目の文字'0'を見たときには自分自身のステートを3に変更し、それ以降に見たときにはもう自分自身のステートを変更することはない。<br />
+　もちろんステートマシンは文字'0'の出現回数を数えているわけではない。ステートマシンの動作（＝自分自身のステートをどう変更するか）は、自分自身のステートと文字だけによって決定されている。文字'0'を見たときのステートマシンの動作を図にすると：<br />
+<img src="/nikki_image/20120101/regex_0.png" width="286" height="321" /><br />
+　この図は文字'7'についても描ける：<br />
+<img src="/nikki_image/20120101/regex_7.png" width="286" height="320" /><br />
+　左右に続けて描くと、ステートマシンの逐次的な動作を目で追うことができる：<br />
+<img src="/nikki_image/20120101/regex_0_0_7.png" width="596" height="237" /><br />
+　さてここまでは個々の文字についてステートマシンの動作を図に描いてきた。が、上の続けて描いた図を見ると、まったく同じ形式で、文字列についての図が描けることに気付く：<br />
+<img src="/nikki_image/20120101/regex_007.png" width="286" height="319" /><br />
+　3つの動作を結合して1つの動作にしたわけだ。<br />
+　この結合は、文字列『007』の例でもわかるとおり、隣り合う動作同士であれば行える。文字列の先頭から逐次的に結合してゆく必要はない。たとえば文字列『abc(』と『)abc』の動作をそれぞれ計算し、それをさらに文字列『007』の動作と続けて描くと：<br />
+<img src="/nikki_image/20120101/regex_abc_007_007_abc.png" width="802" height="215" /><br />
+　これは文字列『abc(007007)abc』の動作となる。<br />
+　文字を動作に変換するのがMap、隣り合う動作同士を結合するのがReduceであることは言うまでもない。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000746.html&amp;text=%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%AFMap-Reduce%E3%81%A7%E3%81%8D%E3%82%8B&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000746.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%AFMap-Reduce%E3%81%A7%E3%81%8D%E3%82%8B
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000746.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2012&#24180;01&#26376;01&#26085; 20:23
+
+<br /></span>
+
+</div>
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+/*
+    tsume.css 2011/09/29
+
+    Copyright 2011 中里一
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+.tsume-ml4 
+{
+	margin-left:-0.25em;
+}
+
+.tsume-ml2 
+{
+	margin-left:-0.5em;
+}
+
+.tsume-ml34 
+{
+	margin-left:-0.75em;
+}
+
+.tsume-ml1 
+{
+	margin-left:-1.0em;
+}
+
+.tsume-mr4 
+{
+	margin-right:-0.25em;
+}
+
+.tsume-mr2 
+{
+	margin-right:-0.5em;
+}
+
+.tsume-mr34 
+{
+	margin-right:-0.75em;
+}
+
+.tsume-mr1 
+{
+	margin-right:-1.0em;
+}
+
+.tsume-po
+{
+	display:inline-block;
+	overflow:visible;
+	width:0.0em;
+}
+
+.tsume-pi
+{
+	display:inline-block;
+	overflow:hidden;
+	width:0.49em;
+}
+
+.tsume-a0
+{
+	letter-spacing:0.0em;
+}
+
+.tsume-a4
+{
+	letter-spacing:0.25em;
+}
+
+.tsume-a2
+{
+	letter-spacing:0.5em;
+}
+
+.tsume-a34
+{
+	letter-spacing:0.75em;
+}
+
+.tsume-a1
+{
+	letter-spacing:1.0em;
+}

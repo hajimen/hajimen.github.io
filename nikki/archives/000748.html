@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: Coders at Work まとめ Part 1</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000747.html" title="時間" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000749.html" title="Coders at Work まとめ Part 2" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000747.html">&laquo; 時間</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000749.html">Coders at Work まとめ Part 2 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2012&#24180;01&#26376;17&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Coders at Work まとめ Part 1</h3>
+
+<p>　<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4274068471/hound-22/ref=nosim">『Coders at Work』</a></span>はいい本なので、思いのままにまとめてみた。</p>
+<p>　ネットに山ほどある「まとめ」の流儀に従い、まとめ元の内容など事実上無視している。ネットの「まとめ」を真に受ける人がいるとは想像したくないが、世の中には底抜けに天井知らずに愚かな人がいるらしいので、一応警告した。</p>
+
+<a name="more"></a>
+<p>　</p>
+<h3>第1章 Jamie Zawinski</h3>
+<p>・（Emacs LispコンパイラについてStallmanへのメールで）「前のコードはクズだからすっかり書き直した」</p>
+<p>　</p>
+<p>・C++には嫌悪しか感じません。あらゆることがあらゆる仕方で間違っています。</p>
+<p>＃だがそれがいい。プログラミング言語が生み出した究極のパズル、C++。</p>
+<p>　</p>
+<p>・Perlは嫌いですね。ひどい言語です。しかしおよそどこにでもインストールされています。</p>
+<p>　</p>
+<p>・Objective Cで書きましたが、あれは非常に良い言語です。</p>
+<p>＃私見では名前システムやGC観が80年代風で嫌い。X Windowみたいなクソ長い関数名がばんばん出てくる。GCが参照カウントで、しかもカウンタが明示的と暗黙的のどっちつかずで、どちらか一方よりも悪い。</p>
+<p>　</p>
+<p>・</p>
+<p>　そうしてNetscapeはCollabraという会社を買収し、私とテリーの上に来る管理組織をまるまる雇い入れたのです。Collabraは私たちがやったのと多くの点で似た製品を出していましたが、違っていたのはWindows版しか作っていなかったことで、マーケットではまったく失敗していました。</p>
+<p>　それからスタートアップの宝くじに当たってNetscapeに買収されたのです。Netscapeは基本的に会社の指揮を彼らにゆだねました。だから彼らはメールリーダーを引き継いだだけでなく、クライアント部門全体も手に入れたのです。テリーと私はCollabra買収のときNetscape 2.1に取り組んでいましたが、それから書き直しが始まりました。彼らのNetscape 3.0が大幅に遅れそうだったので、私たちのやっていた2.1が3.0になりました。何か出さなきゃいけない時期になっていて、しかもメジャーバージョンアップする必要があったからです。</p>
+<p>　それで彼らがやっていた3.0が4.0になったのですが、ご存じの通り、それはソフトウェア史上最大の災厄になりました。基本的にはこれがNetscapeを葬ることになりました。息絶えるまでに時間がかかりましたが、実際のところ我々が買収した会社が指揮した書き直しのためでした。彼らはほとんど何も成し遂げず、我々のやってきた仕事や我々の成功をすべて無視し、セカンドシステム症候群に向かってまっしぐらに突き進み、会社を沈没させたのです。</p>
+<p>＃Collabraという名前は初めて聞いた。構成員の個人名はどう検索しても出てこない（CEOさえ不明）。マーク・アンドリーセンに次ぐB級戦犯としてぜひ知りたいところ。</p>
+<p>　</p>
+<p>・いつも何か悪いことをしているような気がするのですが、誰かほかの人の書いたコードを引き継いだとき、それを再利用するよりも自分で書き直したほうが早いことがあります。人のコードを理解し、使い方を学び、デバッグできるくらいによく理解するためにはある程度時間がかかるからです。自分で一から始めたほうが時間が短くて済みます。それはやろうとしたことの80パーセントしかないことになるかもしれませんが、その80パーセントが実際必要なものなのかもしれません。</p>
+<p>　</p>
+<p>・できるだけ早く何か画面に出るようにするというのは、私にとって問題に集中する助けになります。次に何をするか決める助けになります。ただ大きなTODOリストを眺めていても、どれからやればいいんだろうとか、そもそもどれからやるかに意味があるのか、と思ってしまいます。しかし実際に目に見えるものがあると、たとえそれが受信箱パーサのデバッグ出力だったとしても、ああ、ここだ！　と思います。次に進むべき方向を示してくれます。単に木構造を表示するんじゃなく、HTMLを出したほうがいいかも、とか、そういったことです。あるいはヘッダをもう少し詳細に解析しようとか。そこから次に何を作ればいいか見つけるわけです。</p>
+<p>　</p>
+<p>・最近の人はデバッガという概念について混乱しているようです。「なんでそんなもの必要なの？　何をしてくれるの？　print文を自動的に入れてくれるの？　分からない。その変な言葉は何に使うの？」最近ではもっぱらprint文が使われているようです。</p>
+<p>＃私がいわゆる「スクリプト言語」を避けるのは、まともなデバッガがないから。</p>
+<p>　</p>
+<p>・長い変数名を使うこと。ハンガリアン記法は好きではありません。普通の英語を使ってそれが何なのか記述することです。ループ変数の場合は自明なので別ですが、一般にできるだけ冗長にしたほうがいいと思います。</p>
+<p>＃いかにもObjective-Cを気に入る人らしい意見。</p>
+<p>　</p>
+<p>・同時期に書かれた本でみんなが最高だと言っていた本に『デザインパターン』があります。私はくだらないと思いましたけど。あれはいわばカットアンドペーストによるプログラミングです。自分のタスクについてじっくり考えるのではなく、レシピ集を眺めて、何かそれっぽいものを見つけ、単に猿真似するんです。そんなのプログラミングじゃありません。塗り絵ですよ。しかし多くの人はそういうのが気に入ったようです。ミーティングで連中はその本で読んだ用語を持ち出して騒いでいました。インバース・リバース・ダブルバックフリップ・パターンとか何とか。ああ、ループのこと？　なんだ。</p>
+<p>＃「デザインパターンはプログラミング言語の欠陥を示している」説に+1。</p>
+<p>　</p>
+<h3>第2章 Brad Fitzpatrick</h3>
+<p>・最初にきれいなソースをtarballで手に入れるか、svnからチェックアウトして、ビルドを試みます。まずこのハードルを越える必要があります。多くの人にとってこれがまず大きな障害になるでしょう。ビルドシステムの依存関係や、インストールされていることが前提とされているライブラリなんかがあります。大きなプロジェクトなんかは、ビルド環境が入ったバーチャルマシンを提供してくれればいいのにと思います。</p>
+<p>＃まさしく。</p>
+<p>　</p>
+<p>・僕のコンピュータの体験は、今よりも10年前のほうが幸せだった気がします。10年前のほうがコンピュータは速かったような感じがします。10年前のほうが自分のコンピュータは良い仕事をしてくれた気がします。いろんなものが速くなっていますが、その間にソフトウェアは遅く、バグっぽくなりました。</p>
+<p>＃デスクトップでは感じない。モバイルは本当にひどい。movaのpreminiを返せ！　Windows CEを返せ！</p>
+<p>　</p>
+<h3>第3章 Douglas Crockford</h3>
+<p>・私はトンプソンとリッチーがCの整形形式を定義しなかったのがあだになったと思っています。「これは私たちのやり方ですが、皆さんはほかのやり方をしてかまいません」と言うのは、人類全体に大きな損害をもたらしたし、今後もずっと続くことでしょう。</p>
+<p>＃私見ではPythonの最大の欠陥は、インデントをタブとスペースのどちらかに限定しなかったこと。</p>
+<p>　</p>
+<p>・（JavaScriptのユニットテストについて）</p>
+<p>　JsUniがありますが、UIのコードのテストは非常に難しく、多くのものに依存しているためユニットに分割するのはあまり効果的ではありません。また、私のJavaScriptを書くスタイルのため、クラスでのように整然とユニットに分割することができないのです。クラスベースであればクラスごとにテストを考えることができるわけですが。</p>
+<p>　JavaScriptでは単独の関数のテストというのはたぶんあまり意味がありません。意味を持つためには状態が必要だからです。JavaScriptでユニットテストをする十分有用な方法というのを、私はまだ見つけられないでいます。</p>
+<p>＃まさしく。可能ではあるが、カジュアル←→フォーマルの数直線のかなり右側にしか立てない。私にとっては右端はいらないけれど、左端がなければそもそもユニットテストがいらない。ユニットテストのもっとも素晴らしいところは、ほとんど手間なしに左端から右端へとテストを移動させられること。</p>
+<p>　</p>
+<p>・（山ほどのブロガーたちが言っていますね。「俺たちがあらゆることをブログに書き、主流メディアはそれで打撃を受けている」）</p>
+<p>　ええ、素晴らしいことですが、間違っています。私たちは互いにつながり、メッセージを互いに送り合うことができますが、それは機能していません。現状ではノイズばかりです。</p>
+<p>　</p>
+<h3>第4章 Brendan Eich</h3>
+<p>・（昔のコンパイラ研究について）当時は優れたボトムアップパーサジェネレータの研究開発が競って行われていました。yaccなんかがやっていることです。形式的純粋さが、極めてきれいなコードへと変換されているのが見て取れました。コンパイラ構築の前段はいつもそうです。当時のコンパイラの後段は伝承とヒューリスティックスの塊でしたけど。</p>
+<p>＃今は？</p>
+<p>　</p>
+<p>・オブジェクト指向やデザインパターンにはまるタイプではありません。エリック・ガンマの本は買っていません。Netscapeには、買収でやってきた、私やジェイミー・ザヴィンスキーの天敵がいて、デザインパターンの本をバイブルみたいに振り回していて鼻につきましたが、彼らは良いプログラマではありませんでした。</p>
+<p>　</p>
+<p>・（機械語レベルでの理解について）私は頭のいいJavaScriptプログラマをたくさん知っていますが、最高の人たちはみな「経済」をよく理解しています。彼らはベンチマークを取り、書き進めながらテストをし、引き締まったJavaScriptコードを書きます。それが機械語にどう変換されるのか知っている必要はありません。</p>
+<p>　</p>
+<p>・90年代に私が大嫌いだったもの、嫌悪反応を示していたものは、CORBAやCOMやDCOMといったオブジェクト指向のナンセンスすべてです。当時のスタートアップはみんな、起動して"Hello, world"とプリントするだけで20万のメソッド呼び出しを必要とするような狂ったことをやっていました。滑稽です。</p>
+<p>　</p>
+<p>・誇大宣伝は良くありません。「デザインパターンが我らを救う」というC++のハイプみたいなのは良くない。もっともあれは80年代の保守的なUnixとCの世界に対する反動だったのかもしれません。</p>
+<p>　</p>
+<p>・（プログラミング言語はプログラマが間違いを犯すのをどこまで防止すべくデザインされるべきでしょう？）Javaのような労働者階級の言語はいかれたジェネリックシステムなど持つべきではありません。労働者たちは共変、反変のような型制約の構文がいったい何を意味するのか理解できないでしょう。</p>
+<p>＃とはいえJavaのジェネリックは大したものではない。暗にC#のことを言っている？</p>
+<p>　</p>
+<p>・（プログラミング言語はプログラマが間違いを犯すのをどこまで防止すべくデザインされるべきでしょう？）どこでも同期ブロックを使うべきではありません。ミューテックスやスピンロックは間違いなく使うべきではありません。</p>
+<p>　</p>
+<p>・ダグはみんなにいろいろなパターンを教えましたが、私はピーター・ノーヴィグと同意見です。パターンは言語にある欠陥を示しているのです。</p>
+<p>　</p>
+<p>・</p>
+<p>　トランザクショナルメモリに大きな期待が寄せられていますが、それでは解決しないでしょう。膨大な数のプロセッサ上でネストしたトランザクションがロールバックしたり競合したりするようにはならないでしょう。効率的ではありません。場合によっては正しく機能しないこともあるでしょう。あらゆる並行アルゴリズムや並列アルゴリズムをその上に乗せられるとは思えないし、試みるべきでもないでしょう。</p>
+<p>　ジョー・アームストロングのような人たちは何も共有しないというアプローチでとても良い仕事をしています。ブラウザの実装中の様々なカスタムシステムにもそれを見ることができます。Chromeはその中でも大きなものです。私たちもJavaScriptの実装で私たちなりにそれをやっています。しかし無共有アプローチには、私の知る限り学者は興味さえ持ちません。トランザクショナルメモリは特にコンピュータアーキテクチャ系の人にはもっと興味深いものですが、それはそのための良い命令セットやハードウェアのサポートというのを追求できるからです。しかしそれで私たちが直面する問題のすべてが解決されるわけではありません。</p>
+<p>　</p>
+<p>・マルチスレッドは率直に言って怖いものです。私が結婚して子どもを持つようになる以前には、それが私の人生の多くの部分を占めていたからです。並行性や、あらゆる可能な実行順の組み合わせを考慮するというのは、短いシナリオに対してさえ、多くの人が備えのできていないことでした。自分のコードをほかの人のコードと組み合わせるとなると、もう手に負えません。状態空間を頭の中に描くことができなくなります。ほとんどの人はついて行けなくなります。Slashdotの威勢の良い連中みたいになれれば気楽ですが。私は「スレッドは苦痛だ」とブログで書くと、誰かが「あいつ何も知らねぇんだな。本物のプログラマじゃないってことだ」みたいなことを書きます。勘弁してほしいです。私はニュージーランドやオーストラリアまで出向いて成果も収めました。しかしそれは間違いなく苦痛で非常に時間のかかることでした。オスカー・ワイルドがかつて社会主義について言ったように、それは「あまりに多くの夕べを必要とする」のです。</p>
+<p>　</p>
+<p>・</p>
+<p>　私は年を取るにつれ疑い深くなり、うまくもなりましたが、それでも楽観的になっている場合があります。頭の中でピノキオに出てくるコオロギのように囁くのです。「何かを見落としていてバグを作っているぞ」。そういう問題は今でも起きます。</p>
+<p>　時々自分で分かるときがあります。どこかで間違っているというのが本当に分かります。後頭部のところで何かが知らせるのです。実際には後頭部なのかどうか、その微小器官がどこにあるか分かりませんが、いずれにせよ、何か気をつけなきゃいけないものがあると感じます。</p>
+<p>　</p>
+<p>　Part 2につづく。<a href="/kouchabutton/">紅茶ボタン</a>もよろしくお願いします。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000748.html&amp;text=Coders%20at%20Work%20%E3%81%BE%E3%81%A8%E3%82%81%20Part%201&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000748.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=Coders%20at%20Work%20%E3%81%BE%E3%81%A8%E3%82%81%20Part%201
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000748.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2012&#24180;01&#26376;17&#26085; 18:08
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="748" />
+<input type="hidden" name="spammer" value="goaway" />
+
+<!--div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;"-->
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+<!--/div-->
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

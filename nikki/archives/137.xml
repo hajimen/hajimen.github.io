@@ -1,0 +1,12 @@
+<rss version="0.91"><channel>
+<title>Referer Houndの設計と実装・その3</title>
+<link>http://kaoriha.org/nikki/archives/000147.html</link>
+<description>　Referer Houndの技術上の核心は、「フラグメント」という発想にある。 　リンク部分の周辺から抽出した情報によって、リンクの同一性を判断する――たったそれだけのことだが、クレオパトラの鼻のように、Webの全面を変えてしまうインパクトを秘めた発想であると自負している。 　鍵となる発想である以上、Referer Houndの改良とは、フラグメントの改良にほかならない。 　まず、フラグメントをどのように抽出するかが問題となる。現在の実装では、href属性をもつ要素の先頭の前後からそれぞれ100文字のテキストを取っている。これは大いに改良の余地がある。HTMLに含まれる区切り情報を活用していないからだ。 　次に、同一性判断のアルゴリズムが問題となる。フラグメントをどのように抽出しても、一個のblogエントリと常に完全に重なり合うことは期待できないので、完全一致ではまずい。類似性を評価する必要がある。 　おそらく、文字列以外の情報でフラグメントを構成することもできるはずだが、私はそういう凝ったアプローチに期待していない。以下では、フラグメントは文字列であると仮定して話を進める。 　文字列間の類似性を評価するというと、育ちのよい向きはLevenstein距離（編集距離）を思い出されるだろうが、これは使えない。なぜか？ 　フラグメントは、意味的にリンクと結びついた部分（同一性成分）とそうでない部分（ノイズ成分）の2つからなる。通常のblogエントリの構造からいって、同一性成分は連続して存在し、その前後にノイズ成分があると想定される。が、Levenstein距離はこのような連続性を評価できない。 　こういう問題の研究はいくらでもあるので、フラグメントを改良しようとする人はかならずそちらを参照されたい。 　私は典型的なブリコラージュを行った。まず元の文字列を、文字コードが5で割り切れる文字のところで分割する。分割処理した文字列同士について、diffのアルゴリズムによって差分を計算する。差分の長さと元の文字列の長さの比が、類似度（の逆）である。...</description>
+<language>ja</language>
+<item>
+<title>diamonds</title>
+<link>http://t-e-x-a-s-poker.com</link>
+<description><![CDATA[<a href="http://t-e-x-a-s-poker.com" title="diamonds">diamonds</a> The sole end for which mankind are warranted, individually or collectively, in interfering with the liberty of action of any of their]]></description>
+</item>
+</channel>
+</rss>

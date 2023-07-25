@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 妄想型プログラミング言語</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000316.html" title="1492:48" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000318.html" title="末期症状" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000316.html">&laquo; 1492:48</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000318.html">末期症状 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;06&#26376;18&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">妄想型プログラミング言語</h3>
+
+<p>　経営者がビッグなビジネスを妄想するように、プログラマは自分の設計した言語を妄想する。どちらも、なんの役にも立たないが、やめられない。<br />
+　この無益な行為のなかで、面白い言語機能を思いついた。ここにメモしておく。</p>
+
+<a name="more"></a>
+<blockquote><code>
+  <pre>public string Func()<br />{<br />    using (FileStream fs = new FileStream(&quot;test.txt&quot;, FileMode.Open))<br />    {<br />        using (StreamReader sr = new StreamReader(fs))<br />        {<br />            return sr.ReadToEnd();<br />        }<br />    }<br />}</pre>
+</code></blockquote>
+<p>　よくあるC#のコード片だ。<br />
+  　このコード片には、意味的な無駄が多い。<br />
+　まず、もしC#に型推論があれば、こう書ける。</p>
+<blockquote><code>
+  <pre>public string Func()<br />{<br />    using (var fs = new FileStream(&quot;test.txt&quot;, FileMode.Open))<br />    {<br />        using (var sr = new StreamReader(fs))<br />        {<br />            return sr.ReadToEnd();<br />        }<br />    }<br />}</pre>
+</code></blockquote>
+<p>　FileStreamだのStreamReaderだのと2回書かせるのは、カナ坊の陰謀としか思えない。<br />
+  　ここで重要なのは、fsもsrもその型はコンパイル時に決定している、ということだ。コンパイラは右辺の型でvarを置き換えているにすぎない。これと同様に以下の話も、実行時ではなくコンパイル時の話である。<br />
+  　さて、まだ無駄がある。fsとsrだ。これらの変数名はそれぞれFileStreamとStreamReaderを省略したものだ。綴りを変えてあるだけで意味的にはこれもやはりカナ坊言葉だ。<br />
+  　実は私はこのことで、かれこれ10年ほど悩んでいた。<br />
+  　私は、「よい名前（クラス名、関数名、変数名、名前空間名）のつけかた」を余すところなく説いた記事や本を10年以上探してきた。しかし、ある程度までのことは書いてあるものの、余すところなく、とまでのものには出会えなかった。やがて私は気づいた。これは、ある程度以上から先は、暗黙知でしかありえないことなのだと。<br />
+  　さらに進んで、こういう結論に達した――プログラミングから計算機科学を引き算すると、「よい名前」が残る。<br />
+  　設計や言語のよさは、よい名前をもたらすかどうかで測られる。よい名前についての暗黙知を持たないプログラマは、よいプログラマではありえない。つまるところ、「よい名前」こそプログラミングの極意だ。<br />
+  　サンプルコードは概して、よい名前を使わない。たとえば上のコード片では関数名がFuncになっている。実際のコードではこんな関数名は使わない。<br />
+  　だから私は悩んだわけだ。fsだのsrだのといった変数名は、Funcという関数名と同様、サンプルコードの世界からの悪しき流入であり、本当はもっとよい名前をつけられるのではないか？<br />
+　だが私はついに発見した。これもやはりカナ坊の陰謀だ。こう書けるべきなのだ。</p>
+<blockquote><code>
+  <pre>public string Func()<br />{<br />    using (var = new FileStream(&quot;test.txt&quot;, FileMode.Open))<br />    {<br />        using (var = new StreamReader(FileStream))<br />        {<br />            return StreamReader.ReadToEnd();<br />        }<br />    }<br />}</pre>
+</code></blockquote>
+<p>　ある変数スコープ内で、ある型の変数が1個しかありえないことが自明である、というケースは非常に多い。変数名のかわりに型識別子でバインドされる変数があっていい。上の例では、変数宣言から変数名を省略することで、そのような変数を宣言している。<br />
+　こういう変数を、仮に「型バインド変数」と名づける。<br />
+<br />
+　クラスのメンバ変数にも型バインド変数は必要だ。ただしこの場合、メンバ関数内では、メンバ変数と同じ型あるいは親子関係にある型の型バインド変数の宣言を禁止すべきだ。つまり、こういう書き方はコンパイルエラーになるべきだ。</p>
+<blockquote><code>
+  <pre>class MyClass<br />{<br />    FileStream;<br /><br />    public string Func()<br />    {<br />        using (var = new FileStream(&quot;test.txt&quot;, FileMode.Open))<br />        {<br />            using (var = new StreamReader(FileStream))<br />            {<br />                return StreamReader.ReadToEnd();<br />            }<br />        }<br />    }<br />}</pre>
+</code></blockquote>
+<p>　親子関係にある型も禁止、つまり、どちらのFileStreamをStreamに置き換えてもやはりコンパイルエラーになるべきだ。<br />
+　型バインド変数は、ある変数スコープ内である型の変数が1個しかありえないことが自明、というケースのためのものだ。変数スコープが上書きされるケースや、親子関係にある型が2つ出てくるケースは自明とはいえず、型バインド変数の出番ではない。（なお、型バインドのメンバ変数に代入するときは、左辺をthis.FileStreamと書く）<br />
+<br />
+　これだけで話が終われば平和で些細な言語機能なのだが、実はお楽しみはこれからだ。<br />
+　型バインド変数はその変数スコープと特殊な関係にある。そして、上のコード片で、ReadToEnd()というメンバ関数がある型バインド変数はStreamReaderだけだ。<br />
+　だから、こう書けていい。</p>
+<blockquote><code>
+  <pre>public string Func()<br />{<br />    using (var = new FileStream(&quot;test.txt&quot;, FileMode.Open))<br />    {<br />        using (var = new StreamReader(FileStream))<br />        {<br />            return ReadToEnd();<br />        }<br />    }<br />}</pre>
+</code></blockquote>
+<p>　つまり、関数の名前空間に、thisのメンバ関数だけでなく、型バインド変数のメンバ関数も含める。これを仮に、「関数名前空間の拡張」と呼ぶ。<br />
+  　阿鼻叫喚の渦を巻き起こす超Perl級の言語機能に見える。しかし角を取る方法はいくらでもある。変数宣言時にimplicit指定子を要求するなどだ。それに、フールプルーフは実際に馬鹿を観察しないことには論じられない。先に進もう。<br />
+　ローカル変数と同様、型バインドのメンバ変数のメンバ関数も、名前空間に含まれる。ちょっとクラス継承（実装継承）に似た働きをするわけだ。ではもっとクラス継承らしくしてみよう。以下のようなキャスト演算子を、デフォルトで定義するのだ。この機能を仮に、「デフォルトのキャスト演算子」と呼ぶ。</p>
+<blockquote><code>
+  <pre>class MyClass<br />{<br />    public FileStream;<br />    ...<br />    public static implicit operator FileStream(MyClass mc)<br />    {<br />        return mc.FileStream;<br />    }<br />}</pre>
+</code></blockquote>
+<p>　一目瞭然だが、このMyClassのインスタンスをFileStreamにキャストして得られたインスタンスは、MyClassに戻すことはできない。しかし、そもそもダウンキャストは型システムの抜け道だ。そのためC#でもJava言語でも、ダウンキャストは明示的に指定しなければならない。ダウンキャストを前提に設計することは滅多にない。<br />
+　ダウンキャストがどうしても必要なら、以下のように書ける。これは、ダウンキャストをデフォルトで提供するよりは、ずっと合理的なはずだ。</p>
+<blockquote><code>
+  <pre>class MyClass<br />{<br />    public MyFileStream;<br />    class MyFileStream : FileStream<br />    {<br />        public MyClass;<br />        public MyFileStream(string, FileMode, MyClass mc) : base(string, FileMode)<br />        {<br />            this.MyClass = mc;<br />        }<br />    }<br />}</pre>
+</code></blockquote>
+<p>　ダウンキャストを例外として考えると、こんな考えが浮かぶ――こうしてみるとクラス継承のほうがむしろ、言語機能として一般性に欠けるのでは？<br />
+  　そもそもクラス継承を悪だとする議論は古くからある。この煽りを食って、Java VMと.NET CLRは多重クラス継承ができなくなってしまった。単一クラス継承が残されたのは、必要悪ということだろう。多重クラス継承が悪で単一クラス継承が善なのではない。「複数は耐えがたいが1個なら耐えられる」という妥協が、単一クラス継承の本質だ。<br />
+  　しかし私に言わせれば、多重クラス継承をなくしたことで、重要なものまで失われた。デザインパターンでいうコンポジションで、委譲のためのコードを書いたことがある人なら、わかるはずだ。委譲のためのコードとは、およそ非人間的なコピペだ。<br />
+　では、そもそもクラス継承のメリットを、継承以外の手段で提供すればいい。型バインド変数＆関数名前空間の拡張＆デフォルトのキャスト演算子なら、それができる。<br />
+<br />
+　まとめ。<br />
+　ある変数スコープ内で、ある型の変数を1個しか使わないことが自明、というケースがある。そのような変数のために、変数名のかわりに型識別子でバインドするという言語機能を考える。そのような変数を、型バインド変数と呼ぶ。<br />
+　型バインド変数は、ローカル変数だけでなく、メンバ変数としても宣言できる。<br />
+　関数の名前空間に、型バインド変数のメンバ関数を含める。この機能を、関数名前空間の拡張と呼ぶ。<br />
+　型バインドのpublicなメンバ変数があるクラスは、その型へのキャスト演算子をデフォルトで備える。キャスト演算子を使うことで、その型でバインドされているメンバ変数が得られる。この機能を、デフォルトのキャスト演算子と呼ぶ。<br />
+　型バインド変数＆関数名前空間の拡張＆デフォルトのキャスト演算子によって、クラス継承の機能を肩代わりできる。これはクラス継承の問題点を避けながら利点を得られ、さらに利点をより使いやすくしている。<br />
+<br />
+　さて、こんな機能が実装された言語を使える日は来るのか？　ありえない。<br />
+　というわけでこれを、「妄想型プログラミング言語」と名づける。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000317.html&amp;text=%E5%A6%84%E6%83%B3%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000317.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E5%A6%84%E6%83%B3%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000317.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;06&#26376;18&#26085; 06:08
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

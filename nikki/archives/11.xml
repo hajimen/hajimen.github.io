@@ -1,0 +1,12 @@
+<rss version="0.91"><channel>
+<title>一次構造・3</title>
+<link>http://kaoriha.org/nikki/archives/000012.html</link>
+<description>　mP-x ◦ mP-x+1 ... ◦ mP-1 (U ) といくら制約を重ねても、先頭までさかのぼらなければ一意に定まらない場合、つまり m0 ◦ m1 ... ◦ mP-1 (U ) が一意でないとは、どんな場合か――オブジェクトの初期状態を引き継いでいるときだ。 　変数を初期化せず、不定の中身を参照することは、いかなる場合であれ事実上のバグである。こうした参照を禁止するうえで、2つの考え方がある。ひとつは、そうした参照を記述することは可能だがエラーになる、というもの。多くのCコンパイラはこれを検出して警告を吐く。もうひとつは、言語仕様として変数に初期化を強制する、というもの。XSLTはこれである。 　エラーによる方法をとれば、m0 ◦ m1 ... ◦ mP-1 (U ) は必ず一意に定まる。が、このことによる実際上のメリットはほとんどない。まともなプログラマなら、変数を初期化されない状態で長く放っておくはずはないし、長く放っておくことで性能上のメリットが生まれるような言語は、その使用を拒否すべき倫理的義務がある。というわけで、言語仕様として初期化を強制するほうが正しい。 　オブジェクトの初期状態がわかっているので、これを参照することもできるし、初期値をいつまでも引きずることができる。具体的には、状態として真理値をとるオブジェクトに、真偽をひっくりかえす（論理否定）アクションだけが備わっている、という場合が考えられる。このようなオブジェクトの状態は、初期値の真偽が逆なら、シーケンス全体を通じて真偽が逆になる。もちろん、このオブジェクトを参照するアクション式も影響を受ける。 　自己参照だけでなく、循環参照もある。オブジェクトOa とOb があり、どちらも1から12までの自然数を状態として取るものとしよう。また、どちらもアクションとして、 if(O_a == 12) O_b = 1; else O_b...</description>
+<language>ja</language>
+<item>
+<title>online casino</title>
+<link>http://online-casino.learnhowtoplay.com/</link>
+<description><![CDATA[You can also check some relevant pages about <A HREF="http://online-poker.learnhowtoplay.com/">online poker</A> <A HREF="http://online-casino.learnhowtoplay.com/">online casino</A> <A HREF="http://phentermine.learnhowtoplay.com/">phentermine</A> ]]></description>
+</item>
+</channel>
+</rss>

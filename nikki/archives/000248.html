@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: F#でWebサービス（SOAP）を使う</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000247.html" title="SOA 2.0" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000249.html" title="一婦多妻" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000247.html">&laquo; SOA 2.0</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000249.html">一婦多妻 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;02&#26376;05&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">F#でWebサービス（SOAP）を使う</h3>
+
+<p>　予告どおりVisual Studio 2005 Proを買い、F#している。まずはWebサービスを試した。</p>
+
+<a name="more"></a>
+<p>　結論からいこう。<a href="http://www.atmarkit.co.jp/fdotnet/practprog/wisearch04/wisearch04_02.html">この記事</a>のサンプルコードとほぼ同じことをするサンプルを、以下に示す。</p>
+<pre>#r @&quot;awsecommerceservice.dll&quot;;;<br />open com.amazon.webservices<br />
+let rec searchRequest = new ItemSearchRequest() and do<br />    searchRequest.Keywords &lt;- &quot;Star Wars&quot;;<br />    searchRequest.SearchIndex &lt;- &quot;DVD&quot;;<br />    searchRequest.ResponseGroup &lt;- [|&quot;ItemAttributes&quot;; &quot;Images&quot;|];<br />    searchRequest.ItemPage &lt;- &quot;1&quot;<br />
+let rec itemSearch = new ItemSearch() and do<br />    itemSearch.AWSAccessKeyId &lt;- &quot;14HA028HBEN2D7NVSVG2&quot;;<br />    itemSearch.Request &lt;- [|searchRequest|]<br />
+let ecs4 = new AWSECommerceService()<br />let searchResponse = ecs4.ItemSearch(itemSearch)<br />
+let items = searchResponse.Items.(0)<br />do Printf.printf &quot;Total Results : %s\n&quot; items.TotalResults<br />do Printf.printf &quot;Total Pages : %s\n&quot; items.TotalPages<br />
+let printItem = let c = ref 1 in fun (item : Item) -&gt;<br />    Printf.printf &quot;%d\n&quot; !c;<br />    c := !c + 1;<br />    Printf.printf &quot;Title : %s\n&quot; item.ItemAttributes.Title;<br />    Printf.printf &quot;Detail : %s\n&quot; item.DetailPageURL;<br />    Printf.printf &quot;Small Image : %s\n&quot; item.SmallImage.URL;<br />    Printf.printf &quot;Medium Image : %s\n&quot; item.MediumImage.URL;<br />    Printf.printf &quot;Large Image : %s\n&quot; item.LargeImage.URL<br />do Array.iter printItem items.Item</pre>
+<p>　読者諸氏が手元でこのコードを実行するときには、AWSAccessKeyIdをAmazonから取得してそれを使うことをお勧めする。<br />
+  　バグと死は避けられない。F#のコンパイラ（バージョン1.1.8.1）のバグにより、日本語の文字列リテラルは正しく処理されない。というわけでサンプルコードは日本語を使っていない。<br />
+　さて本題に入る。1行目から。<br />
+　Visual StudioのF#プロジェクトには、「参照の追加」のたぐいが一切ない。IDEが認識する形で.NETアセンブリを参照するには、1行目のように書く。  <br />
+　この awsecommerceservice.dll は、Amazon Webサービス ECS4のWSDLから生成したものだ（.NET Framework
+SDKのwsdlコマンドを使う）。このファイルを置くフォルダは、F#プロジェクトファイル（拡張子fsharpp）と同じでなければならない。さらに、Visual
+Studioを起動するときは、このプロジェクトファイルをダブルクリックして起動しなければならない。「参照の追加」のたぐいが一切ないというのは、そういうことだ。  <br />
+　[|  &quot;ItemAttributes&quot;; &quot;Images&quot;|]の[|...|]というカッコは、.NETの配列を作るための方言だ。中身の型から配列の型を型推論してくれる。<br />
+　let c = ref 1とc := !c + 1。F#では変数は不変なので、可変変数（？）が欲しければ、変数を参照として作る。詳しくは各種のO'Caml入門を参照のこと。  <br />
+　let c = ref 1のあとのinがわかりにくい。inの右が主役で、左は脇役である。脇役がletした変数は、主役の中で使われる。脇役の位置は右のほうがわかりやすいと思うが、文句はML系言語の設計者にどうぞ。  <br />
+　あとは一目瞭然だろう。</p>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000248.html&amp;text=F%23%E3%81%A7Web%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%EF%BC%88SOAP%EF%BC%89%E3%82%92%E4%BD%BF%E3%81%86&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000248.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=F%23%E3%81%A7Web%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%EF%BC%88SOAP%EF%BC%89%E3%82%92%E4%BD%BF%E3%81%86
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000248.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;02&#26376;05&#26085; 23:05
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

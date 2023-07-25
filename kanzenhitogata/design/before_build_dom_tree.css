@@ -1,0 +1,10 @@
+@charset "utf-8";
+.now_loading {
+	display: block;
+}
+#nav, #outer_frame {
+	display: none;
+}
+#main {
+	position: static;
+}

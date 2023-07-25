@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: はじめてのSQL CLR</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000350.html" title="史上最悪のア法務" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000352.html" title="新作成句" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000350.html">&laquo; 史上最悪のア法務</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000352.html">新作成句 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;08&#26376;18&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">はじめてのSQL CLR</h3>
+
+<p>　SQL Server 2005のフルテキスト検索は微妙に使えない。たとえば、カスタムのトークナイザを使うにはどうすればいいのかわからない。そんなわけで、SQL CLRを使って<a href="http://www.dotlucene.net/">Lucene.Net</a>を組み込んでみた。<br />
+　同じことに挑戦する人が、たぶん日本中に10人はいると思うので、アドバイスを残しておく。<br />
+・SQL CLRの実行権限はセーフでは無理だ。Lucene.Netが同期を使っている。同期はセーフ権限ではできない。<br />
+・UPDATE文の.WRITE句は、ファイルの操作からは想像できないようなセマンティクスを持っている。ABCDEFというバイト列のBCを書き換えるとき、ファイルの操作では、AxxDEFという具合にしか変更できない。つまり、書き換え部分の長さは変更できず、書き換え部分の後の位置をずらすことはできない。しかし、UPDATE文の.WRITE句ならできる。AxxxxDEFという具合に書き換えられてしまう。私はこのセマンティクスを想像できず、糞のようにハマった。<br />
+・CJKAnalyzerの移植に挑戦したものの、どうしても解明できなかった不明な理由により、正しく動作させられなかった。<br />
+　また、SQL CLRについての雑感を。<br />
+　ストアドプロシージャというもの自体これが初体験だったが、なんとも不細工なものだという印象を受けた。DBサーバとアプリケーションサーバというレイヤ分割については、今はおいておこう。SQLのレベルのことで疑問がある。<br />
+　その１。私は十分調べたと思うのだが、ついにわからなかった――ストアドプロシージャが複数カラムのテーブル値を返すとき、その戻り値をクライアントに返さずに使うには、どうすればいいのか？　SELECT hoge FROM (EXEC bar) WHERE foo = @hugaという具合に書きたいのに、どうやらできそうにない。また、戻り値を一時テーブルに放り込む方法も探したが、わからなかった。<br />
+　その２。ストアドプロシージャの戻り値の型が動的に決定される。猛烈に気持ちが悪い。この仕様を決めた奴は、悲観ロックをRDBMSに導入した奴と二つに重ねて四つに斬ってやりたい。<br />
+　以上は不細工な点だが、予想を裏切って美しかった点をひとつ。ユーザ関数に非破壊性を強制している。参照透明性の有無も設定できる。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000351.html&amp;text=%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AESQL%20CLR&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000351.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AESQL%20CLR
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000351.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;08&#26376;18&#26085; 22:45
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>> 戻り値を一時テーブルに放り込む方法</p>
+
+<p>これでどうですか。<br />
+（ストアドはFrom句に書けません。困りものです）</p>
+
+<p>create table #temp(<br />
+attribute_id int,<br />
+attribute_name varchar(255),<br />
+attribute_value varchar(255)<br />
+)</p>
+
+<p>insert into #temp<br />
+exec sp_server_info</p>
+
+<p>select attribute_name from #temp<br />
+where attribute_id=10</p>
+
+<p>drop table #temp</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;a&#64;b&#46;com">hir</a> at 2006&#24180;08&#26376;24&#26085; 14:37</span>
+</div>
+<div class="comments-body">
+<p>そうですね。この構文が出てきませんでした。ありがとうございます。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hajime&#64;kaoriha&#46;org">中里一</a> at 2006&#24180;08&#26376;24&#26085; 22:52</span>
+</div>
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

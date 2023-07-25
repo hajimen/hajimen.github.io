@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: ブライアン・ゲーツ、ダグ・リーほか『Java並行処理プログラミング』（SoftBank Creative）</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000406.html" title="柳龍拳 VS 岩倉豪" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000408.html" title="エロまんが的なるもの" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000406.html">&laquo; 柳龍拳 VS 岩倉豪</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000408.html">エロまんが的なるもの &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;11&#26376;28&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">ブライアン・ゲーツ、ダグ・リーほか『Java並行処理プログラミング』（SoftBank Creative）</h3>
+
+<p>　結論：<br />
+　すべてのJavaプログラマはただちに本書を読むべきだ。読む時間がないのなら、あなたにはコードを書く資格がない。</p>
+
+<a name="more"></a>
+<p>　<br />
+　理由：<br />
+・安い<br />
+　Javaの並行処理を知るために、私は莫大な授業料を支払った。「synchronizedやvolatileを使ってはいけない」くらいの分別は最初からあったが、それ以上のことはなにも知らなかった。<br />
+　並行処理には試行錯誤は役に立たない。テストは無力だ。正しいコードを書くか、それとも爆弾を作るか、どちらかだ。爆弾を作れば高くつく。<br />
+　本書には、私が莫大な授業料を支払って知ったことが<strong>すべて</strong>書いてある。<br />
+・薄い<br />
+　458ページは厚いと思えるかもしれないが、それは人間の頭が破壊的代入にしがみついているせいだ。破壊的代入と並行処理を両立させたいと人間が願う以上、この程度のページ数は避けられない。<br />
+・役に立つ<br />
+　本書は実戦の勘所を押さえている。著者たちは、自分の足を撃つ方法がどれだけあるかを知っており、どの方法がよく使われるかも知っている。<br />
+　本書で紹介される概念もきわめて有益だ。「スレッド束縛」という概念は、漠然と知ってはいたが（「synchronizedやvolatileを使ってはいけない」の理由の半分）、いままで名前を知らなかった。<br />
+・必要になったときにはもう遅い<br />
+　常にマルチスレッドを避け続けるのは、それほど易しいことではない。どうしても簡単なワーカスレッドが欲しくなり、ごくごく簡単なものだからと思ってsynchronizedと書き――そして爆弾を作る。<br />
+　いまのうちに備えておくべきだ。その日は来る。<br />
+　<br />
+　とはいえ不満な点はゼロではない。<br />
+　自分の足を撃つ方法をたくさん知っているからといって、自分の足を撃たずに過ごせるかというと、そうではない。自分の足を撃つ方法と、危険を遠ざけて暮らす方法は別のものだ。しかし本書は、危険そのものに注目し、結果として、危険のそばで暮らす方法に偏っている。<br />
+　危険を遠ざけて暮らす方法を、私なりにまとめると、以下のとおり。<br />
+・スレッド束縛か、それともimmutableかの二者択一にする<br />
+　スレッド束縛というのは、あるオブジェクト等を使える（参照できる）スレッドを、一度に一つに限定するということだ。スレッド間でオブジェクトを渡してもいいが、そのときは元のスレッドは、渡したオブジェクトへの参照を持っていてはいけない。<br />
+　immutableなオブジェクトは完璧に安全だ。ただしJavaはろくに不変性をサポートしていないので、本当にimmuatbleなオブジェクトを作るには、よほど気をつける必要がある。<br />
+　この二者択一ルールを守っているかぎり、synchronizedやvolatileはいらない。<br />
+・mutableなオブジェクトを共有するときには、java.util.concurrentを使う<br />
+　java.util.concurrentには、必要なはずのものが一通り揃っている。synchronizedやvolatileは最後の手段だ。<br />
+・スレッドを直接には操作せず、Executorフレームワークを使う<br />
+　自分でスレッドを生成するのは、synchronizedやvolatileと同じくらい危険な行為だ。Executorフレームワークを知り、これを前提にして設計すべきだ。<br />
+　<br />
+　理想をいえば、Javaをやめて破壊的代入のない言語を使うべきだ。しかし残念ながら人類はまだその段階にたどりついていない。HaskellやCleanで突っ張るよりも、本書を読むほうが安くあがる。<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.527382031&type=10&subid="></script>7andy</a></p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000407.html&amp;text=%E3%83%96%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%BB%E3%82%B2%E3%83%BC%E3%83%84%E3%80%81%E3%83%80%E3%82%B0%E3%83%BB%E3%83%AA%E3%83%BC%E3%81%BB%E3%81%8B%E3%80%8EJava%E4%B8%A6%E8%A1%8C%E5%87%A6%E7%90%86%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%80%8F%EF%BC%88SoftBank%20Creative%EF%BC%89&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000407.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E3%83%96%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%BB%E3%82%B2%E3%83%BC%E3%83%84%E3%80%81%E3%83%80%E3%82%B0%E3%83%BB%E3%83%AA%E3%83%BC%E3%81%BB%E3%81%8B%E3%80%8EJava%E4%B8%A6%E8%A1%8C%E5%87%A6%E7%90%86%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%80%8F%EF%BC%88SoftBank%20Creative%EF%BC%89
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000407.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;11&#26376;28&#26085; 23:00
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

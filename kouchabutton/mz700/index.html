@@ -1,0 +1,133 @@
+﻿<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>MZ-700 キャラグラの世界</title>
+	<script src='../jquery-1.6.2.min.js'></script>
+	<script src="mz700.js"></script>
+	<style type="text/css">
+	body {
+		background-color: #E0E7F0;
+		color: #1F180F;
+	}
+	img {
+		border-style:none;
+	}
+	table, tbody, tr, th, td {
+		background-color: white;
+	}
+	#screen_table_p td {
+		padding: 0px;
+	}
+	.table_head {
+		font-weight: bold;
+		background-color: #CCCC33;
+	}
+	.character_set {
+		width: 16px;
+		height: 16px;
+		display: block;
+	}
+	.character_set:hover {
+		background-color: red;
+	}
+	.character_set_0 {
+		background: url(font-0.png);
+	}
+	.character_set_1 {
+		background: url(font-1.png);
+	}
+	.character_set_2 {
+		background: url(font-2.png);
+	}
+	.character_set_3 {
+		background: url(font-3.png);
+	}
+	.character_set_4 {
+		background: url(font-4.png);
+	}
+	.character_set_5 {
+		background: url(font-5.png);
+	}
+	.character_set_6 {
+		background: url(font-6.png);
+	}
+	.character_set_7 {
+		background: url(font-7.png);
+	}
+	.bg_0 {
+		background-color:black;
+	}
+	.bg_1 {
+		background-color:blue;
+	}
+	.bg_2 {
+		background-color:red;
+	}
+	.bg_3 {
+		background-color:#FF00FF;
+	}
+	.bg_4 {
+		background-color:green;
+	}
+	.bg_5 {
+		background-color:#00FFFF;
+	}
+	.bg_6 {
+		background-color:yellow;
+	}
+	.bg_7 {
+		background-color:white;
+	}
+	.cursor {
+		width: 16px;
+		height: 16px;
+		display: block;
+		background: url(font-7.png);
+		background-position:0px -3824px;
+		background-color:black;
+	}
+	</style>
+</head>
+<body>
+	<h1>MZ-700 キャラグラの世界</h1>
+	<p style="text-align:center;"><a href="/kouchabutton/">紅茶ボタンのご案内</a></p>
+	<p style="text-align:center;"><a href="/kouchabutton/"><img alt="紅茶ボタン" src="/kouchabutton/design/left_top.png" /></a></p>
+	<p>　かつてのパソコンには画像表示の機能がなく、表示できるのは文字だけでした。文字を駆使して画像のようなものを表示することを、キャラクターグラフィックス、略して「キャラグラ」と呼びました。</p>
+	<p>　このページでは、MZ-700のキャラグラを編集することができます。当時のパソコンの表示能力を、どうか心ゆくまでご堪能ください。</p>
+	<p id="character_table_p"></p>
+	<form>
+	<p id="select_foreground">
+		文字色：
+		<input id="f0" type="radio" name="foreground" value="0" accesskey="Q"><label for="f0"><span style="color:black">■</span>黒</label>
+		<input id="f1" type="radio" name="foreground" value="1" accesskey="W"><label for="f1"><span style="color:blue">■</span>青</label>
+		<input id="f2" type="radio" name="foreground" value="2" accesskey="E"><label for="f2"><span style="color:red">■</span>赤</label>
+		<input id="f3" type="radio" name="foreground" value="3" accesskey="R"><label for="f3"><span style="color:#FF00FF">■</span>マゼンタ</label>
+		<input id="f4" type="radio" name="foreground" value="4" accesskey="T"><label for="f4"><span style="color:green">■</span>緑</label>
+		<input id="f5" type="radio" name="foreground" value="5" accesskey="Y"><label for="f5"><span style="color:#00FFFF">■</span>シアン</label>
+		<input id="f6" type="radio" name="foreground" value="6" accesskey="U"><label for="f6"><span style="color:yellow">■</span>黄</label>
+		<input id="f7" type="radio" name="foreground" value="7" accesskey="I" checked><label for="f7"><span style="color:white">■</span>白</label>
+	</p>
+	<p id="select_background">
+		背景色：
+		<input id="b0" type="radio" name="background" value="0" accesskey="A" checked><label for="b0"><span style="color:black">■</span>黒</label>
+		<input id="b1" type="radio" name="background" value="1" accesskey="S"><label for="b1"><span style="color:blue">■</span>青</label>
+		<input id="b2" type="radio" name="background" value="2" accesskey="D"><label for="b2"><span style="color:red">■</span>赤</label>
+		<input id="b3" type="radio" name="background" value="3" accesskey="F"><label for="b3"><span style="color:#FF00FF">■</span>マゼンタ</label>
+		<input id="b4" type="radio" name="background" value="4" accesskey="G"><label for="b4"><span style="color:green">■</span>緑</label>
+		<input id="b5" type="radio" name="background" value="5" accesskey="H"><label for="b5"><span style="color:#00FFFF">■</span>シアン</label>
+		<input id="b6" type="radio" name="background" value="6" accesskey="J"><label for="b6"><span style="color:yellow">■</span>黄</label>
+		<input id="b7" type="radio" name="background" value="7" accesskey="K"><label for="b7"><span style="color:white">■</span>白</label>
+	</p>
+	</form>
+	<p id="screen_table_p"></p>
+	<p>
+		<input type="button" id="encode_button" value="↓エンコード" />
+		<input type="button" id="decode_button" value="↑デコード" />
+	</p>
+	<p>
+		<textarea id="encoded_textarea" name="encoded_textarea" cols="80" rows="30"></textarea>
+	</p>
+	<p>　このページは<a href="/kouchabutton/">紅茶ボタン</a>の販促キャンペーンとして作成されました。</p>
+</body>
+</html>

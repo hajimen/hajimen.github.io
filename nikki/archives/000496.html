@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 難しいプログラミング入門</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000495.html" title="連想ブロック" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000497.html" title="メンヘル行為その3" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000495.html">&laquo; 連想ブロック</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000497.html">メンヘル行為その3 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2007&#24180;10&#26376;24&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">難しいプログラミング入門</h3>
+
+<p>　『やさしいプログラミング入門』といったタイトルの本を見るたびに、『鈍才の数学』のことを思い出す。<br />
+　これは中学か高校のとき教師から聞いた話だ。<br />
+　かつて、『鈍才の数学』という学習参考書を書いた人がいた。著者がいうには、「天才にとって数学は簡単なので、鈍才が数学に苦しむ理由がわからない。しかし自分は鈍才なので、それがわかる。だから天才よりも私のほうが、鈍才の読者諸君をうまく教えることができる」。納得できる話だ。本の内容も大変優れていた。しかし『鈍才の数学』はまったく売れなかった。そこでタイトルを『英才の数学』に変えたところ、ただちにベストセラーになり、数学の学習参考書の定番になった。どうやら、学習参考書を選ぶときに、自分を鈍才と認めることのできる人は少ないらしい。<br />
+　『やさしいプログラミング入門』には、『英才の数学』的なごまかしを感じる。数学もプログラミングも、ほとんどの人にとっては難しいものなのに、それを認めていない。『鈍才の数学』の精神でもって『難しいプログラミング入門』と銘打った本はないものか。もしあれば、それはどんなものになるだろう。</p>
+
+<a name="more"></a>
+<p>　<br />
+　プログラミングのどこが難しいのか。逆にいえば、どこが易しいのか。独断で言ってみる。<br />
+　<br />
+易しい例：<br />
+・チューリングマシン（TM）は易しい。状態、メモリアドレス、実行順序などの概念は易しい。アセンブラは、理解するだけなら、一番易しいプログラミング言語である。<br />
+・参照透明な式は易しい。表計算は、関係や状態だけで実行順序がない、一種の純粋関数型言語といえる。同様のことはHTMLにもいえる。<br />
+　<br />
+難しい例：<br />
+・破壊的なTMの上で、参照透明な式が「評価」されることを理解するのは、難しい。<br />
+・実行順序が半順序になるケース（共有メモリと同期による並行プログラミング）は難しい。実行順序があるプログラミング言語のなかでは、半順序なるものを想定することさえ難しい（演算子の評価順序など）。<br />
+　<br />
+本質：<br />
+・原理的に異なる2つの領域が混じるときに難しさが発生する。実行順序のある領域とない領域は、片方だけなら易しいが、混ぜると爆発する（式の評価、副作用、半順序）。<br />
+　<br />
+　『難しいプログラミング入門』では、2つの異なる領域をそれぞれ独立して教えたあとで、2つを混ぜることになるだろう。たとえばこんな具合だ。<br />
+　<br />
+第1章：チューリングマシンと入出力<br />
+　Z80のアセンブラをいじりながら、TM、入出力、データ構造の概念を学ぶ。簡易的な電卓を作る。<br />
+第2章：表計算、HTML、SQL<br />
+　表計算とHTMLとSQLをいじりながら、関係と状態の概念を学ぶ。<br />
+第3章：表計算の実装<br />
+　Z80のアセンブラで簡易的な表計算ソフトを作る。<br />
+　<br />
+　読者はほぼ全員、プログラミングがどれほど難しいものかを思い知らされつつ、第3章で爆死するだろう。「あたまじゃわかっているんだが」とはこのことだ。2つの領域をどちらも完璧に理解しているのに、その混合物を思い描くことができないという、悪夢のような体験である。<br />
+　C言語のポインタの難しさも、同じ本質から生じている。C言語のポインタという概念は、状態やメモリアドレス（TM領域）と型（コンパイラ領域）を混ぜている。<br />
+　再帰の難しさも同じだ。コールスタックは、実行順序と変数スコープを混ぜている。<br />
+　<br />
+　「プログラミングができる」と「プログラミングの難しさを知っている」は、まったく違う。後者のほうがより重要で、面白い。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000496.html&amp;text=%E9%9B%A3%E3%81%97%E3%81%84%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E5%85%A5%E9%96%80&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000496.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E9%9B%A3%E3%81%97%E3%81%84%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E5%85%A5%E9%96%80
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000496.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2007&#24180;10&#26376;24&#26085; 15:41
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="496" />
+<input type="hidden" name="spammer" value="goaway" />
+
+<!--div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;"-->
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+<!--/div-->
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

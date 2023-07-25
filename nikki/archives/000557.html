@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 最速のプログラミング言語</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000556.html" title="虚無と犯罪" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000558.html" title="ナシーム・ニコラス・タレブ『まぐれ』（ダイヤモンド社）" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000556.html">&laquo; 虚無と犯罪</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000558.html">ナシーム・ニコラス・タレブ『まぐれ』（ダイヤモンド社） &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2008&#24180;04&#26376;24&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">最速のプログラミング言語</h3>
+
+<p>　モーターレースは馬鹿げた行為だ。特にフォーミュラカーの阿呆らしさときたら大したものだ。<br />
+　フォーミュラカーのレースは、車両のトータルな性能など追求しない。経済性はもちろんのこと、サーキットを速く安全に回ることさえ追求しない。たとえば「大馬力のエンジン」という見世物を維持するために、空気抵抗を大きくするレギュレーション（タイヤのカウリング禁止など）を山ほど盛り込んでいる。<br />
+　……で、それが何か？<br />
+　すべてのスポーツやゲームは馬鹿げている。人がスポーツやゲームに熱中するのは、それが有用だからではなく、楽しく美しいからだ。レギュレーションが多少おかしくても、F1は楽しく美しい。2007年のサーキット最速のカードライバーはライコネンで、最速のコンストラクターはフェラーリだ。「レギュレーションがおかしい」と言ってみたところで、この認識は覆せない。それに、フェラーリがサーキット最速だからといって、フェラーリの市販車を買う人はごくわずかだ。<br />
+　<br />
+　さて本題に入る。<br />
+　<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873113636/hound-22/ref=nosim">『Beautiful Code』（オライリー・ジャパン）</a></span>を読んだ。高名なプログラマ33人が、美しいコードについて語ったエッセイ集である。<br />
+　広範な美を期待して読んだが、すべて有用性にもとづくものだ。F1や陸上競技のような美しさは省みられていない。（ビットカウントの話題はいくぶんそちら寄りではある）<br />
+　考えてみると、プログラミングの世界には、モーターレースにあたるものがない。既存のプログラミングコンテストはみな技能選手権のたぐいで、実行速度を採点せず、有用性にべったりひっついている。実行速度だけを競うものは、<a href="http://shootout.alioth.debian.org/">The Computer Language Benchmarks Game</a> があるが、モーターレースのドライバーに比べて、プログラマという要素の比重が小さすぎる。静的型言語であれば、処理系とコードの最適化に投じた労力を比較しているだけだ。プログラマの能力や、それを引き出すプログラミング言語の力を測れていない。<br />
+　プログラミングをスポーツやゲームとして扱う場がない以上、『Beautiful Code』の著者たちがスポーツ的・ゲーム的な美しさを語らないのも当然だ。<br />
+　しかし、この状況はよいものなのか？　最速のプログラマと最速のプログラミング言語を決めるイベントが求められているのではないか？<br />
+　<br />
+　最速のプログラマと最速のプログラミング言語を決めるイベントは、どんなレギュレーションがいいだろう。<br />
+　出題に対してコードを書き、テストにかける、というところまでは普通のプログラミングコンテストと同じでいい。ただしそのテストはパフォーマンステストでもある。出題からテスト準備完了までの時間制限は、2時間くらいが見ていて面白いだろう。<br />
+　マシンを主催者提供にすると、ハードウェアの自由度が下がってつまらないので、マシンの電力で制限をかける。今なら300Wくらいが知恵を絞るのによさそうだ。<br />
+　用いるソフトウェアは一切制限しない。使用言語を決め打ちする必要もない。出題の瞬間、全員が論理型言語で書き始める、というのも面白い。<br />
+　このレギュレーションでは、どんなプログラマと言語が有利だろう。歴戦のLispハッカーとC++ハッカーがしのぎを削るか、ML系のアカデミシャンの独壇場か、あるいはレーシングカーのような非実用的な処理系をひっさげたマイナー言語と言語ハッカーが躍り出るか。<br />
+　もしこのイベントが大規模なものになり、MS・IBM・Google・Sunが鎬を削るようになれば、おそらくレーシングカー的なマイナー言語が優位に立つだろう。ありとあらゆる最適化技術を乗せた、最速のプログラミング言語だ。<br />
+　その言語はきっと、『Beautiful Code』の哲学が夢見ることさえできない美しさを備えている。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000557.html&amp;text=%E6%9C%80%E9%80%9F%E3%81%AE%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000557.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E6%9C%80%E9%80%9F%E3%81%AE%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000557.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2008&#24180;04&#26376;24&#26085; 23:06
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>いやぁ、面白そうな話ですね。<br />
+最速プログラミング言語の知恵を絞った努力の積み重ねの「美しさ」を見てみたいなと強く思いました。<br />
+レギュレーションとしての電力規制なんて発想がすばらしいですね。</p>
+
+<p>多少趣は変わりますが、中里さんの量子コンピュータに対しての意見をぜひ伺いたいと思いました。<br />
+欲を言えば、並列処理と絡めて。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;naokoito&#64;f5&#46;dion&#46;ne&#46;jp">oka</a> at 2008&#24180;05&#26376;21&#26085; 15:33</span>
+</div>
+<div class="comments-body">
+<p>どういう仕組みになっているのかわかりませんが、昔のエントリにはコメントを書けないのですね（なのでこちらに書かせていただきました）。</p>
+
+<p>中里さんのサイトには、「妄想型プログラミング言語」のページからやってきました（どうやって「妄想型～」にたどり着いたかは残念ながら忘れてしまいました）。</p>
+
+<p>「百合」が何なのかさえ知らないのでおかど違いかも知れませんが、興味深い話が多くて、アーカイブすべて拝見（少なくともページビュー）させていただきました。</p>
+
+<p>これからも勝手に期待しています。</p>
+
+<p>余談ですが、私の生年月日は1974/9/23です。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;naokoito&#64;f5&#46;dion&#46;ne&#46;jp">oka</a> at 2008&#24180;05&#26376;21&#26085; 15:45</span>
+</div>
+<div class="comments-body">
+<p>こんにちは。</p>
+
+<p>挨拶が遅れてしまいました。ごめんなさい。</p>
+
+<p>大事なことを書き忘れていました。</p>
+
+<p>アーカイブの最初のほうに、以前の中里さんへの日記（以前のBlog？）へのアンカーがあったのですが、リンク切れでした。</p>
+
+<p>差し支えなければ参照させてもらえませんか？<br />
+zipファイルか何かでも構いません（お手数がかからない方法で構いません）。Windows環境（+.Netの開発環境）ならあります。<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;naokoito&#64;f5&#46;dion&#46;ne&#46;jp">oka</a> at 2008&#24180;05&#26376;21&#26085; 16:03</span>
+</div>
+<div class="comments-body">
+<p>　はじめまして。</p>
+
+<p>　量子コンピューティングは現在のところ実用から程遠い状態で、核融合炉や軌道エレベーターと同じカテゴリーのものだと認識しています。未来技術の本命ではあるけれど、直線的なアプローチでは難しいことが判明しているものです。<br />
+　ですから研究対象としては、大穴狙いでしょう。自分が現役のあいだにブレークスルーが起こって新局面が開ける、という可能性に賭けるわけです。<br />
+　お尋ねの並列性ですが、これは物理現象よりは人間の思考形態にかかわる問題です。論理にとっては半順序と全順序のあいだに優劣もクソもありませんが、人間の思考にとっては全順序のほうが簡単です。量子コンピューティングは物理現象レベルで止まっているので、並列性の問題とはいまのところ縁がなさそうです。<br />
+　もしブレークスルーが起こったら、おそらくその量子コンピューティングは、いま想像できるものとはかけ離れたものになるでしょう。バベッジの時代に現在のプログラミングが想像できなかったように。</p>
+
+<p>　以前の日記は kaoriha.org/nikki.htm に残っています。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hajime&#64;kaoriha&#46;org">中里一</a> at 2008&#24180;05&#26376;21&#26085; 22:30</span>
+</div>
+<div class="comments-body">
+<p>以前の日記を読んでからお礼を言おうと思ったのですが、<br />
+もうしばらくかかりそうなので。</p>
+
+<p>公開（というより告知？）ありがとうございます。<br />
+今、ようやく1999年が終わりそうなところです。<br />
+いやぁ、日記というか記録って時事ネタに対する未来予測とか後で<br />
+検証できるので面白いですね（中里さんの書いた時事の1/5も<br />
+知らない話でしたが）。<br />
+ひょっとしたら「春よ、来い」は1, 2巻ぐらいまで読んだことが<br />
+あるような気がします（つまらなくて途中で読み進められなくなったのと<br />
+読んだのが3年ぐらい前のことなので似たようなタイトルの本だったかも）。</p>
+
+<p><br />
+前置きはこのくらいで、量子コンピューティングの話です。<br />
+私は、プログラマなんですが、並列処理に本気でアプローチする<br />
+機会がなく、量子コンピューティングも立ち読み程度で誤読バンザイぐらい<br />
+の理解でして、どちらかを知るきっかけになれば良いぐらいのつもりで<br />
+質問しました。</p>
+
+<p>人類はトランザクションを理解できていない話と<br />
+複数のアウトプットに対する同時解釈が達成できていない話は<br />
+あまり関連性がなく、似ているように感じたけれど、本質は全く異なる話と<br />
+理解しておいたほうがよさそうですね。</p>
+
+<p>どこかの翻訳モノの小説で読んだ内容ですが、時空を行き来することが<br />
+可能であること（可能、不可能といったレベルではなく、物事の捉え方）<br />
+の説得材料として、文章の横書きのみを行う民族にとっては縦書きの文章<br />
+を扱う民族が存在する→時空の方向は一方向ではないと説得しているくだりで、<br />
+一瞬説得力がありそうだけど、よくよく考えてみると（ちょっと考えてみると）<br />
+人間が事物を判断する量に限りがあるというか、単一の事柄しか解釈できない<br />
+点はその文脈の中で前提としているので、私の解釈では（昔の？）Windowsの<br />
+マルチスレッディングがエセの機構であることと大差ないなぁと思っていたので、<br />
+ひょっとしたら並列処理の難しさと量子コンピューティングのコーディング<br />
+の難しさは似通った部分が多いのではと思っていました。</p>
+
+<p>（知識はおろか、筆力もなくてスイマセン。）</p>
+
+<p></p>
+
+<p><br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;naokoito&#64;f5&#46;dion&#46;ne&#46;jp">oka</a> at 2008&#24180;05&#26376;23&#26085; 15:58</span>
+</div>
+<div class="comments-body">
+<p>こんにちは。okaです。</p>
+
+<p>000315[汝のコンパイラを愛せよ]<br />
+に関してです。</p>
+
+<p>Joelの「間違ったコードは間違って見えるようにする」<br />
+を見たとき、クラスで解決する話だろって私も思いました。<br />
+というか、Excelですら、rowとcolがクラスになっていない<br />
+なんてありえないと思いました。<br />
+おそらくパフォーマンスのためとかなんとか言い訳するのかな<br />
+と思いますが、そもそも、クラス化するとパフォーマンスが<br />
+劣化するようなつくり（言語、コンパイラ？）の方が問題な気がします。<br />
+MS以外のプログラマが表計算を作りきれないのもごもっとも<br />
+という気がします（言い切ると語弊がありますが）。</p>
+
+<p>ここから余談です。というか私の文章余談ですが、<br />
+ブログというかドキュメントのファイル名が数字6桁なところに共感が持てました。<br />
+私のサイトでは5桁です。ここら辺が心意気の差なのでしょうね。<br />
+ひょっとして、Movable Typeが6桁であるがゆえだったら、とても間抜けな話です。</p>
+
+<p>日記のどこかで見かけた「偽悪」という言葉ですが、パタリロの「偽悪者」という話が<br />
+私は好きです。為政者（権力者）が「偽悪」って素敵です。<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;naokoito&#64;f5&#46;dion&#46;ne&#46;jp">oka</a> at 2008&#24180;05&#26376;23&#26085; 16:29</span>
+</div>
+<div class="comments-body">
+<p>　私の過去の日記には明らかな間違いが散見されます。未来の日記も同様でしょう。お気をつけください。</p>
+
+<p>　ブログのURLはお察しのとおりMovable Typeそのままです。<br />
+　心意気でいえば、カウンタがないのが一番でしょう。大手ブログサービスには128ビット乱数らしきURLを使うものがあります。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hajime&#64;kaoriha&#46;org">中里一</a> at 2008&#24180;05&#26376;26&#26085; 22:03</span>
+</div>
+<div class="comments-body">
+<p>こんにちは。okaです。</p>
+
+<p>ふくさの包み方や、技術情報を丁寧にまとめ上げたいわゆる品行方正なサイトも<br />
+それはそれでありがたいのですが、中里さんのサイトのように脳への刺激となる<br />
+ようなサイトも読んでいて楽しいです。書かれていることそのものというよりは<br />
+発想、視点の洗練された奇抜さを楽しませてもらっています。</p>
+
+<p>調子に乗ってもう一件。</p>
+
+<p>ユビキタスについてどのような意見をお持ちですか？</p>
+
+<p>わたしは、RDBMSの主キーの概念すらないお粗末な機構ぐらいの認識なのですが、<br />
+中里さんの一家言を伺えたらなぁと思いまして。<br />
+自動販売機でお金の換わりに携帯で払えるのがユビキタスだなんて言われていま<br />
+すが（古い？）、全然うれしくないし。<br />
+せめて（それがいいとは言いませんが）、自販機の飲みたい飲み物に携帯をかざ<br />
+したらその飲み物が出てくるぐらいのUIが欲しかったです。<br />
+それでもパラダイムシフトとは呼ぶべくもありませんが。<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;naokoito&#64;f5&#46;dion&#46;ne&#46;jp">oka</a> at 2008&#24180;05&#26376;29&#26085; 15:03</span>
+</div>
+<div class="comments-body">
+<p>　ヒマな中高生のなかには、携帯ですさまじい数のメールをやりとりする人がいるそうです。携帯という手段により、授業中のメモのやりとりが学校の外まで広がってしまったわけです。<br />
+　Suicaの乗り降りや買い物の履歴が記録されていることはご存知でしょうか。公安警察にしょっぴかれた人は、Suicaの履歴をチェックされていることでしょう。<br />
+　こうした具体例を「ユビキタス授業中メモ回し」「ユビキタス行動記録」と呼んでみたところで、事態が明確になるわけでもなく、新しい何かを予想できるわけでもありません。単に「ユビキタス」と言ってみただけ、なのです。<br />
+　しかしその「言ってみただけ」がすべて、という仕事もあります。扇動系のコンサルや電通です。彼らはなにしろ扇動が仕事なので、マスメディア上で目立つのがうまく、いらない知識を売り込んでくれますが、こういう知識にはかかわるだけ時間の無駄です。<br />
+　「ユビキタス」という言葉は、「言ってみただけ」の仕事にとっては非常に便利なものです。上の例にみたように、いろんなものについて「言ってみただけ」を実行できます。が、それ以外の役には立ちません。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hajime&#64;kaoriha&#46;org">中里一</a> at 2008&#24180;05&#26376;31&#26085; 23:01</span>
+</div>
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

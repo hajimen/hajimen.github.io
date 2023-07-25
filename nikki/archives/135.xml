@@ -1,0 +1,12 @@
+<rss version="0.91"><channel>
+<title>Referer Houndの設計と実装・その1</title>
+<link>http://kaoriha.org/nikki/archives/000145.html</link>
+<description>　現在のReferer Houndの実装は実験的なものであり、私以外の人間がこれを改良しようとするのは時間の無駄である。もし、複数のアプリケーションサーバを用いるような大規模な運用や、プログラマでない者が配備できるような簡単なパッケージを目指すなら、必ずゼロから書き直さなければならない。 　Referer Houndを書き直す人々の助けになるよう、私が設計・実装にあたって下した判断について、ここに書きとめておく。 　まず、アクセスを捕捉する方法について。 　現在の実装では、サーブレットフィルタを用いて捕捉している。これに対して、HTTPサーバのログを解析するプログラムをcronなどで定期起動する方法もある。 　後者を用いれば、そもそもサーブレットである必要がない。PHPかなにかで実装すれば、掲示板やアクセスカウンタのように簡単に配備できるようになるだろう。私が前者を選んだのは、趣味の問題（ポーリングが嫌い）でもあるが、静的生成したリンク元一覧をSSIでincludeするという方法を思いつかなかったからでもある。私はWeb系にまったく土地勘がないのだ。 　後日に続く。...</description>
+<language>ja</language>
+<item>
+<title>poker</title>
+<link>http://t-e-x-a-s-poker.com</link>
+<description><![CDATA[<a href="http://t-e-x-a-s-poker.com" title="poker">poker</a> It is quite gratifying to feel guilty if you haven't done anything wrong: how nobel! Whereas it is rather hard and certainly depressing to ]]></description>
+</item>
+</channel>
+</rss>

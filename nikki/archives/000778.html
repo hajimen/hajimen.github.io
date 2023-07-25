@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: Dustin Boswell, Trevor Foucher『リーダブルコード』（オライリージャパン）</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000777.html" title="楽天koboで完全人型のお試し版が読める（らしい）" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000779.html" title="論理のレッスン" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000777.html">&laquo; 楽天koboで完全人型のお試し版が読める（らしい）</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000779.html">論理のレッスン &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2012&#24180;09&#26376;26&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Dustin Boswell, Trevor Foucher『リーダブルコード』（オライリージャパン）</h3>
+
+<p>　プログラマは悲観的な生き物である。少なくとも、プログラマとして考えるときには、悲観的になる。<br />
+　この「悲観的」とはどういうことか。<br />
+　人間の思考には「制御幻想」というバイアスがある。<a href="http://www.geocities.jp/kyongsea/sub310.htm">「実際には偶然によって生じているのに、自分の意図と能力によって統制できると錯覚する現象。自尊心の自己防衛論的観点で説明される」</a>。<br />
+　たとえば、ただのサイコロを被験者に渡して、何百回か振らせる。ただしそのとき、「これはイカサマ用の仕掛けのついたサイコロで、投げ方を会得すれば高い確率で狙った目が出せる」と吹き込んでおく。すると被験者は、何百回か振るうちに、「イカサマの投げ方を会得した」と思い込むわけだ。<br />
+　この罠にひっかからない人もいる。たとえば、抑うつ状態の人だ。また、この罠にひっかかっていては仕事にならない人もいる。たとえば、プログラマだ。<br />
+　昔なにかの本で、こんな話を読んだ。プログラムをコーディングシートに記入して計算機センターに持っていった時代の話だ。計算機センターが「このプログラムはエラーで止まった」と報告してきたのに対して、「そんなわけはない、そっちが間違ってる」と言い張ってきかないプログラマがいたという。生まれて初めて書いたプログラムでそこまで言い張るのは、困った人を通り越してヤバい人なので、多少の「自信」を得るだけの経験はあったのだろう。その「自信」は、「イカサマの投げ方を会得した」という思い込みと同種のものだったわけだ。<br />
+　もちろんプログラマも経験則に頼る。たとえば私は、「開発環境を疑うのは疲労の兆候」という経験則を固く信じている。コンパイラ等のバグに出くわすことは非常に稀なのに対し、疲労のせいで他人を疑い出す現象は非常によくある。<br />
+　だから、経験則がすべて悪いのではない。「自尊心の自己防衛」に奉仕するもの、「イカサマの投げ方を会得した」という思い込みに類するものを退けなければならない。<br />
+　こういう態度は、少なくとも「イカサマの投げ方を会得した」と軽々しく思い込む種類の人間からは、「悲観的」と呼ばれるだろう。</p>
+
+<a name="more"></a>
+<p>　<br />
+　さて本書、<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873115655/hound-22/ref=nosim">『リーダブルコード』</a>について。<br />
+　著者は35ページで、「C++のSTLのlist::size()の計算量がO(n)だとは予期しなかったので、実行性能上のバグを作った。size()の計算量がO(n)なのはユーザの期待に反する。関数は名前から期待される挙動をしなければならない」と述べている。<br />
+　「関数は名前から期待される挙動をしなければならない」。一般論としては当たり前の話ではある。もしコレクションのsize()がコレクションを初期化したら、誰がどう見てもバグだ。<br />
+　だが、著者の述べるケースは、それほど自明ではない。<br />
+　プログラミングの一般論には、こんなものもある――「実行性能を当て推量するな」。キャッシュもなければ命令パイプラインもないCPUのアセンブリ言語を書いていた時代はとっくに終わった。データが小さければ、O(n^2)のコードがO(1)より速い場合はままある。<br />
+　そして、標準ライブラリの計算量について予期を抱くことも、実行性能の当て推量にほかならない。<br />
+　というわけで、著者の述べるケースは、「関数は名前から期待される挙動をしなければならない」という一般論が単純に通じるケースではない。このことだけでも著者の能力を疑うが、問題はもうひとつある。<br />
+　著者は、自分の出くわしたバグを、「関数は名前から期待される挙動をしなければならない」という一般論に帰した。だが、こんな議論に帰してもいいはずだ――「関数のユーザがどんな予期を抱くかを予想するのは難しい」。<br />
+　<br />
+　関数のユーザがどんな予期を抱くかを予想するのは難しい。<br />
+　プログラマならだれでも、この食い違いが多くのバグを生むことを知っている。この問題の一例に対して著者は、「関数の名前と挙動を一致させればよい」と処方箋を示したわけだ。だがこの処方箋は、一般性のない、「イカサマの投げ方」ではないか。<br />
+　<br />
+　「関数のユーザがどんな予期を抱くかを予想するのは難しい」ということへの認識の甘さを感じさせる例が、ほかにもある。たとえば135ページ、「汎用コードをたくさん作る」だ。<br />
+　はたして著者は、2分探索の歴史を知っているのだろうか。2分探索の概念が公表されてから（1946年）、バグのないコードが公表されるまでのあいだに、12年以上もかかった。<br />
+　汎用コード、言い換えれば、入力に対する暗黙の前提を持たないコードを書くことは、腰を抜かすほど難しい。特定の状況で、入力に対する暗黙の前提にべったり依存したコードを書くこととは、トライアスロンと100m走ほどにも違う（種目が違うだけで、どちらかが偉いわけではない。100m走で10秒を切れば英雄だ）。だが著者の陽気な書きぶりは、この桁外れの難しさを認識しているようには到底見えない。著者は、ドキュメントに明示されているlist::size()の計算量さえ、「ユーザの期待に反する」と言ってのける。<br />
+　<br />
+　関数のユーザがどんな予期を抱くかを予想するのは難しい。バグは避けられない。当て推量は当たらない。<br />
+　私は本書から、こうした「悲観的」な認識を感じることはできなかった。<br />
+　私は著者のプログラマとしての資質と能力を強く疑う。また、本書はほとんどのプログラマにとって、よくても無益であり、悪くすれば益よりも害が大きい、と考える。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000778.html&amp;text=Dustin%20Boswell%2C%20Trevor%20Foucher%E3%80%8E%E3%83%AA%E3%83%BC%E3%83%80%E3%83%96%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89%E3%80%8F%EF%BC%88%E3%82%AA%E3%83%A9%E3%82%A4%E3%83%AA%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%EF%BC%89&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000778.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=Dustin%20Boswell%2C%20Trevor%20Foucher%E3%80%8E%E3%83%AA%E3%83%BC%E3%83%80%E3%83%96%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89%E3%80%8F%EF%BC%88%E3%82%AA%E3%83%A9%E3%82%A4%E3%83%AA%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%EF%BC%89
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000778.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2012&#24180;09&#26376;26&#26085; 23:59
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

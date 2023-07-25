@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>中里一日記: 2012&#24180;04&#26376; Archives</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/2012_03.html" title="2012&#24180;03&#26376;" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/2012_05.html" title="2012&#24180;05&#26376;" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/2012_03.html">&laquo; 2012&#24180;03&#26376;</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/2012_05.html">2012&#24180;05&#26376; &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+
+<h2 class="date">2012&#24180;04&#26376;05&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000761"></a>
+<h3 class="title">僕はSQLができない</h3>
+
+<p>　C.J.Date<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873112753/hound-22/ref=nosim">『データベース実践講義』</a>を読んだ。<br />
+　私はSQLが死ぬほど苦手で、少しでも複雑なクエリを書くたびに参考になるものを探す。さっぱり理解できない要素も山ほどある。たとえばIN。主にぐぐれないせいだが。<br />
+　なぜ私はこうもSQLが苦手なのか、この本を読んでよくわかった。SQLが糞だからだ。</p>
+
+<p>　どう糞なのか。<br />
+・値と変数を分けて扱うことができない。たとえばSQLの「テーブル」とは値なのか変数なのか<br />
+・テーブルの値は行の集合、つまり（Javaでいうところの）Setであるべきなのに、Listになっている。シンプルなSetのかわりに、妙なものがゴチャゴチャついたListを使わされるのがSQL<br />
+・SQLの型サポートは貧弱で、意味的にありえないクエリがエラーにならない。品物の個数とID番号がどちらも整数型というだけで比較できてしまう<br />
+　<br />
+　上記の問題点をご覧になって、なにかお気づきにならないだろうか。<br />
+　これらはそっくりそのまま、過去30年にわたって耳にタコができるほどさんざん批判されつづけながら、今もなお再生産されつづけている問題にほかならない――汎用プログラミング言語の世界で。<br />
+　<br />
+　たとえば.NET Frameworkには、JavaのSetに相当するコレクションがない。Dictionaryのvalueを使わないことで代用するものらしい。<br />
+　こういう「代用」は空恐ろしいほど日常的に行われている。JavaのSetが必要十分のところで配列やリストを代用することは完全に習慣になっており、問題意識を喚起するのも難しいほどだ。（<a href="/nikki/archives/000753.html">Array Considered Harmful あるいは、なぜC言語のポインタは難しいのか</a>）<br />
+　必要十分をはるかに超えたコレクションで代用することのなにが悪いのか？　『Array Considered Harmful』では理解の難しさを挙げたが、SQLはこの害悪の巨大な実例だ。<br />
+　<br />
+　Webプログラミングの世界には、「サニタイズ」という狂気の言葉がある。「SQLインジェクションを防ぐサニタイズ」という具合に使われる。これは根本的には、「品物の個数とID番号がどちらも整数型というだけで比較できてしまう」という事態を気にしないのと同じ問題だ。<br />
+　彼らの頭の中はこうなっている――<br />
+・整数型に格納できるデータは整数であり、文字列型に格納できるデータは文字列である<br />
+・だから個数とID番号が比較できてもいいし、SQLのクエリを文字列結合で組み立ててもいい<br />
+・個数とID番号を比較するのはバグであり、プログラマが「気をつけて」防ぐ<br />
+・SQLのクエリを文字列結合で組み立てるときには「サニタイズ」する<br />
+　「整数型に格納できるデータは整数」という習慣は、「JavaのSetが必要十分のところで配列を代用する」という習慣とそっくりだ。<br />
+　<br />
+　以上2点に頷いてくださった向きも、汎用プログラミング言語が「値と変数を分けて扱うことができない」という点は意味不明かもしれない。<br />
+　では、クラスのインスタンスを値として、つまり整数の値と同じように扱える機能を備えた、オブジェクト指向の汎用プログラミング言語を挙げてみていただきたい。<br />
+　そのインスタンスは当然immutableでなければならない。整数の値10の「中身」をいじって、見かけは10のまま「中身」を11にする方法が存在してはならない。そうした変更をプログラマが「気をつけて」防ぐという回答は禁止する。さて、どうか。主流といえる言語はひとつも挙げられないはずだ。<br />
+　言語がそうした機能を備えることを妨げるものは何もない。ただプログラマがそうした機能を欲しないだけだ。プログラマは、少なくとも現在の主流を構成する（ということは必然的に糞な）プログラマは、値と変数の区別を欲していない。<br />
+　SQLの「値と変数を分けて扱うことができない」という性質は、こうしたプログラマの習性によく適応している。<br />
+　<br />
+　著者は「今から数百年後にもリレーショナルモデルが使われていることが容易に想像できる」と書く。そうかもしれない。だが著者が本書で述べているような、まともなリレーショナルモデルの実装が主流になることはないだろう。<br />
+　私は、今から数百年後にも、SQLが使われているのではないかと想像する。SQLは、キーボードのQWERTY配列がそうであるのと似た意味で、最後の言語かもしれない。SQLより学習しやすく、生産性が高く、リスクが小さい言語がありうることは容易に想像できる。しかし、大多数の（＝平均的な＝糞な）プログラマの習性に適応するという仕事をSQL以上にうまくやってのける言語は、おそらく現れない。</p>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000761.html">21:58</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=761" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

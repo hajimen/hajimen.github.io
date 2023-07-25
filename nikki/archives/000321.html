@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 今後のOSに望むこと</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000320.html" title="1492:49" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000322.html" title="本物" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000320.html">&laquo; 1492:49</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000322.html">本物 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;06&#26376;23&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">今後のOSに望むこと</h3>
+
+<p>　新しいOSを作ることが流行らなくなってから、長い年月が過ぎた。<br />
+　念のため言っておくが、Linuxは新しくない。そしてWindowsも新しくない。どちらもC言語をベースにした、UNIXもどきのOSだ。1973年でOSの時間は止まった。いまも私たちはそこにいる。<br />
+　おそらく私が生きているあいだには、OSは漸進的にしか進歩しないだろう。どのように進歩するかを、私の願望という形で予想してみる。</p>
+
+<a name="more"></a>
+<p>　<br />
+　Java VMや.NET CLRを、カーネルに入れてほしい。もちろん、インタプリタでは話にならない。動的コンパイルされたコードが、カーネルモードで動かせるようになってほしい。メリットは以下のとおりだ。<br />
+<b>・カーネルモードで動くコードを、かなり安全かつ簡単に書ける</b><br />
+　Microsoftも、糞ドライバに青筋を立てるよりは、C#でドライバを書かせたほうがいい。というか、C言語で書かされるこちらも青筋を立てている。<br />
+<b>・OSに依存しないドライバが可能になる</b><br />
+　現在、ドライバはOSごとに違う。実用的な仮想マシンはOSよりも少ない（事実上2つしかない）ので、仮想マシンごとに違うほうがマシだ。また、一つのOSで同時に複数の仮想マシンを実行することもできる。<br />
+<b>・カーネルモードとユーザモードの境界が柔軟になる</b><br />
+　LinuxにはkHTTPdというものがある。これはHTTPのリクエストをカーネルモードで処理して高速化する（とはいえ現在の実装は、Apacheに比べれば速い、というレベルらしいが）。また、昔のLinuxでは、NFSサーバはユーザモードで動作した。現在ではカーネルモードで動いている。これも性能を出すためだ。<br />
+　Windowsにも同様の事情がある。NT系列は、4.0まではディスプレイドライバはユーザモードだったが、4.0以降はカーネルモードになった。また、IISの6.0以降は、kHTTPdと同様のことをしている。<br />
+　これらのカーネル化には批判が多い。カーネル化で得られる性能を、すべての人が必要としているわけではないからだ。もちろん純粋なマイクロカーネルもやりすぎだ。では、どうやって線引きすればいいのか？<br />
+　そもそも、OSが線引きすること自体が間違っている。<br />
+　カーネルモードとユーザモードの境界を、OSが決めるべきではない。決めるのはアプリケーションであるべきだ。アプリケーションは、必要とあれば気軽にカーネルモードを使えるべきだ。<br />
+　<br />
+　分散アプリケーションでOSのユーザ認証を使えるようにしてほしい。<br />
+　ユーザ登録と認証のあるWebアプリを作ったとしよう。Webメールなどだ。そのユーザ認証を、OSの機能で行うだろうか。WebアプリのユーザごとにOSのユーザアカウントを作成する――そんなことをするだろうか。おそらく、しない。だがWebアプリのユーザは、OSの管理下にある資源を使っている。<br />
+　ということは、Webアプリのユーザは潜在的に、過大な権限を与えられている。別の見方をすれば、Webアプリはユーザ認証と資源管理を独自実装している。「暗号を独自実装してはいけない」というのは常識だが、「ユーザ認証を独自実装してはいけない」「資源管理を独自実装してはいけない」というアドバイスはまだ聞いた覚えがない。しかしこれらは明らかに、独自実装するには危険な代物だ。<br />
+　WebアプリでOSのユーザ認証を使えるようになったとしても、RDBMSは？　それもOSのユーザ認証と一本化する。RDBMSは分散アプリケーションだ。<br />
+　<br />
+　これらはすべて斬新的な進歩だ。「ゼロからHaskellで書き直せ」とか「CPUのアーキテクチャから作り直せ」といったドラスティックな進歩はいくらでも考えられる。実装することもできる。しかし、それ以上のものにはならないだろう。<br />
+　斬新的にしか進歩しない世界でも、やることはたくさんあるし、C言語のコードを完全に消滅させることさえも夢ではない。ある日気がつくと、C言語のコンパイラがいらなくなっていた――そんな日が来るはずだ。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000321.html&amp;text=%E4%BB%8A%E5%BE%8C%E3%81%AEOS%E3%81%AB%E6%9C%9B%E3%82%80%E3%81%93%E3%81%A8&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000321.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E4%BB%8A%E5%BE%8C%E3%81%AEOS%E3%81%AB%E6%9C%9B%E3%82%80%E3%81%93%E3%81%A8
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000321.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;06&#26376;23&#26085; 00:18
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

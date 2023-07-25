@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 護身：XQuery</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000426.html" title="不可能性は萌えより広い" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000428.html" title="少コミを読む（第17回・2007年第5号）" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000426.html">&laquo; 不可能性は萌えより広い</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000428.html">少コミを読む（第17回・2007年第5号） &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2007&#24180;01&#26376;25&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">護身：XQuery</h3>
+
+<p>　真の護身が完成すると、危険に気づくまでもなく、危険に近づくことができなくなる、という（『グラップラー刃牙』）。<br />
+　プログラマも護身する。<br />
+　護身ができているプログラマは、危険なツールや規格やフレームワークを、その存在に気づくまでもなく回避する。<br />
+　過去の例を挙げよう。RDBMSにMySQLを採用して、4.1の文字化け問題を踏んでしまったプログラマは、護身ができていなかった。護身ができていれば当然PostgreSQLを使っていただろう。<br />
+　また、現在の例を挙げれば、PHPを使うプログラマは護身ができていない。護身ができていれば当然PythonかRubyを使うだろう。<br />
+　これらの護身は、なにも超能力ではなく、事実にもとづく総合的な判断だ。<br />
+　たとえば、日本人の開発者はMySQLには少なく（おそらく存在しなかった）、PostgreSQLには多い。となるとMySQLがいずれ日本語関係で問題を起こすかもしれないと予想できる。また、MySQLのパフォーマンス特性も、素人向けマーケティングの臭みが鼻について食えたものではなかった。「トランザクションなしで参照だけ速い」というパフォーマンス特性がなにを意味するか、わからない人は素人だ。<br />
+　こうした判断を正確に下すには、時間的・分野的に広範な知識が要る。そして、その判断の中身を詳しく説明するのは、ほとんど不可能だ。<br />
+　MySQLのように、普及したあとで明白にコケて災厄を引き起こした場合は、その理由を説明できる。しかし、このような華々しい災厄は例外に属するし、その説明も遡及的なものになる。たいていはXLinkやRELAX NGのように、単に普及せず、なにも起こらない。この場合は説明が難しい。<br />
+　<br />
+　さて本題である。<br />
+　<a href="http://www.w3.org/2007/01/qt-pressrelease.html.ja">XQuery 1.0が勧告になった</a>。2001年のワーキングドラフトから5年1ヶ月、やっと勧告にたどりついた。<br />
+　というわけで読者諸氏にご忠告する。XQuery 1.0には近づかないほうがいい。<br />
+　上記のとおり理由を説明するのは難しいが、ひとつだけ挙げるなら、XQuery 1.0はいろいろな点でXLink 1.0に似ている。XMLの専門家からは長らく期待されながら、なかなか勧告にたどりつけなかった点。勧告にたどりついた時にも、利益を産むソフトウェアに使われている気配がない点。<br />
+　<br />
+　2012年にこのエントリをご覧の読者諸氏は、いかがお思いだろうか。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000427.html&amp;text=%E8%AD%B7%E8%BA%AB%EF%BC%9AXQuery&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000427.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E8%AD%B7%E8%BA%AB%EF%BC%9AXQuery
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000427.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2007&#24180;01&#26376;25&#26085; 23:44
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

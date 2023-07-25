@@ -1,0 +1,534 @@
+@charset "UTF-8";
+
+
+.yui3-cssreset html
+{
+	color: #000;
+	background: #FFF;
+}
+.yui3-cssreset body, .yui3-cssreset div, .yui3-cssreset dl, .yui3-cssreset dt, .yui3-cssreset dd, .yui3-cssreset ul, .yui3-cssreset ol, .yui3-cssreset li, .yui3-cssreset h1, .yui3-cssreset h2, .yui3-cssreset h3, .yui3-cssreset h4, .yui3-cssreset h5, .yui3-cssreset h6, .yui3-cssreset pre, .yui3-cssreset code, .yui3-cssreset form, .yui3-cssreset fieldset, .yui3-cssreset legend, .yui3-cssreset input, .yui3-cssreset textarea, .yui3-cssreset p, .yui3-cssreset blockquote, .yui3-cssreset th, .yui3-cssreset td
+{
+	margin: 0;
+	padding: 0;
+}
+.yui3-cssreset table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.yui3-cssreset fieldset, .yui3-cssreset img
+{
+	border: 0;
+}
+.yui3-cssreset address, .yui3-cssreset caption, .yui3-cssreset cite, .yui3-cssreset code, .yui3-cssreset dfn, .yui3-cssreset em, .yui3-cssreset strong, .yui3-cssreset th, .yui3-cssreset var
+{
+	font-style: normal;
+	font-weight: normal;
+}
+.yui3-cssreset ol, .yui3-cssreset ul
+{
+	list-style: none;
+}
+.yui3-cssreset caption, .yui3-cssreset th
+{
+	text-align: left;
+}
+.yui3-cssreset h1, .yui3-cssreset h2, .yui3-cssreset h3, .yui3-cssreset h4, .yui3-cssreset h5, .yui3-cssreset h6
+{
+	font-size: 100%;
+	font-weight: normal;
+}
+.yui3-cssreset q:before, .yui3-cssreset q:after
+{
+	content: '';
+}
+.yui3-cssreset abbr, .yui3-cssreset acronym
+{
+	border: 0;
+	font-variant: normal;
+}
+.yui3-cssreset sup
+{
+	vertical-align: text-top;
+}
+.yui3-cssreset sub
+{
+	vertical-align: text-bottom;
+}
+.yui3-cssreset input, .yui3-cssreset textarea, .yui3-cssreset select
+{
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+.yui3-cssreset input, .yui3-cssreset textarea, .yui3-cssreset select
+{ *font-size:100%}
+.yui3-cssreset legend
+{
+	color: #000;
+}
+#yui3-css-stamp.cssreset-context
+{
+	display: none;
+}
+/* YUI3 CSS Reset */
+
+
+
+
+
+/* Color Font Decoration */
+body
+{
+	background-color: #E0E7F0;
+	color: #1F180F;
+	font-family: palatino, georgia, "ヒラギノ角ゴ Pro W3" , "メイリオ" , verdana, arial, sans-serif;
+}
+A, A:link, A:visited
+{
+	color: #003366;
+	text-decoration: underline;
+}
+A:active, A:hover
+{
+	color: #999999;
+}
+
+#banner
+{
+	color: #333;
+	font-weight: normal;
+}
+
+#banner a, #banner a:link, #banner a:visited, #banner a:active, #banner a:hover
+{
+	color: #333;
+	text-decoration: none;
+}
+
+.description
+{
+	color: #333;
+	text-transform: none;
+}
+
+.blogbody, .blogbody p, .blogbody h4
+{
+	font-weight: normal;
+}
+
+.blogbody a, .blogbody a:link, .blogbody a:visited, .blogbody a:active, .blogbody a:hover
+{
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.title
+{
+	color: #654;
+}
+
+.date
+{
+	color: #332;
+	font-weight: bold;
+}
+
+.posted, .calendar, .side, .comments-post, .trackback-post, textarea
+{
+	font-family: "ヒラギノ角ゴ Pro W3" , "メイリオ" , "Osaka" , verdana, arial, sans-serif;
+}
+
+.posted
+{
+	color: #1F180F;
+}
+
+.calendar
+{
+	color: #654;
+	font-weight: normal;
+}
+
+.calendarhead
+{
+	color: #666600;
+	font-weight: normal;
+	letter-spacing: .3em;
+	text-transform: uppercase;
+}
+
+.side
+{
+	color: #333;
+	font-weight: normal;
+}
+
+.sidetitle
+{
+	color: #666600;
+	font-weight: normal;
+	letter-spacing: .3em;
+	text-transform: uppercase;
+}
+
+.syndicate
+{
+	font-family: verdana, arial, sans-serif;
+}
+
+.powered
+{
+	color: #666;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+}
+
+
+.comments-body
+{
+	color: #666;
+	font-weight: normal;
+}
+
+.comments-post
+{
+	color: #666;
+	font-weight: normal;
+}
+
+
+.trackback-url
+{
+	color: #666;
+	font-weight: normal;
+}
+
+
+.trackback-body
+{
+	color: #666;
+	font-weight: normal;
+}
+
+.trackback-post
+{
+	color: #666;
+	font-weight: normal;
+}
+
+
+.comments-head
+{
+	color: #666;
+	font-weight: bold;
+}
+
+#banner-commentspop
+{
+	color: #FFF;
+	font-weight: bold;
+	background: #003366;
+}
+
+.rhstat
+{
+	display: none;
+}
+
+blockquote
+{
+	background-color: #FFFFFF;
+}
+/* Color Font Decoration */
+
+
+
+
+
+
+/* Position */
+/* @media screen and (min-width: 50em) { */
+#content
+{
+	margin-left: 240px;
+	margin-bottom: 1em;
+}
+
+#links
+{
+	position: absolute;
+	top: 100px;
+	padding: 15px;
+	border: 1px solid #1F180F;
+	width: 200px;
+}
+/* } */
+@media screen and (max-width: 50em)
+{
+	/*	#content
+		{
+			margin-bottom: 1em;
+		}
+
+		#links
+		{
+			width: 200px;
+		}
+	*/
+	#content
+	{
+		margin-left: 0px;
+	}
+
+	#links
+	{
+		position: static;
+		padding: 0px;
+		border: none;
+	}
+
+}
+/* Position */
+
+
+
+
+
+/* Size Alignment Border */
+body
+{
+	margin: 1em 1em 1em 1em;
+}
+
+h1, h2, h3
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+h1
+{
+	font-size: 1.2em;
+}
+
+h2
+{
+	font-size: 1.1em;
+}
+
+#banner
+{
+	font-size: xx-large;
+	padding: 12px;
+}
+
+.description
+{
+	font-size: small;
+}
+
+.blog
+{
+	padding: 15px;
+}
+
+.blogbody, .blogbody p, .blogbody h4
+{
+	line-height: 160%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.blogbody h4
+{
+	margin-bottom: 0px;
+	margin-top: 15px;
+}
+
+.title
+{
+	font-size: large;
+	margin-bottom: 10px;
+}
+
+#menu
+{
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.date
+{
+	font-size: large;
+	border-bottom: 1px solid #999;
+	margin-bottom: 10px;
+}
+
+.posted
+{
+	font-size: x-small;
+	margin-bottom: 25px;
+}
+
+
+.calendar
+{
+	font-size: x-small;
+	line-height: 140%;
+	padding: 2px;
+	text-align: left;
+}
+
+.calendarhead
+{
+	font-size: small;
+	font-weight: normal;
+	padding: 2px;
+	text-align: left;
+}
+
+.side
+{
+	font-size: x-small;
+	line-height: 140%;
+	padding: 2px;
+}
+
+.sidetitle
+{
+	font-weight: normal;
+	padding: 2px;
+	margin-top: 30px;
+}
+
+.syndicate
+{
+	font-size: xx-small;
+	line-height: 140%;
+	padding: 2px;
+	margin-top: 15px;
+}
+
+.powered
+{
+	font-size: x-small;
+	line-height: 140%;
+	padding: 2px;
+	margin-top: 50px;
+}
+
+
+.comments-body
+{
+	font-size: small;
+	line-height: 140%;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	border-bottom: 1px dotted #999;
+}
+
+.comments-post
+{
+	font-size: x-small;
+}
+
+
+.trackback-url
+{
+	font-size: small;
+	line-height: 140%;
+	padding: 5px;
+	border: 1px dotted #999;
+}
+
+
+.trackback-body
+{
+	font-size: small;
+	line-height: 140%;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	border-bottom: 1px dotted #999;
+}
+
+.trackback-post
+{
+	font-size: x-small;
+}
+
+
+.comments-head
+{
+	font-size: small;
+	border-bottom: 1px solid #999;
+	margin-top: 20px;
+	font-weight: bold;
+}
+
+#banner-commentspop
+{
+	font-size: large;
+	border-left: 1px solid #FFF;
+	border-right: 1px solid #FFF;
+	border-top: 1px solid #FFF;
+	background: #003366;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.rhstat
+{
+	display: none;
+}
+pre
+{
+	line-height: 110%;
+}
+.retail
+{
+	font-size: x-small;
+}
+
+.tumblr
+{
+display:inline-block;
+text-indent:-9999px;
+overflow:hidden;
+width:81px;
+height:20px;
+background:url('http://platform.tumblr.com/v1/share_1.png') top left no-repeat transparent;
+
+}
+
+.twitter
+{
+	width: 130px;
+	height: 20px;
+}
+
+.g-plusone
+{
+	width: 90px;
+	height: 20px;
+}
+
+.snsb
+{
+	overflow: hidden;
+	height: 20px;
+	margin: 0px;
+	padding: 0px;
+}
+.snsb li
+{
+	float: left;
+	margin-right: 4px;
+	list-style-type: none;
+}
+.snsb iframe
+{
+	margin: 0 !important;
+}

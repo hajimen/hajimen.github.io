@@ -1,0 +1,12 @@
+<rss version="0.91"><channel>
+<title>ネバー・ネバー・delete</title>
+<link>http://kaoriha.org/nikki/archives/000027.html</link>
+<description>　STLコンテナをGlobalAllocでアロケートすると何が面白いのか。 　newの実装は、環境により場合により異なる。同じOS・同じコンパイラなら同じ実装になりそうに思えるが、そうではない。 　OSによるメモリ割り当ては遅いことが多く（GlobalAllocも例外ではない）、STLのデフォルトアロケータを使ったときのように気軽にnewしまくるコードでは、このオーバーヘッドは深刻なものになる。このため、多くの環境でさまざまな対策が講じられており、newをオーバーライドするという手も使われる。また、メモリリーク検出のためにnewをオーバーライドする環境もある（MFCなど）。 　このため、極端な場合、スタティックリンクされていても、場所によってnewの実装が異なりうる。ダイナミックリンクでは、たとえ実装が同じでも動作が異なることさえある。たとえば、newのオーバーライドでメモリリークを検出する場合、newで確保された領域とは別のところに管理情報を確保していることがありうる。 　STLのアロケータはインラインで展開される。どこかにデフォルトアロケータを定義したobjファイルがあるわけではない。デフォルトアロケータ中に含まれるnewの動作は、展開先のnewのものだ。 　ということは――ダイナミックリンクされたバイナリのあいだでは、互いに相手のSTLコンテナをdeleteすることができない場合がある。相手にconstなオブジェクトを引数として渡すのは安全だが、戻り値にSTLコンテナを使うのは危険だ。 　というわけで、GlobalAllocを使うSTLアロケータの出番になる。 　GlobalAllocの動作は、環境や場合によって変わったりしない。同じコンパイラを使うなら、ダイナミックリンクされたバイナリのあいだでも、自由にSTLコンテナをやりとりできるようになる。 　ただしGlobalAllocは、まともなnewの実装よりもはるかに遅いので、そこらじゅうで使うわけにはいかない。ダイナミックリンク間のやりとりに限定して使うべきで、それもconstな引数で済むところには使わないほうがいい。...</description>
+<language>ja</language>
+<item>
+<title>online casino</title>
+<link>http://online-casino.learnhowtoplay.com/</link>
+<description><![CDATA[Please visit some information in the field of <A HREF="http://online-poker.learnhowtoplay.com/">online poker</A> <A HREF="http://online-casino.learnhowtoplay.com/">online casino</A> <A HREF="http://phentermine.learnhowtoplay.com/">phentermine</A> ]]></description>
+</item>
+</channel>
+</rss>

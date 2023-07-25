@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 日に30時間のハッキング</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000267.html" title="サイト移行中" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000269.html" title="EJB (JBoss)でスレッド" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000267.html">&laquo; サイト移行中</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000269.html">EJB (JBoss)でスレッド &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;03&#26376;25&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">日に30時間のハッキング</h3>
+
+<p>　MovableTypeを復旧させた。<br />
+　日に30時間のハッキングという矛盾を乗り越え、今やすべては元通りである。<br />
+　私の経験が特殊であってほしいが、おそらくこの祈りは空しい。Berkeley DBのバージョン違いによるトラブルは、これから数十年間、絶えることがないだろう。同じ罠にはまった人々のために、ここにメモを残しておく。<br />
+　まず、<a href="http://www.masahiko.info/blog/archives/000833.html">このページ</a>を見る。事態の大枠がつかめるはずだ。これに書いてあるとおりで復旧できたら、それに越したことはない。<br />
+　これに書いてあるとおりでは復旧できない場合（私がそうだった）、試す価値のある方法がある。<br />
+　移行先のサーバではなく移行元のサーバ上でdb_dump185を使い、ダンプファイルを移行先にコピーして、ロードするのだ。<br />
+　もし移行元のサーバにdb_dump185がなければ、コンパイルする。Berkeley DBのソースからdb_dump185.cを探し出し、サーバにアップロード、サーバのシェルからgcc -ldb db_dump185.cとやってa.outを作り、これを使う。<br />
+　さらに私の場合、バックアップのファイルが論理的な不整合を起こしていて、もうひとつ地獄めぐりをさせられたが、これはあまり一般的な問題ではないので省略する。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000268.html&amp;text=%E6%97%A5%E3%81%AB30%E6%99%82%E9%96%93%E3%81%AE%E3%83%8F%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000268.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E6%97%A5%E3%81%AB30%E6%99%82%E9%96%93%E3%81%AE%E3%83%8F%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000268.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;03&#26376;25&#26085; 16:07
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

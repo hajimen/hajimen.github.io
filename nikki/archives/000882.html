@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 今月の俺Twitter</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000881.html" title="百合だからコラム百本 第13回 ポルノ、本妻と愛人、一部のイスラム圏" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000885.html" title="百合だからコラム百本 第14回 装飾的と創造的" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000881.html">&laquo; 百合だからコラム百本 第13回 ポルノ、本妻と愛人、一部のイスラム圏</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000885.html">百合だからコラム百本 第14回 装飾的と創造的 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2013&#24180;04&#26376;01&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">今月の俺Twitter</h3>
+
+<p>In-App Purchaseのトランザクションのタイムアウトについて。<br />
+<hr /><br />
+パスワード入力ダイアログが出ているときにアプリのプロセスをアボートすると、アプリは消えるがダイアログは消えない（StoreKitのプロセスが出している）。ホームボタンを押しても消えない。そのままトランザクションはStoreKitのプロセスが勝手に続ける。<br />
+<hr /><br />
+ここでさらにiOSシミュレータを再起動すると、トランザクションは消滅する。トランザクションが消滅しうる以上、トランザクションのpurchased / fail待ちは必ずタイムアウトする必要がある。<br />
+<hr /><br />
+ユーザがパスワード入力ダイアログを長時間放置している場合、トランザクションが消滅していないことをアプリは知ることができるか？　できる。paymentキューのtransactionsで見られる。<br />
+<hr /><br />
+ただし、問題がひとつ。paymentキューのtransactionsは、少なくとも、プロセス起動時にトランザクションオブザーバを登録した直後には、常に空。なんらかの時点でStoreKitの状態を反映する。その「なんらかの時点」を知る方法はあるのか？　たぶんない。<br />
+<hr /><br />
+その「なんらかの時点」も含めてタイムアウトする、というのが正解か。paymentキューのtransactionsが空になったらカウントダウンを開始。</p>
+
+<a name="more"></a>
+<p><hr /><br />
+TVアニメの『ラブライブ！』がよかった。A-RISEにまるで手が届かないところとか。『ワイルド7』の終盤みたい。<br />
+<hr /><br />
+UIKitは普通に使っててもしょっちゅうバグに当たる <a href="https://github.com/jverkoey/nimbus/issues/194">https://github.com/jverkoey/nimbus/issues/194</a> これだからUIWebView以外は使いたくない。<br />
+<hr /><br />
+Reactive Cocoaすごいね。特にcombineLatestは革命的。見ろ、MFCのDDXがゴミのようだ！　ただ当時はCPUもゴミのようだったけど。<br />
+<hr /><br />
+佐藤亜有子さんの訃報 <a href="http://news.goo.ne.jp/article/sankei/nation/snk20130405553.html">http://news.goo.ne.jp/article/sankei/nation/snk20130405553.html</a> あの作風にこの死に方…　言葉もない。<br />
+<hr /><br />
+海外の怪しい通販サイトで買い物をしたら、出荷メールが来てから2週間以上も届かない。あと1週間以内に届かなかったらここに晒す。<br />
+<hr /><br />
+サッチャーが死んだ。おそらく晩年は「北欧と英国、どうして差がついたのか 首相、環境の違い」って煽られてただろうなーと思う。<br />
+<hr /><br />
+ゴルバチョフ、サッチャー、レーガンは、政治家としてのプレーの内容ではゴルバチョフ＞サッチャー＞レーガンなのに、晩年の自国内での人気はおそらく、レーガン＞サッチャー＞＞＞ゴルバチョフ、なんだよねえ。大衆はゲームの難易度を見てくれない。派手なギミック（＝戦争して勝つ）が出ると大喜び。<br />
+<hr /><br />
+ReactiveCocoaのdeliverOnとrac_liftSelectorを同時に使うと、sendされてからliftされるまでのあいだにselfが解放された場合に、EXC_BAD_ACCESSを起こす。おかげで地獄めぐりをさせられた。deliverOnでスレッドを変えたあとにsubscriberの存在をチェックしてないらしい。もしプロファイラにかけなかったら本番で落ちまくってた。<br />
+<hr /><br />
+驚きの8.46kg <a href="http://www.bikeradar.com/gear/article/pro-bike-edvald-boasson-hagens-pinarello-dogma-k--36988/">http://www.bikeradar.com/gear/article/pro-bike-edvald-boasson-hagens-pinarello-dogma-k--36988/</a> どう考えても最低で400gのダークマターがある。ピナレロ…　オリンピックでTeam SKYの選手に嫌われてたしなー。必勝を期した自国開催オリンピックで、実戦経験ゼロの謎機材に乗るってどんだけー！　と心底びっくりした。<br />
+<hr /><br />
+このPro Bikeを見てると、ダークマターはわりとよくある現象のような気がしてくる。やっぱりプロチームにはカーボン増し盛りのフレームを出してるのかねえ。でも、同じ金型で400gも増し盛りできるのかねえ。でも、1000gと言ってるフレームが実測1400gだったら炎上するだろうし。<br />
+<hr /><br />
+配信用アプリのApple審査対策コード（Objective-C）のセミコロンの数を数えたら、現段階で1070あった。行数なら3倍くらい。Appleの審査を通す以外に誰も喜ばせず、なんの役にも立たないコードが3000行。正気か。<br />
+<hr /><br />
+「学校の勉強が将来なんの役に立つのか」……　絶望が足りない。この世は、学校の勉強の1万分の1も役に立たない作業ばかりだよ！<br />
+<hr /><br />
+進撃の巨人のアニメ、世界観がギクシャクしてる。バンバン戦死者を出してるはずの軍人とその家族が、戦死への儀礼を身につけてないところとか。<br />
+<hr /><br />
+ヴァルヴレイヴの説明の強引さにうんにょりした。このごろ強引な説明って流行ってるのかねえ。「いずれ説明されそう→結局説明はなかった」なエヴァパターンが流行った反動？　ああしたいのなら、「説明されないのは最初から明白」な宮崎駿パターンでやるしかなかったような気が。<br />
+<hr /><br />
+当たり前田のクラッカー <a href="http://www3.nhk.or.jp/news/html/20130415/k10013935181000.html">http://www3.nhk.or.jp/news/html/20130415/k10013935181000.html</a> Googleは、AV女優やエロまんが家の名前はすごい反応速度でブラックリストに追加してる。新人デビューをチェックして試すと面白いよ。<br />
+<hr /><br />
+ドコモメールが何度目かの延期 <a href="http://headlines.yahoo.co.jp/hl?a=20130419-00000094-mycomj-sci">http://headlines.yahoo.co.jp/hl?a=20130419-00000094-mycomj-sci</a> spモードとあわせて、なんと見事なデスマーチッ……！！！！<br />
+<hr /><br />
+レガシーなあれこれとの擦り合わせで火を噴いてるんだろうなーと予想。iモードでスパムメールを着信払いにして稼いだパケ代はもう全部吐き出した？　まだ？<br />
+<hr /><br />
+「聖書はコーラン（イスラム教の聖典）の安っぽいコピーだ」　<a href="http://headlines.yahoo.co.jp/hl?a=20130421-00000042-mai-n_ame">http://headlines.yahoo.co.jp/hl?a=20130421-00000042-mai-n_ame</a>　今「聖書はコーランのパクリ」でぐぐったら0件だった。<br />
+<hr /><br />
+UIWebViewでCSSをキャッシュさせない、たったひとつの動作するやりかた <a href="http://stackoverflow.com/questions/3549508/prevent-caching-of-css-files-in-uiwebview-loaded-from-disk">http://stackoverflow.com/questions/3549508/prevent-caching-of-css-files-in-uiwebview-loaded-from-disk</a> つまり、ローカルストレージ上のCSSをキャッシュさせないのは不可能。ここ大事だからよーく覚えて。「不可能」。できると書いてある記事は<strong>全部ウソ</strong>。アプリのプロセスを終了する以外に、CSSのキャッシュを消す方法は存在しない。この結論を得るために地獄めぐりをさせられた。<br />
+<hr /><br />
+そもそもMobile Safariって昔からキャッシュの挙動が怪しいんだよねえ…　キャッシュ担当のプログラマの首をすげかえたほうがいいと思う。<br />
+<hr /><br />
+たぶん今、世界一クールな家庭用トレッドミルはこれ <a href="http://www.amazon.com/dp/B009QHLWUK">http://www.amazon.com/dp/B009QHLWUK</a> 連続使用時間が6時間。ださい棒がついてない。ただし買うには船便の転送サービスを使う必要がある。なお、10万円以下のトレッドミルは全部オモチャなので間違っても買わないように。<br />
+<hr /><br />
+Newsstand kitのAPNsでcontent-availableとalertを同じペイロードに入れると、通知センターに通知が出ない……ような気がする。でも誰もどこにもそんなこと書いてない。ぐぬぬ。<br />
+<hr /><br />
+ポイントカード商法の原動力 <a href="http://www.lifehacker.jp/2013/04/130403numbers_affect.html">http://www.lifehacker.jp/2013/04/130403numbers_affect.html</a> 近所の生協（という名のただのスーパー）が、銀行預金の利息かってレベルの料率のポイントカードを作れと毎度毎度押し付けてきて、「ボストンのあの兄弟もポイントカード商法を狙えば気が利いてたのに」と毎度毎度思う。<br />
+<hr /><br />
+どうしてテロリストって気が利かないのかねえ。大学だの中絶医だのマラソン大会だの。どいつもこいつも「アホか」としか言えない。あんなんだからテロなんてやるのか。<br />
+<hr /><br />
+アプリを審査に出した。ただしこれまでの経験だと、1度目で通ったことはまだない。<br />
+<hr /><br />
+そろそろハイパーインフレのリスクに備えて通貨オプション取引の勉強を始めるかー（円の大暴落にチマチマ保険金を払う戦略）と思ったら、マネックス証券がカバードワラントをやめていた。大丈夫かマネックス証券。<br />
+<hr /><br />
+「バイナリ―オプション」とかいう詐欺商品のことを今初めて知った。こんなんにひっかかるブルベア二元論のアホは身ぐるみ剥がれてください。<br />
+<hr /><br />
+Yahoo匂い袋の恐怖 <a href="http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1120975916">http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1120975916</a> 一番下の回答の「時々質問が出てきますがこれは殆ど間違いなく詐欺だと思います」のリンク先をクリック！<br />
+<hr /><br />
+2000～2012年5月の<a href="https://www.google.com/search?q=%EF%BC%AD%EF%BC%B2%EF%BC%A9%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8A%E3%82%B7%E3%83%A7%E3%83%8A%E3%83%AB+%E8%A9%90%E6%AC%BA&safe=off&biw=1062&bih=796&sa=X&ei=g1p6UfOFO8XZrQe8noDoCg&ved=0CCQQpwUoBjgK&source=lnt&tbs=cdr%3A1%2Ccd_min%3A2000%2F1%2F1%2Ccd_max%3A2012%2F05%2F31&tbm=">ＭＲＩインターナショナル 詐欺</a>。こわいねステマ。<br />
+<hr /><br />
+「彼らはなぜ気がつかれないのか」ってアンタ、気づかれなかった連中だけが犯行に至るんだから当たり前としか <a href="http://wired.jp/2013/04/26/extremist-psychology/">http://wired.jp/2013/04/26/extremist-psychology/</a><br />
+<hr /><br />
+ボストンの兄弟みたいな糞つまらんテロの根源は「大きな物語」だと思う。疎外された人々は、オウムのヘッドギアよろしく、近代の大きな物語を頭のなかに流し込まれて洗脳されてる。人をなめくさったポイントカードにムカつくかわりに、「アメリカ」や「文明」みたいな見えない敵（＝大きな物語）と戦う。<br />
+<hr /><br />
+「コープのポイントカードはなぜ炎上しないのか　炎上の心理学」ってタイトルの新書が出ないかなー。遊園地で<a href="http://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%88%E3%83%BC%E3%83%A0_(%E5%AD%A6%E7%94%9F%E7%94%9F%E6%B4%BB)">ストーム</a>かますアホ学生は炎上するのに、コープのポイントカードは炎上しない。ふしぎ！<br />
+<hr /><br />
+あまりエアロじゃないワンピース（ポケットつき）を使ってみたら、素晴らしい！　ジャージがねじれないのが快適！　ポケットに物を入れていると、走ってるうちにジャージがねじれて不快だったのが完全解消！　ポケットつきワンピース祭り開始！<br />
+<hr /><br />
+よそ見は目や手で起きてるんじゃない、脳内で起きてるんだよ！　<a href="http://gigazine.net/news/20130427-hands-free-no-safer/">http://gigazine.net/news/20130427-hands-free-no-safer/</a>　運転中の携帯電話禁止よりも、公道での自動運転の義務化（＝手動運転の禁止）のほうが手っ取り早くて現実的だと思う。自動車の危険運転が消滅する。ただし、携帯をいじりながらママチャリで走る行為は22世紀になっても続く。<br />
+<hr /><br />
+現実には、自動運転を義務化してしまうと、「またも自動運転で死亡事故　今年すでに3人目」なんて炎上するわけだけど。「またも手動運転で大量の犠牲者　6人死亡20人重軽傷　今年すでに3702人目」なんて炎上はしないくせにね。<br />
+<hr /><br />
+「気をつけていれば」「目を離さなければ」というのは危険な言葉。まさにこういう言葉にこそ「気をつけて」「目を離さない」ことが大事。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000882.html&amp;text=%E4%BB%8A%E6%9C%88%E3%81%AE%E4%BF%BATwitter&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000882.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E4%BB%8A%E6%9C%88%E3%81%AE%E4%BF%BATwitter
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000882.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2013&#24180;04&#26376;01&#26085; 23:27
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="882" />
+<input type="hidden" name="spammer" value="goaway" />
+
+<!--div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;"-->
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+<!--/div-->
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

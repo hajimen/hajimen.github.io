@@ -1,0 +1,4 @@
+for x in nikki*.htm
+do
+ sed s/dist.htm/${x}/ base.htm > dist/$x
+done

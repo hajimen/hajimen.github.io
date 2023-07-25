@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>中里一日記: 2008&#24180;04&#26376; Archives</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/2008_03.html" title="2008&#24180;03&#26376;" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/2008_05.html" title="2008&#24180;05&#26376;" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/2008_03.html">&laquo; 2008&#24180;03&#26376;</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/2008_05.html">2008&#24180;05&#26376; &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+
+<h2 class="date">2008&#24180;04&#26376;24&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000557"></a>
+<h3 class="title">最速のプログラミング言語</h3>
+
+<p>　モーターレースは馬鹿げた行為だ。特にフォーミュラカーの阿呆らしさときたら大したものだ。<br />
+　フォーミュラカーのレースは、車両のトータルな性能など追求しない。経済性はもちろんのこと、サーキットを速く安全に回ることさえ追求しない。たとえば「大馬力のエンジン」という見世物を維持するために、空気抵抗を大きくするレギュレーション（タイヤのカウリング禁止など）を山ほど盛り込んでいる。<br />
+　……で、それが何か？<br />
+　すべてのスポーツやゲームは馬鹿げている。人がスポーツやゲームに熱中するのは、それが有用だからではなく、楽しく美しいからだ。レギュレーションが多少おかしくても、F1は楽しく美しい。2007年のサーキット最速のカードライバーはライコネンで、最速のコンストラクターはフェラーリだ。「レギュレーションがおかしい」と言ってみたところで、この認識は覆せない。それに、フェラーリがサーキット最速だからといって、フェラーリの市販車を買う人はごくわずかだ。<br />
+　<br />
+　さて本題に入る。<br />
+　<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873113636/hound-22/ref=nosim">『Beautiful Code』（オライリー・ジャパン）</a></span>を読んだ。高名なプログラマ33人が、美しいコードについて語ったエッセイ集である。<br />
+　広範な美を期待して読んだが、すべて有用性にもとづくものだ。F1や陸上競技のような美しさは省みられていない。（ビットカウントの話題はいくぶんそちら寄りではある）<br />
+　考えてみると、プログラミングの世界には、モーターレースにあたるものがない。既存のプログラミングコンテストはみな技能選手権のたぐいで、実行速度を採点せず、有用性にべったりひっついている。実行速度だけを競うものは、<a href="http://shootout.alioth.debian.org/">The Computer Language Benchmarks Game</a> があるが、モーターレースのドライバーに比べて、プログラマという要素の比重が小さすぎる。静的型言語であれば、処理系とコードの最適化に投じた労力を比較しているだけだ。プログラマの能力や、それを引き出すプログラミング言語の力を測れていない。<br />
+　プログラミングをスポーツやゲームとして扱う場がない以上、『Beautiful Code』の著者たちがスポーツ的・ゲーム的な美しさを語らないのも当然だ。<br />
+　しかし、この状況はよいものなのか？　最速のプログラマと最速のプログラミング言語を決めるイベントが求められているのではないか？<br />
+　<br />
+　最速のプログラマと最速のプログラミング言語を決めるイベントは、どんなレギュレーションがいいだろう。<br />
+　出題に対してコードを書き、テストにかける、というところまでは普通のプログラミングコンテストと同じでいい。ただしそのテストはパフォーマンステストでもある。出題からテスト準備完了までの時間制限は、2時間くらいが見ていて面白いだろう。<br />
+　マシンを主催者提供にすると、ハードウェアの自由度が下がってつまらないので、マシンの電力で制限をかける。今なら300Wくらいが知恵を絞るのによさそうだ。<br />
+　用いるソフトウェアは一切制限しない。使用言語を決め打ちする必要もない。出題の瞬間、全員が論理型言語で書き始める、というのも面白い。<br />
+　このレギュレーションでは、どんなプログラマと言語が有利だろう。歴戦のLispハッカーとC++ハッカーがしのぎを削るか、ML系のアカデミシャンの独壇場か、あるいはレーシングカーのような非実用的な処理系をひっさげたマイナー言語と言語ハッカーが躍り出るか。<br />
+　もしこのイベントが大規模なものになり、MS・IBM・Google・Sunが鎬を削るようになれば、おそらくレーシングカー的なマイナー言語が優位に立つだろう。ありとあらゆる最適化技術を乗せた、最速のプログラミング言語だ。<br />
+　その言語はきっと、『Beautiful Code』の哲学が夢見ることさえできない美しさを備えている。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000557.html">23:06</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=557" onclick="OpenComments(this.href); return false">Comments (9)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2008&#24180;04&#26376;23&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000556"></a>
+<h3 class="title">虚無と犯罪</h3>
+
+<p>　山口県光市の母子殺害事件について。<br />
+　あの被告人の言葉には、虚無を感じる。特に有名なのは、<a href="http://www.jiji.com/jc/v?p=vcm41203">「無期はほぼキマリでして、７年そこそこで地上にひょっこり芽を出す」</a>だろう。<br />
+　「芽を出す」。この表現の暗さは形容しがたい。「シャバに戻る」ではなく「地上に芽を出す」。自分は地上に属する人間ではないのだと、暗に語っている。故郷のような「ここに戻りたい」と願う場所がないのだと、それも失ったのではなく最初からないのだと、暗に語っている。</p>
+
+<p>　<br />
+　あまり注目はされていないが、これも虚無を感じさせる言葉が新たに報道された。<br />
+　<a href="http://headlines.yahoo.co.jp/hl?a=20080422-00000004-jct-soci">「死刑もやむを得ないと思う？」と問われて、「はい。僕は死刑存置主義者ですから」</a><br />
+　法廷闘争のありさまからして、被告人は文字どおりの死に物狂いで死刑を免れようとしているのかと思っていた。が、この発言である。死に物狂いの人間の言うことではない。絶望や諦念でもない。無関心、というべきだろう。<br />
+　自分が殺されるというのに、無関心。しかし考えてみれば、出所が「ひょっこり芽を出す」ようなことである人間が殺されたところで、いったいなにを失うというのか。「ひょっこり芽を出」せなくなっても、ああそう、という程度のものだろう。<br />
+　<br />
+　仮にあなたが日本在住の日本人として、中東のどこかで戦略核が使われて港町がひとつ消し飛んだ、というシチュエーションを想定しよう。暗く痛ましいニュースではある。「ああそう」以上のことかもしれない。とはいえあなたはその港町の名前さえ聞いたこともない。<br />
+　ではもうひとつ別のシチュエーションを想定しよう。あなたを新潟出身の米国在住者に、「中東のどこか」を日本に、「港町」を新潟港に置き換えてみよう。これは、暗く痛ましいどころではない。天地が崩れ落ちたような苦しみをもたらすはずだ。<br />
+　死は、全宇宙が消し飛ぶこととほぼ等しい。その全宇宙が、中東のどこか名前も知らない港町のようなものだけでできているとしたら？<br />
+　「芽を出す」「はい。僕は死刑存置主義者ですから」という被告人の言葉は、そのような精神を暗示している。</p>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000556.html">19:57</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=556" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2008&#24180;04&#26376;22&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000555"></a>
+<h3 class="title">Sho-Comi（少コミ）を読む（第45回・2008年第10号）</h3>
+
+<p>　そして2008年第10号のレビュー。</p>
+
+<p>　<br />
+・藍川さき『委員長の秘メゴト』新連載第1回、増刊かなにかの続き<br />
+　あらすじ：彼氏役（<b>悠人</b>）の気持ちを疑う主人公（<b>彩乃</b>）。ライバル役が登場して、二人の仲を割こうとする。<br />
+　ライバル役に魅力がなさそうな予感がする。これは少女まんがのなかでも少コミに特有の悪癖だ。<br />
+　採点：★★★☆☆<br />
+　<br />
+・<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4091313566/hound-22/ref=nosim">くまがい杏子『放課後オレンジ』</a></span>連載第17回<br />
+　あらすじ：主人公（<b>夏美</b>）に向かって「大会に優勝したらお前を抱く」と彼氏役（<b>翼</b>）。それを見ていた当て馬（<b>滉士</b>）。<br />
+　翼の発言の場に4人もいて、誰も「それとこれとは関係ねーだろ」と突っ込まないので、居心地が悪い。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4091315402/hound-22/ref=nosim">水波風南『今日、恋をはじめます』</a></span>連載第15回<br />
+　あらすじ：彼氏役（<b>京汰</b>）の気を惹くはずが、京汰の身勝手を咎め、ちゃんと振ってくれと言い出す主人公（<b>つばき</b>）。京汰はつばきを信じることにして告白。<br />
+　ここまでモチーフ的には大風呂敷を広げてきたが（軽薄な恋愛観 vs 慎重な恋愛観、真偽 vs 信念・偏見）、その上で踊る展開はくるのか、あるいは広げるだけで逃げ切るか。<br />
+　採点：★★★☆☆<br />
+　<br />
+・<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4091302459/hound-22/ref=nosim">青木琴美『僕の初恋をキミに捧ぐ』</a></span>連載第62回<br />
+　あらすじ：愁嘆場。<b>繭</b>の父親（<b>逞</b>の主治医）が繭に、暗に移植を勧める。<br />
+　エモは今回で一段落つきそうな気配だ。次回いよいよ逞が移植希望へと転向か。<br />
+　採点：★★★☆☆<br />
+　<br />
+・<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4091313493/hound-22/ref=nosim">池山田剛『うわさの翠くん!!』</a></span>連載第40回<br />
+　あらすじ：当て馬（<b>カズマ</b>）の傷は深く、もうサッカーは無理だと医者に言われる。カズマを助ける主人公（<b>翠</b>）。<br />
+　人間関係を分類してヒエラルキーをつけるイデオロギーと戦うかどうかが問われる展開だが、おそらくイデオロギーに乗っかって終わるだろう。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+・蜜樹みこ『蒼いキセキ』連載第3回<br />
+　あらすじ：主人公（<b>アゲハ</b>）は怪我の後遺症で声を失うが、落ち込むことなく学校と部活に励む。<br />
+　まんがの黄金パターン「しゃべれない主人公」を出してきた。<br />
+　採点：★★★★☆<br />
+　<br />
+・夜神里奈『幕があく前に』読み切り<br />
+　あらすじ：仕事のために、彼氏役の偽の交際相手をつとめる主人公。<br />
+　構成が緊密で読ませる。<br />
+　採点：★★★★☆<br />
+　<br />
+・織田綺『箱庭エンジェル』連載第9回<br />
+　あらすじ：主人公（<b>羽里</b>）は彼氏役（<b>桃</b>）が夢をあきらめるのに反対するが、いい方法は思いつかない。<br />
+　展開がやや直線的でアイディアに欠ける。<br />
+　採点：★★★☆☆<br />
+　<br />
+・水瀬藍『だから、俺にしなよ』連載第5回<br />
+　あらすじ：彼氏役（<b>奏多</b>）が主人公（<b>陽菜</b>）と当て馬（<b>秀悟</b>）を救出。秀悟が陽菜に惚れる。<br />
+　奏多が普通に面白い。<br />
+　それにしてもバイクに三人乗りは無理だ。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・悠妃りゅう『花嫁さまは16歳』連載第4回<br />
+　あらすじ：主人公（<b>珠姫</b>）は、彼氏役（<b>辰牙</b>）が自分と結婚した理由が、自分たちの両親にあると知る。珠姫が家出する。<br />
+　珠姫の動機がさっぱりわからない。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+・天音佑湖『金糸雀は愛される夢を見る』読み切り<br />
+　あらすじ：主人公は少女人形。自分自身の作者である<span style="text-decoration: line-through">お父様</span>彼氏役との性行為を望むが、彼氏役は応えない。<br />
+　えげつないといえばえげつないが、巻を置くあたわざる迫力がある。<br />
+　採点：★★★★★<br />
+　<br />
+・<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4091315453/hound-22/ref=nosim">車谷晴子『危険純愛D.N.A.』</a></span>連載第16回<br />
+　あらすじ：狂言回し（<b>臣吾</b>）は主人公（<b>亜美</b>）と彼氏役（<b>千尋</b>）を別れさせようとしたが、亜美の決意が固いのをみてあきらめる。亜美と千尋の父親は、二人の仲に反対しない。<br />
+　臣吾は捌けずに終わるらしい。とすると、どうオチをつけるのか読めない。<br />
+　採点：★★☆☆☆<br />
+　<br />
+<a href="http://kaoriha.org/nikki/archives/000561.html">第46回につづく</a></p>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000555.html">00:54</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=555" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000554"></a>
+<h3 class="title">Sho-Comi（少コミ）を読む（第44回・2008年第9号）</h3>
+
+<p>　2号分たまったので一度に片付ける。<br />
+　まずは2008年第9号のレビュー。</p>
+
+<p>　<br />
+・<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4091313493/hound-22/ref=nosim">池山田剛『うわさの翠くん!!』</a></span>連載第39回<br />
+　あらすじ：主人公（<b>翠</b>）が本心では当て馬（<b>カズマ</b>）を愛しているのではと疑う彼氏役（<b>司</b>）。司が翠にプロポーズ。カズマが通りすがりの暴漢に刺される。<br />
+　こんな妙な展開で当て馬の見せ場を作られても困る。<br />
+　採点：★☆☆☆☆<br />
+　<br />
+・<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4091315402/hound-22/ref=nosim">水波風南『今日、恋をはじめます』</a></span>連載第14回<br />
+　あらすじ：彼氏役（<b>京汰</b>）が不倫と恋愛を憎悪するようになった過去を説明。京汰の気を惹くため、主人公（<b>つばき</b>）は妹とともにハロウィンパーティーを仕掛ける。<br />
+　「おねーちゃんだけは絶対に　京汰サンを裏切らないって　証明するの！」という神学的なイデオロギーを取り上げてきた。<br />
+　神の存在を証明すること、異教徒を折伏すること、よき隣人であること――これら3つのことはまったく無関係なのだが、なぜか関係があるかのような錯覚にとらわれやすい。人類の永遠のテーマといえる。<br />
+　採点：★★★☆☆<br />
+　<br />
+・悠妃りゅう『花嫁さまは16歳』連載第3回<br />
+　あらすじ：主人公（<b>珠姫</b>）は彼氏役（<b>辰牙</b>）の親戚に引き合わされる。珠姫を品定めする親戚一同に対して、「珠姫への侮辱は許さない」と宣言する辰牙。<br />
+　茶の湯といえば、茶室はまんが的に映える空間なのに、効果的に使っている例があまり思いつかない。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・蜜樹みこ『蒼いキセキ』連載第2回<br />
+　あらすじ：互いに距離感をつかみかねる主人公（<b>アゲハ</b>）と彼氏役（<b>藍</b>）。藍の目の前でアゲハは階段を転げ落ち、少なくとも重症を負う。<br />
+　この作者は序盤はじつにうまい。<br />
+　採点：★★★★☆<br />
+　<br />
+・水瀬藍『だから、俺にしなよ』連載第4回<br />
+　あらすじ：当て馬（<b>秀悟</b>）の気が変わり、主人公（<b>陽菜</b>）を助けに割って入る。しかし陽菜は逃げ切れず、「そのかわり　もう秀悟くんには手を出さないで」と泣きを入れる。<br />
+　少コミで暴力は荷が重いモチーフだ。『寄生獣』や『DEATH NOTE』的な乾いた暴力も、『ナニワ金融道』的な生臭い暴力も、少コミでは難しいような気がする。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4091315453/hound-22/ref=nosim">車谷晴子『危険純愛D.N.A.』</a></span>連載第15回<br />
+　あらすじ：狂言回し（<b>臣吾</b>）が主人公（<b>亜美</b>）と彼氏役（<b>千尋</b>）の親に、学校での二人の関係を通報する。さらに臣吾は亜美を強引にどこかへと連れてゆく。<br />
+　画面に少々アイディアを欠く。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・織田綺『箱庭エンジェル』連載第8回<br />
+　あらすじ：彼氏役（<b>桃</b>）と主人公（<b>羽里</b>）が結ばれる。桃が来年から海外に行くとあって、進路に悩む羽里。しかし桃は海外には行かないと言い出す。<br />
+　いい手だが、スケールが小さい。ドラマチック指向の少コミでは辛いところか。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4091302459/hound-22/ref=nosim">青木琴美『僕の初恋をキミに捧ぐ』</a></span>連載第61回<br />
+　あらすじ：愁嘆場。<br />
+　ここ数回の愁嘆場展開は、<b>昴</b>の社会的な死を演出するための時間稼ぎで、「やっぱり移植」と決意→社会的な死の残酷さに直面、という展開だと予想するが、どうなるか。そこに<b>照</b>の死はどう絡むのか。<br />
+　あと連載回数を「61th」と誤植している。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4091313566/hound-22/ref=nosim">くまがい杏子『放課後オレンジ』</a></span>連載第16回<br />
+　あらすじ：主人公（<b>夏美</b>）が当て馬（<b>滉士</b>）に接近したことを知った彼氏役（<b>翼</b>）は感情的になり、夏美を押し倒す。<br />
+　旋回軸がなく迷走しているかと思って読んでいたが、この迷走が妙に魅力的に思えてきた。<br />
+　採点：★★★☆☆<br />
+　<br />
+・咲坂芽亜『ヘアスタイルあまのじゃく仕様』読み切り<br />
+　あらすじ：カリスマ美容師の彼氏役と一悶着あって告白、結ばれる。<br />
+　登場人物の価値観が問題にされないので、登場人物の行動が物語的ではなく物理的なものに見えてしまう。<br />
+　採点：★★☆☆☆<br />
+　<br />
+・小泉蓮『意地悪だけと愛おしい貴方へ』読み切り<br />
+　あらすじ：よくわからない。<br />
+　さっぱり話がわからない。<br />
+　採点：☆☆☆☆☆<br />
+　<br />
+・千葉コズエ『24 COLORS』最終回<br />
+　あらすじ：彼氏役（<b>ちはや</b>）は来年海外に留学すると知らされる。主人公（<b>七風</b>）は限られた時間で精一杯輝こうと決意する。<br />
+　また海外オチか。<br />
+　採点：★★☆☆☆<br />
+　<br />
+<a href="http://kaoriha.org/nikki/archives/000555.html">第45回につづく</a></p>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000554.html">00:53</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=554" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2008&#24180;04&#26376;21&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000553"></a>
+<h3 class="title">1のない2、2のない1</h3>
+
+<p>　シリーズ物の小説などで、最初の作品のタイトル『×××』に対して続編を『××× 2』とする例はよくある。<br />
+　さて問題1、『×××』が存在しないのに『××× 2』が存在する作品の例を挙げよ。<br />
+　逆に、『××× 2』が存在しないのにタイトルが『××× 1』という作品は珍しくもない。<br />
+　さて問題2、そのなかでもっとも有名な作品の例を挙げよ。</p>
+
+<p>　<br />
+問題1：<a href="http://en.wikipedia.org/wiki/Blade_Runner_2:_The_Edge_of_Human">Blade Runner 2: The Edge of Human</a><br />
+問題2：<a href="http://en.wikipedia.org/wiki/Melencolia_I">Melencolia I</a></p>
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000553.html">20:15</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=553" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2008&#24180;04&#26376;20&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000552"></a>
+<h3 class="title">JNode体験記</h3>
+
+<p>　<a href="http://jnode.org/">JNode</a>をVMwareで動かしてみた。<br />
+・TCP/IPはなんとか動かせる。<a href="http://www.jnode.org/node/2362">手順は難しい。</a><br />
+・Full GCに数秒かかる。ゲストのメモリは512MB、ホストのCPUはCore2Duo。<br />
+・SciMark 2.0aのCompisite Scoreが70前後。ちなみにPPCのMac miniが170前後。<br />
+・pingが異様に遅い（localhostに10ms）。TCP/IPスタックの出来が悪い？</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000552.html">22:11</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=552" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000551"></a>
+<h3 class="title">西田圭介『Googleを支える技術』（技術評論社）</h3>
+
+<p>　<span><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774134325/hound-22/ref=nosim">西田圭介『Googleを支える技術』（技術評論社）</a></span>を読んだ。<br />
+　時事的・速報的な性格の本で、越し方行く末をじっくりと見つめるような本ではない。内容の半分くらいはよく報道されているようなことだが、残り半分は日本語では読んだ覚えのないことが書いてある。<br />
+　なかでもChubbyが興味深い。Chubbyは集中型の分散ロックマネージャである。<br />
+　「GoogleといえばPCクラスタでスケールアウト」というイメージが強いが、Chubbyは明らかにスケールアウトしないから驚いた。おそらくは、根本的に異なる設計の新しいロックマネージャがすでに投入されているだろう。<br />
+　たとえ一時的にであれ、なぜロックマネージャにかぎって集中型を選択したのか、その理由が気になる。レイテンシの関係だろうか。あるいは中継の負荷が案外厳しいのか。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000551.html">09:22</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=551" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000550"></a>
+<h3 class="title">受賞のお知らせ</h3>
+
+<p>　私の新作『どろぼうの名人』（名義：中里十）が、<a href="http://www.gagaga-lululu.jp/gagaga/grandprix/02.html">第2回小学館ライトノベル大賞ガガガ部門</a>の佳作となりました。刊行はもうしばらくお待ちください。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000550.html">08:30</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=550" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2008&#24180;04&#26376;17&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000549"></a>
+<h3 class="title">この人を見よ</h3>
+
+<p>　<a href="http://asia.google.com/search?hl=ja&q=%E6%88%B8%E9%AB%98%E5%85%AC%E5%BE%B3&btnG=Google+%E6%A4%9C%E7%B4%A2&lr=">戸高公徳</a></p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000549.html">01:33</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=549" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2008&#24180;04&#26376;11&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000548"></a>
+<h3 class="title">子供の人権年表</h3>
+
+<p>2008年　<a href="http://headlines.yahoo.co.jp/hl?a=20080411-00000102-jij-soci">男児の裸が放送禁止になる</a><br />
+2015年　着衣の児童の撮影にあたっては警察の許可が必要になる。2等親以内の親族は例外として適用されない<br />
+2020年　上の制限を親族にも適用拡大。児童ポルノ画像の供給源が主に親であるため<br />
+2030年　映画『ホーム・アローン』が事実上放送禁止に。児童が多く登場する映画はペドフィリア向けとみられるようになった<br />
+2040年　児童の外出時にチャドルを着せることが一般的になる<br />
+2050年　児童のチャドル着用が法制化される</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000548.html">18:57</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=548" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2008&#24180;04&#26376;10&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000547"></a>
+<h3 class="title">悪の敵≠善の味方</h3>
+
+<p>　ブッシュ大統領が「悪の枢軸」というレトリックを使ったとき、私はすかさず「善の連合」という言葉を思いついた。<br />
+　「善の連合」。被害妄想が昂じてイラクを破壊したあの馬鹿の国は、おそらくこの連合の一員ではないだろう。<br />
+　教訓――「自分は悪の敵だ」と主張する輩は疑ってかかれ。敵の敵は味方ではない。<br />
+　<br />
+　悪の敵主義者が好んでとりあげるネタは、以下の3つだ。<br />
+・異教徒<br />
+・子供<br />
+・未開人<br />
+　「異教徒がアルカイダに感染する！」「<a href="http://www.itmedia.co.jp/news/articles/0804/09/news096.html">子供が有害情報に感染する！</a>」「未開人が共産主義に感染する！」。これが悪の敵主義の決まり文句だ。無力で善良で愛すべきだが言葉の通じない隣人がいて、その隣人を守るために悪を倒さなければならない、でなければ悪に感染した隣人が我々を襲うだろう――という構図を彼らは描く。<br />
+　この構図のなかには、愛も理想もない。守るべきものとしてネタにされている当の異教徒・子供・未開人が共感できるようなものが、まったくない。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000547.html">00:06</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=547" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">2008&#24180;04&#26376;04&#26085;</h2>
+
+
+<div class="blogbody">
+<a name="000546"></a>
+<h3 class="title">メンヘル行為は何度でも</h3>
+
+<p>　<a href="http://marimite.sourceforge.jp/">Marimite - Java のソースコードレベルでパフォーマンスを測定・記録・表示</a><br />
+　作った。</p>
+
+
+
+<div class="posted">
+	Posted by hajime at <a href="http://kaoriha.org/nikki/archives/000546.html">01:02</a>
+		| <a href="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi?entry_id=546" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

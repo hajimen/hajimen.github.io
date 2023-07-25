@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 負荷分散からシェアードナッシングへ</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000383.html" title="1492:73" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000385.html" title="Moonshot" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000383.html">&laquo; 1492:73</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000385.html">Moonshot &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;10&#26376;19&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">負荷分散からシェアードナッシングへ</h3>
+
+<p>　<a href="http://kaoriha.org/nikki/archives/000382.html">先日</a>の続き。</p>
+
+<a name="more"></a>
+<p>　<br />
+　こんな状況を想定しよう。hoge.gifのリクエストが集中しているので、負荷分散のため、ノードBもhoge.gifをキャッシュすることになった。さて、ノードBがhoge.gifを取得しようとしたとき、どこから持ってくるのが一番速いか？<br />
+　ノードAから、が一番速い。なにしろメモリ上にキャッシュしている。<br />
+　ノードAだけがhoge.gifをHDDから読み込むのなら、他のノードがHDDからhoge.gifを読み込めても意味がない。<br />
+　というわけで、hoge.gifが書き込まれたHDDは、ノードAのローカルHDDだけでいい。ストレージを共有する必要はない。つまり、シェアードナッシングだ。<br />
+　<br />
+　以上の議論では、リクエスト（GET /hoge.gif）とそれを処理するためのデータ（hoge.gif）が一対一に対応している。このときには、ハッシュ関数の引数は、「GET /hoge.gif」という文字列で十分だろう。<br />
+　しかし、もう少し中身のある処理をするなら、これほど単純にはいかない。<br />
+　「GET /bar?user=maria」というリクエストを考えよう。このリクエストを処理するには、mariaというユーザに関するデータが必要だとする。そして、「GET /fuga?user=maria」というリクエストもあるとする。これを処理するにもやはり、mariaというユーザに関するデータが必要だとする。<br />
+　文字列「GET /bar?user=maria」と「GET /fuga?user=maria」のハッシュ値は異なる。同じ値を返すようにハッシュ関数を作ろうとすれば、それはすでにハッシュ関数とはいえない。ハッシュ関数の引数には、「maria」という文字列を入れなければならない。<br />
+　というわけで、文字列「maria」は、mariaというユーザに関するデータのありかを示すタグになる。こういうタグのことを仮に、「ノードタグ」と呼ぶことにする。ディストリビュータは、リクエストを受け取ったときに、ノードタグを取り出して配分先を判断する。また、ノードタグを取り出せるようにリクエストを設計する。<br />
+　リクエストはこれでいいとして、次はデータ構造だ。<br />
+　ユーザに関するデータのような構造化されたデータは、RDBに格納することが多い。普通のRDBMSは集中型の権化のような代物だが、ここでは特殊なRDBMSを仮想する。このRDBMSでは、CREATE TABLEのときに、ノードタグとして使われるカラムを指定できるようになっているものとする。そして行の粒度で各ノードに分散される。<br />
+　（この行の粒度、最小の粒度のことを、仮に「レコード」と呼ぶことにする）<br />
+　maria固有のデータはこれでいい。が、複数のユーザ情報間で共有されるデータもある。たとえばRDBのインデックスだ。それはどこに置くのか？<br />
+　どこでもいい。「hoge.gifならノードA」式に、とにかく決まってさえいればいい。それを持っているノードはほぼ常にそれをキャッシュしているので、HDDから読み込むよりも速く読み込める（しかも負荷分散もできる）。また、任意のレコードを持っているノードはクラスタ全体に分散しているので、クラスタ全体のメモリがキャッシュとして使えるのに等しい。<br />
+　<br />
+　ここまで読んできた暇人の読者諸賢の頭には、山のような疑問が浮かんできたことと思う。<br />
+1. レコードの粒度が小さすぎてネットワーク遅延が厳しい<br />
+2. トランザクション処理は？　キャッシュ無効化は？<br />
+3. 冗長性は？　レプリケーションは？<br />
+　まず1から。<br />
+　送信側がプリフェッチのようなおせっかいをする必要がある。が、なにを送ればいいかをレコードから調べるのは大変だ（アンマーシャルして参照を掘り出すことになる）。そこでレコードには参照をメタ情報としてつける。おせっかいで送るときは、このメタ情報を見るだけで、なにを送ればいいかがわかる。<br />
+　（この参照情報はガベージコレクションにも使える）<br />
+　2。<br />
+　トランザクションは分散なので2相コミットになる。<br />
+　キャッシュ無効化には、楽観ロックに似たテクニックを使う。まず、レコードにUUIDをつける。RDBの主キーのようなIDではなく、楽観ロックに使うタイムスタンプのようなIDだ。このUUIDのことを仮にContent IDと呼ぶ。レコードがUPDATEされたときには、無効になったContent IDをマルチキャストで投げる。もちろん、このマルチキャストがIPマルチキャストである必要はないし、まとめて投げるためにしばらく溜めておくこともできる。<br />
+　（なお、UPDATEされて消えた行内容も削除せずに残しておく。この行内容のことを仮に「サブレコード」と呼ぶことにする。レコードはmutable、サブレコードはimmutableだ）<br />
+　3。これが本日のハイライトだ。<br />
+　結論からいうと、ガベージコレクション＝レプリケーションになる。<br />
+　まず、並列分散ガベージコレクションをマーク・アンド・スイープでやる方法から。<br />
+　ガベージコレクション（GC）を、レコード単位ではなくサブレコード単位で行う。GC中もシステムは動いているので、1つのレコードに対して複数のサブレコードが存在しうる。この複数のサブレコードのうち、GC開始時以降に存在したサブレコードの参照すべてをたどってマークをつける。GC開始時に存在しなかったサブレコードは、マークがつかなくても削除しない。こうすることで、システム全体を止めることなくマーク・アンド・スイープをかけることができる。<br />
+　マーク開始→マーク終了判定→スイープ開始→スイープ終了判定、で1回のGCが完了するが、この1サイクルに対して、開始時にID（GC ID）をつける。<br />
+　データに冗長性を持たせるため、1つのレコードは複数のノードで保存される。このとき、1つのノードが担当になり、あとは副担当になる。どのノードを副担当とするかは、担当ノードと同様に、ハッシュ関数で決める。<br />
+　クラスタから離脱したノードがあれば、レコードを保存するノードが1つ減る。減ったぶん、別のノードにコピーする必要がある。それをいつやるか。マーク＆スイープの、マークのときだ。<br />
+　担当ノードがレコードをマークするとき、副担当ノードにもマークするよう指示を出す。副担当ノードがそのレコードを持っていない場合は、担当ノードから取得する。こうして、クラスタからノードが離脱したあとの冗長性が回復される。<br />
+　スイープのときに、生きているレコードのレプリカを作ることができる。同じGC IDで作られたレプリカ同士はデータに一貫性がある。<br />
+　<br />
+　以上、DBもNASもL4ロードバランサもなく、全ノードに同じものがインストールされた（管理のラクな）PCクラスタとハブとルータだけですべてが完結するファンタジーワールドの話をした。（現実にはDNSサーバも必要なのだが。P2P DNSが欲しい）<br />
+　まったく完璧ですな、あとは実装するだけですな、でもこれ全部を実装する日は永遠にこないんでしょうな、と自画自賛しつつこの項終わり。<br />
+　<br />
+追記：<br />
+　よく考えたら、ガベージコレクションはコンカレントに実行できても、レプリケーションはシステム全体を止めないと無理だった。マーク終了からスイープ開始までのあいだに、クラスタ全体で一度、UPDATEを停止する必要がどうしてもある（INSERTは可能）。理論的に不可避な気がするので、たぶん誰かが証明しているだろう。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000384.html&amp;text=%E8%B2%A0%E8%8D%B7%E5%88%86%E6%95%A3%E3%81%8B%E3%82%89%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%BC%E3%83%89%E3%83%8A%E3%83%83%E3%82%B7%E3%83%B3%E3%82%B0%E3%81%B8&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000384.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E8%B2%A0%E8%8D%B7%E5%88%86%E6%95%A3%E3%81%8B%E3%82%89%E3%82%B7%E3%82%A7%E3%82%A2%E3%83%BC%E3%83%89%E3%83%8A%E3%83%83%E3%82%B7%E3%83%B3%E3%82%B0%E3%81%B8
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000384.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;10&#26376;19&#26085; 20:37
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://kaoriha.org/cgi-bin/mt/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="384" />
+<input type="hidden" name="spammer" value="goaway" />
+
+<!--div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;"-->
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+<!--/div-->
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

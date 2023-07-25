@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 『Ajax イン アクション』は糞本だ</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000312.html" title="少コミを読む番外編・Cheese!増刊を読む" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000314.html" title="ソ連の復活" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000312.html">&laquo; 少コミを読む番外編・Cheese!増刊を読む</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000314.html">ソ連の復活 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;06&#26376;13&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">『Ajax イン アクション』は糞本だ</h3>
+
+<p>　<script type="text/javascript" src="http://kaoriha.org/cgi-bin/lks.cgi?id=LKh/PCl0zC4&offerid=94925.491068834&type=10&subid="></script>Dave Craneほか著『Ajax イン アクション』</a>（インプレスジャパン）を8割がた読んだ。<br />
+　突然だが、戦場は4つの基本的な要素でできている。<br />
+・飢え<br />
+・埃<br />
+・糞<br />
+・シラミ<br />
+　これだけは絶対に忘れないでほしい。飢え、埃、糞、シラミだ。<br />
+　これらの四大要素があまり目立たない戦場も、ごく一部にはある。米軍の力はあらゆる不可能を可能にするらしく、毎日シャワーを使うことさえあると聞く。だがそういう恵まれた環境は例外だ。戦場は四大要素でできている。四大要素があるのではなく、四大要素でできている。24時間、四大要素のなかで暮らすのだ。<br />
+　さて私の経験によれば、Ajax開発は、戦場の暮らしに少しだけ似ている。こちらの四大要素は、多様性、非常識、情報不足、テスト困難だ。<br />
+　現代のほとんどのプログラマは、こういう経験をしたことがないはずだ。匹敵するものがあるとしたら初期の携帯Javaくらいか。私は深入りしなかったが、聞くところでは、どうやら四大要素でできていたらしい。</p>
+
+<a name="more"></a>
+<p>　<br />
+　多様性について。<br />
+　「非互換性」という問題はよく知られている。だがそれは真実をごまかした表現だ。非互換性というと、まるで2つの実装のあいだで起こることのように聞こえる。だから、「多様性」と言わなければならない。Gecko系ブラウザのバージョンごとの違い、Operaのバージョンごとの違い――思い出しただけで頭痛がしてくる（ろくに思い出せないが）。しかも、私の知っていることなど、ちょっと味見した程度にすぎないのだ。<br />
+　<br />
+　非常識について。<br />
+　どんな人間もかならず常識を持っている。「世の中にはこれとは違う常識もある」などとは夢にも思わず、まったく無自覚に信じていることがたくさんある。同様に、プログラミングの世界にも常識がある。<br />
+　まず、JavaScriptという言語自体が、滅びた一族の最後の生き残りだ。JavaScriptのいくつかの機能（プロトタイプベースのOO機能やスコープチェーン）はエキゾチックに見える。しかし実は、1980年代半ばまでは、これが未来になるはずだった。あれほど将来性を感じさせていたSmalltalkが、あれほどあっけなくC++とJavaに敗れるとは、今でも信じがたい思いがする。このとき以来、「なんであれ動的なほうがいい」という考えは、仮説から信仰に変わった。いまだに「これからは動的言語」などと臆面もなく抜かす信者は有害なので全員死んでほしい――話がそれた。<br />
+　滅びたとはいえかつては大きな一族だったので、そのつもりで調べれば理解できる。さあ理解した、というところでこれだ――<a href="http://p2b.jp/index.php?UID=1131336575">IEのガベージコレクタは腐っている</a>。Smalltalk系言語のガベージコレクタが腐っていて、しかも何年も修正されないままだとは、夢にも思わない。まさに非常識だ。<br />
+　Ajax開発では、心の底から「ありえない」と叫ぶしかない非常識な事態に、ほとんど毎日出くわす。<br />
+　<br />
+　情報不足とテスト困難について。<br />
+　Ajax開発では、設計は無駄だ。最小限の設計ではなく、本当のゼロ設計でいい。どんな設計も、確認された事実のほかに、常識に依存している。そしてその常識は覆される。かなりの確率で、設計がまるごと覆される。だから設計は無駄だ。<br />
+　設計がなければ、行動パターンは一つしかない。<br />
+　なにも考えずにテキストエディタに向かい、書けそうなところから書く。いくつかのブラウザでテストする。動かないところで頭を抱え、printfデバッグをやりまくる。問題の原因をつきとめるのではなく（追いかけてもまるで蜃気楼のようにつかまらない。おそらく常識に囚われているせいだ）、症状を回避するための小細工を弄する――まるでプログラミングを覚えて三週間目の中学生の「ハック」な行動パターンだ。Ajax開発という世界のルールが、それを強制するのだ。<br />
+　このハックで得た知識をもとに、正しい設計で書き直す？　残念ながらそれは動かない。なんにせよ設計をした以上、それは必ず常識に依存しており、それは覆される（だから私はAjax用のJavaScriptライブラリに非常に懐疑的だ。prototype.jsがあれほど有名なのは、それ以上のものが作れないからではないか？）。意味のある動作をするアプリケーションなら、おそらく5回は設計をやりなおして、やっと動くようになるだろう――テストしていないブラウザで致命的なことにならないよう祈りながら。<br />
+　もし、数十種類のブラウザで同時にテストしてくれる自動テスト環境があれば、物事はずっとよくなるかもしれない。ブラウザウィンドウをキャプチャして正解画像と比較し、マウスクリックもちゃんとエミュレートしてくれる環境だ。……しかし、テストケースごとに正解画像を用意する手間は？<br />
+　<br />
+　飢え、埃、糞、シラミ。<br />
+　いかにも「お手軽にそれっぽいことを書きました」的な本なら、こうした問題に背を向けているのも、やむをえないと思える。残念ながらこの業界では本とはそういうものだ。しかし、653ページの大著が、体系的としか思えないやりかたで四大要素に背を向け、たまに触れたときにも「こういうこともありますよ、でも大したことじゃないんですよ」という態度を取るのは、当然とはいえない。糾弾されるべきことだ。<br />
+　そう、私は本書を糾弾しているのだ。本書は、Ajax開発という戦場の暮らしを、まるでホテル暮らしのように見せかけている。<br />
+　SafariとOperaにJavaScriptデバッガがないことが、いったいどんな苦しみか。その苦しみを和らげるテクニックこそ必要だ。その話は、なんの一般性もないトリビアの寄せ集めになるだろう。しかし、それを言わずに「デザインパターン」などとぬかす奴がのこのこやってきたら、一発お見舞いする以外にない。だから私が一発お見舞いしているわけだ。<br />
+　四大要素のない健全な世界なら、私も文明人らしく優雅にデザインパターンの話に終始したい。しかしAjax開発はそうではない。もう一度繰り返す。飢え、埃、糞、シラミだ。それがAjax開発だ。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000313.html&amp;text=%E3%80%8EAjax%20%E3%82%A4%E3%83%B3%20%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%80%8F%E3%81%AF%E7%B3%9E%E6%9C%AC%E3%81%A0&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000313.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E3%80%8EAjax%20%E3%82%A4%E3%83%B3%20%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%80%8F%E3%81%AF%E7%B3%9E%E6%9C%AC%E3%81%A0
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000313.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;06&#26376;13&#26085; 04:55
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>>多様性、非常識、情報不足、テスト困難だ。<br />
+>現代のほとんどのプログラマは、こういう経<br />
+>験をしたことがないはずだ</p>
+
+<p>あるある。「人生」。</p>
+
+<p>…は置いといても、昨今のWeb原理主義者は四大要素を無視するのがキホンでカッコイイと思ってるので、どうしようもないと思います。イン・アクションもその手の人たちによる、その手の人たち向けの本でしょう。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;nobody&#64;nowhere&#46;com">Bar</a> at 2006&#24180;06&#26376;13&#26085; 13:22</span>
+</div>
+<div class="comments-body">
+<p>http://d.hatena.ne.jp/amachang/20060525/1148582590</p>
+
+<p>ではこれを戦場にお届け。<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;a&#64;a&#46;com">hiro</a> at 2006&#24180;06&#26376;13&#26085; 15:50</span>
+</div>
+<div class="comments-body">
+<p>http://maccreative-beta.net/tips/0002_macosx_safari_debug_mode.html</p>
+
+<p>これも多少は役に立つかも。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hoge&#64;hoge&#46;com">ken</a> at 2006&#24180;06&#26376;14&#26085; 11:17</span>
+</div>
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

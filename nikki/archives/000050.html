@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 文字コードの判別</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000049.html" title="Winny" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000051.html" title="戦時下" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000049.html">&laquo; Winny</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000051.html">戦時下 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2004&#24180;05&#26376;15&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">文字コードの判別</h3>
+
+<p>　私はWindowsが好きだ。<br />
+　特にIE6がいい。私は今日、IE6がどんなによくできているかを思い知った。<br />
+　webページの文字コードを判別する手がかり（というあたりが諸悪の根源なのだが）はいくつあるか。私の知るかぎりでは3つ、<br />
+1. レスポンスヘッダ<br />
+2. meta要素<br />
+3. テキスト<br />
+　そしてXHTMLなら、これに加えて、<br />
+4. XML宣言のencoding<br />
+となる。が、XHTMLのencodingを間違えるような間抜けは無視できるので、XHTMLなら文字コード判別の必要はない。<br />
+　この世でもっとも正しい方法は、レスポンスヘッダである。が、レスポンスヘッダ中にcharsetが表示されていると信じるのは、サンタクロースの存在を信じるよりもはるかに難しい。<br />
+　meta要素はサンタクロースよりも信じられる。少なくとも日本語のページでは、かなりの割合でmeta要素の存在が期待できる。<br />
+　最終決裁者が、テキストだ。meta要素やレスポンスヘッダがなにを書いていようと、テキストが文字化けしていればそれは文字化けである。なにしろ世の中には、HTMLをメモ帳で手書きするよう指導する呪われた入門サイトがあるので（彼らに三度アナテマ）、呪われた人々が「charset=x-euc-jp」とmeta要素に書き込みつつUTF-8で保存しているかもしれない。こういう呪われたHTMLは表示できないようにすべきだったが、もし人々がそれほどまでに正しかったなら、人間は天使と区別がつかないだろう。<br />
+　このような状況のもとで、webページの文字コードを判別する仕組みをサーブレットに組み込むには、どうすればいいか。まず大まかな流れを考えよう。<br />
+　正しい人は、正しい方法を尊重する。レスポンスヘッダにもしcharsetが設定されていれば、これがmeta要素やテキストに優先されるべきだ。もしなければ、次にmeta要素が来る。そして最後の手段が、テキストデータからの推測だ。<br />
+　では早速そのようなアルゴリズムを実装しよう――などと思った人はプログラマではない。プログラミングとは、不労それ自体によって生産する技芸である。<br />
+　レスポンスヘッダのcharsetを最小限のコードで取得できるのは、おそらく、<a href="http://jakarta.apache.org/commons/httpclient/">Jakarta Commons HTTPClient</a>である。これをちょっといじり、レスポンスヘッダのcharsetのあるなしを取得できるようにする。<br />
+　レスポンスヘッダにcharsetがなければmeta要素を当たる。これをもっとも簡単確実にやってくれるのはおそらく、<a href="http://www.apache.org/~andyc/neko/doc/html/">NekoHTML</a>だ。ここでもまた、meta要素にcharsetのあるなしを取得できるようにいじる必要がある。<br />
+　自動判別は、私の知る限り、<a href="http://www.i18nfaq.com/chardet.html">jchardet</a>のほかに選択肢がない。StringのコンストラクタのJISAutoDetectは、UTF-8やMS932でこける。<br />
+　さて諸君、ここで残念な知らせがある。<br />
+　これだけやってもまだ、これほどやってもまだ、満足のいく判別にはたどりつけない。たとえば、上の仕組みを素のままでhttp://www.yahoo.co.jpに適用すると、GB2312と判別される。どうやらEUC-JPはその仕組み上、自動判別を間違えやすいらしい。一応の救済策はあり、jchardetに日本語判別を指定すると、正しく判別される。が、日本語判別を指定した状態では、他の文字コードをまったく判別できなくなる。<br />
+　もしサーバ上にIE6さえあれば、こんな苦労はすべてなくなるのだ。この世のサーバがすべてWindowsになる日も、そう遠くないだろう。</p>
+
+<a name="more"></a>
+<p>　前言撤回。<br />
+　中身を開けてみたら、NekoHTMLよりも<a href="http://sourceforge.net/projects/htmlparser">HTMLParser</a>のほうがいい。これだとHTTPClientがいらないので、話がずっと簡単になる。<br />
+　また、http://www.yahoo.co.jpのレスポンスヘッダにはcharsetが設定されていた。なぜ設定されていないと思ったのか、いまではよくわからない。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000050.html&amp;text=%E6%96%87%E5%AD%97%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E5%88%A4%E5%88%A5&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000050.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E6%96%87%E5%AD%97%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E5%88%A4%E5%88%A5
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000050.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2004&#24180;05&#26376;15&#26085; 07:24
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

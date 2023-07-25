@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: DELETEと参照</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000292.html" title="1492:39" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000294.html" title="1492:40" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000292.html">&laquo; 1492:39</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000294.html">1492:40 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;05&#26376;05&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">DELETEと参照</h3>
+
+<p>　Houndを通じてかれこれ１年以上、RDB（PostgreSQL）とORM（Cayenne）につきあってきた。そろそろ、この世界の味がわかってきたので、書きとめておく。<br />
+　結論：DELETEは深遠な哲学的問題だ。</p>
+
+<a name="more"></a>
+<p>　<br />
+　本題に入る前に、RDBの濫用について片付けておこう。<br />
+　RDBは、あらゆるコンピュータ技術のなかで、もっとも濫用されている。積もりに積もった装飾をはぎとってみれば、RDBというシロモノは、ある面で比類なく優れているかわりに、それ以外の面では恐ろしく融通がきかない。オブジェクト指向がミニバンだとしたら、RDBはF1マシンだ。装飾に隠されてはいるが、本質は変えられない。このことを忘れて設計した人々は、あとで莫大な額のツケを請求される（こうしてOracleが儲かるわけだ）。<br />
+　手始めに、行ロックを退けよう。トランザクションを開始するときには、トランザクションを終了するまでの全SQL文を用意しておかなければならない。アプリケーションがトランザクション中にクエリの結果を見て処理するのは、トランザクションの濫用だ。この濫用パターンを仮に、『見る前に跳べ』アンチパターンと名づけよう。<br />
+　いま永続化にRDBを使う理由はなんだろうか。私見ではそれはスケーラビリティに尽きる。ロックとクエリとデータサイズがスケールアウトすること、これがRDBの魂だ。商用RDBMSのロックマネージャは、いま利用できる実装のなかでは、もっともよくスケールアウトするロックマネージャだ。なのに、『見る前に跳べ』アンチパターンは、ロックマネージャのキャパシティを浪費する。RDBを使うべき理由自体を掘り崩しているわけだ。しかもロックマネージャのキャパシティは見えにくい。その結果、「ワカったときにはもう遅い」という状態に陥る。<a href="http://internet.watch.impress.co.jp/cda/news/2006/03/10/11194.html">最近ではココログがこの罠にはまった。</a><br />
+　もうひとつ、分散ファイルシステムの代用としてRDBを使うという悪習を退けよう。このパターンにはすでにぴったりの名前がある。『ゴールデンハンマー』アンチパターンだ。噂によると、この世には、画像までRDBに入れる馬鹿がいるらしい。<br />
+　粗粒度のデータはRDBに入れるべきではない。あまりにもわかりきったことを説明しているようだが、これを説明しなければならないのが現実らしい。分散ファイルシステムを設置するまでもないくらいデータが小さいのなら、普通のファイルシステムを使えばいい。（ただ、Linuxではこれをやると稼動率が下がるかもしれない。ファイルシステムが腐っているのだ。FreeBSD等をお勧めする）<br />
+　<br />
+　『見る前に跳べ』アンチパターンを退けたので、見てから跳ぶことになる。それには、「アプリケーショントランザクション」（以下「APPトランザクション」と略す）という概念が必要になる。<br />
+　この概念は『Hibernate イン アクション』（<a href="http://click.linksynergy.com/fs-bin/click?id=LKh/PCl0zC4&offerid=94925.487421305&type=10&subid=">7andy</a>）で詳しく説明されている。RDBのトランザクション単位の外で、必要なレベルの一貫性を確保しながらデータを操作することだと考えればいい。不変であることが求められる行には楽観ロックをかける。不変性が必要なければUnrepeatable readを覚悟する。トランザクションの隔離というあの迷宮が、ここにも広がっているわけだ。隔離レベルはただひとつ、Read committedである。<br />
+　APPトランザクション中では、必要なデータをRDBから得るために、複数のRDBトランザクションを必要とすることがある。たとえばこんな状況だ。<br />
+　<br />
+　テーブルA・B・Cがある。テーブルB・CはAを参照している。テーブルAには楽観ロックをかけるが、B・Cには不変性は必要ない。<br />
+　テーブルCはAに対して非常に大きな多重度を持つ。このため、単純にテーブルAの外部キーでSELECTしただけでは、結果のデータが多すぎる。テーブルAの外部キーだけでなく、さまざまな条件で絞り込む必要がある。その条件を得るには、テーブルBのデータを処理し、さらに外部からデータXを得る必要がある。データXは時間につれて変化するため、あらかじめ処理結果をキャッシュしておくことはできない。<br />
+　そのため、アプリケーションは最初に、<br />
+<b>RDBトランザクション1：テーブルAとBをJOINしてクエリをかける。</b><br />
+　これで得られたデータを処理する。その結果を生かして、<br />
+<b>RDBトランザクション2：テーブルCにクエリをかける。</b><br />
+　さて、RDBトランザクション1と2のあいだで、テーブルB・Cの内容が変更された場合、なにが起こるだろう。UPDATEとINSERTは問題にならない。だが、テーブルCにDELETEがかかっていて、それがRDBトランザクション2で得られるはずの行を消していたら？　楽観ロックをかけたわけではないのに、楽観ロックに失敗したのと同じことになる。不変性は必要なくても、行の存在は必要、というケースがこの世にはある。並行性の高いアプリケーションを作ろうとしたら、必ず遭遇する（Houndがこれだ）。<br />
+　この問題は、ごく些細なことに見えるが、根が深い。<br />
+　当面の解決策はある。たとえば以下のとおりだ。<br />
+<b>・APPトランザクションの開始時刻をアプリケーション内で保持しておく</b><br />
+<b>・テーブルCに削除時刻のカラムを加え、DELETEのかわりにこれを使う</b><br />
+<b>・RDBトランザクション2のクエリに、APPトランザクション開始時刻の条件を加え、開始後に削除されたものは見えるようにする</b><br />
+<b>・APPトランザクションの生存期間より古い削除時刻の行を定期的にDELETE</b><br />
+　これで望みどおりの挙動が得られる。<br />
+　だが、この解決策は、根本的にダメだ。<br />
+　まず、テーブルCにかかわるすべてのクエリに、自明性の乏しい条件を加えなければならない。保守のコストはおそらく数倍になるだろう。テストで問題を検出することの難しさを思えば、数倍ではすまないかもしれない。<br />
+　古い行を定期的にDELETEする、という動作は、追記型RDBMSのVACUUMを連想させる。目的はそれぞれ異なるが、似た作業をやっていることは確かだ。なにかしら間違った枠組みで物事を捉えているのではないか、と考えさせられる。<br />
+　では、RDBMS側でこのような挙動をサポートする、というのはどうか？　<br />
+<b>・あらかじめAPPトランザクションの生存期間を設定しておく</b><br />
+<b>・DELETEの際には記憶領域は初期化せず、削除時刻を隠しカラムに記録しておく</b><br />
+<b>・RDBトランザクションを開始するときにAPPトランザクション開始時刻を渡す</b><br />
+<b>・APPトランザクション開始時刻後にDELETEされた行は存在するものとして扱う</b><br />
+<b>・VACUUMの際、APPトランザクションの生存期間を過ぎていない行の記憶領域は初期化しない</b><br />
+　これでは足りない。同一APPトランザクション中で、以前のRDBトランザクションでDELETEしたはずの行が読めてしまう。<br />
+　だがこれを防ぐには、RDBMSがAPPトランザクション自体をサポートせねばならず、それは結局『見る前に跳べ』と同じことになってしまう。<br />
+　<br />
+　問題をまとめてみよう。<br />
+<b>・行の存在は、UPDATEやINSERTでは破壊されないが、DELETEでは破壊される</b><br />
+<b>・そのためDELETEは、APPトランザクションに対して、不要な不変性を押し付ける</b><br />
+　「不要な不変性を押し付ける」という性質は、DELETEにだけ存在する。DELETEは深遠な哲学的問題なのだ。<br />
+　<br />
+　この問題を根本的に解決するには、通常のRDBのデータモデルをやめ、参照とガベージコレクションを採用するしかない。それはDELETEのない世界だ。<br />
+　アプリケーションと密に結合しなくても、ガベージコレクションは可能だ。データベース上で参照されなくなってもAPPトランザクションの生存期間が過ぎていない行は削除しない、というだけのことだ。<br />
+　現在のRDBMSの実装上でも、参照とガベージコレクションの真似をすることはできる。最初の解決策（削除時刻のカラムを追加する）をもう少し複雑にすればいい。保守不可能なこと請け合いだが。<br />
+　歴史をみると、どうやらOODBは必要とされなかったらしい。だが、DELETEのないRDBは必要だ。現在、マルチコアCPUと分散処理が普及しつつある。並行性の高いアプリケーションはこれから桁違いに増えるだろう。<br />
+　私は挑戦者を待っている。金銭で報いることはどうやらできそうにないが、理解することはできるだろう。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000293.html&amp;text=DELETE%E3%81%A8%E5%8F%82%E7%85%A7&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000293.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=DELETE%E3%81%A8%E5%8F%82%E7%85%A7
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000293.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;05&#26376;05&#26085; 01:32
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

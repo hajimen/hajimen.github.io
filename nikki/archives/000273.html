@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: EJBとエロゲーと進歩</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000272.html" title="『CYNTHIA_THE_MISSION ドラマCD 第1巻』（フロンティアワークス）" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000274.html" title="小菅23日間の旅" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000272.html">&laquo; 『CYNTHIA_THE_MISSION ドラマCD 第1巻』（フロンティアワークス）</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000274.html">小菅23日間の旅 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2006&#24180;03&#26376;30&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">EJBとエロゲーと進歩</h3>
+
+<p>　EJBのことをさんざんけなしている私だが、徹底的に間違っているとは思わない（Berkeley DBは徹底的に間違っている）。気持ちはわかるのだ。私自身、EJBと似たようなことをしている。<br />
+　ビジュアルノベルのように、シナリオに沿って進行するタイプのゲームでは、状態管理が問題になる。どういう問題か、以下に一例を示そう。</p>
+
+<a name="more"></a>
+<p>　シナリオAの最後で選択肢が登場して、BとCに分岐し、さらにBの終わりではCに飛ぶものとする。つまり、シナリオの流れは以下の２パターンがある。<br />
+・A→B→C<br />
+・A→C<br />
+　さて、シナリオCはどちらの流れでも同じ内容なのだから、同じ状態を表現しなければならない。状態とは、画面表示やBGMなどだ。<br />
+　シナリオデータを作成する際は、基本的に、状態の変化を記述してゆく。「背景を××に変える」「BGMを××にする」という具合だ。すべての地点の状態を、シナリオデータに書き込んでゆくことはできない。そんなことをしたら、シナリオデータは以下のようになってしまうだろう。<br />
+　<br />
+----------------------------------------------------------------------------<br />
+[背景は××][BGMは××][立ち絵のキャラはS][Sの服装は××][Sの表情は××]<br />
+さて、これは。<br />
+----------------------------------------------------------------------------<br />
+[背景は××][BGMは××][立ち絵のキャラはS][Sの服装は××][Sの表情は××]<br />
+さて、これは。<br />
+いったいどういうことなのか？<br />
+----------------------------------------------------------------------------<br />
+[背景は××][BGMは××][立ち絵のキャラはS][Sの服装は××][Sの表情は○○]<br />
+私は考えた。<br />
+----------------------------------------------------------------------------<br />
+[背景は××][BGMは××][立ち絵のキャラはS][Sの服装は××][Sの表情は○○]<br />
+私は考えた。<br />
+こんなデータを人間が作れるのか？<br />
+----------------------------------------------------------------------------<br />
+　<br />
+　変化だけを記せば、以下のように自然な記述になる。<br />
+　<br />
+[背景は××][BGMは××][立ち絵のキャラはS][Sの服装は××][Sの表情は××]<br />
+さて、これは。■<br />
+いったいどういうことなのか？■<br />
+[改ページ]<br />
+[Sの表情は○○]<br />
+私は考えた。■<br />
+こんなデータを人間が作れるのか？■<br />
+　<br />
+　実際問題として、シナリオデータは変化だけを記すしかない。<br />
+　変化だけを記していく場合、シナリオデータがある地点で表現する状態は、その直前の状態に影響される。上の例でいえば、最初の行で指定された状態が、最後まで影響している。もし最初の行で、[背景は○○]と指定されていれば、最後まで背景は○○のままだ。<br />
+　全シナリオが最初から最後まで一本道につながっているのなら、これは問題にならない。だが、「A→B→C」と「A→C」の２パターンの流れを記述した場合、シナリオCの開始時点では、その直前の状態は２種類あることになる。<br />
+　さて、ここで大きな問題にぶちあたる。２つの考え方があるのだ。<br />
+　<br />
+逐次的：シナリオCが、その開始直前の状態に影響されることを認め、シナリオCが２種類の状態を表現することを許す<br />
+宣言的：開始直前の状態からの影響を排除し、シナリオCが表現する状態は常に１種類であると定める<br />
+　<br />
+　前者は、シナリオデータをプログラムとみなすものといえる。プログラムなら、たとえばループ内のループ変数のように、同じ地点が複数の状態を表現する。<br />
+　この方式は、プログラマには、自明のことに見える。私の知るかぎり、既存のビジュアルノベルフレームワークはすべてこの方式である。利点は、後者にくらべて表現力が高いことだ。たとえば、同じシナリオに違う背景をあてたい場合、逐次的データなら簡単に書ける。宣言的データでは、使いたい背景の数だけシナリオデータを作るしかない。<br />
+　だが現実には、逐次的データの表現力が生かされることはめったになく、害ばかりがある。害、すなわち、状態管理のトラブルだ。現実には、シナリオCに２種類の状態を表現させることはまずない。あるのは、意図せず間違って表現させてしまった場合、つまり、バグだ。<br />
+　<br />
+　宣言的にやる場合、開始直前の状態からの影響を排除するといっても、具体的にはシナリオデータにはどう書くのか。<br />
+　シナリオの開始地点となる場所で、[背景は××][BGMは××][立ち絵のキャラはS][Sの服装は××][Sの表情は××]という具合に、すべての状態を指定させるのか。だがこれは、最初に示した冗長な例ほどではないにしても、面倒くさすぎて現実的ではない。<br />
+　そこで私は考えた。<br />
+　A・B・Cとシナリオが並んでいるとき、再生順を無視してA→B→Cと頭から順に読んでゆけば、すべての地点で状態が一意に定まる。こうして得られた状態を、シナリオの流れがA→Cとなったときにも保つ。つまり、状態の変化だけが記してあるシナリオデータを、最初に示した冗長な例のようなデータへと変換して、これを再生する。（もちろん現実にはこんな馬鹿正直な実装ではなく、もっと効率のよい方法を採っている）<br />
+　<br />
+　おわかりだろうか。EJBではリソースやトランザクションをコンテナが管理するように、宣言的データでは状態をフレームワークが管理するわけだ。<br />
+　宣言的データはバグを減らすが、代償は小さくない。まず、管理下に置く状態を、かなり面倒なやりかたで宣言しなければならない。一時変数のようにアドホックに追加することはできない。一般にプログラマは万能チューリング機械に慣れており、有限状態機械は不自然で不便に見える。また現実には、管理されない状態も必要になる。いわゆる「フラグ」だ。すべての状態を宣言的に扱えるわけではないので、バグの可能性は常に残る。<br />
+　（C言語のincludeマクロのような表現と相対ジャンプを駆使すれば、フラグを管理下に置くことも可能だが、このような実装はまだ試していないので、その当否については保留する）<br />
+　シナリオデータ作成者は、考えること（状態管理）が減るかわりに、フレームワークを理解するための手間が増える。フレームワークを管理するのも、逐次的データのほうが楽だ。<br />
+　というわけで、宣言的データはまったくもって、EJBのコンテナ管理そっくりの様相を呈している。<br />
+　<br />
+　<a href="http://www.os-omicron.org/~hayakawa/trans/irrelevant.htm">ソフトウェアはよどんでいる</a>。コンテナ管理的なものへの試みや、有限状態機械の積極的な利用、つまり万能チューリング機械への挑戦は、どこにあるのだろう。私はEJBをけなすが、それはEJBがこうした問題に挑んでいるからだ。EJBの解答はろくでもないが、もし問題がくだらなければ、解答をけなすのは時間の無駄だ。<br />
+　アラビア数字が算数を簡単にしたように、なにか物事をまとめて簡単にする方法があるはずだと、私は信じている。EJBは問題をあまりにも狭い範囲に限定してしまったが、もっと広い範囲の問題を、もっと一般的に解けるはずだと、私は信じている。<br />
+　もし本当によい解答が見つかれば、それはソフトウェア産業の全面を変えるかもしれない。なにしろ、エロゲーでさえ、そうした解答を求めているのだ。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000273.html&amp;text=EJB%E3%81%A8%E3%82%A8%E3%83%AD%E3%82%B2%E3%83%BC%E3%81%A8%E9%80%B2%E6%AD%A9&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000273.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=EJB%E3%81%A8%E3%82%A8%E3%83%AD%E3%82%B2%E3%83%BC%E3%81%A8%E9%80%B2%E6%AD%A9
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000273.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2006&#24180;03&#26376;30&#26085; 20:56
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: OpenOffice.orgはなぜダメか</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000170.html" title="Mac mini 1.25GHz + Linux + IBM JavaVMでSciMark 2.0a" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000172.html" title="Google the Big Brother" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000170.html">&laquo; Mac mini 1.25GHz + Linux + IBM JavaVMでSciMark 2.0a</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000172.html">Google the Big Brother &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2005&#24180;05&#26376;23&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">OpenOffice.orgはなぜダメか</h3>
+
+<p>　ソフトウェアには2種類ある。それを作ったプログラマ本人が使うものと、そうでないものと。<br />
+　前者は金にならない。それはプログラマの周囲に自然発生する。この種のソフトウェアのうち、もっとも有名なのはLinuxカーネルであり、もっとも影響力があるのはGCCである。<br />
+　プログラマを養うのは後者だ。マルクスが目からビームを出しながら解説してくれそうなシチュエーションだが、やめておこう。<br />
+　もっとも美しいソフトウェアは、常に前者である。<br />
+　何年か前のことだ。私は、17世紀ヨーロッパのくだらない商業絵画を集めた企画展を見に行く羽目になった。どう贔屓目に見ても、絵の具以下の価値しかないような絵ばかりだった（絵の具は実に美しい。もし機会があったら、よく見てほしい）。「見るに耐えない」とはああいう絵をいうのだろう。しかし、その中にたった一点、見るに値する作品があった。ほほう、と思って釣り書きをみると――それは、商業画家の組合の事務所に飾るために描かれた絵だった。<br />
+　華々しい成功を収めたオープンソースソフトウェアを、思いつくだけ挙げてみてほしい。Linux、JBoss、MySQL、Eclipse、Mozilla。分野はさまざまだが、これらはみな、プログラマが使うソフトウェアだ。<br />
+　OpenOffice.orgを日常的に使うプログラマというものを、私はうまくイメージできない。労力を最小化しようとしたとき、OpenOffice.orgという選択肢が合理的になるためには、いったいどれだけの不自然な前提条件が必要になることか。そして、そういう不自然な前提条件に耐えられるプログラマは、まず間違いなく、よいプログラマではない。<br />
+　（MSを宗教的に嫌悪しているプログラマは、ほぼ例外なく、よいプログラマではない。反MS教の信者として生きることは、人生を困難にする。よいプログラマは、楽をするためなら、自分の宗教をいとも簡単に捨てる）<br />
+　OpenOffice.orgは、異端児なのだ。有名なオープンソースソフトウェアのなかで、ただひとつ、よいプログラマに愛される見込みがない、という意味で。<br />
+　もちろん、時代は変わりつつある。<br />
+　委員会が設計したプログラミング言語は常に呪われた運命をたどってきたが、もしかするとJavaは、初めての勝利を得るかもしれない（ただし、ここでいうJavaとは、AspectJを含む。Inter-type declarationなしのJavaは、手の込んだ冗談か、あるいは狂気の兆候だ）。OpenOffice.orgが、Javaと同様に、ルールブレイカーにならないという保証はない。<br />
+　だが、分は悪い。お勧めできる銘柄では到底ない。</p>
+
+<a name="more"></a>
+
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000171.html&amp;text=OpenOffice.org%E3%81%AF%E3%81%AA%E3%81%9C%E3%83%80%E3%83%A1%E3%81%8B&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000171.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=OpenOffice.org%E3%81%AF%E3%81%AA%E3%81%9C%E3%83%80%E3%83%A1%E3%81%8B
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000171.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2005&#24180;05&#26376;23&#26085; 05:25
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

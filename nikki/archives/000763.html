@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>中里一日記: 政治としてのテスト・バグ・仕様</title>
+
+<link rel="stylesheet" href="http://kaoriha.org/nikki/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kaoriha.org/nikki/index.rdf" />
+
+<link rel="start" href="http://kaoriha.org/nikki/" title="Home" />
+<link rel="prev" href="http://kaoriha.org/nikki/archives/000762.html" title="公営ギャンブルは持続可能か" />
+
+<link rel="next" href="http://kaoriha.org/nikki/archives/000764.html" title="ピタゴラ装置ができるまで" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'kaoriha.org';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script src="/ga.js"></script>
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://kaoriha.org/nikki/" accesskey="1">中里一日記</a></h1>
+<span class="description"></span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://kaoriha.org/nikki/archives/000762.html">&laquo; 公営ギャンブルは持続可能か</a> |
+
+<a href="http://kaoriha.org/nikki/">Main</a>
+| <a href="http://kaoriha.org/nikki/archives/000764.html">ピタゴラ装置ができるまで &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+<h2 class="date">2012&#24180;05&#26376;14&#26085;</h2>
+
+<div class="blogbody">
+
+<h3 class="title">政治としてのテスト・バグ・仕様</h3>
+
+<p>　<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873114748/hound-22/ref=nosim">『ビューティフルテスティング――ソフトウェアテストの美しい実践』</a>をざっと読んだ。<br/>
+　感想――絶望。</p>
+
+<a name="more"></a>
+<p>　<br/>　「完全な仕様書」なるものを考えよう。そのまま実行できるか、少なくとも完全なテストスイートを生成できる仕様書だ。「完全なテストスイート」とは、それをパスすれば必ず仕様を満たしていると言えるテストスイートだ。ただし、これらはあくまで思考実験上の存在である。現実的な時間内に実行を終えられるかどうかは問わないし、実在できなくてもかまわない。<br/>
+　1913年、ホワイトヘッドとラッセルは、算術の完全な仕様書を書いた。タイトルを『Principia Mathematica』という。算術、つまり、1+1=2や4x4=16といった操作が、この仕様書には定義されている。<br/>
+　ウィトゲンシュタインはこの仕様書を次のように批判した。<br/>
+　「足し算引き算割り算掛け算は、世界中の人間が毎日やっている。全世界の全歴史のどこでも1+1=2だし、4x4=16だ。もしこういう操作で意見の不一致を生じたら大問題になるだろうが、深刻な不一致はどうやら今まで一度も起きていないらしい。<br/>
+　さて、『Principia Mathematica』を徹底的に検討したところ、バグが見つかったとしよう。世界中の人間が一致して出すはずの答えと、『Principia Mathematica』の導く答えが食い違うケースを発見したとしよう。<br/>
+　そのバグがどんなものであろうと、<br/>
+　『つまり、これまで全世界の人間がやっていた算術にはバグがあるんだよ！』<br/>
+　『な、なんだってー！！』<br/>
+　……ということにはならない。バグっているのは『Principia Mathematica』のほう、ということになる。<br/>
+　こういう事態が生じる可能性をゼロにすることはできない。完全な仕様書なのにバグっている可能性があるとは、いかがなものか」<br/>
+　ウィトゲンシュタインによる批判を、実践的に表現すると、本書216-217ページのようになる――</p>
+
+<blockquote>
+<p>　最近では、特定のアサーションのみをチェックすることが一般的になっています。このため、テストの自動化では以下のような点が確認できなくなります。<br/>
+・アイコンの背景色が透明ではない<br/>
+・[Submit]の実行後、演算子のドロップダウンリストがデフォルトの[Plus]（加算）になるため、「4+4=16」のように表示してしまう。<br/>
+・2番目の値の入力後、キャンセルボタンを無効化してしまう<br/>
+・[Answer]（解答）が無効化されるべき（グレーアウトされるべき）ときに編集可能となる。<br/>
+・演算の完了に8秒もかかる。<br/>
+・生成した新規ページには正しい答えを表示しているが、入力した最初の値として0を表示している。このため、「0+4=8」と表示してしまう。<br/>
+　人間のテスターは思考することができるため、瞬時にこれらの問題に気づきます。</p>
+</blockquote>
+
+<p>　「人間のテスターは思考することができるため、瞬時にこれらの問題に気づきます」とは、「バグっているのは『Principia Mathematica』のほう」というのと同じことだ。上で引用したような問題が報告されて、「仕様ではその動作は不定だから問題ない」と言い放つ勇気はなかなか持てない。「バグっているのはこれまでの全世界の人間のほう」よりはまだ言いやすいが。<br/>
+　つまり、そこにあるのは政治であり、権力だ。習慣という旗印のもとに味方を集められると踏んだテスターや、習慣と争っても勝負にならないと踏んだウィトゲンシュタインは、権力の大小にもとづく政治的な判断を下している。<br/>
+　テストやバグや仕様について考えるには、これらが政治的問題であることをまず認識しなければならない。が、本書のなかには、そうした認識は見つけられなかった（私が見落とした部分にはあるのかもしれないが）。政治的問題を無視してテストを論じる本書は、私の目には、無様なナンセンスと映る。そのナンセンスに気づきもしない著者たちの鈍感さは、私を絶望させた。</p>
+
+<ul class="snsb">
+<li><iframe allowtransparency="true" frameborder="0" scrolling="no" class="twitter" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000763.html&amp;text=%E6%94%BF%E6%B2%BB%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88%E3%83%BB%E3%83%90%E3%82%B0%E3%83%BB%E4%BB%95%E6%A7%98&amp;lang=ja&amp;count=horizontal"></iframe></li>
+<li><div class="g-plusone" data-size="medium" data-href="http://kaoriha.org/nikki/archives/000763.html"></div></li>
+<li><a href="http://www.tumblr.com/share/quote?quote=%E6%94%BF%E6%B2%BB%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88%E3%83%BB%E3%83%90%E3%82%B0%E3%83%BB%E4%BB%95%E6%A7%98
+&amp;source=http%3A%2F%2Fkaoriha.org%2Fnikki%2Farchives%2F000763.html" title="Share on Tumblr" class="tumblr">Share on Tumblr</a></li>
+</ul>
+
+<span class="posted">Posted by hajime at 2012&#24180;05&#26376;14&#26085; 18:38
+
+<br /></span>
+
+</div>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ja'}</script>
+<!-- /Google+ -->
+<script src="http://platform.tumblr.com/v1/share.js"></script>
+<!-- /Tumblr -->
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+               "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>「テフはね」彼女は眉をひそめた。</title>
+<link href="../css/kaoriha.css" rel="stylesheet" type="text/css" />
+<script src="/ga.js"></script>
+
+</head>
+<body>
+<h1 class="centering">「テフはね」彼女は眉をひそめた。</h1>
+<p>　「インデザインは？」</p>
+<p>　私はいくらか安心した。</p>
+<p>　第一に、彼女は「インデザイン」と言った。もし彼女が「インデザ」と言っていたら、またしてもボゾビットを、ぱちん、ぱちん、とやる破目になっただろう。</p>
+<p>　第二に、彼女もTeXを避けたがっているのが、ありありとわかった。彼女にとってもやはりTeXはTeXだった。私は意地悪な空想をめぐらせた。なんといっても、「テフ」を省略して呼ぶなんて不可能だ。まさか、「テ」？　
+  なんでも、どこかの宇宙人の言葉では、「恋人」という意味だとか。</p>
+<p>　IllustratorとInDesignを両方揃えることが、どんなに非経済的か、彼女に説明した。</p>
+<p>　Illustrator 10とInDesign 2.0はどちらも小塚明朝・小塚ゴシックをバンドルしている。もし両方を買うと、フォントを重複して買うことになる。たかがバンドルとはいえない。小塚明朝と小塚ゴシックの単体の値段は、Illustrator 
+  10自体に匹敵する。単体版のほうが字数がいくぶん多いとはいえ、バンドル版は2つセットなのだ。</p>
+<p>　「なんでインデザインじゃなくてイラ<em>レ</em>だったの？」</p>
+<p>　それは難しい質問だった。モノクロでは、グラデーションや半透明など使いようがない。</p>
+<p>　「だからテフする破目になるわけ」</p>
+<p>　私に言い聞かせているのか、ひとりで納得しているのか、わからない口調だった。</p>
+<p>　ところで、私はちょっと気になった。彼女はInDesignを使っているのだろうか？</p>
+<p>　「いや、あんたに使わせてみようと思って」</p>
+<p>　TeXの問題はまだ解決されていないので、私は話を戻した。</p>
+<p>　「テフの問題は解決されない。それくらい、わかってるでしょうが」</p>
+<p>　だからといって解決しないわけにはいかなかった。</p>
+<p>　「環境は？」</p>
+<p>　角藤版W32TeXをcygwinと組み合わせて、<code>/usr/local</code>にインストールしてある、と私は答えた。もちろんjsarticleやokumacroも。</p>
+<p>　「縦書きだったね。まずはJISフォントメトリック。これがないと、お話にならない」</p>
+<p><code>\DeclareFontShape{JY1}{mc}{m}{n}{&lt;-&gt; s * [0.9610259] jis-v}{}<br />
+\DeclareFontShape{JY1}{gt}{m}{n}{&lt;-&gt; s * [0.9610259] jisg-v}{}</code></p>
+<p>　彼女はGoogleを叩いてこの呪文を引き出し、プリアンブル、それも、<code>\documentclass</code>の前に貼り付けた。</p>
+<p>　「ぶら下げは、<a href="http://ms326.ms.u-tokyo.ac.jp/otobe/tex/burasage.html">乙部版</a>でいこう」</p>
+<p>　彼女は、スタイルファイルと仮想フォントを取ってくると、<code>share/texmf</code>の中に投げ込んだ。プリアンブルに――今度は<code>\documentclass</code>の後に――書き込む。</p>
+<p><code>\usepackage{hangpunc}</code></p>
+<p>　「フォントは？」</p>
+<p>　ヒラギノ明朝とヒラギノ角ゴで、と私はお願いした。</p>
+<p>　彼女はcygwinのbash上から、<code>cat &gt;/usr/local/share/texmf/dvips/config/hira.map</code>とタイプして、こう入力した。一文字も間違えず。</p>
+<p><code>rml HiraMinPro-W3-H<br />
+  rmlv HiraMinPro-W3-V<br />
+  gbm HiraKakuPro-W6-H<br />
+  gbmv HiraKakuPro-W6-V</code></p>
+<p>　「<code>dvipsk -u+hira.map hoge.dvi</code>でヒラギノになる」</p>
+<p>　だんだんTeXらしくなってきた、と私は思った。</p>
+<p>　「ただし、出力するときはDistillerを通す。OpenTypeフォントを埋め込む能力はないから」</p>
+<p>　そんな、と私は抗議した。</p>
+<p>　「テフだから」</p>
+<p>　本当はできるにちがいない、と私は直感した。でもこれはTeXだった。</p>
+<p>　「<code>\textwidth</code>と<code>\columnsep</code>はzwで指定する。……他に質問は？」</p>
+<p>　Unicodeでしか出ないフォントを出したい、と言ってみた。</p>
+<p>　「MS明朝しか使わないんなら、umsパッケージっていうのがある」</p>
+<p>　お話にならない。</p>
+<p>　「ほかにも手はある。まずWordを使う。欲しい字を、ページの真ん中に馬鹿でかく書いておく。こいつをPostScriptプリンタドライバでEPSに書き出す。これをイラ<em>レ</em>で読んで、フォントだけを選択して縮小、EPSに書き出す。これを文中に配置する」</p>
+<p>　無茶苦茶だと思った。</p>
+<p>　「テフだから」</p>
+<p>　またそれだ。</p>
+<p>　「イラ<em>レ</em>でも使える手だし」</p>
+<p>　私はいくらか気持ちが軽くなった。</p>
+<p>&nbsp;</p>
+<p class="centering"><a href="dtp.htm">[戻る]</a></p>
+</body>
+</html>

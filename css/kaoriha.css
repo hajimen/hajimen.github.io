@@ -1,0 +1,47 @@
+body {
+	background-color: #E0E7F0;
+	color: #1F180F;
+	text-align: justify;
+}
+
+.centering {
+	text-align: center;
+}
+
+p {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+	line-height: 150%;
+}
+
+li {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+	line-height: 150%;
+}
+
+strong {
+	font-size: large;
+}
+
+blockquote {
+	background-color: #FFFFFF;
+}
+
+.right {
+	text-align: right;
+}
+
+td {
+	text-align: justify;
+	padding: 10px;
+}
+
+.unicode {
+	font-family: "Lucida Sans Unicode";
+	font-size: 100px;
+}
+
+.retail {
+	font-size: x-small;
+}
