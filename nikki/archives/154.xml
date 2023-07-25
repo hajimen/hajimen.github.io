@@ -1,4 +1,4 @@
-<rss version="0.91"><channel>
+﻿<rss version="0.91"><channel>
 <title>Mac mini 1.25GHz + Linux + IBM JavaVMでSciMark 2.0a</title>
 <link>http://kaoriha.org/nikki/archives/000170.html</link>
 <description>　Mac mini 1.25GHzを手に入れた。 　MacOS Xは無視してPPC Linux（Debian Sarge）を入れ、IBMのJava SDK 1.4.2を入れた。SciMark 2.0aでベンチマークを取ったので、ここに載せておく。なお、このマシンはメモリを1GBに増設してある。 SciMark 2.0a Composite Score: 172.6253207144057 FFT (1024): 137.341784739832 SOR (100x100): 206.31209598707412 Monte Carlo : 30.393508007771494 Sparse matmult (N=1000, nz=5000): 152.1262735962719 LU (100x100): 336.9529412410789 java.vendor: IBM Corporation java.version: 1.4.2 os.arch: ppc...</description>

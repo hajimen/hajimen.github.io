@@ -1,4 +1,4 @@
-rhstat_site = "http://kaoriha.org";
+ï»¿rhstat_site = "http://kaoriha.org";
 rhstat_houndURL = "http://www.hound.jp/server/hound";
 rhstat_defaultCSSURL = "http://kaoriha.org/nikki/stat.css";	// TODO
 rhstat_pathList = new Object();
@@ -194,8 +194,8 @@ function rhstat_sendRPCDone(a) {
 		ae.setAttribute("onclick", "showSubwindow(this.href); return false");
 		var li = getLinkInfoFromPath(rhstat_extractPath(spane));
 		var pe = rhstat_getFirstChildByClassName(spane, "link");
-		// TODO url or path‚Ì‘O‚Éspan‚ğì‚Á‚Ä‚»‚±‚ÉŒ”‚ğ“ü‚ê‚é‚æ‚¤‚É‚·‚é
-		// url, path, title‚ÍÁ‚·
+		// TODO url or pathã®å‰ã«spanã‚’ä½œã£ã¦ãã“ã«ä»¶æ•°ã‚’å…¥ã‚Œã‚‹ã‚ˆã†ã«ã™ã‚‹
+		// url, path, titleã¯æ¶ˆã™
 		var urle = rhstat_getFirstChildByClassName(spane, "url");
 		if (urle != null) {
 			urle.firstChild.nodeValue = li.num;

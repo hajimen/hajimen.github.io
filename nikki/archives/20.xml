@@ -1,4 +1,4 @@
-<rss version="0.91"><channel>
+﻿<rss version="0.91"><channel>
 <title>C++とは、決してdeleteしないこと</title>
 <link>http://kaoriha.org/nikki/archives/000026.html</link>
 <description>　日本語の世界ではやけにマイナーなので紹介してみる。 WinSTL 　GlobalAllocを使ったSTLアロケータ（winstl_global_allocator.h）などが使える。しかし、GlobalAllocでアロケートすると何が面白いのか？　後日に続く…かもしれない。...</description>

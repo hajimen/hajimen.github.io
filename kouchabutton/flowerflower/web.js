@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
 	if (window.ff) {
 	} else {
 		window.ff = {};

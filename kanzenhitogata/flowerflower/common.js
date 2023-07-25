@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Constant:
  * 		window.ff.Site: サイト
  * 		window.ff.Title: 配信タイトル

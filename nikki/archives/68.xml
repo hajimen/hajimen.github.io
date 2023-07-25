@@ -1,4 +1,4 @@
-<rss version="0.91"><channel>
+﻿<rss version="0.91"><channel>
 <title>PS2用ビデオゲーム『アカイイト』</title>
 <link>http://kaoriha.org/nikki/archives/000075.html</link>
 <description>　サイトでの情報公開がだいぶ進んできた。見たところ、ずいぶん制作費を突っ込んでいるらしい。 　体験版がWindowsで動くが、ビデオアダプタがGeForce限定である。私のマシンはATIなので動かない。 　GeForce限定なのは、GeForceのなにかに依存しているのではなく、OpenGLドライバが腐っているビデオアダプタ（MatroxのG550など）をはじくためのものだろう。OpenGL普及への道のりは長い。...</description>
